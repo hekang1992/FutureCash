@@ -5,34 +5,21 @@
 //  Created by apple on 2024/3/25.
 //
 
+import UIKit
 import Foundation
-import Alamofire
-import Kingfisher
-import MBProgressHUD_WJExtension
-import MJRefresh
-import SnapKit
-import RxSwift
-import SAMKeychain
-import TYAlertController
-import BRPickerView
-import HandyJSON
-import IQKeyboardManagerSwift
-import AppsFlyerLib
-import AAILivenessSDK
-import SystemServices
-import SystemConfiguration
-import AdSupport
-import CoreTelephony
-import SystemConfiguration.CaptiveNetwork
-import UIColor_Hex
 
 //DEFINE
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 // 状态栏高度
 let STATUSBAR_HIGH = IS_iPhoneXSeries() ? 44 : 20
 // 导航栏高度
 let NAV_HIGH = 44 + STATUSBAR_HIGH;
+
+let KeyChain_Service = "KeyChain_Service"
+
+let KeyChain_Account = "KeyChain_Account"
 
 func IS_iPhoneXSeries() -> (Bool) {
     let boundsSize = UIScreen.main.bounds.size;
@@ -106,36 +93,6 @@ extension CGFloat {
     }
 }
 
-func topViewController() -> UIViewController? {
-    var window = UIApplication.shared.delegate?.window ?? UIWindow()
-    if window?.windowLevel != UIWindow.Level.normal {
-        let windows = UIApplication.shared.windows
-        for tmpWin in windows {
-            if tmpWin.windowLevel == UIWindow.Level.normal {
-                window = tmpWin
-                break
-            }
-        }
-    }
-    var rootVC = window?.rootViewController
-    var activityVC: UIViewController?
-    while true {
-        if let navController = rootVC as? UINavigationController {
-            activityVC = navController.visibleViewController
-        } else if let tabController = rootVC as? UITabBarController {
-            activityVC = tabController.selectedViewController
-        } else if let presentedVC = rootVC?.presentedViewController {
-            activityVC = presentedVC
-        } else {
-            break
-        }
-        
-        rootVC = activityVC
-    }
-    return activityVC
-}
-
-//图片压缩
 extension Data {
     static func compressQuality(image: UIImage, maxLength: Int) -> Data? {
         var compression: CGFloat = 0.7
@@ -159,5 +116,18 @@ extension Data {
             }
         }
         return data
+    }
+}
+
+extension String {
+    func convertBase64(_ dict: [String: Any]) -> String? {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict)
+            let base64EncodedString = jsonData.base64EncodedString()
+            return base64EncodedString
+        } catch {
+            print("Error: \(error)")
+            return nil
+        }
     }
 }

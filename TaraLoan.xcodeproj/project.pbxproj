@@ -21,6 +21,12 @@
 		18562E772BB1482000F1FA23 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E762BB1482000F1FA23 /* OrderViewController.swift */; };
 		18562E792BB1483000F1FA23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E782BB1483000F1FA23 /* ProfileViewController.swift */; };
 		18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E7A2BB1483E00F1FA23 /* WebViewController.swift */; };
+		18562E7F2BB14DD600F1FA23 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E7E2BB14DD600F1FA23 /* LoginFactory.swift */; };
+		18562E812BB1501500F1FA23 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E802BB1501500F1FA23 /* DeviceInfo.swift */; };
+		18562E832BB1560100F1FA23 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E822BB1560100F1FA23 /* NetworkManager.swift */; };
+		18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E842BB17D3100F1FA23 /* LocationManager.swift */; };
+		18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E862BB17D5000F1FA23 /* LocationModel.swift */; };
+		18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E882BB17E0900F1FA23 /* TotalModel.swift */; };
 		541A4A631DAAA9E77AE000F1 /* Pods_TaraLoan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B698740A60A130FE695D5EB6 /* Pods_TaraLoan.framework */; };
 		A749D1B22C1227C138B71A12 /* Pods_TaraLoan_TaraLoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */; };
 		C614B71827A1637260F0CA31 /* Pods_TaraLoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C2AA5DC62F946FA77D137E /* Pods_TaraLoanTests.framework */; };
@@ -64,6 +70,12 @@
 		18562E762BB1482000F1FA23 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		18562E782BB1483000F1FA23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		18562E7A2BB1483E00F1FA23 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		18562E7E2BB14DD600F1FA23 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
+		18562E802BB1501500F1FA23 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		18562E822BB1560100F1FA23 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		18562E842BB17D3100F1FA23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		18562E862BB17D5000F1FA23 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		18562E882BB17E0900F1FA23 /* TotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModel.swift; sourceTree = "<group>"; };
 		2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1DDE452236F446AFCBB8ACA /* Pods-TaraLoan-TaraLoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoan-TaraLoanUITests/Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaraLoan_TaraLoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				18562E682BB132C300F1FA23 /* RequestApiUrl.swift */,
+				18562E822BB1560100F1FA23 /* NetworkManager.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -231,6 +244,7 @@
 			children = (
 				18562E7C2BB1488800F1FA23 /* HeadFile */,
 				18562E662BB12D3D00F1FA23 /* Location */,
+				18562E7D2BB14D8A00F1FA23 /* LoginCommon */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -238,6 +252,7 @@
 		18562E652BB12D1300F1FA23 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18562E882BB17E0900F1FA23 /* TotalModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,6 +260,8 @@
 		18562E662BB12D3D00F1FA23 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				18562E842BB17D3100F1FA23 /* LocationManager.swift */,
+				18562E862BB17D5000F1FA23 /* LocationModel.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -255,6 +272,15 @@
 				18562E722BB1470E00F1FA23 /* BaseHeadFile.swift */,
 			);
 			path = HeadFile;
+			sourceTree = "<group>";
+		};
+		18562E7D2BB14D8A00F1FA23 /* LoginCommon */ = {
+			isa = PBXGroup;
+			children = (
+				18562E802BB1501500F1FA23 /* DeviceInfo.swift */,
+				18562E7E2BB14DD600F1FA23 /* LoginFactory.swift */,
+			);
+			path = LoginCommon;
 			sourceTree = "<group>";
 		};
 		A606FD306D79A48F85757715 /* Frameworks */ = {
@@ -518,15 +544,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18562E832BB1560100F1FA23 /* NetworkManager.swift in Sources */,
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
+				18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */,
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
 				18562E732BB1470E00F1FA23 /* BaseHeadFile.swift in Sources */,
 				18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */,
+				18562E812BB1501500F1FA23 /* DeviceInfo.swift in Sources */,
+				18562E7F2BB14DD600F1FA23 /* LoginFactory.swift in Sources */,
 				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
 				18562E752BB1481100F1FA23 /* HomeViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
 				18562E792BB1483000F1FA23 /* ProfileViewController.swift in Sources */,
 				18562E772BB1482000F1FA23 /* OrderViewController.swift in Sources */,
+				18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */,
+				18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

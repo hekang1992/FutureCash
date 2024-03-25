@@ -15,6 +15,7 @@
 		18562E492BB128D300F1FA23 /* TaraLoanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E482BB128D300F1FA23 /* TaraLoanUITestsLaunchTests.swift */; };
 		18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */; };
 		18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */; };
+		18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E682BB132C300F1FA23 /* RequestApiUrl.swift */; };
 		541A4A631DAAA9E77AE000F1 /* Pods_TaraLoan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B698740A60A130FE695D5EB6 /* Pods_TaraLoan.framework */; };
 		A749D1B22C1227C138B71A12 /* Pods_TaraLoan_TaraLoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */; };
 		C614B71827A1637260F0CA31 /* Pods_TaraLoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C2AA5DC62F946FA77D137E /* Pods_TaraLoanTests.framework */; };
@@ -52,6 +53,7 @@
 		18562E552BB1291400F1FA23 /* TaraLoan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaraLoan.entitlements; sourceTree = "<group>"; };
 		18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLBaseViewController.swift; sourceTree = "<group>"; };
 		18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		18562E682BB132C300F1FA23 /* RequestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestApiUrl.swift; sourceTree = "<group>"; };
 		2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1DDE452236F446AFCBB8ACA /* Pods-TaraLoan-TaraLoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoan-TaraLoanUITests/Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaraLoan_TaraLoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +126,6 @@
 				18562E612BB12CDC00F1FA23 /* Order */,
 				18562E602BB12CB900F1FA23 /* Home */,
 				18562E5E2BB12CB000F1FA23 /* Base */,
-				18562E572BB12A8700F1FA23 /* LaunchVc */,
 			);
 			path = TaraLoan;
 			sourceTree = "<group>";
@@ -170,6 +171,7 @@
 				18562E652BB12D1300F1FA23 /* Model */,
 				18562E642BB12D1000F1FA23 /* Config */,
 				18562E632BB12D0D00F1FA23 /* NetWork */,
+				18562E572BB12A8700F1FA23 /* LaunchVc */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				18562E672BB12D6100F1FA23 /* NetRequest */,
+				18562E682BB132C300F1FA23 /* RequestApiUrl.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -259,7 +262,6 @@
 				2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */,
 				C9DAE3C326CFE1888E793E45 /* Pods-TaraLoanTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -465,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
 				18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */,
 				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,

@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E252BB128D200F1FA23 /* AppDelegate.swift */; };
-		18562E282BB128D200F1FA23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E272BB128D200F1FA23 /* SceneDelegate.swift */; };
-		18562E2A2BB128D200F1FA23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E292BB128D200F1FA23 /* ViewController.swift */; };
-		18562E2D2BB128D200F1FA23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 18562E2C2BB128D200F1FA23 /* Base */; };
 		18562E2F2BB128D300F1FA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18562E2E2BB128D300F1FA23 /* Assets.xcassets */; };
 		18562E322BB128D300F1FA23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 18562E312BB128D300F1FA23 /* Base */; };
 		18562E3D2BB128D300F1FA23 /* TaraLoanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E3C2BB128D300F1FA23 /* TaraLoanTests.swift */; };
 		18562E472BB128D300F1FA23 /* TaraLoanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E462BB128D300F1FA23 /* TaraLoanUITests.swift */; };
 		18562E492BB128D300F1FA23 /* TaraLoanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E482BB128D300F1FA23 /* TaraLoanUITestsLaunchTests.swift */; };
+		18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */; };
+		18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */; };
+		541A4A631DAAA9E77AE000F1 /* Pods_TaraLoan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B698740A60A130FE695D5EB6 /* Pods_TaraLoan.framework */; };
+		A749D1B22C1227C138B71A12 /* Pods_TaraLoan_TaraLoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */; };
+		C614B71827A1637260F0CA31 /* Pods_TaraLoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C2AA5DC62F946FA77D137E /* Pods_TaraLoanTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0839316E49BF7545D77C0C4F /* Pods-TaraLoan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan.release.xcconfig"; path = "Target Support Files/Pods-TaraLoan/Pods-TaraLoan.release.xcconfig"; sourceTree = "<group>"; };
 		18562E222BB128D200F1FA23 /* TaraLoan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaraLoan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18562E252BB128D200F1FA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18562E272BB128D200F1FA23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		18562E292BB128D200F1FA23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		18562E2C2BB128D200F1FA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18562E2E2BB128D300F1FA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18562E312BB128D300F1FA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18562E332BB128D300F1FA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,17 @@
 		18562E422BB128D300F1FA23 /* TaraLoanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaraLoanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18562E462BB128D300F1FA23 /* TaraLoanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaraLoanUITests.swift; sourceTree = "<group>"; };
 		18562E482BB128D300F1FA23 /* TaraLoanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaraLoanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		18562E552BB1291400F1FA23 /* TaraLoan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TaraLoan.entitlements; sourceTree = "<group>"; };
+		18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLBaseViewController.swift; sourceTree = "<group>"; };
+		18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A1DDE452236F446AFCBB8ACA /* Pods-TaraLoan-TaraLoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoan-TaraLoanUITests/Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaraLoan_TaraLoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4B44AE7C8261C3D0695E557 /* Pods-TaraLoan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoan/Pods-TaraLoan.debug.xcconfig"; sourceTree = "<group>"; };
+		B698740A60A130FE695D5EB6 /* Pods_TaraLoan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaraLoan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8C2AA5DC62F946FA77D137E /* Pods_TaraLoanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaraLoanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9DAE3C326CFE1888E793E45 /* Pods-TaraLoanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.release.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.release.xcconfig"; sourceTree = "<group>"; };
+		DDB0063DC7CF6EC6397176ED /* Pods-TaraLoan-TaraLoanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan-TaraLoanUITests.release.xcconfig"; path = "Target Support Files/Pods-TaraLoan-TaraLoanUITests/Pods-TaraLoan-TaraLoanUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				541A4A631DAAA9E77AE000F1 /* Pods_TaraLoan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C614B71827A1637260F0CA31 /* Pods_TaraLoanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A749D1B22C1227C138B71A12 /* Pods_TaraLoan_TaraLoanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +97,8 @@
 				18562E3B2BB128D300F1FA23 /* TaraLoanTests */,
 				18562E452BB128D300F1FA23 /* TaraLoanUITests */,
 				18562E232BB128D200F1FA23 /* Products */,
+				B795DAEC96FA0A554C02B7A4 /* Pods */,
+				A606FD306D79A48F85757715 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +115,16 @@
 		18562E242BB128D200F1FA23 /* TaraLoan */ = {
 			isa = PBXGroup;
 			children = (
-				18562E252BB128D200F1FA23 /* AppDelegate.swift */,
-				18562E272BB128D200F1FA23 /* SceneDelegate.swift */,
-				18562E292BB128D200F1FA23 /* ViewController.swift */,
-				18562E2B2BB128D200F1FA23 /* Main.storyboard */,
-				18562E2E2BB128D300F1FA23 /* Assets.xcassets */,
-				18562E302BB128D300F1FA23 /* LaunchScreen.storyboard */,
 				18562E332BB128D300F1FA23 /* Info.plist */,
+				18562E2E2BB128D300F1FA23 /* Assets.xcassets */,
+				18562E552BB1291400F1FA23 /* TaraLoan.entitlements */,
+				18562E562BB129A700F1FA23 /* Main */,
+				18562E5F2BB12CB600F1FA23 /* Web */,
+				18562E622BB12CE400F1FA23 /* Profile */,
+				18562E612BB12CDC00F1FA23 /* Order */,
+				18562E602BB12CB900F1FA23 /* Home */,
+				18562E5E2BB12CB000F1FA23 /* Base */,
+				18562E572BB12A8700F1FA23 /* LaunchVc */,
 			);
 			path = TaraLoan;
 			sourceTree = "<group>";
@@ -127,6 +146,123 @@
 			path = TaraLoanUITests;
 			sourceTree = "<group>";
 		};
+		18562E562BB129A700F1FA23 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				18562E252BB128D200F1FA23 /* AppDelegate.swift */,
+				18562E302BB128D300F1FA23 /* LaunchScreen.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		18562E572BB12A8700F1FA23 /* LaunchVc */ = {
+			isa = PBXGroup;
+			children = (
+				18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */,
+				18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */,
+			);
+			path = LaunchVc;
+			sourceTree = "<group>";
+		};
+		18562E5E2BB12CB000F1FA23 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				18562E652BB12D1300F1FA23 /* Model */,
+				18562E642BB12D1000F1FA23 /* Config */,
+				18562E632BB12D0D00F1FA23 /* NetWork */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		18562E5F2BB12CB600F1FA23 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		18562E602BB12CB900F1FA23 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		18562E612BB12CDC00F1FA23 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		18562E622BB12CE400F1FA23 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		18562E632BB12D0D00F1FA23 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				18562E672BB12D6100F1FA23 /* NetRequest */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		18562E642BB12D1000F1FA23 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				18562E662BB12D3D00F1FA23 /* Location */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		18562E652BB12D1300F1FA23 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18562E662BB12D3D00F1FA23 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		18562E672BB12D6100F1FA23 /* NetRequest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetRequest;
+			sourceTree = "<group>";
+		};
+		A606FD306D79A48F85757715 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B698740A60A130FE695D5EB6 /* Pods_TaraLoan.framework */,
+				AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */,
+				B8C2AA5DC62F946FA77D137E /* Pods_TaraLoanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B795DAEC96FA0A554C02B7A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B4B44AE7C8261C3D0695E557 /* Pods-TaraLoan.debug.xcconfig */,
+				0839316E49BF7545D77C0C4F /* Pods-TaraLoan.release.xcconfig */,
+				A1DDE452236F446AFCBB8ACA /* Pods-TaraLoan-TaraLoanUITests.debug.xcconfig */,
+				DDB0063DC7CF6EC6397176ED /* Pods-TaraLoan-TaraLoanUITests.release.xcconfig */,
+				2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */,
+				C9DAE3C326CFE1888E793E45 /* Pods-TaraLoanTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +270,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18562E4C2BB128D300F1FA23 /* Build configuration list for PBXNativeTarget "TaraLoan" */;
 			buildPhases = (
+				B3BFC09F9A57B3081E079A2F /* [CP] Check Pods Manifest.lock */,
 				18562E1E2BB128D200F1FA23 /* Sources */,
 				18562E1F2BB128D200F1FA23 /* Frameworks */,
 				18562E202BB128D200F1FA23 /* Resources */,
@@ -151,6 +288,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18562E4F2BB128D300F1FA23 /* Build configuration list for PBXNativeTarget "TaraLoanTests" */;
 			buildPhases = (
+				033BEB20AD8242E988674759 /* [CP] Check Pods Manifest.lock */,
 				18562E342BB128D300F1FA23 /* Sources */,
 				18562E352BB128D300F1FA23 /* Frameworks */,
 				18562E362BB128D300F1FA23 /* Resources */,
@@ -169,6 +307,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18562E522BB128D300F1FA23 /* Build configuration list for PBXNativeTarget "TaraLoanUITests" */;
 			buildPhases = (
+				8B2F1440B4352F705D6AD1B5 /* [CP] Check Pods Manifest.lock */,
 				18562E3E2BB128D300F1FA23 /* Sources */,
 				18562E3F2BB128D300F1FA23 /* Frameworks */,
 				18562E402BB128D300F1FA23 /* Resources */,
@@ -233,7 +372,6 @@
 			files = (
 				18562E2F2BB128D300F1FA23 /* Assets.xcassets in Resources */,
 				18562E322BB128D300F1FA23 /* Base in Resources */,
-				18562E2D2BB128D200F1FA23 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +391,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		033BEB20AD8242E988674759 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TaraLoanTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B2F1440B4352F705D6AD1B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TaraLoan-TaraLoanUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3BFC09F9A57B3081E079A2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TaraLoan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		18562E1E2BB128D200F1FA23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18562E2A2BB128D200F1FA23 /* ViewController.swift in Sources */,
+				18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */,
+				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
-				18562E282BB128D200F1FA23 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +504,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		18562E2B2BB128D200F1FA23 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18562E2C2BB128D200F1FA23 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18562E302BB128D300F1FA23 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -437,60 +636,85 @@
 		};
 		18562E4D2BB128D300F1FA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4B44AE7C8261C3D0695E557 /* Pods-TaraLoan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = TaraLoan/TaraLoan.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2F6XZMZ52M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TaraLoan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TL.TaraLoan;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhuanyong.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = zhuanyong_test;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		18562E4E2BB128D300F1FA23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0839316E49BF7545D77C0C4F /* Pods-TaraLoan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = TaraLoan/TaraLoan.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2F6XZMZ52M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TaraLoan/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TL.TaraLoan;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhuanyong.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = zhuanyong_test;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		18562E502BB128D300F1FA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +734,7 @@
 		};
 		18562E512BB128D300F1FA23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9DAE3C326CFE1888E793E45 /* Pods-TaraLoanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -529,6 +754,7 @@
 		};
 		18562E532BB128D300F1FA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1DDE452236F446AFCBB8ACA /* Pods-TaraLoan-TaraLoanUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -546,6 +772,7 @@
 		};
 		18562E542BB128D300F1FA23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB0063DC7CF6EC6397176ED /* Pods-TaraLoan-TaraLoanUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,21 @@
+# Xcode
+.DS_Store
+*.swp
+*.xcuserstate
+
+# Build products
+build/
+DerivedData/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Ignore xcworkspace
+*.xcworkspace/
+
+# Ignore Xcode project files
+*.xcodeproj/
+
+# Ignore private configuration files
+*.xcconfig

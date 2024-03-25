@@ -1,0 +1,19 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '12.0'
+
+target 'TaraLoan' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for TaraLoan
+
+  target 'TaraLoanTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TaraLoanUITests' do
+    # Pods for testing
+  end
+
+end

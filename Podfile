@@ -33,6 +33,10 @@ target 'TaraLoan' do
   
   pod 'RxSwift', '~> 6.6.0'
   
+  pod 'SystemServices', '~> 2.0.1'
+  
+  pod 'UIColor+Hex', '~> 1.0.1'
+  
   pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.8/iOS-Liveness-SDK-V2.0.8.tar.bz2' , type: :tbz
   
   pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.2.tar.bz2', type: :tbz

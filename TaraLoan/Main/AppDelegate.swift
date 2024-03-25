@@ -20,5 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func getFontNames() {
+        let familyNames = UIFont.familyNames
+        for familyName in familyNames {
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            for fontName in fontNames {
+                print("fontName>>>>>>>>>>>>>>\(fontName)")
+            }
+        }
+    }
 }
 

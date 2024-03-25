@@ -16,6 +16,10 @@
 		18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */; };
 		18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */; };
 		18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E682BB132C300F1FA23 /* RequestApiUrl.swift */; };
+		18562E6B2BB1353B00F1FA23 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E6A2BB1353B00F1FA23 /* HomeViewController.swift */; };
+		18562E6D2BB1354800F1FA23 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E6C2BB1354800F1FA23 /* OrderViewController.swift */; };
+		18562E6F2BB1355300F1FA23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E6E2BB1355300F1FA23 /* ProfileViewController.swift */; };
+		18562E712BB1355F00F1FA23 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E702BB1355F00F1FA23 /* WebViewController.swift */; };
 		541A4A631DAAA9E77AE000F1 /* Pods_TaraLoan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B698740A60A130FE695D5EB6 /* Pods_TaraLoan.framework */; };
 		A749D1B22C1227C138B71A12 /* Pods_TaraLoan_TaraLoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */; };
 		C614B71827A1637260F0CA31 /* Pods_TaraLoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C2AA5DC62F946FA77D137E /* Pods_TaraLoanTests.framework */; };
@@ -54,6 +58,10 @@
 		18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLBaseViewController.swift; sourceTree = "<group>"; };
 		18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		18562E682BB132C300F1FA23 /* RequestApiUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestApiUrl.swift; sourceTree = "<group>"; };
+		18562E6A2BB1353B00F1FA23 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18562E6C2BB1354800F1FA23 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		18562E6E2BB1355300F1FA23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		18562E702BB1355F00F1FA23 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1DDE452236F446AFCBB8ACA /* Pods-TaraLoan-TaraLoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoan-TaraLoanUITests/Pods-TaraLoan-TaraLoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD76490921AD0AA2C5D22165 /* Pods_TaraLoan_TaraLoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaraLoan_TaraLoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +187,7 @@
 		18562E5F2BB12CB600F1FA23 /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				18562E702BB1355F00F1FA23 /* WebViewController.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -186,6 +195,7 @@
 		18562E602BB12CB900F1FA23 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				18562E6A2BB1353B00F1FA23 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -193,6 +203,7 @@
 		18562E612BB12CDC00F1FA23 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				18562E6C2BB1354800F1FA23 /* OrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -200,6 +211,7 @@
 		18562E622BB12CE400F1FA23 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				18562E6E2BB1355300F1FA23 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -207,7 +219,6 @@
 		18562E632BB12D0D00F1FA23 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
-				18562E672BB12D6100F1FA23 /* NetRequest */,
 				18562E682BB132C300F1FA23 /* RequestApiUrl.swift */,
 			);
 			path = NetWork;
@@ -233,13 +244,6 @@
 			children = (
 			);
 			path = Location;
-			sourceTree = "<group>";
-		};
-		18562E672BB12D6100F1FA23 /* NetRequest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetRequest;
 			sourceTree = "<group>";
 		};
 		A606FD306D79A48F85757715 /* Frameworks */ = {
@@ -467,10 +471,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18562E6B2BB1353B00F1FA23 /* HomeViewController.swift in Sources */,
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
 				18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */,
 				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
+				18562E6F2BB1355300F1FA23 /* ProfileViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
+				18562E6D2BB1354800F1FA23 /* OrderViewController.swift in Sources */,
+				18562E712BB1355F00F1FA23 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

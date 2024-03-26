@@ -14,6 +14,7 @@ class LaunchViewController: FCBaseViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .random()
+        
     }
 
     /*

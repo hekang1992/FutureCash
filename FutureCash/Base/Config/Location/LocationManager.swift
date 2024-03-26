@@ -10,9 +10,13 @@ import CoreLocation
 
 typealias LocationModelBlock = (LocationModel) -> Void
 class LocationManager: NSObject,CLLocationManagerDelegate {
+    
     static let shared = LocationManager()
+    
     private var locationManager = CLLocationManager()
+    
     private var locationUpdateHandler: LocationModelBlock?
+    
     var locatinModel = LocationModel()
     
     override init() {

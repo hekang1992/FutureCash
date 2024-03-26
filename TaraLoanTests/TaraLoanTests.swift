@@ -1,14 +1,14 @@
 //
-//  TaraLoanTests.swift
-//  TaraLoanTests
+//  FutureCashTests.swift
+//  FutureCashTests
 //
 //  Created by apple on 2024/3/25.
 //
 
 import XCTest
-@testable import TaraLoan
+@testable import FutureCash
 
-final class TaraLoanTests: XCTestCase {
+final class FutureCashTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

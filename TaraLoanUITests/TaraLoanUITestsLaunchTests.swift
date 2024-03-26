@@ -1,13 +1,13 @@
 //
-//  TaraLoanUITestsLaunchTests.swift
-//  TaraLoanUITests
+//  FutureCashUITestsLaunchTests.swift
+//  FutureCashUITests
 //
 //  Created by apple on 2024/3/25.
 //
 
 import XCTest
 
-final class TaraLoanUITestsLaunchTests: XCTestCase {
+final class FutureCashUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

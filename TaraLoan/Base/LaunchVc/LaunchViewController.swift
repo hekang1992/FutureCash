@@ -13,8 +13,7 @@ class LaunchViewController: TLBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let dict = DeviceInfo.deviceInfo()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .random()
         
     }
     

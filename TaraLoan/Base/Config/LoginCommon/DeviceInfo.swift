@@ -15,13 +15,13 @@ import SystemConfiguration.CaptiveNetwork
 import DeviceKit
 
 class DeviceInfo: NSObject {
-
+    
     static func getIdfv() -> String {
-        if let uuid = SAMKeychain.password(forService: KeyChain_Service, account: KeyChain_Account), !uuid.isEmpty {
+        if let uuid = SAMKeychain.password(forService: Key_Service, account: Key_Account), !uuid.isEmpty {
             return uuid
         } else {
             if let deviceIDFV = UIDevice.current.identifierForVendor?.uuidString {
-                let success = SAMKeychain.setPassword(deviceIDFV, forService: KeyChain_Service, account: KeyChain_Account)
+                let success = SAMKeychain.setPassword(deviceIDFV, forService: Key_Service, account: Key_Account)
                 if success {
                     print("获取的UUID is \(deviceIDFV)")
                     return deviceIDFV
@@ -116,6 +116,22 @@ class DeviceInfo: NSObject {
         return minute
     }
     
+    static func isJailBreak() -> String {
+        let jailbreakToolPaths = [
+            "/Applications/Cydia.app",
+            "/Library/MobileSubstrate/MobileSubstrate.dylib",
+            "/bin/bash",
+            "/usr/sbin/sshd",
+            "/etc/apt"
+        ]
+        for path in jailbreakToolPaths {
+            if FileManager.default.fileExists(atPath: path) {
+                return "1"
+            }
+        }
+        return "0"
+    }
+    
     static func deviceInfo() -> [String: Any] {
         let irishman = SystemServices().systemsVersion ?? ""
         let acidly = getProTime()
@@ -126,10 +142,10 @@ class DeviceInfo: NSObject {
         let hesitated = ASIdentifierManager.shared().advertisingIdentifier.uuidString
         let savings = SSNetworkInfo.wiFiBroadcastAddress() ?? ""
         let rotter = getCurrentTime()
-        let daresay = isUsingProxy()
-        let weeks = isVPNConnected()
-        let believe = SystemServices().jailbroken
-        let is_simulator = Device.current.isSimulator
+        let daresay = isUsingProxy() ? "1" : "0"
+        let weeks = isVPNConnected() ? "1" : "0"
+        let believe = isJailBreak()
+        let is_simulator = Device.current.isSimulator ? "1" : "0"
         let clerk = SystemServices().language ?? ""
         let insurance = SystemServices().carrierName ?? ""
         let frank = getNetType()

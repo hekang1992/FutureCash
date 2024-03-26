@@ -17,9 +17,9 @@ let STATUSBAR_HIGH = IS_iPhoneXSeries() ? 44 : 20
 // 导航栏高度
 let NAV_HIGH = 44 + STATUSBAR_HIGH;
 
-let KeyChain_Service = "KeyChain_Service"
+let Key_Service = "Key_Service"
 
-let KeyChain_Account = "KeyChain_Account"
+let Key_Account = "Key_Account"
 
 func IS_iPhoneXSeries() -> (Bool) {
     let boundsSize = UIScreen.main.bounds.size;
@@ -62,7 +62,6 @@ extension UIView {
         let maskPath = UIBezierPath(roundedRect: bounds,
                                     byRoundingCorners: corners,
                                     cornerRadii: CGSize(width: radius, height: radius))
-        
         let maskLayer = CAShapeLayer()
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer

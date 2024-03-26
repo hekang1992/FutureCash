@@ -14,9 +14,7 @@ class LaunchViewController: TLBaseViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = .random()
-        
     }
-    
 
     /*
     // MARK: - Navigation

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		184D87262BB283A100773F45 /* TLRequset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D87252BB283A100773F45 /* TLRequset.swift */; };
+		184D87302BB2A12B00773F45 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D872F2BB2A12B00773F45 /* LoginViewController.swift */; };
+		184D87322BB2A15200773F45 /* BaseNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D87312BB2A15200773F45 /* BaseNavViewController.swift */; };
+		184D87352BB2A1DF00773F45 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D87342BB2A1DF00773F45 /* LoginView.swift */; };
 		18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E252BB128D200F1FA23 /* AppDelegate.swift */; };
 		18562E2F2BB128D300F1FA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18562E2E2BB128D300F1FA23 /* Assets.xcassets */; };
 		18562E322BB128D300F1FA23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 18562E312BB128D300F1FA23 /* Base */; };
@@ -53,6 +56,9 @@
 /* Begin PBXFileReference section */
 		0839316E49BF7545D77C0C4F /* Pods-TaraLoan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan.release.xcconfig"; path = "Target Support Files/Pods-TaraLoan/Pods-TaraLoan.release.xcconfig"; sourceTree = "<group>"; };
 		184D87252BB283A100773F45 /* TLRequset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRequset.swift; sourceTree = "<group>"; };
+		184D872F2BB2A12B00773F45 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		184D87312BB2A15200773F45 /* BaseNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavViewController.swift; sourceTree = "<group>"; };
+		184D87342BB2A1DF00773F45 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		18562E222BB128D200F1FA23 /* TaraLoan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaraLoan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18562E252BB128D200F1FA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18562E2E2BB128D300F1FA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +122,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184D872D2BB2A10900773F45 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				184D87332BB2A1CF00773F45 /* View */,
+				184D872E2BB2A11400773F45 /* Controller */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		184D872E2BB2A11400773F45 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				184D872F2BB2A12B00773F45 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		184D87332BB2A1CF00773F45 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				184D87342BB2A1DF00773F45 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		184D87362BB2A1E400773F45 /* Contorller */ = {
+			isa = PBXGroup;
+			children = (
+				18562E782BB1483000F1FA23 /* ProfileViewController.swift */,
+			);
+			path = Contorller;
+			sourceTree = "<group>";
+		};
+		184D87372BB2A1F000773F45 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18562E762BB1482000F1FA23 /* OrderViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		184D87382BB2A1F800773F45 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				18562E742BB1481000F1FA23 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		18562E192BB128D200F1FA23 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +201,7 @@
 				18562E552BB1291400F1FA23 /* TaraLoan.entitlements */,
 				18562E562BB129A700F1FA23 /* Main */,
 				18562E5F2BB12CB600F1FA23 /* Web */,
+				184D872D2BB2A10900773F45 /* Login */,
 				18562E622BB12CE400F1FA23 /* Profile */,
 				18562E612BB12CDC00F1FA23 /* Order */,
 				18562E602BB12CB900F1FA23 /* Home */,
@@ -185,6 +241,7 @@
 			children = (
 				18562E5C2BB12B1000F1FA23 /* LaunchViewController.swift */,
 				18562E5A2BB12AC800F1FA23 /* TLBaseViewController.swift */,
+				184D87312BB2A15200773F45 /* BaseNavViewController.swift */,
 			);
 			path = LaunchVc;
 			sourceTree = "<group>";
@@ -211,7 +268,7 @@
 		18562E602BB12CB900F1FA23 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				18562E742BB1481000F1FA23 /* HomeViewController.swift */,
+				184D87382BB2A1F800773F45 /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -219,7 +276,7 @@
 		18562E612BB12CDC00F1FA23 /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				18562E762BB1482000F1FA23 /* OrderViewController.swift */,
+				184D87372BB2A1F000773F45 /* Controller */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -227,7 +284,7 @@
 		18562E622BB12CE400F1FA23 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				18562E782BB1483000F1FA23 /* ProfileViewController.swift */,
+				184D87362BB2A1E400773F45 /* Contorller */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -558,9 +615,12 @@
 				18562E7F2BB14DD600F1FA23 /* LoginFactory.swift in Sources */,
 				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
 				18562E752BB1481100F1FA23 /* HomeViewController.swift in Sources */,
+				184D87322BB2A15200773F45 /* BaseNavViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
 				18562E792BB1483000F1FA23 /* ProfileViewController.swift in Sources */,
+				184D87302BB2A12B00773F45 /* LoginViewController.swift in Sources */,
 				18562E772BB1482000F1FA23 /* OrderViewController.swift in Sources */,
+				184D87352BB2A1DF00773F45 /* LoginView.swift in Sources */,
 				18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */,
 				18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */,
 			);

@@ -1,19 +1,18 @@
 //
-//  TLBaseViewController.swift
+//  LoginViewController.swift
 //  TaraLoan
 //
-//  Created by apple on 2024/3/25.
+//  Created by apple on 2024/3/26.
 //
 
 import UIKit
 
-class TLBaseViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = .white
     }
     
 

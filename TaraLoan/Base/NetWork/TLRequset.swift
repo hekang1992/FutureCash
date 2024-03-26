@@ -143,7 +143,11 @@ class TLRequset: NSObject {
     }
     
     func showLoginVc() {
-        
+        let loginVc = LoginViewController()
+        let vc = getCurrentUIVC()!
+        let nav = BaseNavViewController(rootViewController: loginVc)
+        nav.modalPresentationStyle = .overFullScreen
+        vc.present(nav, animated: true)
     }
     
 }

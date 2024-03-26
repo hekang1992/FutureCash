@@ -1,5 +1,5 @@
 //
-//  TLRequset.swift
+//  FCRequset.swift
 //  FutureCash
 //
 //  Created by apple on 2024/3/26.
@@ -9,9 +9,9 @@ import UIKit
 import Alamofire
 import HandyJSON
 
-class TLRequset: NSObject {
+class FCRequset: NSObject {
     
-    static let shared = TLRequset()
+    static let shared = FCRequset()
     
     typealias CompleteBlock = (BaseModel) -> Void
     

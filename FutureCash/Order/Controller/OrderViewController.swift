@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderViewController: TLBaseViewController {
+class OrderViewController: FCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

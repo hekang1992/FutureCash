@@ -8,9 +8,10 @@
 import UIKit
 import Foundation
 
-//DEFINE
+// DEFINE
+// 宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
-
+// 高度
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 // 状态栏高度
 let STATUSBAR_HIGH = IS_iPhoneXSeries() ? 44 : 20

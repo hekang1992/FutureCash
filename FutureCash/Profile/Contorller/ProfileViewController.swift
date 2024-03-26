@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: TLBaseViewController {
+class ProfileViewController: FCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

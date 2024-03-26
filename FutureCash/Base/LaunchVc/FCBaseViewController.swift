@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TLBaseViewController: UIViewController {
+class FCBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,19 +10,19 @@ import Foundation
 let BASE_URL = ""
 let BASE_H5_URL = ""
 
-//LOGIN
+// LOGIN
 let rightThoroughly = "/rightThoroughly"
 let walkedWhole = "/walkedWhole"
 let childiveMorley = "/childiveMorley"
 let theAfter = "/theAfter"
 
-//HOME
+// HOME
 let examined = "/examined"
 let cheerfulMirror = "/cheerfulMirror"
 let haveHeard = "/haveHeard"
 let henry = "/henry"
 
-//AUTH
+// AUTH
 let persuadedThere = "/persuadedThere"
 let seemedIntroducing = "/seemedIntroducing"
 let nothingYoumanner = "/nothingYoumanner"
@@ -38,11 +38,11 @@ let andChair = "/andChair"
 let patientWanted = "/patientWanted"
 let troubleObviously = "/troubleObviously"
 
-//ORDER
+// ORDER
 let alfredsConscious = "/alfredsConscious"
 let theyThem = "/theyThem"
 
-//UPDATA
+// UPDATA
 let morningReally = "/morningReally"
 let ohBreakfast = "/ohBreakfast"
 let theBrother = "/theBrother"

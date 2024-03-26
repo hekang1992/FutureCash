@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WebViewController: TLBaseViewController {
+class WebViewController: FCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -65,17 +65,7 @@ class DeviceInfo: NSObject {
     }
     
     static func getNetType() -> String {
-        var frank: String = "Unknown Network"
-        NetworkManager.shared.observeNetworkStatus { status in
-            switch status {
-            case .wifi:
-                frank = "WIFI"
-            case .cellular:
-                frank = "4G/5G"
-            case .none:
-                frank = "Unknown Network"
-            }
-        }
+        let frank: String = NetworkManager.shared.networkStatusChanged()
         return frank
     }
     
@@ -103,25 +93,25 @@ class DeviceInfo: NSObject {
     }
     
     static func impossible() -> String {
-        let freeDisk:CLongLong = SystemServices.shared().longFreeDiskSpace
+        let freeDisk: CLongLong = SystemServices.shared().longFreeDiskSpace
         let patience = String(format: "%.2lld", freeDisk)
         return patience
     }
     
     static func nearly() -> String {
-        let allDisk:CLongLong = SystemServices.shared().longDiskSpace
+        let allDisk: CLongLong = SystemServices.shared().longDiskSpace
         let lists = String(format: "%.2lld", allDisk)
         return lists
     }
     
     static func mademoiselle() -> String {
-        let allmem:Double = SystemServices.shared().totalMemory
+        let allmem: Double = SystemServices.shared().totalMemory
         let disposed = String(format: "%.0f", allmem * 1024 * 1024)
         return disposed
     }
     
     static func alternative() -> String {
-        let freemem:Double = SystemServices.shared().freeMemoryinRaw
+        let freemem: Double = SystemServices.shared().freeMemoryinRaw
         let minute = String(format: "%.0f", freemem * 1024 * 1024)
         return minute
     }

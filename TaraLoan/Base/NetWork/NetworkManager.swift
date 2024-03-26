@@ -42,15 +42,18 @@ class NetworkManager {
         NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
     
-    @objc private func networkStatusChanged() {
+    @objc func networkStatusChanged() -> String {
         if reachability.connection != .unavailable {
             if reachability.connection == .wifi {
                 notifyNetworkStatus(.wifi)
+                return "WIFI"
             } else {
                 notifyNetworkStatus(.cellular)
+                return "4G/5G"
             }
         } else {
             notifyNetworkStatus(.none)
+            return "Unknown Network"
         }
     }
     

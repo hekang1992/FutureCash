@@ -260,8 +260,8 @@
 		18562E662BB12D3D00F1FA23 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				18562E842BB17D3100F1FA23 /* LocationManager.swift */,
 				18562E862BB17D5000F1FA23 /* LocationModel.swift */,
+				18562E842BB17D3100F1FA23 /* LocationManager.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";

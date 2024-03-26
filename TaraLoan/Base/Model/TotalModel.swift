@@ -11,8 +11,9 @@ import HandyJSON
 class BaseModel: HandyJSON {
     required init() {
     }
-    var awareness: Int?
-    var edges: String?
-    var hovered: [String: Any]?
+    var conceive: Int?
+    var wanting: String?
+    var easily: [String: Any]?
 }
+
 

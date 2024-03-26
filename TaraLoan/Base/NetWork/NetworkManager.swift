@@ -9,7 +9,7 @@ import Alamofire
 import Reachability
 
 class NetworkManager {
-
+    
     enum NetworkStatus {
         case wifi
         case cellular

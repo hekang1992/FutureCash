@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184D87262BB283A100773F45 /* TLRequset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D87252BB283A100773F45 /* TLRequset.swift */; };
 		18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E252BB128D200F1FA23 /* AppDelegate.swift */; };
 		18562E2F2BB128D300F1FA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18562E2E2BB128D300F1FA23 /* Assets.xcassets */; };
 		18562E322BB128D300F1FA23 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 18562E312BB128D300F1FA23 /* Base */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0839316E49BF7545D77C0C4F /* Pods-TaraLoan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoan.release.xcconfig"; path = "Target Support Files/Pods-TaraLoan/Pods-TaraLoan.release.xcconfig"; sourceTree = "<group>"; };
+		184D87252BB283A100773F45 /* TLRequset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRequset.swift; sourceTree = "<group>"; };
 		18562E222BB128D200F1FA23 /* TaraLoan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaraLoan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18562E252BB128D200F1FA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18562E2E2BB128D300F1FA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		18562E632BB12D0D00F1FA23 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				184D87252BB283A100773F45 /* TLRequset.swift */,
 				18562E682BB132C300F1FA23 /* RequestApiUrl.swift */,
 				18562E822BB1560100F1FA23 /* NetworkManager.swift */,
 			);
@@ -547,6 +550,7 @@
 				18562E832BB1560100F1FA23 /* NetworkManager.swift in Sources */,
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
 				18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */,
+				184D87262BB283A100773F45 /* TLRequset.swift in Sources */,
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
 				18562E732BB1470E00F1FA23 /* BaseHeadFile.swift in Sources */,
 				18562E5B2BB12AC800F1FA23 /* TLBaseViewController.swift in Sources */,

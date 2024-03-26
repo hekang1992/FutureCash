@@ -164,13 +164,22 @@ class DeviceInfo: NSObject {
         let nearly = nearly()
         let mademoiselle = mademoiselle()
         let alternative = alternative()
+       
         var dict: [String: Any] = ["irishmen":"iOS","irishman":irishman,"acidly":acidly,"replied":replied]
+        
         dict["devoted"] = ["foolishly":foolishly,"advice":advice]
+        
         dict["persuade"] = ["subject":subject,"hesitated":hesitated,"savings":savings,"rotter":rotter,"daresay":daresay,"weeks":weeks,"believe":believe,"is_simulator":is_simulator,"clerk":clerk,"insurance":insurance,"frank":frank,"misunderstand":misunderstand,"truant":truant]
+        
         dict["unfeeling"] = ["mustn":"","hurriedly":hurriedly,"hesitation":"","train":train,"telegram":telegram,"early":early,"reliable":reliable,"years":years,"working":working]
+        
         let wifiInfo: [String: Any] = ["employment":employment,"charts":charts,"savings":savings,"filed":filed]
+        
+        
         dict["handed"] = ["instruments":instruments,"assistant":"0","correspondence":wifiInfo]
+        
         dict["annoyed"] = ["impossible":impossible,"nearly":nearly,"mademoiselle":mademoiselle,"alternative":alternative]
+        
         return dict
     }
 }

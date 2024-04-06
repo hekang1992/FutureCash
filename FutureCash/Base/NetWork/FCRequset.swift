@@ -144,10 +144,10 @@ class FCRequset: NSObject {
     
     func showLoginVc() {
         let loginVc = LoginViewController()
-        let vc = getCurrentUIVC()!
+        let vc = UIViewController().getCurrentUIVC()
         let nav = BaseNavViewController(rootViewController: loginVc)
         nav.modalPresentationStyle = .overFullScreen
-        vc.present(nav, animated: true)
+        vc?.present(nav, animated: true)
     }
     
 }

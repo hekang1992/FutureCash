@@ -26,12 +26,12 @@ class LaunchViewController: FCBaseViewController {
                 print("无网络连接")
                 break
             case .wifi:
-                print("WIFI")
+                print("网络>>>>>>>WIFI")
                 self?.uploadDeviceInfo()
                 self?.uploadGoogleMarket()
                 break
             case .cellular:
-                print("4G/5G")
+                print("网络>>>>>>>4G/5G")
                 self?.uploadDeviceInfo()
                 self?.uploadGoogleMarket()
                 break

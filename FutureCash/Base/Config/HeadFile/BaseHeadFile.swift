@@ -28,7 +28,7 @@ let FCAPPLE_PUSH = "FCAPPLE_PUSH"
 
 // 判断设备是否是全面屏
 func isFullScreenDevice(_ device: Device) -> Bool {
-//    allXSeriesDevices
+    //    allXSeriesDevices
     let fullScreenModels: [Device] = Device.allDevicesWithSensorHousing
     
     return fullScreenModels.contains(device)
@@ -67,19 +67,19 @@ extension UIView {
 }
 
 extension Double {
-    func pix375() -> CGFloat {
+    func px() -> CGFloat {
         return CGFloat.init(CGFloat.init(self)/375.0 * SCREEN_WIDTH)
     }
 }
 
 extension CGFloat {
-    func pix375() -> CGFloat {
+    func px() -> CGFloat {
         return CGFloat.init(CGFloat.init(self)/375.0 * SCREEN_WIDTH)
     }
 }
 
 extension Int {
-    func pix375() -> CGFloat {
+    func px() -> CGFloat {
         return CGFloat.init(CGFloat.init(self)/375.0 * SCREEN_WIDTH)
     }
 }
@@ -126,6 +126,18 @@ extension String {
             print("Error: \(error)")
             return nil
         }
+    }
+}
+
+extension UIButton {
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.1
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 8.px(), y: self.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 8.px(), y: self.center.y))
+        layer.add(animation, forKey: "position")
     }
 }
 

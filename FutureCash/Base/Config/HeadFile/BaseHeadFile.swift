@@ -22,6 +22,10 @@ let Key_Service = "Key_Service"
 
 let Key_Account = "Key_Account"
 
+//push
+let FCNotificationCenter = NotificationCenter.default
+let FCAPPLE_PUSH = "FCAPPLE_PUSH"
+
 // 判断设备是否是全面屏
 func isFullScreenDevice(_ device: Device) -> Bool {
 //    allXSeriesDevices

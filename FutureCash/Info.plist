@@ -2,8 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -11,22 +14,5 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSMotionUsageDescription</key>
-	<string>To enhance the accuracy of facial recognition technology, we plan to utilize your phone&apos;s motion sensor to collect directional data. Please rest assured that safeguarding your personal information is our top priority, and we will only utilize it when essential for improving facial recognition technology. If you have any concerns or queries, please don&apos;t hesitate to contact us.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>In order to verify your identity and bolster our fraud prevention efforts, we kindly request permission to access your device&apos;s camera. Please grant us authorization to securely capture an electronic copy of your information. Rest assured, your data will be safeguarded and utilized exclusively for necessary identity verification purposes. Should you have any questions or concerns, please feel free to reach out to us.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To verify the authenticity of your identity document and enhance our fraud prevention efforts, we respectfully ask for access to your photo library. Granting us permission will allow us to securely acquire an electronic copy of your identity document. Please be assured that your personal information will be protected and utilized solely for necessary identity verification purposes. If you have any concerns or questions, please do not hesitate to contact us.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>For accurate loan services and advanced fraud protection, we kindly request your consent to access your location data. Please be assured that we treat your information with the utmost care, utilizing it solely to improve services and prevent fraud. If you have any questions, please don&apos;t hesitate to contact us.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To ensure precise loan services and reduce the risk of fraud, we kindly ask for your permission to utilize your location data. Rest assured, your information will be handled with the highest level of care and will only be used to enhance our services and prevent fraud. Feel free to reach out to us with any questions or concerns you may have.</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>In our efforts to enhance service quality and strengthen security measures against fraudulent activities, we kindly ask for your Advertising ID. Rest assured, we are dedicated to protecting your privacy and strictly following all applicable laws and regulations. Your Advertising ID will only be used for the sole purpose of improving our services.</string>
 </dict>
 </plist>

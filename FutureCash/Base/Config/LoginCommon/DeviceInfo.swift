@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import AdSupport
+import DeviceKit
+import SAMKeychain
+import CoreTelephony
 import SystemServices
 import SystemConfiguration
-import SAMKeychain
-import AdSupport
-import CoreTelephony
 import SystemConfiguration.CaptiveNetwork
-import DeviceKit
 
 class DeviceInfo: NSObject {
     
@@ -26,7 +26,6 @@ class DeviceInfo: NSObject {
                     print("获取的UUID is \(deviceIDFV)")
                     return deviceIDFV
                 } else {
-                    print("保存UUID时出现错误")
                     return ""
                 }
             } else {

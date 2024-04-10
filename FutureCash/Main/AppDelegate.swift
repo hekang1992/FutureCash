@@ -6,18 +6,51 @@
 //
 
 import UIKit
+import AdSupport
+import AppTrackingTransparency
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = LaunchViewController()
+        getPushApple()
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if #available(iOS 14.0, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                
+            }
+        }
+    }
+    
+    func getPushApple() {
+        FCNotificationCenter.addObserver(self, selector: #selector(applePush(_ :)), name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
+    }
+    
+    @objc func applePush(_ notification: Notification) {
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+        }
+        if #available(iOS 16.0, *) {
+            center.setBadgeCount(0) { error in
+                
+            }
+        } else {
+            
+        }
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
     }
     
     func getFontNames() {
@@ -29,5 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    deinit {
+        FCNotificationCenter.removeObserver(self)
+    }
+    
 }
 

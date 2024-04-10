@@ -7,14 +7,14 @@
 
 import UIKit
 import Foundation
+import DeviceKit
 
-// DEFINE
 // 宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 // 高度
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 // 状态栏高度
-let STATUSBAR_HIGH = IS_iPhoneXSeries() ? 44 : 20
+let STATUSBAR_HIGH = isFullScreenDevice(Device.current) ? 44 : 20
 // 导航栏高度
 let NAV_HIGH = 44 + STATUSBAR_HIGH;
 
@@ -22,23 +22,16 @@ let Key_Service = "Key_Service"
 
 let Key_Account = "Key_Account"
 
-func IS_iPhoneXSeries() -> (Bool) {
-    let boundsSize = UIScreen.main.bounds.size;
-    // iPhoneX,XS
-    let x_xs = CGSize(width: 375, height: 812);
-    if (__CGSizeEqualToSize(boundsSize, x_xs)) {
-        return true
-    }
-    // iPhoneXS Max,XR
-    let xsmax_xr = CGSize(width: 414, height: 896);
-    if (__CGSizeEqualToSize(boundsSize, xsmax_xr)) {
-        return true
-    }
-    return false
+// 判断设备是否是全面屏
+func isFullScreenDevice(_ device: Device) -> Bool {
+//    allXSeriesDevices
+    let fullScreenModels: [Device] = Device.allDevicesWithSensorHousing
+    
+    return fullScreenModels.contains(device)
 }
 
 extension UIColor {
-    static func random() -> UIColor {
+    static func randomColor() -> UIColor {
         let red = CGFloat.random(in: 0...1)
         let green = CGFloat.random(in: 0...1)
         let blue = CGFloat.random(in: 0...1)
@@ -70,19 +63,19 @@ extension UIView {
 }
 
 extension Double {
-    func pix() -> CGFloat {
+    func pix375() -> CGFloat {
         return CGFloat.init(CGFloat.init(self)/375.0 * SCREEN_WIDTH)
     }
 }
 
 extension CGFloat {
-    func pix() -> CGFloat {
+    func pix375() -> CGFloat {
         return CGFloat.init(CGFloat.init(self)/375.0 * SCREEN_WIDTH)
     }
 }
 
 extension Int {
-    func pix() -> CGFloat {
+    func pix375() -> CGFloat {
         return CGFloat.init(CGFloat.init(self)/375.0 * SCREEN_WIDTH)
     }
 }
@@ -148,7 +141,7 @@ extension UIViewController {
         }
         return superVC
     }
-
+    
     func getCurrentVC() -> UIViewController? {
         var result: UIViewController?
         var window = UIApplication.shared.keyWindow

@@ -39,11 +39,13 @@ class FCRequset: NSObject {
                 }
                 let jsonStr = NSString(data:response.data! ,encoding: String.Encoding.utf8.rawValue)
                 let model = JSONDeserializer<BaseModel>.deserializeFrom(json: jsonStr as String?)
-                if model?.conceive == -2 {
-                    complete(model!)
-                    self?.showLoginVc()
-                }else {
-                    complete(model!)
+                if let model = model {
+                    if model.conceive == -2 {
+                        complete(model)
+                        self?.showLoginVc()
+                    }else{
+                        complete(model)
+                    }
                 }
                 break
             case .failure(let failure):
@@ -89,7 +91,9 @@ class FCRequset: NSObject {
                 print("success>>image>>\(success)")
                 let jsonStr = NSString(data:response.data! ,encoding: String.Encoding.utf8.rawValue)
                 let model = JSONDeserializer<BaseModel>.deserializeFrom(json: jsonStr as String?)
-                complete(model!)
+                if let model = model {
+                    complete(model)
+                }
                 break
             case .failure(let error):
                 errorBlock(error)
@@ -133,7 +137,9 @@ class FCRequset: NSObject {
                 print("success>>data>>\(success)")
                 let jsonStr = NSString(data:response.data! ,encoding: String.Encoding.utf8.rawValue)
                 let model = JSONDeserializer<BaseModel>.deserializeFrom(json: jsonStr as String?)
-                complete(model!)
+                if let model = model {
+                    complete(model)
+                }
                 break
             case .failure(let error):
                 errorBlock(error)

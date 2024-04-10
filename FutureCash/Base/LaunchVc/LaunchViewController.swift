@@ -13,8 +13,11 @@ class LaunchViewController: FCBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .random()
-        
+        view.backgroundColor = .randomColor()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.backgroundColor = .randomColor()
     }
 
     /*

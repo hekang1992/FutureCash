@@ -41,11 +41,13 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
             case .wifi:
                 print("网络>>>>>>>WIFI")
                 self?.getLocation()
+                self?.getApplePush()
                 self?.uploadGoogleMarket()
                 break
             case .cellular:
                 print("网络>>>>>>>4G/5G")
                 self?.getLocation()
+                self?.getApplePush()
                 self?.uploadGoogleMarket()
                 break
             }

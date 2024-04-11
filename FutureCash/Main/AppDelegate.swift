@@ -30,6 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        var strToken = ""
+        for byte in deviceToken {
+            strToken += String(format: "%02x", byte)
+        }
+        print("strToken===\(strToken)")
+        getTapToken(deviceToken: strToken)
+    }
+    
     func getPushApple() {
         FCNotificationCenter.addObserver(self, selector: #selector(applePush(_ :)), name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
     }
@@ -51,6 +60,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
+    }
+    
+    func getTapToken(deviceToken: String) {
+        let subject = DeviceInfo.getIdfv()
+        let dict = ["subject": subject,
+                    "shock": deviceToken]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: addedPlease, method: .post) { baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                print("push>>>>>success")
+            }
+        } errorBlock: { error in
+            
+        }
     }
     
     func getFontNames() {

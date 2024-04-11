@@ -31,7 +31,7 @@ class NetworkManager {
     }
     
     private func setupReachability() {
-        NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged), name: .reachabilityChanged, object: reachability)
+        FCNotificationCenter.addObserver(self, selector: #selector(networkStatusChanged), name: .reachabilityChanged, object: reachability)
         do {
             try reachability.startNotifier()
         } catch {
@@ -41,7 +41,7 @@ class NetworkManager {
     
     deinit {
         reachability.stopNotifier()
-        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
+        FCNotificationCenter.removeObserver(self, name: .reachabilityChanged, object: nil)
     }
     
     @objc func networkStatusChanged() {
@@ -68,10 +68,9 @@ class NetworkManager {
             networkStatusHandler?(status)
         }else {
             reachability.stopNotifier()
-            NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: nil)
+            FCNotificationCenter.removeObserver(self, name: .reachabilityChanged, object: nil)
             networkStatusHandler?(status)
         }
-        
     }
     
 }

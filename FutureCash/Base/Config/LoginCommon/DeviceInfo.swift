@@ -64,7 +64,7 @@ class DeviceInfo: NSObject {
     }
     
     static func getNetType() -> String {
-        let frank: String = NetworkManager.shared.networkStatusChanged()
+        let frank: String = NetworkManager.shared.typeSty
         return frank
     }
     
@@ -170,7 +170,7 @@ class DeviceInfo: NSObject {
         
         dict["persuade"] = ["subject":subject,"hesitated":hesitated,"savings":savings,"rotter":rotter,"daresay":daresay,"weeks":weeks,"believe":believe,"is_simulator":is_simulator,"clerk":clerk,"insurance":insurance,"frank":frank,"misunderstand":misunderstand,"truant":truant]
         
-        dict["unfeeling"] = ["mustn":"","hurriedly":hurriedly,"hesitation":"","train":train,"telegram":telegram,"early":early,"reliable":reliable,"years":years,"working":working]
+        dict["unfeeling"] = ["mustn":"","hurriedly":hurriedly,"hesitation":"","train":train(),"telegram":telegram(),"early":early,"reliable":reliable,"years":years,"working":working]
         
         let wifiInfo: [String: Any] = ["employment":employment,"charts":charts,"savings":savings,"filed":filed]
         

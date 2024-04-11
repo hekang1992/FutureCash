@@ -16,4 +16,9 @@ class BaseModel: HandyJSON {
     var easily: [String: Any]?
 }
 
-
+class GoogleModel: HandyJSON {
+    required init() {
+    }
+    var pistol: String?
+    var profession: String?
+}

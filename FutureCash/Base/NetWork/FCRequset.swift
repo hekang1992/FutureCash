@@ -13,9 +13,9 @@ class FCRequset: NSObject {
     
     static let shared = FCRequset()
     
-    typealias CompleteBlock = (BaseModel) -> Void
+    typealias CompleteBlock = (_ baseModel: BaseModel) -> Void
     
-    typealias NSErrorBlock = (Any) -> Void
+    typealias NSErrorBlock = (_ error: Any) -> Void
     
     func requestAPI(params: [String: Any]?,
                     pageUrl: String,
@@ -27,7 +27,7 @@ class FCRequset: NSObject {
             "Accept" : "application/json;",
             "Connection" : "keep-alive",
             "Content-Type" : "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data"]
-        var wholeApiUrl = BASE_URL + pageUrl + "?" + LoginFactory.getLoginParas()
+        var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.request(wholeApiUrl, method: method, parameters: params, headers: headers).responseData { [weak self] response in
             switch response.result {
@@ -67,7 +67,7 @@ class FCRequset: NSObject {
             "Connection" : "keep-alive",
             "Content-Type" : "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data;multipart/form-data"
         ]
-        var wholeApiUrl = BASE_URL + pageUrl + "?" + LoginFactory.getLoginParas()
+        var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.upload(
             multipartFormData: { multipartFormData in
@@ -113,7 +113,7 @@ class FCRequset: NSObject {
             "Connection" : "keep-alive",
             "Content-Type" : "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data;multipart/form-data"
         ]
-        var wholeApiUrl = BASE_URL + pageUrl + "?" + LoginFactory.getLoginParas()
+        var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         print("wholeApiUrl>>>data>>>\(wholeApiUrl)")
         AF.upload(

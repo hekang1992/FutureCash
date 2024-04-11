@@ -14,6 +14,6 @@ class LocationModel: NSObject {
     var city : String = ""
     var district : String = ""
     var street : String = ""
-    var carpenter: Double = 0.0
-    var excellent: Double = 0.0
+    var longitude: Double = 0.0
+    var latitude: Double = 0.0
 }

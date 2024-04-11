@@ -76,8 +76,8 @@ class DeviceInfo: NSObject {
     }
     
     static func getCurrentTime() -> String {
-        let currentTimeStamp = Date().timeIntervalSince1970
-        let currentTimeMillis = String(currentTimeStamp * 1000)
+        let currentTime = Date().timeIntervalSince1970
+        let currentTimeMillis = String(Int64(currentTime * 1000))
         return currentTimeMillis
     }
     
@@ -163,21 +163,53 @@ class DeviceInfo: NSObject {
         let nearly = nearly()
         let mademoiselle = mademoiselle()
         let alternative = alternative()
-       
-        var dict: [String: Any] = ["irishmen":"iOS","irishman":irishman,"acidly":acidly,"replied":replied]
         
-        dict["devoted"] = ["foolishly":foolishly,"advice":advice]
+        var dict: [String: Any] = ["irishmen": "iOS",
+                                   "irishman": irishman,
+                                   "acidly": acidly,
+                                   "replied": replied]
         
-        dict["persuade"] = ["subject":subject,"hesitated":hesitated,"savings":savings,"rotter":rotter,"daresay":daresay,"weeks":weeks,"believe":believe,"is_simulator":is_simulator,"clerk":clerk,"insurance":insurance,"frank":frank,"misunderstand":misunderstand,"truant":truant]
+        dict["devoted"] = ["foolishly": foolishly,
+                           "advice": advice]
         
-        dict["unfeeling"] = ["mustn":"","hurriedly":hurriedly,"hesitation":"","train":train(),"telegram":telegram(),"early":early,"reliable":reliable,"years":years,"working":working]
+        dict["persuade"] = ["subject": subject,
+                            "hesitated": hesitated,
+                            "savings": savings,
+                            "rotter": rotter,
+                            "daresay": daresay,
+                            "weeks": weeks,
+                            "believe": believe,
+                            "is_simulator": is_simulator,
+                            "clerk": clerk,
+                            "insurance": insurance,
+                            "frank": frank,
+                            "misunderstand": misunderstand,
+                            "truant": truant]
         
-        let wifiInfo: [String: Any] = ["employment":employment,"charts":charts,"savings":savings,"filed":filed]
+        dict["unfeeling"] = ["mustn": "",
+                             "hurriedly": hurriedly,
+                             "hesitation":"",
+                             "train": train(),
+                             "telegram": telegram(),
+                             "early": early,
+                             "reliable": reliable,
+                             "years": years,
+                             "working": working]
+        
+        let wifiInfo: [String: Any] = ["employment": employment,
+                                       "charts": charts,
+                                       "savings": savings,
+                                       "filed": filed]
         
         
-        dict["handed"] = ["instruments":instruments,"assistant":"0","correspondence":wifiInfo]
+        dict["handed"] = ["instruments": instruments,
+                          "assistant": "0",
+                          "correspondence": wifiInfo]
         
-        dict["annoyed"] = ["impossible":impossible,"nearly":nearly,"mademoiselle":mademoiselle,"alternative":alternative]
+        dict["annoyed"] = ["impossible": impossible,
+                           "nearly": nearly,
+                           "mademoiselle": mademoiselle,
+                           "alternative": alternative]
         
         return dict
     }

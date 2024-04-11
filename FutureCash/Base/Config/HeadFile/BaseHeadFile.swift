@@ -30,7 +30,6 @@ let FCAPPLE_PUSH = "FCAPPLE_PUSH"
 func isFullScreenDevice(_ device: Device) -> Bool {
     //    allXSeriesDevices
     let fullScreenModels: [Device] = Device.allDevicesWithSensorHousing
-    
     return fullScreenModels.contains(device)
 }
 

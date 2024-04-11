@@ -24,9 +24,9 @@ class FCRequset: NSObject {
                     complete: @escaping CompleteBlock,
                     errorBlock: @escaping NSErrorBlock){
         let headers: HTTPHeaders = [
-            "Accept" : "application/json;",
-            "Connection" : "keep-alive",
-            "Content-Type" : "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data"]
+            "Accept": "application/json;",
+            "Connection": "keep-alive",
+            "Content-Type": "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data"]
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.request(wholeApiUrl, method: method, parameters: params, headers: headers).responseData { [weak self] response in
@@ -63,15 +63,15 @@ class FCRequset: NSObject {
                         complete: @escaping CompleteBlock,
                         errorBlock: @escaping NSErrorBlock){
         let headers: HTTPHeaders = [
-            "Accept" : "application/json;",
-            "Connection" : "keep-alive",
-            "Content-Type" : "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data;multipart/form-data"
+            "Accept": "application/json;",
+            "Connection": "keep-alive",
+            "Content-Type": "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data;multipart/form-data"
         ]
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.upload(
             multipartFormData: { multipartFormData in
-                multipartFormData.append(data, withName: "slavery", fileName: "slavery.png", mimeType: "image/png")
+                multipartFormData.append(data, withName: "group", fileName: "group.png", mimeType: "image/png")
                 if let params = params {
                     for (key, value) in params {
                         let value :String! = value as? String

@@ -12,7 +12,7 @@ import AdSupport
 import HandyJSON
 import RxSwift
 
-class LaunchViewController: FCBaseViewController {
+class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     
     let bag = DisposeBag()
     
@@ -69,7 +69,13 @@ class LaunchViewController: FCBaseViewController {
     }
     
     func uploadLocationInfo(_ model: LocationModel) {
-        let dict = ["financial": model.country ,"bowed":    model.countryCode,"income": model.province,"steady":  model.city,"inspire": model.district,"james": model.street,"needed":  model.longitude,"alcoholic": model.latitude] as [String: Any]
+        let dict = ["financial": model.country ,
+                    "bowed": model.countryCode,
+                    "income": model.province,
+                    "steady": model.city,
+                    "inspire": "\(model.district) \(model.street)",
+                    "needed": model.longitude,
+                    "alcoholic": model.latitude] as [String: Any]
         FCRequset.shared.requestAPI(params: dict, pageUrl: morningReally, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
             if conceive == 0 || conceive == 00 {
@@ -118,6 +124,7 @@ class LaunchViewController: FCBaseViewController {
     func uploadGoogle(_ key: String, _ appId: String) {
         AppsFlyerLib.shared().appsFlyerDevKey = key
         AppsFlyerLib.shared().appleAppID = appId
+        AppsFlyerLib.shared().delegate = self
         AppsFlyerLib.shared().start()
     }
     
@@ -127,8 +134,6 @@ class LaunchViewController: FCBaseViewController {
     
     func dictToBase64(_ dict: [String: Any]) -> String? {
         do {
-            let able = JSONSerialization.isValidJSONObject(dict)
-            
             let jsonData = try JSONSerialization.data(withJSONObject: dict)
             let base64EncodedString = jsonData.base64EncodedString()
             return base64EncodedString
@@ -136,6 +141,14 @@ class LaunchViewController: FCBaseViewController {
             print("Error: \(error)")
             return nil
         }
+    }
+    
+    func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        print("conversionInfo>>>>>>>\(conversionInfo)")
+    }
+    
+    func onConversionDataFail(_ error: any Error) {
+        print("error>>>>>>>>\(error.localizedDescription)")
     }
     
     /*

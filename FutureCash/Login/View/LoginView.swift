@@ -63,6 +63,7 @@ class LoginView: UIView {
     
     lazy var phoneTed: UITextField = {
         let phoneTed = UITextField()
+        phoneTed.delegate = self
         phoneTed.tintColor = UIColor.init(css: "#B74C1B")
         phoneTed.textColor = UIColor.init(css: "#B74C1B");
         phoneTed.font = UIFont(name: Fredoka_Bold, size: 18.px())
@@ -92,7 +93,11 @@ class LoginView: UIView {
     
     lazy var btn2: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.setImage(UIImage(named: "fasong"), for: .normal)
+        btn.setTitle("Send", for: .normal)
+        btn.setTitleColor(UIColor.init(css: "#FFEABF"), for: .normal)
+        btn.titleLabel?.font = UIFont(name: Fredoka_Bold, size: 15.px())
+        btn.setBackgroundImage(UIImage(named: "fasong"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "fasong"), for: .disabled)
         btn.addTarget(self, action: #selector(sendClick), for: .touchUpInside)
         return btn
     }()
@@ -109,6 +114,7 @@ class LoginView: UIView {
         bgImageView3.addSubview(phoneTed)
         bgImageView.addSubview(codeLable)
         bgImageView.addSubview(codeView)
+        bgImageView.addSubview(btn2)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
@@ -159,6 +165,11 @@ class LoginView: UIView {
             make.height.equalTo(39.px())
             make.right.equalTo(bgImageView3.snp.right)
         }
+        btn2.snp.makeConstraints { make in
+            make.centerY.equalTo(codeView.snp.centerY)
+            make.left.equalTo(codeView.snp.right).offset(10.px())
+            make.size.equalTo(CGSizeMake(55.px(), 26.px()))
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -166,7 +177,7 @@ class LoginView: UIView {
     }
 }
 
-extension LoginView {
+extension LoginView: UITextFieldDelegate  {
     
     @objc func canClick() {
         self.block1?()
@@ -178,6 +189,15 @@ extension LoginView {
     
     @objc func sendClick() {
         self.block3?()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        if textField == phoneTed {
+            return newText.count <= 16
+        }else{
+            return newText.count <= 6
+        }
     }
     
 }

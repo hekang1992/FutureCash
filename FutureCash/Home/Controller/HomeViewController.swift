@@ -11,10 +11,7 @@ import MBProgressHUD
 
 class HomeViewController: FCBaseViewController {
     
-    lazy var loginView: LoginView = {
-        let loginView = LoginView()
-        return loginView
-    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,29 +25,7 @@ class HomeViewController: FCBaseViewController {
     }
     
     @objc func buttonTapped() {
-        view.addSubview(loginView)
-        loginView.snp.makeConstraints { make in
-            make.edges.equalTo(self.view)
-        }
-        loginView.block1 = { [weak self] in
-            self?.loginView.removeFromSuperview()
-        }
-        loginView.block2 = { [weak self] in
-            self?.loginInfo()
-        }
-        self.animateLongView()
-    }
-    
-    func animateLongView() {
-        let animations = [AnimationType.from(direction: .right, offset: SCREEN_WIDTH)]
-        UIView.animate(views: [loginView.bgImageView],
-                       animations: animations,
-                       initialAlpha: 0.5, 
-                       duration: 0.5)
-    }
-    
-    func loginInfo() {
-        MBProgressHUD.show(text: "login success")
+        addLoginView()
     }
     
     /*

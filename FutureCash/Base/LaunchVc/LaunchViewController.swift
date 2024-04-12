@@ -40,17 +40,22 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
                 break
             case .wifi:
                 print("网络>>>>>>>WIFI")
-                self?.getLocation()
-                self?.getApplePush()
-                self?.uploadGoogleMarket()
+                self?.upApiInfo()
                 break
             case .cellular:
                 print("网络>>>>>>>4G/5G")
-                self?.getLocation()
-                self?.getApplePush()
-                self?.uploadGoogleMarket()
+                self?.upApiInfo()
                 break
             }
+        }
+    }
+    
+    func upApiInfo() {
+        getLocation()
+        getApplePush()
+        uploadGoogleMarket()
+        delayTime(2.0) { [weak self] in
+            self?.getRootVcPush()
         }
     }
     
@@ -130,10 +135,6 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
         AppsFlyerLib.shared().start()
     }
     
-    func getApplePush() {
-        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
-    }
-    
     func dictToBase64(_ dict: [String: Any]) -> String? {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: dict)
@@ -151,6 +152,14 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     
     func onConversionDataFail(_ error: any Error) {
         print("error>>>>>>>>\(error.localizedDescription)")
+    }
+    
+    func getApplePush() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
+    }
+    
+    func getRootVcPush() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
     }
     
     /*

@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import DeviceKit
+import SnapKit
 
 // 宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -26,12 +27,17 @@ let Key_Account = "Key_Account"
 let FCNotificationCenter = NotificationCenter.default
 let FCAPPLE_PUSH = "FCAPPLE_PUSH"
 
+//rootVc
+let FCAPPLE_ROOT_VC = "FCAPPLE_ROOT_VC"
+
 // 判断设备是否是全面屏
 func isFullScreenDevice(_ device: Device) -> Bool {
-    //    allXSeriesDevices
     let fullScreenModels: [Device] = Device.allDevicesWithSensorHousing
     return fullScreenModels.contains(device)
 }
+
+//fonts
+let Fredoka_Bold = "Fredoka-Bold"
 
 extension UIColor {
     static func randomColor() -> UIColor {

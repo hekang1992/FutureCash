@@ -25,8 +25,6 @@ target 'FutureCash' do
   
   pod 'TYAlertController', '~> 1.2.0'
   
-  pod 'MBProgressHUD+WJExtension', '~> 1.3.1'
-  
   pod 'lottie-ios', '~> 4.3.1'
   
   pod 'BRPickerView', '~> 2.8.1'
@@ -42,6 +40,10 @@ target 'FutureCash' do
   pod 'DeviceKit', '~> 5.2.2'
   
   pod 'AppsFlyerFramework', '~> 6.12.3'
+  
+  pod 'ViewAnimator', '~> 3.1.0'
+  
+  pod 'MBProgressHUD', '~> 1.2.0'
   
   pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.8/iOS-Liveness-SDK-V2.0.8.tar.bz2' , type: :tbz
   

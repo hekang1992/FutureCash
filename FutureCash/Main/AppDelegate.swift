@@ -8,6 +8,7 @@
 import UIKit
 import AdSupport
 import AppTrackingTransparency
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -18,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = LaunchViewController()
         getPushApple()
+        getRootVc()
+        keyboardManager()
+//        getFontNames()
         window?.makeKeyAndVisible()
         return true
     }
@@ -37,6 +41,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         print("strToken===\(strToken)")
         getTapToken(deviceToken: strToken)
+    }
+    
+    func keyboardManager(){
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 5.px()
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.enable = true
+    }
+    
+    func getRootVc() {
+        FCNotificationCenter.addObserver(self, selector: #selector(setUpRootVc), name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
+    }
+    
+    @objc func setUpRootVc() {
+        window?.rootViewController = BaseNavViewController(rootViewController: HomeViewController())
     }
     
     func getPushApple() {

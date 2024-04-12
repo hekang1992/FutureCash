@@ -16,6 +16,12 @@ class FCBaseViewController: UIViewController {
         self.view.backgroundColor = .white
     }
     
+    func delayTime(_ delay: TimeInterval, closure: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            closure()
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

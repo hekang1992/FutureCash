@@ -15,7 +15,9 @@ import MBProgressHUD
 public extension MBProgressHUD {
     
     @objc class func show(text: String) {
-        show(text: text, postion: .center, to: UIApplication.shared.delegate!.window!)
+        DispatchQueue.main.async {
+            show(text: text, postion: .center, to: UIApplication.shared.delegate!.window!)
+        }
     }
     
     @objc class func show(text: String, postion: FCHUDPostion, to view: UIView?) {
@@ -29,9 +31,9 @@ public extension MBProgressHUD {
         let size = CGSize(width: SCREEN_WIDTH - 68.px(), height: CGFloat(MAXFLOAT))
         let font = UIFont(name: Fredoka_Bold, size: 22.px())
         let rect = text.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading, .truncatesLastVisibleLine], attributes: [.font: font!] , context:nil)
-        hud.minSize = CGSize(width: rect.width + 36.px(), height: 40.px())
+        hud.minSize = CGSize(width: rect.width + 36.px(), height: rect.height > 60.px() ? rect.height + 20.px() : 60.px())
         
-        let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: rect.width + 36.px(), height: rect.height > 40.px() ? rect.height + 20.px() : 40.px()))
+        let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: rect.width + 36.px(), height: rect.height > 60.px() ? rect.height + 20.px() : 60.px()))
         textLabel.text = text
         textLabel.textAlignment = .center
         textLabel.textColor = .black

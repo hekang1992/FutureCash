@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import ViewAnimator
+import HandyJSON
 
 class FCBaseViewController: UIViewController {
     
@@ -60,11 +61,24 @@ class FCBaseViewController: UIViewController {
     }
     
     func loginInfo() {
-        MBProgressHUD.show(text: "login success")
+        let phoneStr = self.loginView.phoneTed.text ?? ""
+        let codeStr = self.loginView.verifyCode
+        if phoneStr.isEmpty {
+            MBProgressHUD.show(text: "Please enter your phone number.")
+        }else if codeStr.isEmpty {
+            MBProgressHUD.show(text: "Please enter the verification code.")
+        }else {
+            self.walkedLogin()
+        }
     }
     
     func getCode() {
-        self.startTimer()
+        let phoneStr = self.loginView.phoneTed.text ?? ""
+        if phoneStr.isEmpty {
+            MBProgressHUD.show(text: "Please enter your phone number.")
+        }else {
+            self.horoughly(phoneStr)
+        }
     }
     
     func startTimer() {
@@ -88,14 +102,47 @@ class FCBaseViewController: UIViewController {
         totalTime = 60
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func getRootVcPush() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
+    }
     
+}
+
+extension FCBaseViewController {
+    
+    //验证码
+    func horoughly(_ phone: String) {
+        let dict = ["judge": phone, "killing": "1"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: rightThoroughly, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
+            MBProgressHUD.show(text: wanting)
+            if conceive == 0 || conceive == 00 {
+                self?.startTimer()
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
+    //登陆
+    func walkedLogin() {
+        let phoneStr = self.loginView.phoneTed.text ?? ""
+        let codeStr = self.loginView.verifyCode
+        let dict = ["temperance": phoneStr, "females": codeStr, "suggest": "1"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: walkedWhole, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
+            MBProgressHUD.show(text: wanting)
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<LoginModel>.deserializeFrom(dict: baseModel.easily)
+                guard let model = model else { return }
+                LoginFactory.saveLoginInfo(model.temperance ?? "", model.temple ?? "")
+                self?.getRootVcPush()
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+
 }

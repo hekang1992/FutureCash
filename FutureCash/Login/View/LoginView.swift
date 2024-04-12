@@ -11,13 +11,15 @@ import UIColor_Hex
 typealias LoginCanBlock = () -> Void
 class LoginView: UIView {
     
+    var verifyCode: String = ""
     var block1: LoginCanBlock?
     var block2: LoginCanBlock?
     var block3: LoginCanBlock?
+    var block4: LoginCanBlock?
     
     lazy var bgView: UIView = {
         let bgView = UIView()
-        bgView.backgroundColor = UIColor.init(css: "#2F0C00").withAlphaComponent(0.4)
+        bgView.backgroundColor = UIColor.init(css: "#2F0C00").withAlphaComponent(0.6)
         return bgView
     }()
     
@@ -77,13 +79,14 @@ class LoginView: UIView {
     }()
     
     lazy var codeLable: UILabel = {
-        let codeLable = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 16.px())!, textColor: UIColor.init(css: "#B74C1B"), textAlignment: .left)
+        let codeLable = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 16.px())!, textColor: UIColor.init(css: "#943800"), textAlignment: .left)
         codeLable.text = "Verification Code"
         return codeLable
     }()
     
     lazy var codeView: MHVerifyCodeView = {
-        let codeView = MHVerifyCodeView.init { verifyCode in
+        let codeView = MHVerifyCodeView.init { [weak self] verifyCode in
+            self?.verifyCode = verifyCode
             print("verifyCode>>>>>>>\(verifyCode)")
         }
         codeView.verifyCount = 6
@@ -102,6 +105,33 @@ class LoginView: UIView {
         return btn
     }()
     
+    lazy var privacyLabel: UILabel = {
+        let label = UILabel()
+            label.text = "Sign-in form agreeing to Privacy Policy."
+            label.textColor = UIColor.init(css: "#943800")
+            label.numberOfLines = 0
+            label.font = UIFont(name: Fredoka_Bold, size: 14.px())
+            
+            let attributes: [NSAttributedString.Key: Any] = [
+                .strokeWidth: -2.0, // 设置描边宽度为-2.0，表示与文本尺寸相等的描边宽度
+                .strokeColor: UIColor.init(css: "#6B291D") as Any // 设置描边颜色为白色
+            ]
+            
+            // 创建带有描边属性的 NSAttributedString
+            let attributedString = NSMutableAttributedString(string: label.text!, attributes: attributes)
+            
+            // 查找 "Privacy Policy." 的范围
+            let range = (label.text! as NSString).range(of: "Privacy Policy.")
+            attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: range) // 设置 "Privacy Policy." 的文本颜色为白色
+            
+            label.attributedText = attributedString
+            label.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPrivacy))
+            label.addGestureRecognizer(tapGesture)
+            
+            return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
@@ -115,12 +145,13 @@ class LoginView: UIView {
         bgImageView.addSubview(codeLable)
         bgImageView.addSubview(codeView)
         bgImageView.addSubview(btn2)
+        bgImageView.addSubview(privacyLabel)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
         bgImageView.snp.makeConstraints { make in
-            make.centerX.equalTo(bgView)
-            make.bottom.equalTo(bgView).offset(-150.px())
+            make.left.equalTo(bgView).offset(28.px())
+            make.bottom.equalTo(bgView).offset(-83.px())
             make.size.equalTo(CGSizeMake(338.px(), 389.px()))
         }
         btn.snp.makeConstraints { make in
@@ -129,7 +160,7 @@ class LoginView: UIView {
             make.size.equalTo(CGSizeMake(33.px(), 35.px()))
         }
         btn1.snp.makeConstraints { make in
-            make.centerX.equalTo(bgImageView)
+            make.centerX.equalTo(bgView)
             make.bottom.equalTo(bgImageView)
             make.size.equalTo(CGSizeMake(134.px(), 61.px()))
         }
@@ -170,6 +201,11 @@ class LoginView: UIView {
             make.left.equalTo(codeView.snp.right).offset(10.px())
             make.size.equalTo(CGSizeMake(55.px(), 26.px()))
         }
+        privacyLabel.snp.makeConstraints { make in
+            make.left.equalTo(codeLable.snp.left)
+            make.top.equalTo(codeView.snp.bottom).offset(24.px())
+            make.height.equalTo(20.px())
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -189,6 +225,10 @@ extension LoginView: UITextFieldDelegate  {
     
     @objc func sendClick() {
         self.block3?()
+    }
+    
+    @objc func openPrivacy() {
+        self.block4?()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

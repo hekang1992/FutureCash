@@ -23,13 +23,19 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
         
         // Do any additional setup after loading the view.
         JudgNetWork()
-        
         obs.debounce(.milliseconds(3000),scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] model in
                 if let model = model {
                     self?.upLocationInfo(model)
                 }
             }).disposed(by: bag)
+        let iconImageView = UIImageView()
+        iconImageView.contentMode = .scaleAspectFill
+        iconImageView.image = UIImage(named: "launch")
+        view.addSubview(iconImageView)
+        iconImageView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view)
+        }
     }
     
     func JudgNetWork() {
@@ -51,12 +57,9 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     }
     
     func upApiInfo() {
-        getLocation()
         getApplePush()
+        getLocation()
         uploadGoogleMarket()
-        delayTime(2.0) { [weak self] in
-            self?.getRootVcPush()
-        }
     }
     
     func getLocation() {
@@ -67,13 +70,17 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     
     func upLocationInfo(_ model: LocationModel) {
         let country = model.country
-        let district = model.district
-        if country.isEmpty && district.isEmpty {
+        let city = model.city
+        if country.isEmpty && city.isEmpty {
             self.uploadDeviceInfo()
         }else{
             self.uploadLocationInfo(model)
         }
     }
+    
+}
+
+extension LaunchViewController {
     
     func uploadLocationInfo(_ model: LocationModel) {
         let dict = ["financial": model.country ,
@@ -89,7 +96,9 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
                 self?.uploadDeviceInfo()
                 print("uploadLocationInfo>>>>>>>success")
             }
+            self?.getRootVcPush()
         } errorBlock: { [weak self] error in
+            self?.getRootVcPush()
             self?.uploadDeviceInfo()
         }
     }
@@ -98,15 +107,15 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
         let dict = DeviceInfo.deviceInfo()
         if let base64String = dictToBase64(dict) {
             let dict = ["easily": base64String]
-            FCRequset.shared.requestAPI(params: dict, pageUrl: thank, method: .post) { baseModel in
+            FCRequset.shared.requestAPI(params: dict, pageUrl: thank, method: .post) { [weak self] baseModel in
                 let conceive = baseModel.conceive
                 if conceive == 0 || conceive == 00 {
                   print("uploadDeviceInfo>>>>>>>success")
                 }
-            } errorBlock: { error in
-                
+                self?.getRootVcPush()
+            } errorBlock: { [weak self] error in
+                self?.getRootVcPush()
             }
-
         }
     }
     
@@ -157,19 +166,5 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     func getApplePush() {
         FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
     }
-    
-    func getRootVcPush() {
-        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

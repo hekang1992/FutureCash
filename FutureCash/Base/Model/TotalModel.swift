@@ -22,3 +22,10 @@ class GoogleModel: HandyJSON {
     var pistol: String?
     var profession: String?
 }
+
+class LoginModel: HandyJSON {
+    required init() {
+    }
+    var temperance: String?//phone
+    var temple: String?//sessionid
+}

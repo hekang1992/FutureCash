@@ -39,6 +39,10 @@ func isFullScreenDevice(_ device: Device) -> Bool {
 //fonts
 let Fredoka_Bold = "Fredoka-Bold"
 
+//login
+let PHONE_LOGIN = "PHONE_LOGIN"
+let PHONE_SESSIONID = "PHONE_SESSIONID"
+
 extension UIColor {
     static func randomColor() -> UIColor {
         let red = CGFloat.random(in: 0...1)

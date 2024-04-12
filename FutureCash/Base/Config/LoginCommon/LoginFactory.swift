@@ -24,4 +24,10 @@ class LoginFactory: NSObject {
         return lastUrl
     }
     
+    static func saveLoginInfo(_ phone: String, _ sessionID: String) {
+        UserDefaults.standard.setValue(phone, forKey: PHONE_LOGIN)
+        UserDefaults.standard.setValue(phone, forKey: PHONE_SESSIONID)
+        UserDefaults.standard.synchronize()
+    }
+    
 }

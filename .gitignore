@@ -11,11 +11,5 @@ DerivedData/
 Pods/
 Podfile.lock
 
-# Ignore xcworkspace
-*.xcworkspace/
-
-# Ignore Xcode project files
-*.xcodeproj/
-
 # Ignore private configuration files
 *.xcconfig

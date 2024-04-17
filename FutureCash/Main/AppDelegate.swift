@@ -26,9 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         getPushApple()
         getRootVc()
         keyboardManager()
-        getfagndou()
+        getfangdou()
         getLocation()
-//        getFontNames()
+        //        getFontNames()
         window?.makeKeyAndVisible()
         return true
     }
@@ -72,18 +72,18 @@ extension AppDelegate {
         }
     }
     
-    func getfagndou() {
+    func getLocation() {
+        FCNotificationCenter.addObserver(self, selector: #selector(setUpLocation), name: NSNotification.Name(FCAPPLE_LOCATION), object: nil)
+    }
+    
+    func getfangdou() {
         obs.debounce(.milliseconds(3000),scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] model in
                 if let model = model {
-//                    self?.upLocationInfo(model)
+                    self?.upLocationInfo(model)
                     print("locationModel>>>>>>>>\(model)")
                 }
             }).disposed(by: bag)
-    }
-    
-    func getLocation() {
-        FCNotificationCenter.addObserver(self, selector: #selector(setUpLocation), name: NSNotification.Name(FCAPPLE_LOCATION), object: nil)
     }
     
     func getTapToken(deviceToken: String) {
@@ -97,6 +97,61 @@ extension AppDelegate {
             }
         } errorBlock: { error in
             
+        }
+    }
+    
+    func upLocationInfo(_ model: LocationModel) {
+        let country = model.country
+        let city = model.city
+        if country.isEmpty && city.isEmpty {
+            self.uploadDeviceInfo()
+        }else{
+            self.uploadLocationInfo(model)
+        }
+    }
+    
+    func uploadLocationInfo(_ model: LocationModel) {
+        let dict = ["financial": model.country ,
+                    "bowed": model.countryCode,
+                    "income": model.province,
+                    "steady": model.city,
+                    "inspire": "\(model.district) \(model.street)",
+                    "needed": model.longitude,
+                    "alcoholic": model.latitude] as [String: Any]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: morningReally, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                self?.uploadDeviceInfo()
+                print("uploadLocationInfo>>>>>>>success")
+            }
+        } errorBlock: { [weak self] error in
+            self?.uploadDeviceInfo()
+        }
+    }
+    
+    func uploadDeviceInfo() {
+        let dict = DeviceInfo.deviceInfo()
+        if let base64String = dictToBase64(dict) {
+            let dict = ["easily": base64String]
+            FCRequset.shared.requestAPI(params: dict, pageUrl: thank, method: .post) { baseModel in
+                let conceive = baseModel.conceive
+                if conceive == 0 || conceive == 00 {
+                    print("uploadDeviceInfo>>>>>>>success")
+                }
+            } errorBlock: { error in
+                
+            }
+        }
+    }
+    
+    func dictToBase64(_ dict: [String: Any]) -> String? {
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dict)
+            let base64EncodedString = jsonData.base64EncodedString()
+            return base64EncodedString
+        } catch {
+            print("Error: \(error)")
+            return nil
         }
     }
     
@@ -114,7 +169,7 @@ extension AppDelegate {
         window?.rootViewController = BaseNavViewController(rootViewController: HomeViewController())
     }
     
-   @objc func getPushApple() {
+    @objc func getPushApple() {
         FCNotificationCenter.addObserver(self, selector: #selector(applePush(_ :)), name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
     }
     

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ViewAnimator
 import MBProgressHUD
 
 class HomeViewController: FCBaseViewController {
@@ -41,18 +40,44 @@ class HomeViewController: FCBaseViewController {
     
     @objc func buttonTapped1() {
         view.addSubview(rightView)
+        rightView.block1 = { [weak self] in
+            self?.hideRightView()
+        }
         rightView.snp.makeConstraints { make in
             make.edges.equalTo(self.view)
         }
-        self.animateLongView()
+        delayTime(0.25) { [weak self] in
+            self?.animateRightView()
+        }
+        
     }
     
-    override func animateLongView() {
-        let animations = [AnimationType.from(direction: .right, offset: SCREEN_WIDTH)]
-        UIView.animate(views: [rightView],
-                       animations: animations,
-                       initialAlpha: 0.5,
-                       duration: 0.5)
+    func animateRightView() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.1,
+                       usingSpringWithDamping: 0.65,
+                       initialSpringVelocity: 0.3,
+                       options: .curveLinear) {
+            self.rightView.bgImageView.snp.updateConstraints { make in
+                make.left.equalTo(self.rightView).offset(75.px())
+            }
+            self.rightView.alpha = 1
+            self.rightView.bgView.alpha = 1
+            self.rightView.bgImageView1.alpha = 1
+            self.rightView.layoutSubviews()
+        }
+    }
+    
+    func hideRightView() {
+        UIView.animate(withDuration: 0.25) {
+            self.rightView.bgImageView.snp.updateConstraints { make in
+                make.left.equalTo(self.rightView).offset(SCREEN_WIDTH)
+            }
+            self.rightView.alpha = 0
+            self.rightView.bgView.alpha = 0
+            self.rightView.bgImageView1.alpha = 0
+            self.rightView.layoutSubviews()
+        }
     }
     
     /*

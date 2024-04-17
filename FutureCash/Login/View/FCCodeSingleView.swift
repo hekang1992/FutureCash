@@ -120,7 +120,6 @@ public class MHVerifyCodeView: UIStackView, UITextFieldDelegate {
         for i in Range(index...(verifyCount ?? 0) - 1) {
             index += 1
             verifyCodes[i].label.text = ""
-            print("index>>>>>>>>>\(index)")
         }
     }
     

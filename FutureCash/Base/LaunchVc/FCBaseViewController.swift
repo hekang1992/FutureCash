@@ -7,7 +7,6 @@
 
 import UIKit
 import MBProgressHUD
-import ViewAnimator
 import HandyJSON
 
 class FCBaseViewController: UIViewController {
@@ -39,9 +38,7 @@ class FCBaseViewController: UIViewController {
             make.edges.equalTo(self.view)
         }
         loginView.block1 = { [weak self] in
-            self?.loginView.phoneTed.text = ""
-            self?.loginView.codeView.deleteCodeStr()
-            self?.loginView.removeFromSuperview()
+            self?.hideLoginView()
         }
         loginView.block2 = { [weak self] in
             self?.loginInfo()
@@ -49,15 +46,32 @@ class FCBaseViewController: UIViewController {
         loginView.block3 = { [weak self] in
             self?.getCode()
         }
-        self.animateLongView()
+        delayTime(0.25) { [weak self] in
+            self?.animateLoginView()
+        }
+        
     }
     
-    func animateLongView() {
-        let animations = [AnimationType.from(direction: .right, offset: SCREEN_WIDTH)]
-        UIView.animate(views: [loginView.bgImageView],
-                       animations: animations,
-                       initialAlpha: 0.5,
-                       duration: 0.5)
+    func hideLoginView() {
+        self.loginView.phoneTed.text = ""
+        self.loginView.codeView.deleteCodeStr()
+        self.loginView.isHidden = true
+        UIView.animate(withDuration: 0.25) {
+            self.loginView.bgImageView.snp.updateConstraints { make in
+                make.left.equalTo(self.loginView.bgView).offset(SCREEN_WIDTH)
+            }
+            self.loginView.layoutIfNeeded()
+        }
+    }
+    
+    func animateLoginView() {
+        self.loginView.isHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.loginView.bgImageView.snp.updateConstraints { make in
+                make.left.equalTo(self.loginView.bgView).offset(28.px())
+            }
+            self.loginView.layoutIfNeeded()
+        }
     }
     
     func loginInfo() {

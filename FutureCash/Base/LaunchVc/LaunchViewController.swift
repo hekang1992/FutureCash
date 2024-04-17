@@ -63,54 +63,11 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
 //        }
 //    }
     
-//    func upLocationInfo(_ model: LocationModel) {
-//        let country = model.country
-//        let city = model.city
-//        if country.isEmpty && city.isEmpty {
-//            self.uploadDeviceInfo()
-//        }else{
-//            self.uploadLocationInfo(model)
-//        }
-//    }
+
     
 }
 
 extension LaunchViewController {
-    
-    func uploadLocationInfo(_ model: LocationModel) {
-        let dict = ["financial": model.country ,
-                    "bowed": model.countryCode,
-                    "income": model.province,
-                    "steady": model.city,
-                    "inspire": "\(model.district) \(model.street)",
-                    "needed": model.longitude,
-                    "alcoholic": model.latitude] as [String: Any]
-        FCRequset.shared.requestAPI(params: dict, pageUrl: morningReally, method: .post) { [weak self] baseModel in
-            let conceive = baseModel.conceive
-            if conceive == 0 || conceive == 00 {
-                self?.uploadDeviceInfo()
-                print("uploadLocationInfo>>>>>>>success")
-            }
-        } errorBlock: { [weak self] error in
-            self?.uploadDeviceInfo()
-        }
-    }
-    
-    func uploadDeviceInfo() {
-        let dict = DeviceInfo.deviceInfo()
-        if let base64String = dictToBase64(dict) {
-            let dict = ["easily": base64String]
-            FCRequset.shared.requestAPI(params: dict, pageUrl: thank, method: .post) { [weak self] baseModel in
-                let conceive = baseModel.conceive
-                if conceive == 0 || conceive == 00 {
-                  print("uploadDeviceInfo>>>>>>>success")
-                }
-                self?.getRootVcPush()
-            } errorBlock: { [weak self] error in
-                self?.getRootVcPush()
-            }
-        }
-    }
     
     func uploadGoogleMarket() {
         let idfv = DeviceInfo.getIdfv()
@@ -135,17 +92,6 @@ extension LaunchViewController {
         AppsFlyerLib.shared().appleAppID = appId
         AppsFlyerLib.shared().delegate = self
         AppsFlyerLib.shared().start()
-    }
-    
-    func dictToBase64(_ dict: [String: Any]) -> String? {
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dict)
-            let base64EncodedString = jsonData.base64EncodedString()
-            return base64EncodedString
-        } catch {
-            print("Error: \(error)")
-            return nil
-        }
     }
     
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {

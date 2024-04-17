@@ -150,7 +150,7 @@ class LoginView: UIView {
             make.edges.equalTo(self)
         }
         bgImageView.snp.makeConstraints { make in
-            make.left.equalTo(bgView).offset(28.px())
+            make.left.equalTo(bgView).offset(SCREEN_WIDTH)
             make.bottom.equalTo(bgView).offset(-83.px())
             make.size.equalTo(CGSizeMake(338.px(), 389.px()))
         }
@@ -160,7 +160,7 @@ class LoginView: UIView {
             make.size.equalTo(CGSizeMake(33.px(), 35.px()))
         }
         btn1.snp.makeConstraints { make in
-            make.centerX.equalTo(bgView)
+            make.centerX.equalTo(bgImageView)
             make.bottom.equalTo(bgImageView)
             make.size.equalTo(CGSizeMake(134.px(), 61.px()))
         }

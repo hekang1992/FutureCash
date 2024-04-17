@@ -17,21 +17,27 @@ class FCRequset: NSObject {
     
     typealias NSErrorBlock = (_ error: Any) -> Void
     
+    let headers: HTTPHeaders = [
+        "Accept": "application/json;",
+        "Connection": "keep-alive",
+        "Content-Type": "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data"]
+    
     func requestAPI(params: [String: Any]?,
                     pageUrl: String,
                     method: HTTPMethod,
                     timeout: TimeInterval = 30,
                     complete: @escaping CompleteBlock,
                     errorBlock: @escaping NSErrorBlock){
-        let headers: HTTPHeaders = [
-            "Accept": "application/json;",
-            "Connection": "keep-alive",
-            "Content-Type": "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data"]
+        let loadView = ViewHud.createLoadView()
+        if let keyWindow = UIApplication.shared.windows.first {
+            keyWindow.addSubview(loadView)
+        }
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.request(wholeApiUrl, method: method, parameters: params, headers: headers).responseData { [weak self] response in
             switch response.result {
             case .success(let success):
+                loadView.removeFromSuperview()
                 print("success>>>>>>>\(success)")
                 if response.data == nil {
                     print("no data")
@@ -49,6 +55,7 @@ class FCRequset: NSObject {
                 }
                 break
             case .failure(let failure):
+                loadView.removeFromSuperview()
                 errorBlock(failure)
                 break
             }
@@ -62,11 +69,10 @@ class FCRequset: NSObject {
                         data: Data,
                         complete: @escaping CompleteBlock,
                         errorBlock: @escaping NSErrorBlock){
-        let headers: HTTPHeaders = [
-            "Accept": "application/json;",
-            "Connection": "keep-alive",
-            "Content-Type": "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data;multipart/form-data"
-        ]
+        let loadView = ViewHud.createLoadView()
+        if let keyWindow = UIApplication.shared.windows.first {
+            keyWindow.addSubview(loadView)
+        }
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.upload(
@@ -84,6 +90,7 @@ class FCRequset: NSObject {
         .responseData(completionHandler: { response in
             switch response.result {
             case .success(let success):
+                loadView.removeFromSuperview()
                 if response.data == nil {
                     print("no data")
                     return
@@ -96,6 +103,7 @@ class FCRequset: NSObject {
                 }
                 break
             case .failure(let error):
+                loadView.removeFromSuperview()
                 errorBlock(error)
                 break
             }
@@ -108,11 +116,10 @@ class FCRequset: NSObject {
                        timeout: TimeInterval = 30,
                        complete: @escaping CompleteBlock,
                        errorBlock: @escaping NSErrorBlock){
-        let headers: HTTPHeaders = [
-            "Accept" : "application/json;",
-            "Connection" : "keep-alive",
-            "Content-Type" : "application/x-www-form-urlencoded;text/json;text/javascript;text/html;text/plain;multipart/form-data;multipart/form-data"
-        ]
+        let loadView = ViewHud.createLoadView()
+        if let keyWindow = UIApplication.shared.windows.first {
+            keyWindow.addSubview(loadView)
+        }
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         print("wholeApiUrl>>>data>>>\(wholeApiUrl)")
@@ -130,6 +137,7 @@ class FCRequset: NSObject {
         .responseData(completionHandler: { response in
             switch response.result {
             case .success(let success):
+                loadView.removeFromSuperview()
                 if response.data == nil {
                     print("no data")
                     return
@@ -142,6 +150,7 @@ class FCRequset: NSObject {
                 }
                 break
             case .failure(let error):
+                loadView.removeFromSuperview()
                 errorBlock(error)
                 break
             }
@@ -149,11 +158,9 @@ class FCRequset: NSObject {
     }
     
     func showLoginVc() {
-        let loginVc = LoginViewController()
-        let vc = UIViewController().getCurrentUIVC()
-        let nav = BaseNavViewController(rootViewController: loginVc)
-        nav.modalPresentationStyle = .overFullScreen
-        vc?.present(nav, animated: true)
+        let vc = UIViewController.getCurrentUIVC() as! FCBaseViewController
+        vc.addLoginView()
+        LoginFactory.removeLoginInfo()
     }
     
 }

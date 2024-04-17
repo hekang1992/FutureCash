@@ -31,6 +31,7 @@
 		18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E842BB17D3100F1FA23 /* LocationManager.swift */; };
 		18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E862BB17D5000F1FA23 /* LocationModel.swift */; };
 		18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E882BB17E0900F1FA23 /* TotalModel.swift */; };
+		186210942BCF76A500A74058 /* RightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210932BCF76A500A74058 /* RightView.swift */; };
 		18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */; };
 		18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */; };
 		18AD9AF72BC94D4C00D33830 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 18AD9AF62BC94D4C00D33830 /* loading.json */; };
@@ -89,6 +90,7 @@
 		18562E842BB17D3100F1FA23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		18562E862BB17D5000F1FA23 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		18562E882BB17E0900F1FA23 /* TotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModel.swift; sourceTree = "<group>"; };
+		186210932BCF76A500A74058 /* RightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightView.swift; sourceTree = "<group>"; };
 		18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCHUD.swift; sourceTree = "<group>"; };
 		18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCodeSingleView.swift; sourceTree = "<group>"; };
 		18AD9AF62BC94D4C00D33830 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		18562E602BB12CB900F1FA23 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				186210922BCF769300A74058 /* View */,
 				184D87382BB2A1F800773F45 /* Controller */,
 			);
 			path = Home;
@@ -362,6 +365,14 @@
 				18562E7E2BB14DD600F1FA23 /* LoginFactory.swift */,
 			);
 			path = LoginCommon;
+			sourceTree = "<group>";
+		};
+		186210922BCF769300A74058 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				186210932BCF76A500A74058 /* RightView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		18A0FF8D2BC69ECF00DADE21 /* Fonts */ = {
@@ -647,6 +658,7 @@
 				18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */,
 				184D87262BB283A100773F45 /* FCRequset.swift in Sources */,
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
+				186210942BCF76A500A74058 /* RightView.swift in Sources */,
 				18562E732BB1470E00F1FA23 /* BaseHeadFile.swift in Sources */,
 				18562E5B2BB12AC800F1FA23 /* FCBaseViewController.swift in Sources */,
 				18562E812BB1501500F1FA23 /* DeviceInfo.swift in Sources */,

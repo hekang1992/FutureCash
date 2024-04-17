@@ -45,8 +45,7 @@ class FCCodeSingleView: UIView{
 public class MHVerifyCodeView: UIStackView, UITextFieldDelegate {
     
     var verifyCodes: [FCCodeSingleView]!
-    
-    /**验证码数量*/
+
     public var verifyCount: Int? {
         didSet{
             for _ in Range(0...(verifyCount ?? 0) - 1) {
@@ -58,13 +57,13 @@ public class MHVerifyCodeView: UIStackView, UITextFieldDelegate {
     }
     
     var completeHandler: ((_ verifyCode: String) -> Void)!
-    
-    //隐藏的输入框
+
     lazy var hideTextField: UITextField = {
         let textfield = UITextField()
-        self.addSubview(textfield)
+        addSubview(textfield)
         textfield.keyboardType = .numberPad
         textfield.delegate = self
+        textfield.backgroundColor = .randomColor()
         return textfield
     }()
     

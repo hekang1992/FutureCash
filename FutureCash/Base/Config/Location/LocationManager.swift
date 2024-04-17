@@ -25,12 +25,26 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.distanceFilter = 1000
     }
     
     func startUpdatingLocation(completion: @escaping LocationModelBlock) {
         locationUpdateHandler = completion
-        locationManager.startUpdatingLocation()
-        locationManager.stopUpdatingLocation()
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            print("用户已授权位置信息")
+            locationManager.startUpdatingLocation()
+        case .denied:
+            print("用户拒绝授权位置信息")
+            let model = locatinModel
+            self.locationUpdateHandler?(model)
+        default:
+            break
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -40,21 +54,6 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
         getAddressFromCoordinates(latitude: latitude, longitude: longitude)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
-            print("用户已授权位置信息")
-            locationManager.startUpdatingLocation()
-            locationManager.stopUpdatingLocation()
-        case .denied:
-            print("用户拒绝授权位置信息")
-            let model = locatinModel
-            self.locationUpdateHandler?(model)
-        default:
-            break
-        }
     }
     
     private func getAddressFromCoordinates(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {

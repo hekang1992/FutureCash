@@ -26,8 +26,13 @@ class LoginFactory: NSObject {
     
     static func saveLoginInfo(_ phone: String, _ sessionID: String) {
         UserDefaults.standard.setValue(phone, forKey: PHONE_LOGIN)
-        UserDefaults.standard.setValue(phone, forKey: PHONE_SESSIONID)
+        UserDefaults.standard.setValue(sessionID, forKey: PHONE_SESSIONID)
         UserDefaults.standard.synchronize()
     }
     
+    static func removeLoginInfo() {
+        UserDefaults.standard.setValue("", forKey: PHONE_LOGIN)
+        UserDefaults.standard.setValue("", forKey: PHONE_SESSIONID)
+        UserDefaults.standard.synchronize()
+    }
 }

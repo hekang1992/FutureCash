@@ -26,8 +26,7 @@ let Key_Account = "Key_Account"
 //push
 let FCNotificationCenter = NotificationCenter.default
 let FCAPPLE_PUSH = "FCAPPLE_PUSH"
-
-//rootVc
+let FCAPPLE_LOCATION = "FCAPPLE_LOCATION"
 let FCAPPLE_ROOT_VC = "FCAPPLE_ROOT_VC"
 
 // 判断设备是否是全面屏
@@ -151,7 +150,8 @@ extension UIButton {
 }
 
 extension UIViewController {
-    func getCurrentUIVC() -> UIViewController? {
+    
+    static func getCurrentUIVC() -> UIViewController? {
         guard let superVC = getCurrentVC() else {
             return nil
         }
@@ -167,7 +167,7 @@ extension UIViewController {
         return superVC
     }
     
-    func getCurrentVC() -> UIViewController? {
+   static func getCurrentVC() -> UIViewController? {
         var result: UIViewController?
         var window = UIApplication.shared.keyWindow
         if window?.windowLevel != UIWindow.Level.normal {

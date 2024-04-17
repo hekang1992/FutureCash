@@ -14,21 +14,13 @@ import RxSwift
 
 class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     
-    let bag = DisposeBag()
     
-    var obs: PublishSubject<LocationModel?> = PublishSubject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         JudgNetWork()
-        obs.debounce(.milliseconds(3000),scheduler: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] model in
-                if let model = model {
-                    self?.upLocationInfo(model)
-                }
-            }).disposed(by: bag)
         let iconImageView = UIImageView()
         iconImageView.contentMode = .scaleAspectFill
         iconImageView.image = UIImage(named: "launch")
@@ -58,25 +50,28 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     
     func upApiInfo() {
         getApplePush()
-        getLocation()
+        getAppleLocation()
         uploadGoogleMarket()
-    }
-    
-    func getLocation() {
-        LocationManager.shared.startUpdatingLocation { [weak self] locationModel in
-            self?.obs.onNext(locationModel)
+        delayTime(0.5) { [weak self] in
+            self?.getRootVcPush()
         }
     }
     
-    func upLocationInfo(_ model: LocationModel) {
-        let country = model.country
-        let city = model.city
-        if country.isEmpty && city.isEmpty {
-            self.uploadDeviceInfo()
-        }else{
-            self.uploadLocationInfo(model)
-        }
-    }
+//    func getLocation() {
+//        LocationManager.shared.startUpdatingLocation { locationModel in
+//            self?.obs.onNext(locationModel)
+//        }
+//    }
+    
+//    func upLocationInfo(_ model: LocationModel) {
+//        let country = model.country
+//        let city = model.city
+//        if country.isEmpty && city.isEmpty {
+//            self.uploadDeviceInfo()
+//        }else{
+//            self.uploadLocationInfo(model)
+//        }
+//    }
     
 }
 
@@ -96,9 +91,7 @@ extension LaunchViewController {
                 self?.uploadDeviceInfo()
                 print("uploadLocationInfo>>>>>>>success")
             }
-            self?.getRootVcPush()
         } errorBlock: { [weak self] error in
-            self?.getRootVcPush()
             self?.uploadDeviceInfo()
         }
     }
@@ -165,6 +158,10 @@ extension LaunchViewController {
     
     func getApplePush() {
         FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
+    }
+    
+    func getAppleLocation() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_LOCATION), object: nil)
     }
     
 }

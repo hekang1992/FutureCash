@@ -34,12 +34,18 @@ class DeviceInfo: NSObject {
         }
     }
     
-    static func isUsingProxy() -> Bool {
-        let configuration = URLSessionConfiguration.default
-        if let proxySettings = configuration.connectionProxyDictionary {
-            return proxySettings.count > 0
+    static func isUsingProxy() -> String {
+        if let proxySettings = CFNetworkCopySystemProxySettings()?.takeRetainedValue() as? [AnyHashable: Any],
+           let proxies = CFNetworkCopyProxiesForURL(URL(string: "https://www.apple.com")! as CFURL, proxySettings as CFDictionary).takeRetainedValue() as? [Any],
+           let settings = proxies.first as? [AnyHashable: Any],
+           let proxyType = settings[kCFProxyTypeKey] as? String {
+            if proxyType == kCFProxyTypeNone as String {
+                return "0"
+            } else {
+                return "1"
+            }
         }
-        return false
+        return "0"
     }
     
     static func isVPNConnected() -> Bool {
@@ -141,7 +147,7 @@ class DeviceInfo: NSObject {
         let hesitated = ASIdentifierManager.shared().advertisingIdentifier.uuidString
         let savings = SSNetworkInfo.wiFiBroadcastAddress() ?? ""
         let rotter = getCurrentTime()
-        let daresay = isUsingProxy() ? "1" : "0"
+        let daresay = isUsingProxy()
         let weeks = isVPNConnected() ? "1" : "0"
         let believe = isJailBreak()
         let is_simulator = Device.current.isSimulator ? "1" : "0"

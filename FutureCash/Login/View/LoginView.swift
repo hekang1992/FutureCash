@@ -113,16 +113,14 @@ class LoginView: UIView {
             label.font = UIFont(name: Fredoka_Bold, size: 14.px())
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .strokeWidth: -2.0, // 设置描边宽度为-2.0，表示与文本尺寸相等的描边宽度
-                .strokeColor: UIColor.init(css: "#6B291D") as Any // 设置描边颜色为白色
+                .strokeWidth: -2.0,
+                .strokeColor: UIColor.init(css: "#6B291D") as Any
             ]
             
-            // 创建带有描边属性的 NSAttributedString
             let attributedString = NSMutableAttributedString(string: label.text!, attributes: attributes)
             
-            // 查找 "Privacy Policy." 的范围
             let range = (label.text! as NSString).range(of: "Privacy Policy.")
-            attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: range) // 设置 "Privacy Policy." 的文本颜色为白色
+            attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: range)
             
             label.attributedText = attributedString
             label.isUserInteractionEnabled = true

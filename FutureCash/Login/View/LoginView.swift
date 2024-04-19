@@ -7,6 +7,7 @@
 
 import UIKit
 import UIColor_Hex
+import MBProgressHUD
 
 typealias LoginCanBlock = () -> Void
 class LoginView: UIView {
@@ -106,28 +107,23 @@ class LoginView: UIView {
     }()
     
     lazy var privacyLabel: UILabel = {
-        let label = UILabel()
-            label.text = "Sign-in form agreeing to Privacy Policy."
-            label.textColor = UIColor.init(css: "#943800")
-            label.numberOfLines = 0
-            label.font = UIFont(name: Fredoka_Bold, size: 14.px())
-            
-            let attributes: [NSAttributedString.Key: Any] = [
-                .strokeWidth: -2.0,
-                .strokeColor: UIColor.init(css: "#6B291D") as Any
-            ]
-            
-            let attributedString = NSMutableAttributedString(string: label.text!, attributes: attributes)
-            
-            let range = (label.text! as NSString).range(of: "Privacy Policy.")
-            attributedString.addAttribute(.foregroundColor, value: UIColor.white, range: range)
-            
-            label.attributedText = attributedString
-            label.isUserInteractionEnabled = true
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPrivacy))
-            label.addGestureRecognizer(tapGesture)
-            
-            return label
+        let label = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 14.px())!, textColor: UIColor.init(css: "#943800"), textAlignment: .left)
+        label.text = "Sign-in form agreeing to "
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPrivacy))
+        label.addGestureRecognizer(tapGesture)
+        return label
+    }()
+    
+    lazy var privacyLabel1: FFShadowLabel = {
+        let label = FFShadowLabel()
+        label.text = "Privacy Policy."
+        label.font = UIFont(name: Fredoka_Bold, size: 14.px())
+        label.textAlignment = .left
+        label.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPrivacy))
+        label.addGestureRecognizer(tapGesture)
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -144,6 +140,7 @@ class LoginView: UIView {
         bgImageView.addSubview(codeView)
         bgImageView.addSubview(btn2)
         bgImageView.addSubview(privacyLabel)
+        bgImageView.addSubview(privacyLabel1)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
@@ -201,8 +198,14 @@ class LoginView: UIView {
         }
         privacyLabel.snp.makeConstraints { make in
             make.left.equalTo(codeLable.snp.left)
-            make.top.equalTo(codeView.snp.bottom).offset(24.px())
-            make.height.equalTo(20.px())
+            make.top.equalTo(codeView.snp.bottom).offset(22.px())
+            make.height.equalTo(24.px())
+        }
+        privacyLabel1.snp.makeConstraints { make in
+            make.left.equalTo(privacyLabel.snp.right)
+            make.top.equalTo(codeView.snp.bottom).offset(22.px())
+            make.height.equalTo(24.px())
+            make.width.equalTo(132.px())
         }
     }
     
@@ -226,6 +229,7 @@ extension LoginView: UITextFieldDelegate  {
     }
     
     @objc func openPrivacy() {
+        MBProgressHUD.show(text: "隐私协议")
         self.block4?()
     }
     

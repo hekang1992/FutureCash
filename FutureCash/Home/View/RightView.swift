@@ -301,7 +301,7 @@ class RightView: UIView {
         addSubview(bgView)
         addSubview(bgImageView)
         addSubview(bgImageView1)
-        bgView.addSubview(btn)
+        bgImageView.addSubview(btn)
         bgImageView.addSubview(titleLabel)
         bgImageView.addSubview(bgImageView2)
         bgImageView2.addSubview(bgImageView3)

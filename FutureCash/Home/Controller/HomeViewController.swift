@@ -55,7 +55,7 @@ class HomeViewController: FCBaseViewController {
     func animateRightView() {
         UIView.animate(withDuration: 0.5,
                        delay: 0.1,
-                       usingSpringWithDamping: 0.65,
+                       usingSpringWithDamping: 0.6,
                        initialSpringVelocity: 0.3,
                        options: .curveLinear) {
             self.rightView.bgImageView.snp.updateConstraints { make in

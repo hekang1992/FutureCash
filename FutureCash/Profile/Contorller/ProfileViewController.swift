@@ -8,13 +8,22 @@
 import UIKit
 
 class ProfileViewController: FCBaseViewController {
-
+    
+    lazy var setView: FCSetView = {
+        let setView = FCSetView()
+        return setView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        addNavView()
+        self.navView.block = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        addSetView()
     }
-    
 
     /*
     // MARK: - Navigation
@@ -26,4 +35,15 @@ class ProfileViewController: FCBaseViewController {
     }
     */
 
+}
+
+extension ProfileViewController {
+    
+    func addSetView() {
+        view.insertSubview(setView, belowSubview: navView)
+        setView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
+    }
+    
 }

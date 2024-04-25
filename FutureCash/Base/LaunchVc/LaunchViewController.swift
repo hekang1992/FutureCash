@@ -12,9 +12,7 @@ import AdSupport
 import HandyJSON
 import RxSwift
 
-class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
-    
-    
+class LaunchViewController: FCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,55 +49,15 @@ class LaunchViewController: FCBaseViewController, AppsFlyerLibDelegate {
     func upApiInfo() {
         getApplePush()
         getAppleLocation()
-        uploadGoogleMarket()
-        delayTime(0.5) { [weak self] in
-            self?.getRootVcPush()
-        }
+        getAppleGoogle()
+        getRootVcPush()
     }
-    
-//    func getLocation() {
-//        LocationManager.shared.startUpdatingLocation { locationModel in
-//            self?.obs.onNext(locationModel)
-//        }
-//    }
-    
-
-    
 }
 
 extension LaunchViewController {
     
-    func uploadGoogleMarket() {
-        let idfv = DeviceInfo.getIdfv()
-        let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-        let dict = ["subject": idfv, "hesitated": idfa, "hints": "1"]
-        FCRequset.shared.requestAPI(params: dict, pageUrl: ohBreakfast, method: .post) { [weak self] baseModel in
-            let conceive = baseModel.conceive
-            if conceive == 0 || conceive == 00 {
-                print("uploadGoogleMarket>>>>>>>success")
-                let model = JSONDeserializer<GoogleModel>.deserializeFrom(dict: baseModel.easily)
-                if let pistol = model?.pistol, let profession = model?.profession {
-                    self?.uploadGoogle(profession, pistol)
-                }
-            }
-        } errorBlock: { error in
-            
-        }
-    }
-    
-    func uploadGoogle(_ key: String, _ appId: String) {
-        AppsFlyerLib.shared().appsFlyerDevKey = key
-        AppsFlyerLib.shared().appleAppID = appId
-        AppsFlyerLib.shared().delegate = self
-        AppsFlyerLib.shared().start()
-    }
-    
-    func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
-        print("conversionInfo>>>>>>>\(conversionInfo)")
-    }
-    
-    func onConversionDataFail(_ error: any Error) {
-        print("error>>>>>>>>\(error.localizedDescription)")
+    func getAppleGoogle() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_GOOGLE), object: nil)
     }
     
     func getApplePush() {

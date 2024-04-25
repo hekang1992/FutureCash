@@ -34,52 +34,6 @@ class HomeViewController: FCBaseViewController {
         view.addSubview(button1)
     }
     
-    @objc func buttonTapped() {
-        addLoginView()
-    }
-    
-    @objc func buttonTapped1() {
-        view.addSubview(rightView)
-        rightView.block1 = { [weak self] in
-            self?.hideRightView()
-        }
-        rightView.snp.makeConstraints { make in
-            make.edges.equalTo(self.view)
-        }
-        delayTime(0.25) { [weak self] in
-            self?.animateRightView()
-        }
-        
-    }
-    
-    func animateRightView() {
-        UIView.animate(withDuration: 0.5,
-                       delay: 0.1,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0.3,
-                       options: .curveLinear) {
-            self.rightView.bgImageView.snp.updateConstraints { make in
-                make.left.equalTo(self.rightView).offset(75.px())
-            }
-            self.rightView.alpha = 1
-            self.rightView.bgView.alpha = 1
-            self.rightView.bgImageView1.alpha = 1
-            self.rightView.layoutSubviews()
-        }
-    }
-    
-    func hideRightView() {
-        UIView.animate(withDuration: 0.25) {
-            self.rightView.bgImageView.snp.updateConstraints { make in
-                make.left.equalTo(self.rightView).offset(SCREEN_WIDTH)
-            }
-            self.rightView.alpha = 0
-            self.rightView.bgView.alpha = 0
-            self.rightView.bgImageView1.alpha = 0
-            self.rightView.layoutSubviews()
-        }
-    }
-    
     /*
      // MARK: - Navigation
      
@@ -90,4 +44,61 @@ class HomeViewController: FCBaseViewController {
      }
      */
     
+}
+
+
+extension HomeViewController {
+    
+    @objc func buttonTapped() {
+        addLoginView()
+    }
+    
+    @objc func buttonTapped1() {
+        view.addSubview(rightView)
+        rightView.block1 = { [weak self] in
+            self?.hideRightView()
+        }
+        rightView.block2 = { [weak self] in
+            self?.goSetVc()
+        }
+        rightView.snp.makeConstraints { make in
+            make.edges.equalTo(self.view)
+        }
+        delayTime(0.1) { [weak self] in
+            self?.animateRightView()
+        }
+    }
+    
+    func animateRightView() {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0.1,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.2,
+                       options: .curveLinear) {
+            self.rightView.alpha = 1
+            self.rightView.bgView.alpha = 1
+            self.rightView.bgImageView1.alpha = 1
+            self.rightView.bgImageView.snp.updateConstraints { make in
+                make.left.equalTo(self.rightView).offset(75.px())
+            }
+            self.rightView.layoutSubviews()
+        }
+    }
+    
+    func hideRightView() {
+        UIView.animate(withDuration: 0.25) {
+            self.rightView.alpha = 0
+            self.rightView.bgView.alpha = 0
+            self.rightView.bgImageView1.alpha = 0
+            self.rightView.bgImageView.snp.updateConstraints { make in
+                make.left.equalTo(self.rightView).offset(SCREEN_WIDTH)
+            }
+            self.rightView.layoutSubviews()
+        }
+    }
+    
+    func goSetVc() {
+        let setVc = ProfileViewController()
+        self.navigationController?.pushViewController(setVc, animated: true)
+    }
 }

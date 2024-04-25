@@ -28,6 +28,7 @@ let FCNotificationCenter = NotificationCenter.default
 let FCAPPLE_PUSH = "FCAPPLE_PUSH"
 let FCAPPLE_LOCATION = "FCAPPLE_LOCATION"
 let FCAPPLE_ROOT_VC = "FCAPPLE_ROOT_VC"
+let FCAPPLE_GOOGLE = "FCAPPLE_GOOGLE"
 
 // 判断设备是否是全面屏
 func isFullScreenDevice(_ device: Device) -> Bool {

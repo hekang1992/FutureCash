@@ -10,6 +10,8 @@ import AdSupport
 import AppTrackingTransparency
 import IQKeyboardManagerSwift
 import RxSwift
+import HandyJSON
+import AppsFlyerLib
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -23,12 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = LaunchViewController()
-        getPushApple()
         getRootVc()
-        keyboardManager()
+        getGoogle()
         getfangdou()
         getLocation()
-        //        getFontNames()
+        getPushApple()
+        keyboardManager()
+//        getFontNames()
         window?.makeKeyAndVisible()
         return true
     }
@@ -60,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
 }
 
-extension AppDelegate {
+extension AppDelegate: AppsFlyerLibDelegate {
     
     func getFontNames() {
         let familyNames = UIFont.familyNames
@@ -70,6 +73,10 @@ extension AppDelegate {
                 print("fontName>>>>>>>>>>>>>>\(fontName)")
             }
         }
+    }
+    
+    func getGoogle() {
+        FCNotificationCenter.addObserver(self, selector: #selector(uploadGoogleMarket), name: NSNotification.Name(FCAPPLE_GOOGLE), object: nil)
     }
     
     func getLocation() {
@@ -173,12 +180,6 @@ extension AppDelegate {
         FCNotificationCenter.addObserver(self, selector: #selector(applePush(_ :)), name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
     }
     
-    @objc func setUpLocation() {
-        LocationManager.shared.startUpdatingLocation { [weak self] locationModel in
-            self?.obs.onNext(locationModel)
-        }
-    }
-    
     @objc func applePush(_ notification: Notification) {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
@@ -192,6 +193,45 @@ extension AppDelegate {
             
         }
         UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    @objc func setUpLocation() {
+        LocationManager.shared.startUpdatingLocation { [weak self] locationModel in
+            self?.obs.onNext(locationModel)
+        }
+    }
+    
+    @objc func uploadGoogleMarket() {
+        let idfv = DeviceInfo.getIdfv()
+        let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let dict = ["subject": idfv, "hesitated": idfa, "hints": "1"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: ohBreakfast, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                print("uploadGoogleMarket>>>>>>>success")
+                let model = JSONDeserializer<GoogleModel>.deserializeFrom(dict: baseModel.easily)
+                if let pistol = model?.pistol, let profession = model?.profession {
+                    self?.uploadGoogle(profession, pistol)
+                }
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
+    func uploadGoogle(_ key: String, _ appId: String) {
+        AppsFlyerLib.shared().appsFlyerDevKey = key
+        AppsFlyerLib.shared().appleAppID = appId
+        AppsFlyerLib.shared().delegate = self
+        AppsFlyerLib.shared().start()
+    }
+    
+    func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        print("conversionInfo>>>>>>>\(conversionInfo)")
+    }
+    
+    func onConversionDataFail(_ error: any Error) {
+        print("error>>>>>>>>\(error.localizedDescription)")
     }
     
 }

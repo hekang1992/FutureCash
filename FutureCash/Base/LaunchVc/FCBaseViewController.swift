@@ -19,11 +19,23 @@ class FCBaseViewController: UIViewController {
         return loginView
     }()
     
+    lazy var navView: FCNavView = {
+        let navView = FCNavView()
+        return navView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = .white
+    }
+    
+    func addNavView() {
+        view.addSubview(navView)
+        navView.snp.makeConstraints { make in
+            make.left.right.top.equalTo(self.view)
+            make.height.equalTo(80.px())
+        }
     }
     
     func delayTime(_ delay: TimeInterval, closure: @escaping () -> ()) {

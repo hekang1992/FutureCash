@@ -14,7 +14,7 @@ class FFShadowLabel: UILabel {
     let stColor: UIColor
     let inset: UIEdgeInsets
     init(frame: CGRect = .zero,
-         strockWidth: CGFloat = -2.0,
+         strockWidth: CGFloat = 4.0.px(),
          fillColor: UIColor = .white,
          strockColor: UIColor = UIColor.init(css: "#6B291D"),
          inset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) {

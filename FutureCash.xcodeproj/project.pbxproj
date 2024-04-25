@@ -40,6 +40,8 @@
 		18AD9AF72BC94D4C00D33830 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 18AD9AF62BC94D4C00D33830 /* loading.json */; };
 		18AD9AFA2BC94DA200D33830 /* FCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF92BC94DA200D33830 /* FCLoadingView.swift */; };
 		18D006DD2BC7F18E00C70B54 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */; };
+		18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6F0522BD8B1100022EFAA /* FCNavView.swift */; };
+		18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6F0542BD8BC670022EFAA /* FCSetView.swift */; };
 		86110B453452C643FCBED746 /* Pods_FutureCash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74FE2AE9F8DF75E75F5EEB9 /* Pods_FutureCash.framework */; };
 		8D259F57B626E0F46151C9D0 /* Pods_FutureCashTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE72F5493862704F4FA3FFE3 /* Pods_FutureCashTests.framework */; };
 		A70FC9E6F4E8528B60E581F0 /* Pods_FutureCash_FutureCashUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD095E8FF701E833CA4F2F2 /* Pods_FutureCash_FutureCashUITests.framework */; };
@@ -102,6 +104,8 @@
 		18AD9AF62BC94D4C00D33830 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		18AD9AF92BC94DA200D33830 /* FCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCLoadingView.swift; sourceTree = "<group>"; };
 		18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
+		18D6F0522BD8B1100022EFAA /* FCNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCNavView.swift; sourceTree = "<group>"; };
+		18D6F0542BD8BC670022EFAA /* FCSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCSetView.swift; sourceTree = "<group>"; };
 		2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		268F83A938F569B59075EE8D /* Pods-FutureCashTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutureCashTests.release.xcconfig"; path = "Target Support Files/Pods-FutureCashTests/Pods-FutureCashTests.release.xcconfig"; sourceTree = "<group>"; };
 		4CA355BD187ADDE3A6BEB88D /* Pods-FutureCash-FutureCashUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutureCash-FutureCashUITests.release.xcconfig"; path = "Target Support Files/Pods-FutureCash-FutureCashUITests/Pods-FutureCash-FutureCashUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 		18562E5E2BB12CB000F1FA23 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				18D6F0512BD8B0FD0022EFAA /* View */,
 				18562E652BB12D1300F1FA23 /* Model */,
 				18562E642BB12D1000F1FA23 /* Config */,
 				18562E632BB12D0D00F1FA23 /* NetWork */,
@@ -310,6 +315,7 @@
 		18562E622BB12CE400F1FA23 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				18D6F0562BD8BC6A0022EFAA /* View */,
 				184D87362BB2A1E400773F45 /* Contorller */,
 			);
 			path = Profile;
@@ -390,6 +396,22 @@
 				18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		18D6F0512BD8B0FD0022EFAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18D6F0522BD8B1100022EFAA /* FCNavView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		18D6F0562BD8BC6A0022EFAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18D6F0542BD8BC670022EFAA /* FCSetView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A606FD306D79A48F85757715 /* Frameworks */ = {
@@ -667,6 +689,7 @@
 				18562E832BB1560100F1FA23 /* NetworkManager.swift in Sources */,
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
 				18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */,
+				18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */,
 				184D87262BB283A100773F45 /* FCRequset.swift in Sources */,
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
 				186210942BCF76A500A74058 /* RightView.swift in Sources */,
@@ -686,6 +709,7 @@
 				184D87352BB2A1DF00773F45 /* LoginView.swift in Sources */,
 				18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */,
 				18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */,
+				18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */,
 				18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

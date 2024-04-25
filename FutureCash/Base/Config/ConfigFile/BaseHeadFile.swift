@@ -38,6 +38,7 @@ func isFullScreenDevice(_ device: Device) -> Bool {
 
 //fonts
 let Fredoka_Bold = "Fredoka-Bold"
+let Fredoka_Regular = "Fredoka-Regular"
 
 //login
 let PHONE_LOGIN = "PHONE_LOGIN"

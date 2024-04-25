@@ -31,6 +31,7 @@
 		18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E842BB17D3100F1FA23 /* LocationManager.swift */; };
 		18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E862BB17D5000F1FA23 /* LocationModel.swift */; };
 		18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E882BB17E0900F1FA23 /* TotalModel.swift */; };
+		185950682BDA12D500BD57CD /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */; };
 		186210942BCF76A500A74058 /* RightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210932BCF76A500A74058 /* RightView.swift */; };
 		186210962BCFBD8500A74058 /* RightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210952BCFBD8500A74058 /* RightTableView.swift */; };
 		186210982BCFC1C000A74058 /* RightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210972BCFC1C000A74058 /* RightViewCell.swift */; };
@@ -95,6 +96,7 @@
 		18562E842BB17D3100F1FA23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		18562E862BB17D5000F1FA23 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		18562E882BB17E0900F1FA23 /* TotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModel.swift; sourceTree = "<group>"; };
+		185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		186210932BCF76A500A74058 /* RightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightView.swift; sourceTree = "<group>"; };
 		186210952BCFBD8500A74058 /* RightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTableView.swift; sourceTree = "<group>"; };
 		186210972BCFC1C000A74058 /* RightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */,
+				185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 			files = (
 				18D006DD2BC7F18E00C70B54 /* Fredoka-Bold.ttf in Resources */,
 				18562E2F2BB128D300F1FA23 /* Assets.xcassets in Resources */,
+				185950682BDA12D500BD57CD /* Fredoka-Regular.ttf in Resources */,
 				18AD9AF72BC94D4C00D33830 /* loading.json in Resources */,
 				18562E322BB128D300F1FA23 /* Base in Resources */,
 			);

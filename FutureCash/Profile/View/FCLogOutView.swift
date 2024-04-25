@@ -33,8 +33,10 @@ class FCLogOutView: UIView {
         return confirmBtn
     }()
     
-    lazy var titleLable: UILabel = {
-        let titleLable = UILabel.createLabel(font: UIFont(name: Fredoka_SemiBold, size: 18.px())!, textColor: .white, textAlignment: .center)
+    lazy var titleLable: FFShadowLabel = {
+        let titleLable = FFShadowLabel(strockColor: UIColor.init(css: "#384067"))
+        titleLable.font = UIFont(name: Fredoka_Bold, size: 18.px())
+        titleLable.textAlignment = .center
         titleLable.numberOfLines = 0
         titleLable.text = "Logging out will prevent you from viewing bills and application progress.\nSimply log back in to view them."
         return titleLable

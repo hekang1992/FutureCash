@@ -20,7 +20,7 @@ class FCNavView: UIView {
 
     lazy var titleLable: FFShadowLabel = {
         let titleLable = FFShadowLabel(strockColor: UIColor.init(css: "#384067"))
-        titleLable.text = "Setting"
+        titleLable.text = ""
         titleLable.font = UIFont(name: Fredoka_Bold, size: 18.px())
         titleLable.textAlignment = .center
         return titleLable

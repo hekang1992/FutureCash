@@ -34,6 +34,8 @@
 		185950682BDA12D500BD57CD /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */; };
 		1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185950692BDA335000BD57CD /* FCLogOutView.swift */; };
 		1859506C2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1859506B2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf */; };
+		1859506E2BDA49EB00BD57CD /* DelAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859506D2BDA49EB00BD57CD /* DelAccountViewController.swift */; };
+		185950702BDA4A8800BD57CD /* FCDelAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859506F2BDA4A8800BD57CD /* FCDelAccountView.swift */; };
 		186210942BCF76A500A74058 /* RightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210932BCF76A500A74058 /* RightView.swift */; };
 		186210962BCFBD8500A74058 /* RightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210952BCFBD8500A74058 /* RightTableView.swift */; };
 		186210982BCFC1C000A74058 /* RightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210972BCFC1C000A74058 /* RightViewCell.swift */; };
@@ -101,6 +103,8 @@
 		185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		185950692BDA335000BD57CD /* FCLogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCLogOutView.swift; sourceTree = "<group>"; };
 		1859506B2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
+		1859506D2BDA49EB00BD57CD /* DelAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelAccountViewController.swift; sourceTree = "<group>"; };
+		1859506F2BDA4A8800BD57CD /* FCDelAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCDelAccountView.swift; sourceTree = "<group>"; };
 		186210932BCF76A500A74058 /* RightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightView.swift; sourceTree = "<group>"; };
 		186210952BCFBD8500A74058 /* RightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTableView.swift; sourceTree = "<group>"; };
 		186210972BCFC1C000A74058 /* RightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewCell.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				18562E782BB1483000F1FA23 /* ProfileViewController.swift */,
+				1859506D2BDA49EB00BD57CD /* DelAccountViewController.swift */,
 			);
 			path = Contorller;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 			children = (
 				18D6F0542BD8BC670022EFAA /* FCSetView.swift */,
 				185950692BDA335000BD57CD /* FCLogOutView.swift */,
+				1859506F2BDA4A8800BD57CD /* FCDelAccountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -696,6 +702,7 @@
 			files = (
 				18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */,
 				186210962BCFBD8500A74058 /* RightTableView.swift in Sources */,
+				185950702BDA4A8800BD57CD /* FCDelAccountView.swift in Sources */,
 				18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */,
 				18562E832BB1560100F1FA23 /* NetworkManager.swift in Sources */,
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
@@ -706,6 +713,7 @@
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
 				186210942BCF76A500A74058 /* RightView.swift in Sources */,
 				18562E732BB1470E00F1FA23 /* BaseHeadFile.swift in Sources */,
+				1859506E2BDA49EB00BD57CD /* DelAccountViewController.swift in Sources */,
 				18562E5B2BB12AC800F1FA23 /* FCBaseViewController.swift in Sources */,
 				18562E812BB1501500F1FA23 /* DeviceInfo.swift in Sources */,
 				18562E7F2BB14DD600F1FA23 /* LoginFactory.swift in Sources */,

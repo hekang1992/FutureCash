@@ -7,6 +7,7 @@
 
 import UIKit
 import PopupDialog
+import MBProgressHUD
 
 class ProfileViewController: FCBaseViewController {
     
@@ -25,6 +26,7 @@ class ProfileViewController: FCBaseViewController {
         
         // Do any additional setup after loading the view.
         addNavView()
+        self.navView.titleLable.text = "Setting"
         self.navView.block = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
@@ -72,15 +74,32 @@ extension ProfileViewController {
         outView.block = { [weak self] in
             self?.logOutSys()
         }
-        present(dialog, animated: true, completion: nil)
-    }
-    
-    func delAccount() {
-        
+        present(dialog, animated: true)
     }
     
     func logOutSys() {
-        
+        self.dismiss(animated: true) {
+            self.requestLogOutApi()
+        }
+    }
+    
+    func delAccount() {
+        let delVc = DelAccountViewController()
+        self.navigationController?.pushViewController(delVc, animated: true)
+    }
+    
+    func requestLogOutApi() {
+        let dict: [String: Any] = [:]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: childiveMorley, method: .get) { baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting
+            if conceive == 0 || conceive == 00 {
+                FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
+            }
+            MBProgressHUD.show(text: wanting ?? "")
+        } errorBlock: { error in
+            
+        }
     }
     
 }

@@ -16,5 +16,65 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "724726EF-BFFE-4F81-9E5D-1E9454DF1911"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/PopupDialog/PopupDialog/Classes/TransitionAnimations.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "BounceDownTransition"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "724726EF-BFFE-4F81-9E5D-1E9454DF1911 - a6d7ada626cfa918"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PopupDialog.BounceDownTransition.__allocating_init(inDuration: Swift.Double, outDuration: Swift.Double, direction: PopupDialog.AnimationDirection) -&gt; PopupDialog.BounceDownTransition"
+                  moduleName = "PopupDialog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/FutureCash/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimations.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "724726EF-BFFE-4F81-9E5D-1E9454DF1911 - fd38b9af96dfb492"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PopupDialog.BounceDownTransition.init(inDuration: Swift.Double, outDuration: Swift.Double, direction: PopupDialog.AnimationDirection) -&gt; PopupDialog.BounceDownTransition"
+                  moduleName = "PopupDialog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/FutureCash/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimations.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77">
+               </Location>
+               <Location
+                  uuid = "724726EF-BFFE-4F81-9E5D-1E9454DF1911 - 6d6399c6243a7df3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PopupDialog.BounceDownTransition.__deallocating_deinit"
+                  moduleName = "PopupDialog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Desktop/FutureCash/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimations.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

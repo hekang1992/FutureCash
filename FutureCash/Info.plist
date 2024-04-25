@@ -5,6 +5,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Fredoka-Regular.ttf</string>
+		<string>Fredoka-SemiBold.ttf</string>
 		<string>Fredoka-Bold.ttf</string>
 	</array>
 	<key>NSAppTransportSecurity</key>

@@ -194,7 +194,7 @@ class FCSetView: UIView {
         iconImageView5.snp.makeConstraints { make in
             make.centerX.equalTo(bgImageView)
             make.size.equalTo(CGSizeMake(315.px(), 90.px()))
-            make.bottom.equalTo(bgImageView).offset(-60.px())
+            make.bottom.equalTo(bgImageView).offset(-66.px())
         }
         iconImageView4.snp.makeConstraints { make in
             make.centerX.equalTo(bgImageView)
@@ -282,17 +282,14 @@ extension FCSetView {
     }
     
     @objc func imageTapped1() {
-        MBProgressHUD.show(text: "like us")
         self.block1?()
     }
     
     @objc func imageTapped2() {
-        MBProgressHUD.show(text: "logout")
         self.block2?()
     }
     
     @objc func imageTapped3() {
-        MBProgressHUD.show(text: "del account")
         self.block3?()
     }
 }

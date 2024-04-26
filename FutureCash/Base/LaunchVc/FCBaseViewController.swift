@@ -62,13 +62,14 @@ class FCBaseViewController: UIViewController {
         delayTime(0.25) { [weak self] in
             self?.animateLoginView()
         }
-        
     }
     
     func hideLoginView() {
         self.loginView.phoneTed.text = ""
         self.loginView.codeView.deleteCodeStr()
         self.loginView.isHidden = true
+        self.loginView.codeView.hideTextField.resignFirstResponder()
+        self.loginView.phoneTed.resignFirstResponder()
         UIView.animate(withDuration: 0.25) {
             self.loginView.bgImageView.snp.updateConstraints { make in
                 make.left.equalTo(self.loginView.bgView).offset(SCREEN_WIDTH)

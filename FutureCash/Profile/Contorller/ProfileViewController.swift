@@ -25,7 +25,7 @@ class ProfileViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        addNavView()
+        self.navView.isHidden = false
         self.navView.titleLable.text = "Setting"
         self.navView.block = { [weak self] in
             self?.navigationController?.popViewController(animated: true)

@@ -38,7 +38,6 @@ class FCNavView: UIView {
     }
 }
 
-
 extension FCNavView {
     
     func setUpFrame() {

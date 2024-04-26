@@ -19,7 +19,8 @@ class LoadView: UIView {
     }()
     
     private lazy var hudView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "loading.json", bundle: Bundle.main)
+        let animationView = LottieAnimationView(name: "FCLoading.json", 
+                                                bundle: Bundle.main)
         animationView.loopMode = .loop
         animationView.play()
         return animationView
@@ -49,7 +50,7 @@ class LoadView: UIView {
         
         hudView.snp.makeConstraints { make in
             make.center.equalTo(self)
-            make.size.equalTo(CGSize(width: 80.px(), height: 80.px()))
+            make.size.equalTo(CGSize(width: 100.px(), height: 100.px()))
         }
     }
 }

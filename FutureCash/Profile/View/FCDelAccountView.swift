@@ -60,6 +60,12 @@ class FCDelAccountView: UIView {
         return bgImageView2
     }()
     
+    lazy var bgImageView3: UIImageView = {
+        let bgImageView3 = UIImageView()
+        bgImageView3.image = UIImage(named: "jinggao")
+        return bgImageView3
+    }()
+    
     lazy var titleLable3: UILabel = {
         let titleLable3 = UILabel.createLabel(font: UIFont(name: Fredoka_SemiBold, size: 12.px())!, textColor: UIColor.init(css: "#384067"), textAlignment: .left)
         titleLable3.numberOfLines = 0
@@ -115,6 +121,7 @@ class FCDelAccountView: UIView {
         super.init(frame: frame)
         addSubview(bgImageView)
         bgImageView.addSubview(bgImageView1)
+        bgImageView.addSubview(bgImageView3)
         bgImageView1.addSubview(titleLable)
         bgImageView1.addSubview(titleLable1)
         addSubview(titleLable2)
@@ -138,12 +145,17 @@ class FCDelAccountView: UIView {
             make.edges.equalTo(self)
         }
         if let vc = self.viewController  {
-            let hegitht = UIViewController.getTopBarHeights(for: vc)
+            let height = UIViewController.getTopBarHeights(for: vc)
             bgImageView1.snp.makeConstraints { make in
-                make.top.equalTo(bgImageView).offset(hegitht.totalHeight)
+                make.top.equalTo(bgImageView).offset(height.totalHeight + 42.px())
                 make.centerX.equalTo(bgImageView)
                 make.size.equalTo(CGSizeMake(315.px(), 140.px()))
             }
+        }
+        bgImageView3.snp.makeConstraints { make in
+            make.left.equalTo(bgImageView1.snp.left).offset(-7.px())
+            make.top.equalTo(bgImageView1.snp.top).offset(-9.px())
+            make.size.equalTo(CGSizeMake(27.px(), 27.px()))
         }
         titleLable.snp.makeConstraints { make in
             make.centerX.equalTo(bgImageView1)

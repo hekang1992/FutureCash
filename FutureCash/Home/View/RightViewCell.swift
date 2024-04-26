@@ -23,7 +23,6 @@ class RightViewCell: UITableViewCell {
 
     lazy var icon: UIImageView = {
         let icon = UIImageView()
-        icon.backgroundColor = .randomColor()
         return icon
     }()
     

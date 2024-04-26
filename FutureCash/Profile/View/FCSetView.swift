@@ -147,13 +147,24 @@ class FCSetView: UIView {
         iconImageView5.addSubview(titleLable5)
         iconImageView5.addSubview(titleLable6)
         bgImageView.addSubview(iconImageView6)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         bgImageView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
-        iconImageView.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(110.px())
-            make.centerX.equalTo(self)
-            make.size.equalTo(CGSizeMake(315.px(), 56.px()))
+        if let vc = self.viewController  {
+            let height = UIViewController.getTopBarHeights(for: vc)
+            iconImageView.snp.makeConstraints { make in
+                make.top.equalTo(self).offset(height.totalHeight + 45.px())
+                make.centerX.equalTo(self)
+                make.size.equalTo(CGSizeMake(315.px(), 56.px()))
+            }
         }
         titleLable.snp.makeConstraints { make in
             make.center.equalTo(iconImageView)
@@ -222,10 +233,6 @@ class FCSetView: UIView {
             make.size.equalTo(CGSizeMake(27.px(), 27.px()))
         }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 
@@ -275,7 +282,8 @@ extension FCSetView {
         if let keyWindow = UIApplication.shared.windows.first {
             keyWindow.addSubview(loadView)
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            MBProgressHUD.show(text: "Success")
             self.titleLable.text = "Clear Cache     0.00MB"
             loadView.removeFromSuperview()
         }

@@ -19,7 +19,7 @@ class DelAccountViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        addNavView()
+        self.navView.isHidden = false
         self.navView.block = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
@@ -30,7 +30,6 @@ class DelAccountViewController: FCBaseViewController {
             }
         }
     }
-    
     
     /*
      // MARK: - Navigation

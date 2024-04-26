@@ -178,13 +178,14 @@ extension UIViewController {
     static func getTopBarHeights(for viewController: UIViewController?) -> (statusBarHeight: CGFloat, navigationBarHeight: CGFloat, totalHeight: CGFloat) {
         let statusBarHeight: CGFloat
         if #available(iOS 13.0, *) {
-            statusBarHeight = viewController?.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 20
+            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            statusBarHeight = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         } else {
             statusBarHeight = UIApplication.shared.statusBarFrame.height
         }
         let navigationBarHeight: CGFloat = viewController?.navigationController?.navigationBar.frame.height ?? 0
         let totalHeight = statusBarHeight + navigationBarHeight
-        return (statusBarHeight, navigationBarHeight, totalHeight + 10.px())
+        return (statusBarHeight, navigationBarHeight, totalHeight)
     }
     
     static func getCurrentUIVC() -> UIViewController? {

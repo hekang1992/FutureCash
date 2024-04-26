@@ -21,6 +21,7 @@ class FCBaseViewController: UIViewController {
     
     lazy var navView: FCNavView = {
         let navView = FCNavView()
+        navView.isHidden = true
         return navView
     }()
     
@@ -28,6 +29,7 @@ class FCBaseViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        addNavView()
     }
     
     func addNavView() {

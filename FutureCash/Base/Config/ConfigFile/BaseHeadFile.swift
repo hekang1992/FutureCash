@@ -15,7 +15,7 @@ let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 // 高度
 let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 // 状态栏高度
-let STATUSBAR_HIGH = isFullScreenDevice(Device.current) ? 44 : 20
+let STATUSBAR_HIGH = Bool.isFullScreenDevice(Device.current) ? 44 : 20
 // 导航栏高度
 let NAV_HIGH = 44 + STATUSBAR_HIGH;
 
@@ -30,20 +30,31 @@ let FCAPPLE_LOCATION = "FCAPPLE_LOCATION"
 let FCAPPLE_ROOT_VC = "FCAPPLE_ROOT_VC"
 let FCAPPLE_GOOGLE = "FCAPPLE_GOOGLE"
 
-// 判断设备是否是全面屏
-func isFullScreenDevice(_ device: Device) -> Bool {
-    let fullScreenModels: [Device] = Device.allDevicesWithSensorHousing
-    return fullScreenModels.contains(device)
-}
-
 //fonts
 let Fredoka_Bold = "Fredoka-Bold"
 let Fredoka_Regular = "Fredoka-Regular"
 let Fredoka_SemiBold = "Fredoka-SemiBold"
+let Fredoka_Medium = "Fredoka-Medium"
 
 //login
 let PHONE_LOGIN = "PHONE_LOGIN"
 let PHONE_SESSIONID = "PHONE_SESSIONID"
+
+var IS_LOGIN: Bool {
+    if let cssID = UserDefaults.standard.object(forKey: PHONE_SESSIONID) as? String {
+        return !cssID.isEmpty
+    } else {
+        return false
+    }
+}
+
+// 判断设备是否是全面屏
+extension Bool {
+    static func isFullScreenDevice(_ device: Device) -> Bool {
+        let fullScreenModels: [Device] = Device.allDevicesWithSensorHousing
+        return fullScreenModels.contains(device)
+    }
+}
 
 extension UIColor {
     static func randomColor() -> UIColor {
@@ -74,6 +85,17 @@ extension UIView {
         let maskLayer = CAShapeLayer()
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer
+    }
+    
+    var viewController: UIViewController? {
+        var responder: UIResponder? = self
+        while responder != nil {
+            if let viewController = responder as? UIViewController {
+                return viewController
+            }
+            responder = responder?.next
+        }
+        return nil
     }
 }
 
@@ -153,6 +175,17 @@ extension UIButton {
 }
 
 extension UIViewController {
+    static func getTopBarHeights(for viewController: UIViewController?) -> (statusBarHeight: CGFloat, navigationBarHeight: CGFloat, totalHeight: CGFloat) {
+        let statusBarHeight: CGFloat
+        if #available(iOS 13.0, *) {
+            statusBarHeight = viewController?.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 20
+        } else {
+            statusBarHeight = UIApplication.shared.statusBarFrame.height
+        }
+        let navigationBarHeight: CGFloat = viewController?.navigationController?.navigationBar.frame.height ?? 0
+        let totalHeight = statusBarHeight + navigationBarHeight
+        return (statusBarHeight, navigationBarHeight, totalHeight + 10.px())
+    }
     
     static func getCurrentUIVC() -> UIViewController? {
         guard let superVC = getCurrentVC() else {
@@ -170,7 +203,7 @@ extension UIViewController {
         return superVC
     }
     
-   static func getCurrentVC() -> UIViewController? {
+    static func getCurrentVC() -> UIViewController? {
         var result: UIViewController?
         var window = UIApplication.shared.keyWindow
         if window?.windowLevel != UIWindow.Level.normal {

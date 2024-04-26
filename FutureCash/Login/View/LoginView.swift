@@ -108,7 +108,7 @@ class LoginView: UIView {
     
     lazy var privacyLabel: UILabel = {
         let label = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 14.px())!, textColor: UIColor.init(css: "#943800"), textAlignment: .left)
-        label.text = "Sign-in form agreeing to "
+        label.text = "Sign-in form agreeing to"
         label.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPrivacy))
         label.addGestureRecognizer(tapGesture)
@@ -117,7 +117,7 @@ class LoginView: UIView {
     
     lazy var privacyLabel1: FFShadowLabel = {
         let label = FFShadowLabel()
-        label.text = "Privacy Policy."
+        label.text = " Privacy Policy."
         label.font = UIFont(name: Fredoka_Bold, size: 14.px())
         label.textAlignment = .left
         label.isUserInteractionEnabled = true
@@ -229,7 +229,6 @@ extension LoginView: UITextFieldDelegate  {
     }
     
     @objc func openPrivacy() {
-        MBProgressHUD.show(text: "隐私协议")
         self.block4?()
     }
     

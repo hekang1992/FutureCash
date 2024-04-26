@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         getLocation()
         getPushApple()
         keyboardManager()
-        getFontNames()
+//        getFontNames()
         window?.makeKeyAndVisible()
         return true
     }

@@ -17,7 +17,10 @@ class LoginFactory: NSObject {
         let routine: String = DeviceInfo.getIdfv()
         let pitched: String = SystemServices().systemsVersion ?? ""
         let pistol: String = "liliy"
-        let temple: String = "sessionId"
+        var temple: String = ""
+        if let sessionId: String = UserDefaults.standard.object(forKey: PHONE_SESSIONID) as? String {
+            temple = sessionId
+        }
         let below: String = DeviceInfo.getIdfv()
         let change: String = "change"
         let lastUrl: String = "shoot=\(shoot)&pursed=\(pursed)&fingerprints=\(fingerprints)&routine=\(routine)&pitched=\(pitched)&pistol=\(pistol)&temple=\(temple)&below=\(below)&change=\(change)"

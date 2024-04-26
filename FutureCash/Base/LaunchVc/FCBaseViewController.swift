@@ -31,10 +31,11 @@ class FCBaseViewController: UIViewController {
     }
     
     func addNavView() {
+        let heights = FCBaseViewController.getTopBarHeights(for: self)
         view.addSubview(navView)
         navView.snp.makeConstraints { make in
             make.left.right.top.equalTo(self.view)
-            make.height.equalTo(80.px())
+            make.height.equalTo(heights.totalHeight.px())
         }
     }
     
@@ -170,5 +171,5 @@ extension FCBaseViewController {
             
         }
     }
-
+    
 }

@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Fredoka-Medium.ttf</string>
 		<string>Fredoka-Regular.ttf</string>
 		<string>Fredoka-SemiBold.ttf</string>
 		<string>Fredoka-Bold.ttf</string>

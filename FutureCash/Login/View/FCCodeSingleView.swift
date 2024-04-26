@@ -63,7 +63,6 @@ public class MHVerifyCodeView: UIStackView, UITextFieldDelegate {
         addSubview(textfield)
         textfield.keyboardType = .numberPad
         textfield.delegate = self
-        textfield.backgroundColor = .randomColor()
         return textfield
     }()
     

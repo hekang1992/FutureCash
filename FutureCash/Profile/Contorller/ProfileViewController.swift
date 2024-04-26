@@ -33,7 +33,12 @@ class ProfileViewController: FCBaseViewController {
         addSetView()
         setView.block1 = {}
         setView.block2 = { [weak self] in
-            self?.logOut()
+            if IS_LOGIN {
+                self?.logOut()
+            }else {
+                self?.addLoginView()
+            }
+            
         }
         setView.block3 = { [weak self] in
             self?.delAccount()
@@ -84,17 +89,24 @@ extension ProfileViewController {
     }
     
     func delAccount() {
-        let delVc = DelAccountViewController()
-        self.navigationController?.pushViewController(delVc, animated: true)
+        if IS_LOGIN {
+            let delVc = DelAccountViewController()
+            self.navigationController?.pushViewController(delVc, animated: true)
+        }else {
+            self.addLoginView()
+        }
     }
     
     func requestLogOutApi() {
         let dict: [String: Any] = [:]
-        FCRequset.shared.requestAPI(params: dict, pageUrl: childiveMorley, method: .get) { baseModel in
+        FCRequset.shared.requestAPI(params: dict, pageUrl: childiveMorley, method: .get) { [weak self] baseModel in
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting
             if conceive == 0 || conceive == 00 {
-                FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
+                LoginFactory.removeLoginInfo()
+                self?.delayTime(0.25) {
+                    FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
+                }
             }
             MBProgressHUD.show(text: wanting ?? "")
         } errorBlock: { error in

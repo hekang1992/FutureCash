@@ -10,7 +10,7 @@ import UIKit
 class OverlapFlowLayout: UICollectionViewFlowLayout {
     
     var selectedIndexPath: IndexPath?
-    let padding: CGFloat = 12.px()
+    let padding: CGFloat = 10.px()
     let columns: Int = 2
     var itemWidth: CGFloat = 0
     var itemHeight: CGFloat = 0
@@ -20,13 +20,13 @@ class OverlapFlowLayout: UICollectionViewFlowLayout {
         let attributesCopy = attributes.map { $0.copy() as! UICollectionViewLayoutAttributes }
         for attribute in attributesCopy {
             let row = attribute.indexPath.item / columns
-            let offset: CGFloat = -50.px()
+            let offset: CGFloat = -35.px()
             attribute.transform = CGAffineTransform(translationX: 0, y: offset * CGFloat(row))
             attribute.zIndex = row
             if let selected = selectedIndexPath, attribute.indexPath.item % columns == selected.item % columns {
                 if attribute.indexPath.item == selected.item {
                     let offsetY: CGFloat = -30.px()
-                    attribute.transform = attribute.transform.scaledBy(x: 1.1, y: 1.1)
+                    attribute.transform = attribute.transform.scaledBy(x: 1.05, y: 1.05)
                     attribute.transform = attribute.transform.translatedBy(x: 0, y: offsetY)
                 }
             }
@@ -50,9 +50,9 @@ class OverlapFlowLayout: UICollectionViewFlowLayout {
     
     private func commonInit() {
         scrollDirection = .vertical
-        itemSize = CGSize(width: 147.px(), height: 88.px())
-        minimumLineSpacing = padding
-        minimumInteritemSpacing = padding
+        itemSize = CGSize(width: 157.px(), height: 88.px())
+        minimumLineSpacing = 1.px()
+        minimumInteritemSpacing = 1.px()
     }
     
 }

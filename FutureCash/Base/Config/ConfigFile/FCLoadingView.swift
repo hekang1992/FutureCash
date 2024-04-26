@@ -47,7 +47,6 @@ class LoadView: UIView {
             make.center.equalTo(self)
             make.size.equalTo(CGSizeMake(100.px(), 100.px()))
         }
-        
         hudView.snp.makeConstraints { make in
             make.center.equalTo(self)
             make.size.equalTo(CGSize(width: 100.px(), height: 100.px()))

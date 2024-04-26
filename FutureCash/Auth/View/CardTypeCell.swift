@@ -9,6 +9,11 @@ import UIKit
 
 class CardTypeCell: UICollectionViewCell {
     
+    lazy var bgView: UIView = {
+        let bgView = UIView()
+        return bgView
+    }()
+    
     lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
         iconImageView.image = UIImage(named: "caidafj")
@@ -17,9 +22,14 @@ class CardTypeCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(iconImageView)
-        iconImageView.snp.makeConstraints { make in
+        contentView.addSubview(bgView)
+        bgView.addSubview(iconImageView)
+        bgView.snp.makeConstraints { make in
             make.edges.equalTo(self.contentView)
+        }
+        iconImageView.snp.makeConstraints { make in
+            make.center.equalTo(bgView)
+            make.size.equalTo(CGSizeMake(147.px(), 84.5.px()))
         }
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 class CardTypeView: UIView {
-
+    
     lazy var bgView: UIView = {
         let bgView = UIView()
         bgView.backgroundColor = .clear
@@ -20,27 +20,48 @@ class CardTypeView: UIView {
         iconImageView1.contentMode = .scaleAspectFill
         iconImageView1.clipsToBounds = true
         iconImageView1.image = UIImage(named: "bg1")
+        iconImageView1.isUserInteractionEnabled = true
         return iconImageView1
     }()
     
     lazy var iconImageView2: UIImageView = {
         let iconImageView2 = UIImageView()
         iconImageView2.image = UIImage(named: "bg3")
+        iconImageView2.isUserInteractionEnabled = true
         return iconImageView2
     }()
     
     lazy var iconImageView3: UIImageView = {
         let iconImageView3 = UIImageView()
         iconImageView3.image = UIImage(named: "bg2")
+        iconImageView3.isUserInteractionEnabled = true
         return iconImageView3
     }()
-
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = OverlapFlowLayout()
+        layout.headerReferenceSize = CGSize(width: 100.px(), height: 16.px())
+        layout.sectionInset = UIEdgeInsets(top: 16.px(), left: 0, bottom: 0, right: 0)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(CardTypeCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
+        let radians = CGFloat(tan(-1.56 * Double.pi / 180))
+        collectionView.transform = CGAffineTransform(rotationAngle: radians)
+        return collectionView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
         bgView.addSubview(iconImageView1)
-        bgView.addSubview(iconImageView2)
-        bgView.addSubview(iconImageView3)
+        iconImageView1.addSubview(iconImageView2)
+        iconImageView1.addSubview(iconImageView3)
+        iconImageView1.addSubview(collectionView)
     }
     
     override func layoutSubviews() {
@@ -64,10 +85,40 @@ class CardTypeView: UIView {
             make.top.equalTo(iconImageView2.snp.bottom).offset(13.px())
             make.size.equalTo(CGSizeMake(375.px(), 465.px()))
         }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(iconImageView3)
+            make.centerX.equalTo(iconImageView3)
+            make.left.equalTo(iconImageView3).offset(30.px())
+            make.bottom.equalTo(iconImageView3).offset(-92.px())
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 11
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let layout = collectionView.collectionViewLayout as? OverlapFlowLayout {
+            layout.selectedIndexPath = indexPath == layout.selectedIndexPath ? nil : indexPath
+            UIView.animate(withDuration: 0.3, animations: {
+                collectionView.performBatchUpdates({
+                    collectionView.collectionViewLayout.invalidateLayout()
+                }, completion: nil)
+            })
+        }
     }
     
 }

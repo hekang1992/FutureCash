@@ -13,6 +13,8 @@ class ChangeTypeView: UIView {
     
     var block: (() -> Void)?
     
+    var block1: ((PModel) -> Void)?
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "bgikuu")
@@ -88,12 +90,13 @@ extension ChangeTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = modelArray?[indexPath.row]
-        print("model>>>>>>>\(model?.excuse ?? "")")
+        if let model = model {
+            self.block1?(model)
+        }
     }
     
     @objc func canClick() {
         self.block?()
     }
-    
     
 }

@@ -24,6 +24,11 @@ class CardTypeViewController: FCBaseViewController {
         return changeView
     }()
     
+    lazy var sureView: TypeSureView = {
+        let sureView = TypeSureView(frame: self.view.bounds)
+        return sureView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navView.isHidden = false
@@ -34,6 +39,9 @@ class CardTypeViewController: FCBaseViewController {
         getCardPic()
         typeView.block = { [weak self] in
             self?.popTypeView()
+        }
+        typeView.block1 = { [weak self] model in
+            self?.selectTypeView(model)
         }
     }
 }
@@ -57,6 +65,14 @@ extension CardTypeViewController {
         changeView.block = { [weak self] in
             self?.dismiss(animated: true)
         }
+        changeView.block1 = { [weak self] model in
+            self?.selectTypeView(model)
+        }
+    }
+    
+    func selectTypeView(_ model: PModel) {
+        let alertVC = TYAlertController(alert: sureView, preferredStyle: .actionSheet)
+        self.present(alertVC!, animated: true)
     }
     
     func getCardPic() {

@@ -11,6 +11,7 @@ import MBProgressHUD
 class CardTypeView: UIView {
     
     var block: (() -> Void)?
+    var block1: ((PModel) -> Void)?
     
     var modelArray: [PModel]?
     
@@ -149,10 +150,15 @@ extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let layout = collectionView.collectionViewLayout as? OverlapFlowLayout {
             layout.selectedIndexPath = indexPath == layout.selectedIndexPath ? nil : indexPath
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 collectionView.performBatchUpdates({
                     collectionView.collectionViewLayout.invalidateLayout()
-                }, completion: nil)
+                }, completion: {_ in 
+                    let model = self.modelArray?[indexPath.row]
+                    if let model = model {
+                        self.block1?(model)
+                    }
+                })
             })
         }
     }

@@ -9,6 +9,8 @@ import UIKit
 
 class ChangeTypeView: UIView {
     
+    var modelArray: [PModel]?
+    
     var block: (() -> Void)?
     
     lazy var bgImageView: UIImageView = {
@@ -73,14 +75,20 @@ class ChangeTypeView: UIView {
 extension ChangeTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return modelArray?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ChangeViewCell else {
             fatalError("Unable to dequeue CardTypeCell")
         }
+        cell.model = modelArray?[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = modelArray?[indexPath.row]
+        print("model>>>>>>>\(model?.excuse ?? "")")
     }
     
     @objc func canClick() {

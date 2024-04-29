@@ -55,6 +55,7 @@ class ChangeViewCell: UICollectionViewCell {
     var model: PModel? {
         didSet {
             guard let model = model else { return }
+            titleLable.text = model.excuse ?? ""
             let imageUrl = URL(string: model.yewtiful ?? "")
             iconImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "caidafj"))
         }

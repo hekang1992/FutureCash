@@ -8,8 +8,11 @@
 import UIKit
 import HandyJSON
 import TYAlertController
+import MBProgressHUD
 
 class CardTypeViewController: FCBaseViewController {
+    
+    var modelArray: [PModel]?
     
     lazy var typeView: CardTypeView = {
         let typeView = CardTypeView()
@@ -46,6 +49,10 @@ extension CardTypeViewController {
     
     func popTypeView() {
         let alertVC = TYAlertController(alert: changeView, preferredStyle: .actionSheet)
+        if let modelArray = self.modelArray {
+            changeView.modelArray = modelArray
+            changeView.collectionView.reloadData()
+        }
         self.present(alertVC!, animated: true)
         changeView.block = { [weak self] in
             self?.dismiss(animated: true)
@@ -58,8 +65,11 @@ extension CardTypeViewController {
             let conceive = baseModel.conceive
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<CardTypeModel>.deserializeFrom(dict: baseModel.easily)
-                self?.typeView.modelArray = model?.pwpnnemw
-                self?.typeView.collectionView.reloadData()
+                if let model = model {
+                    self?.modelArray = model.pwpnnemw
+                    self?.typeView.modelArray = model.pwpnnemw
+                    self?.typeView.collectionView.reloadData()
+                }
             }
         } errorBlock: { error in
             

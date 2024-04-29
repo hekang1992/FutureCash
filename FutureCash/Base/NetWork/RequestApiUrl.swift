@@ -37,6 +37,7 @@ let heAfter = "/heAfter"
 let andChair = "/andChair"
 let patientWanted = "/patientWanted"
 let troubleObviously = "/troubleObviously"
+let wnnjennn = "/wnnjennn"
 
 // ORDER
 let alfredsConscious = "/alfredsConscious"

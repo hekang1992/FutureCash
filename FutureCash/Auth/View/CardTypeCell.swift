@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CardTypeCell: UICollectionViewCell {
     
@@ -16,6 +17,8 @@ class CardTypeCell: UICollectionViewCell {
     
     lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.clipsToBounds = true
         iconImageView.image = UIImage(named: "caidafj")
         return iconImageView
     }()
@@ -35,6 +38,14 @@ class CardTypeCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var model: PModel? {
+        didSet {
+            guard let model = model else { return }
+            let imageUrl = URL(string: model.yewtiful ?? "")
+            iconImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "caidafj"))
+        }
     }
     
 }

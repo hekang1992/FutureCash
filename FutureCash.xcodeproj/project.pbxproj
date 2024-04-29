@@ -45,6 +45,8 @@
 		186210942BCF76A500A74058 /* RightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210932BCF76A500A74058 /* RightView.swift */; };
 		186210962BCFBD8500A74058 /* RightTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210952BCFBD8500A74058 /* RightTableView.swift */; };
 		186210982BCFC1C000A74058 /* RightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210972BCFC1C000A74058 /* RightViewCell.swift */; };
+		188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A62BDF321C005553E8 /* ChangeTypeView.swift */; };
+		188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */; };
 		18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */; };
 		18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */; };
 		18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */; };
@@ -117,6 +119,8 @@
 		186210932BCF76A500A74058 /* RightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightView.swift; sourceTree = "<group>"; };
 		186210952BCFBD8500A74058 /* RightTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightTableView.swift; sourceTree = "<group>"; };
 		186210972BCFC1C000A74058 /* RightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewCell.swift; sourceTree = "<group>"; };
+		188B25A62BDF321C005553E8 /* ChangeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTypeView.swift; sourceTree = "<group>"; };
+		188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewCell.swift; sourceTree = "<group>"; };
 		18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFShadowLabel.swift; sourceTree = "<group>"; };
 		18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCHUD.swift; sourceTree = "<group>"; };
 		18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCodeSingleView.swift; sourceTree = "<group>"; };
@@ -415,6 +419,8 @@
 				1859507A2BDB803100BD57CD /* CardTypeCell.swift */,
 				185950762BDB77AE00BD57CD /* OverlapFlowLayout.swift */,
 				1859507C2BDB8C5500BD57CD /* CardTypeView.swift */,
+				188B25A62BDF321C005553E8 /* ChangeTypeView.swift */,
+				188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -662,6 +668,7 @@
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
 				1859507B2BDB803100BD57CD /* CardTypeCell.swift in Sources */,
 				18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */,
+				188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */,
 				18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */,
 				1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */,
 				184D87262BB283A100773F45 /* FCRequset.swift in Sources */,
@@ -683,6 +690,7 @@
 				18562E772BB1482000F1FA23 /* OrderViewController.swift in Sources */,
 				184D87352BB2A1DF00773F45 /* LoginView.swift in Sources */,
 				18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */,
+				188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */,
 				18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */,
 				18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */,
 				185950792BDB780600BD57CD /* CardTypeViewController.swift in Sources */,

@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class CardTypeView: UIView {
+    
+    var block: (() -> Void)?
+    
+    var modelArray: [PModel]?
     
     lazy var bgView: UIView = {
         let bgView = UIView()
@@ -38,6 +43,13 @@ class CardTypeView: UIView {
         return iconImageView3
     }()
     
+    lazy var iconImageView4: UIImageView = {
+        let iconImageView4 = UIImageView()
+        iconImageView4.image = UIImage(named: "Slickigo")
+        iconImageView4.isUserInteractionEnabled = true
+        return iconImageView4
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let layout = OverlapFlowLayout()
         layout.headerReferenceSize = CGSize(width: 100.px(), height: 16.px())
@@ -55,6 +67,15 @@ class CardTypeView: UIView {
         return collectionView
     }()
     
+    lazy var changeBtn: UIButton = {
+        let changeBtn = UIButton(type: .custom)
+        changeBtn.setImage(UIImage(named: "icon_but"), for: .normal)
+        changeBtn.addTarget(self, action: #selector(changeBtnClick), for: .touchUpInside)
+        let radians = CGFloat(tan(-1.56 * Double.pi / 180))
+        changeBtn.transform = CGAffineTransform(rotationAngle: radians)
+        return changeBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
@@ -62,6 +83,8 @@ class CardTypeView: UIView {
         iconImageView1.addSubview(iconImageView2)
         iconImageView1.addSubview(iconImageView3)
         iconImageView1.addSubview(collectionView)
+        iconImageView1.addSubview(iconImageView4)
+        iconImageView1.addSubview(changeBtn)
     }
     
     override func layoutSubviews() {
@@ -91,6 +114,16 @@ class CardTypeView: UIView {
             make.left.equalTo(iconImageView3).offset(30.px())
             make.bottom.equalTo(iconImageView3).offset(-92.px())
         }
+        iconImageView4.snp.makeConstraints { make in
+            make.top.equalTo(iconImageView3.snp.bottom).offset(-93.px())
+            make.size.equalTo(CGSizeMake(68.px(), 117.px()))
+            make.left.equalTo(iconImageView1).offset(29.px())
+        }
+        changeBtn.snp.makeConstraints { make in
+            make.right.equalTo(iconImageView1).offset(-34.px())
+            make.size.equalTo(CGSizeMake(146.px(), 63.px()))
+            make.bottom.equalTo(iconImageView3.snp.bottom).offset(-100.px())
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -102,11 +135,14 @@ class CardTypeView: UIView {
 extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 11
+        return modelArray?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CardTypeCell else {
+            fatalError("Unable to dequeue CardTypeCell")
+        }
+        cell.model = modelArray?[indexPath.row]
         return cell
     }
     
@@ -119,6 +155,10 @@ extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
                 }, completion: nil)
             })
         }
+    }
+    
+    @objc func changeBtnClick() {
+        self.block?()
     }
     
 }

@@ -9,23 +9,31 @@ import Foundation
 import HandyJSON
 
 class BaseModel: HandyJSON {
-    required init() {
-    }
+    required init() {}
     var conceive: Int?
     var wanting: String?
     var easily: [String: Any]?
 }
 
 class GoogleModel: HandyJSON {
-    required init() {
-    }
+    required init() {}
     var pistol: String?
     var profession: String?
 }
 
 class LoginModel: HandyJSON {
-    required init() {
-    }
+    required init() {}
     var temperance: String?//phone
     var temple: String?//sessionid
+}
+
+class CardTypeModel: HandyJSON {
+    required init() {}
+    var pwpnnemw: [PModel]?
+}
+
+class PModel: HandyJSON {
+    required init() {}
+    var excuse: String?
+    var yewtiful: String?
 }

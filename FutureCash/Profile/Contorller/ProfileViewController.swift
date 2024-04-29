@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import PopupDialog
+import TYAlertController
 import MBProgressHUD
 
 class ProfileViewController: FCBaseViewController {
@@ -67,19 +67,15 @@ extension ProfileViewController {
     }
     
     func logOut() {
-        let dialog = PopupDialog(viewController: UIViewController(),
-                                 transitionStyle: .zoomIn,
-                                 tapGestureDismissal: false,
-                                 panGestureDismissal: true,
-                                 hideStatusBar: true)
-        dialog.view.addSubview(outView)
+        
+        let alertVC = TYAlertController(alert: outView, preferredStyle: .alert)
+        self.present(alertVC!, animated: true)
         outView.block1 = { [weak self] in
             self?.dismiss(animated: true)
         }
         outView.block = { [weak self] in
             self?.logOutSys()
         }
-        present(dialog, animated: true)
     }
     
     func logOutSys() {

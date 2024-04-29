@@ -41,7 +41,7 @@ target 'FutureCash' do
   
   pod 'MBProgressHUD', '~> 1.2.0'
   
-  pod 'PopupDialog', '~> 1.1.1'
+  pod 'TYAlertController', '~> 1.2.0'
   
   pod 'AAILiveness', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-liveness-detection/2.0.8/iOS-Liveness-SDK-V2.0.8.tar.bz2' , type: :tbz
   

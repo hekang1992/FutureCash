@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import HandyJSON
+import TYAlertController
 
 class CardTypeViewController: FCBaseViewController {
     
     lazy var typeView: CardTypeView = {
         let typeView = CardTypeView()
         return typeView
+    }()
+    
+    lazy var changeView: ChangeTypeView = {
+        let changeView = ChangeTypeView(frame: self.view.bounds)
+        return changeView
     }()
     
     override func viewDidLoad() {
@@ -21,6 +28,10 @@ class CardTypeViewController: FCBaseViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         addTypeView()
+        getCardPic()
+        typeView.block = { [weak self] in
+            self?.popTypeView()
+        }
     }
 }
 
@@ -31,6 +42,29 @@ extension CardTypeViewController {
         typeView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+    }
+    
+    func popTypeView() {
+        let alertVC = TYAlertController(alert: changeView, preferredStyle: .actionSheet)
+        self.present(alertVC!, animated: true)
+        changeView.block = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+    }
+    
+    func getCardPic() {
+        let dict = ["relations": 2]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: wnnjennn, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<CardTypeModel>.deserializeFrom(dict: baseModel.easily)
+                self?.typeView.modelArray = model?.pwpnnemw
+                self?.typeView.collectionView.reloadData()
+            }
+        } errorBlock: { error in
+            
+        }
+        
     }
     
 }

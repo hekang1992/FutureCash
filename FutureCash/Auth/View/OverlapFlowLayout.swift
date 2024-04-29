@@ -26,7 +26,7 @@ class OverlapFlowLayout: UICollectionViewFlowLayout {
             if let selected = selectedIndexPath, attribute.indexPath.item % columns == selected.item % columns {
                 if attribute.indexPath.item == selected.item {
                     let offsetY: CGFloat = -30.px()
-                    attribute.transform = attribute.transform.scaledBy(x: 1.05, y: 1.05)
+                    attribute.transform = attribute.transform.scaledBy(x: 1.02, y: 1.02)
                     attribute.transform = attribute.transform.translatedBy(x: 0, y: offsetY)
                 }
             }

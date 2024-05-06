@@ -34,6 +34,6 @@ class CardTypeModel: HandyJSON {
 
 class PModel: HandyJSON {
     required init() {}
-    var excuse: String?
-    var yewtiful: String?
+    var excuse: String?//umid
+    var yewtiful: String?//pic url
 }

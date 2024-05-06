@@ -48,6 +48,7 @@
 		188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A62BDF321C005553E8 /* ChangeTypeView.swift */; };
 		188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */; };
 		188B25AD2BDF51E2005553E8 /* TypeSureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25AC2BDF51E2005553E8 /* TypeSureView.swift */; };
+		18A7F8632BE8AC1400B33F2D /* FacePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */; };
 		18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */; };
 		18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */; };
 		18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */; };
@@ -123,6 +124,7 @@
 		188B25A62BDF321C005553E8 /* ChangeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTypeView.swift; sourceTree = "<group>"; };
 		188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewCell.swift; sourceTree = "<group>"; };
 		188B25AC2BDF51E2005553E8 /* TypeSureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSureView.swift; sourceTree = "<group>"; };
+		18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacePhotoViewController.swift; sourceTree = "<group>"; };
 		18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFShadowLabel.swift; sourceTree = "<group>"; };
 		18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCHUD.swift; sourceTree = "<group>"; };
 		18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCodeSingleView.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				185950782BDB780600BD57CD /* CardTypeViewController.swift */,
+				18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 				184D87302BB2A12B00773F45 /* LoginViewController.swift in Sources */,
 				186210982BCFC1C000A74058 /* RightViewCell.swift in Sources */,
 				18562E772BB1482000F1FA23 /* OrderViewController.swift in Sources */,
+				18A7F8632BE8AC1400B33F2D /* FacePhotoViewController.swift in Sources */,
 				184D87352BB2A1DF00773F45 /* LoginView.swift in Sources */,
 				188B25AD2BDF51E2005553E8 /* TypeSureView.swift in Sources */,
 				18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */,

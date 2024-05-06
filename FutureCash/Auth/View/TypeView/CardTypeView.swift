@@ -136,7 +136,7 @@ class CardTypeView: UIView {
 
 extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func didselectCollecTionView(_ col: UICollectionView, _ indexPath: IndexPath ) {
+    func didselectCollecTionView(_ col: UICollectionView, _ indexPath: IndexPath) {
         collectionView(col, didSelectItemAt: indexPath)
     }
     

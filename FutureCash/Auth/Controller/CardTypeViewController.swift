@@ -74,10 +74,28 @@ extension CardTypeViewController {
     
     func selectTypeView(_ model: PModel, _ col: CardTypeView, _ indexPath: IndexPath) {
         let alertVC = TYAlertController(alert: sureView, preferredStyle: .actionSheet)
+        sureView.label2.text = model.excuse
         self.present(alertVC!, animated: true)
         sureView.block = { [weak self] in
             self?.dismiss(animated: true, completion: {
                 col.didselectCollecTionView(col.collectionView, indexPath)
+            })
+        }
+        sureView.block1 = { [weak self] in
+            self?.dismiss(animated: true, completion: {
+                col.didselectCollecTionView(col.collectionView, indexPath)
+                self?.delayTime(0.15) {
+                    self?.popTypeView()
+                }
+            })
+        }
+        sureView.block2 = { [weak self] in
+            self?.dismiss(animated: true, completion: {
+                col.didselectCollecTionView(col.collectionView, indexPath)
+                self?.delayTime(0.15, closure: {
+                    let faceVc = FacePhotoViewController()
+                    self?.navigationController?.pushViewController(faceVc, animated: true)
+                })
             })
         }
     }

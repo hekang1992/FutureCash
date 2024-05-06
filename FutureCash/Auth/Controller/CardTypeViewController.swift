@@ -75,6 +75,8 @@ extension CardTypeViewController {
     func selectTypeView(_ model: PModel, _ col: CardTypeView, _ indexPath: IndexPath) {
         let alertVC = TYAlertController(alert: sureView, preferredStyle: .actionSheet)
         sureView.label2.text = model.excuse
+        let imageUrl = URL(string: model.yewtiful ?? "")
+        sureView.idImageView.kf.setImage(with: imageUrl)
         self.present(alertVC!, animated: true)
         sureView.block = { [weak self] in
             self?.dismiss(animated: true, completion: {
@@ -94,6 +96,7 @@ extension CardTypeViewController {
                 col.didselectCollecTionView(col.collectionView, indexPath)
                 self?.delayTime(0.15, closure: {
                     let faceVc = FacePhotoViewController()
+                    faceVc.imageUrl = model.yewtiful
                     self?.navigationController?.pushViewController(faceVc, animated: true)
                 })
             })

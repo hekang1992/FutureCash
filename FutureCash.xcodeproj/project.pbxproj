@@ -49,6 +49,7 @@
 		188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */; };
 		188B25AD2BDF51E2005553E8 /* TypeSureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25AC2BDF51E2005553E8 /* TypeSureView.swift */; };
 		18A7F8632BE8AC1400B33F2D /* FacePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */; };
+		18A7F8652BE8C13500B33F2D /* FCPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8642BE8C13500B33F2D /* FCPhotoView.swift */; };
 		18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */; };
 		18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */; };
 		18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */; };
@@ -125,6 +126,7 @@
 		188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewCell.swift; sourceTree = "<group>"; };
 		188B25AC2BDF51E2005553E8 /* TypeSureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSureView.swift; sourceTree = "<group>"; };
 		18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacePhotoViewController.swift; sourceTree = "<group>"; };
+		18A7F8642BE8C13500B33F2D /* FCPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPhotoView.swift; sourceTree = "<group>"; };
 		18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFShadowLabel.swift; sourceTree = "<group>"; };
 		18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCHUD.swift; sourceTree = "<group>"; };
 		18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCodeSingleView.swift; sourceTree = "<group>"; };
@@ -422,7 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				188B25AB2BDF515C005553E8 /* TypeView */,
-				188B25AA2BDF515A005553E8 /* ChangeTypeView */,
+				188B25AA2BDF515A005553E8 /* FacePhotoView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,13 +439,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		188B25AA2BDF515A005553E8 /* ChangeTypeView */ = {
+		188B25AA2BDF515A005553E8 /* FacePhotoView */ = {
 			isa = PBXGroup;
 			children = (
-				188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */,
-				188B25A62BDF321C005553E8 /* ChangeTypeView.swift */,
+				18A7F8642BE8C13500B33F2D /* FCPhotoView.swift */,
 			);
-			path = ChangeTypeView;
+			path = FacePhotoView;
 			sourceTree = "<group>";
 		};
 		188B25AB2BDF515C005553E8 /* TypeView */ = {
@@ -453,6 +454,8 @@
 				188B25AC2BDF51E2005553E8 /* TypeSureView.swift */,
 				1859507C2BDB8C5500BD57CD /* CardTypeView.swift */,
 				185950762BDB77AE00BD57CD /* OverlapFlowLayout.swift */,
+				188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */,
+				188B25A62BDF321C005553E8 /* ChangeTypeView.swift */,
 			);
 			path = TypeView;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				18562E692BB132C300F1FA23 /* RequestApiUrl.swift in Sources */,
 				1859507B2BDB803100BD57CD /* CardTypeCell.swift in Sources */,
 				18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */,
+				18A7F8652BE8C13500B33F2D /* FCPhotoView.swift in Sources */,
 				188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */,
 				18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */,
 				1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */,

@@ -6,25 +6,37 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FacePhotoViewController: FCBaseViewController {
+    
+    var imageUrl: String?
+    
+    lazy var photoView: FCPhotoView = {
+        let photoView = FCPhotoView()
+        photoView.iconImageView3.kf.setImage(with: URL(string: imageUrl ?? ""))
+        return photoView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .white
+        self.navView.isHidden = false
+        self.navView.block = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        addTypeView()
+    }
+}
+
+extension FacePhotoViewController {
+    
+    func addTypeView() {
+        view.insertSubview(photoView, belowSubview: navView)
+        photoView.snp.makeConstraints { make in
+            make.edges.equalTo(view)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

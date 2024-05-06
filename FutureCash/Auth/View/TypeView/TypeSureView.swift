@@ -30,7 +30,6 @@ class TypeSureView: UIView {
     
     lazy var idImageView: UIImageView = {
         let idImageView = UIImageView()
-        idImageView.backgroundColor = UIColor.init(css: "#556B90")
         return idImageView
     }()
     

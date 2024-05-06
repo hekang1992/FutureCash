@@ -11,7 +11,8 @@ import MBProgressHUD
 class CardTypeView: UIView {
     
     var block: (() -> Void)?
-    var block1: ((PModel) -> Void)?
+    
+    var block1: ((PModel,CardTypeView,IndexPath) -> Void)?
     
     var modelArray: [PModel]?
     
@@ -121,9 +122,9 @@ class CardTypeView: UIView {
             make.left.equalTo(iconImageView1).offset(29.px())
         }
         changeBtn.snp.makeConstraints { make in
-            make.right.equalTo(iconImageView1).offset(-34.px())
-            make.size.equalTo(CGSizeMake(146.px(), 63.px()))
-            make.bottom.equalTo(iconImageView3.snp.bottom).offset(-100.px())
+            make.right.equalTo(iconImageView1).offset(-14.px())
+            make.size.equalTo(CGSizeMake(183.px(), 88.px()))
+            make.bottom.equalTo(iconImageView3.snp.bottom).offset(-80.px())
         }
     }
     
@@ -134,6 +135,10 @@ class CardTypeView: UIView {
 }
 
 extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func didselectCollecTionView(_ col: UICollectionView, _ indexPath: IndexPath ) {
+        collectionView(col, didSelectItemAt: indexPath)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return modelArray?.count ?? 0
@@ -153,10 +158,12 @@ extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
             UIView.animate(withDuration: 0.25, animations: {
                 collectionView.performBatchUpdates({
                     collectionView.collectionViewLayout.invalidateLayout()
-                }, completion: {_ in 
-                    let model = self.modelArray?[indexPath.row]
-                    if let model = model {
-                        self.block1?(model)
+                }, completion: {_ in
+                    if indexPath == layout.selectedIndexPath {
+                        let model = self.modelArray?[indexPath.row]
+                        if let model = model {
+                            self.block1?(model,self,indexPath)
+                        }
                     }
                 })
             })

@@ -40,8 +40,8 @@ class CardTypeViewController: FCBaseViewController {
         typeView.block = { [weak self] in
             self?.popTypeView()
         }
-        typeView.block1 = { [weak self] model in
-            self?.selectTypeView(model)
+        typeView.block1 = { [weak self] model,typeView,indexpath in
+            self?.selectTypeView(model,typeView,indexpath)
         }
     }
 }
@@ -66,13 +66,20 @@ extension CardTypeViewController {
             self?.dismiss(animated: true)
         }
         changeView.block1 = { [weak self] model in
-            self?.selectTypeView(model)
+            self?.dismiss(animated: true, completion: {
+                self?.selectTypeView(model, CardTypeView(), IndexPath())
+            })
         }
     }
     
-    func selectTypeView(_ model: PModel) {
+    func selectTypeView(_ model: PModel, _ col: CardTypeView, _ indexPath: IndexPath) {
         let alertVC = TYAlertController(alert: sureView, preferredStyle: .actionSheet)
         self.present(alertVC!, animated: true)
+        sureView.block = { [weak self] in
+            self?.dismiss(animated: true, completion: {
+                col.didselectCollecTionView(col.collectionView, indexPath)
+            })
+        }
     }
     
     func getCardPic() {

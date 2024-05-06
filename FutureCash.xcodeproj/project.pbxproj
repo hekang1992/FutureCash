@@ -437,8 +437,8 @@
 		188B25AA2BDF515A005553E8 /* ChangeTypeView */ = {
 			isa = PBXGroup;
 			children = (
-				188B25A62BDF321C005553E8 /* ChangeTypeView.swift */,
 				188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */,
+				188B25A62BDF321C005553E8 /* ChangeTypeView.swift */,
 			);
 			path = ChangeTypeView;
 			sourceTree = "<group>";
@@ -447,9 +447,9 @@
 			isa = PBXGroup;
 			children = (
 				1859507A2BDB803100BD57CD /* CardTypeCell.swift */,
+				188B25AC2BDF51E2005553E8 /* TypeSureView.swift */,
 				1859507C2BDB8C5500BD57CD /* CardTypeView.swift */,
 				185950762BDB77AE00BD57CD /* OverlapFlowLayout.swift */,
-				188B25AC2BDF51E2005553E8 /* TypeSureView.swift */,
 			);
 			path = TypeView;
 			sourceTree = "<group>";

@@ -124,13 +124,13 @@ extension CGFloat {
 }
 
 extension Data {
-    static func compressQuality(image: UIImage, maxLength: Int) -> Data? {
-        var compression: CGFloat = 0.7
+    static func compressImageQuality(image: UIImage, maxLength: Int) -> Data? {
+        var compression: CGFloat = 0.75
         var data = image.jpegData(compressionQuality: compression)
         if let imageData = data, imageData.count < maxLength {
             return data
         }
-        var max: CGFloat = 1.0
+        var max: CGFloat = 0.9
         var min: CGFloat = 0.0
         for _ in 0..<5 {
             compression = (max + min) / 2
@@ -159,18 +159,6 @@ extension String {
             print("Error: \(error)")
             return nil
         }
-    }
-}
-
-extension UIButton {
-    func shake() {
-        let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.1
-        animation.repeatCount = 2
-        animation.autoreverses = true
-        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 8.px(), y: self.center.y))
-        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 8.px(), y: self.center.y))
-        layer.add(animation, forKey: "position")
     }
 }
 

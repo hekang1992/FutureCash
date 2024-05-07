@@ -7,8 +7,13 @@
 
 import UIKit
 import MBProgressHUD
+import HandyJSON
 
 class HomeViewController: FCBaseViewController {
+    
+    var stranger: String?
+    
+    var particularly: String?
     
     lazy var rightView: RightView = {
         let rightView = RightView()
@@ -41,15 +46,10 @@ class HomeViewController: FCBaseViewController {
         view.addSubview(button2)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getHomeData()
+    }
     
 }
 
@@ -78,6 +78,7 @@ extension HomeViewController {
     
     @objc func buttonTapped2() {
         let cardVc = CardTypeViewController()
+        cardVc.particularly = particularly
         self.navigationController?.pushViewController(cardVc, animated: true)
     }
     
@@ -113,5 +114,27 @@ extension HomeViewController {
         let setVc = ProfileViewController()
         self.navigationController?.pushViewController(setVc, animated: true)
     }
-
+    
+    func getHomeData() {
+        FCRequset.shared.requestAPI(params: [:], pageUrl: examined, method: .get) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<HomeModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let stranger = model.stranger ?? ""
+                    if stranger == "1" {
+                        let bigCardModel = model.untidily?.reddening
+                        if let bigCardModel = bigCardModel {
+                            self?.particularly = bigCardModel.particularly ?? ""
+                        }
+                    }else {
+                        
+                    }
+                }
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
 }

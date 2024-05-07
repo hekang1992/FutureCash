@@ -8,6 +8,12 @@
 import UIKit
 
 class FCPhotoView: UIView {
+    
+    var nextBlock: ((() -> Void))?
+    
+    var albumBlock: ((() -> Void))?
+    
+    var cameraBlock: ((() -> Void))?
 
     lazy var iconImageView1: UIImageView = {
         let iconImageView1 = UIImageView()
@@ -38,11 +44,15 @@ class FCPhotoView: UIView {
     
     lazy var iconImageView3: UIImageView = {//证件照片
         let iconImageView3 = UIImageView()
+        iconImageView3.layer.cornerRadius = 22.px()
+        iconImageView3.clipsToBounds = true
+        iconImageView3.backgroundColor = UIColor.init(css: "#031F12")
         return iconImageView3
     }()
     
     lazy var iconImageView4: UIImageView = {
         let iconImageView4 = UIImageView()
+        iconImageView4.isHidden = false
         iconImageView4.image = UIImage(named: "Slicephpo")
         return iconImageView4
     }()
@@ -60,23 +70,28 @@ class FCPhotoView: UIView {
         return descLable
     }()
     
+    lazy var nextBtn: UIButton = {
+        let nextBtn = UIButton(type: .custom)
+        nextBtn.isHidden = true
+        nextBtn.setImage(UIImage(named: "nexticon"), for: .normal)
+        nextBtn.addTarget(self, action: #selector(nextBtnClick), for: .touchUpInside)
+        return nextBtn
+    }()
+    
     lazy var albumBtn: UIButton = {
         let albumBtn = UIButton(type: .custom)
+        albumBtn.isHidden = true
         albumBtn.setImage(UIImage(named: "lbumicon"), for: .normal)
+        albumBtn.addTarget(self, action: #selector(albumBtnClick), for: .touchUpInside)
         return albumBtn
     }()
     
     lazy var cameraBtn: UIButton = {
         let cameraBtn = UIButton(type: .custom)
+        cameraBtn.isHidden = true
         cameraBtn.setImage(UIImage(named: "cameraicon"), for: .normal)
+        cameraBtn.addTarget(self, action: #selector(cameraBtnClick), for: .touchUpInside)
         return cameraBtn
-    }()
-    
-    lazy var nextBtn: UIButton = {
-        let nextBtn = UIButton(type: .custom)
-        nextBtn.isHidden = true
-        nextBtn.setImage(UIImage(named: "nexticon"), for: .normal)
-        return nextBtn
     }()
     
     override init(frame: CGRect) {
@@ -154,6 +169,18 @@ extension FCPhotoView {
             make.size.equalTo(CGSizeMake(183.px(), 85.px()))
             make.top.equalTo(descLable.snp.bottom).offset(79.5.px())
         }
+    }
+    
+    @objc func nextBtnClick() {
+        self.nextBlock?()
+    }
+    
+    @objc func albumBtnClick() {
+        self.albumBlock?()
+    }
+    
+    @objc func cameraBtnClick() {
+        self.cameraBlock?()
     }
     
 }

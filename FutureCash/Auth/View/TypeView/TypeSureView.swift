@@ -51,7 +51,6 @@ class TypeSureView: UIView {
         let label2 = FFShadowLabel()
         label2.font = UIFont(name: Fredoka_Bold, size: 20.px())
         label2.textAlignment = .center
-        label2.text = "UMID"
         return label2
     }()
 

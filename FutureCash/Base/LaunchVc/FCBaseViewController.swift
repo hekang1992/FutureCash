@@ -30,6 +30,7 @@ class FCBaseViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         addNavView()
+        navigationController?.delegate = self
     }
     
     func addNavView() {
@@ -138,9 +139,8 @@ class FCBaseViewController: UIViewController {
     
 }
 
-extension FCBaseViewController {
-    
-    //验证码
+extension FCBaseViewController: UINavigationControllerDelegate {
+
     func horoughly(_ phone: String) {
         let dict = ["judge": phone, "killing": "1"]
         FCRequset.shared.requestAPI(params: dict, pageUrl: rightThoroughly, method: .post) { [weak self] baseModel in
@@ -173,6 +173,10 @@ extension FCBaseViewController {
         } errorBlock: { error in
             
         }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
     }
     
 }

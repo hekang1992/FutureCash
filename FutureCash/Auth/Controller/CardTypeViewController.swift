@@ -14,6 +14,8 @@ class CardTypeViewController: FCBaseViewController {
     
     var modelArray: [PModel]?
     
+    var particularly: String?
+    
     lazy var typeView: CardTypeView = {
         let typeView = CardTypeView()
         return typeView
@@ -96,7 +98,9 @@ extension CardTypeViewController {
                 col.didselectCollecTionView(col.collectionView, indexPath)
                 self?.delayTime(0.15, closure: {
                     let faceVc = FacePhotoViewController()
+                    faceVc.guessed = model.excuse
                     faceVc.imageUrl = model.yewtiful
+                    faceVc.particularly = self?.particularly ?? ""
                     self?.navigationController?.pushViewController(faceVc, animated: true)
                 })
             })

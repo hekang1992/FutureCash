@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 import RxSwift
 import HandyJSON
 import AppsFlyerLib
+import AAILiveness
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -25,13 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = LaunchViewController()
+        AAILivenessSDK.initWith(.philippines)
         getRootVc()
         getGoogle()
         getfangdou()
         getLocation()
         getPushApple()
         keyboardManager()
-//        getFontNames()
         window?.makeKeyAndVisible()
         return true
     }

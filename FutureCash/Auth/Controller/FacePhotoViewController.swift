@@ -191,6 +191,7 @@ extension FacePhotoViewController: UIImagePickerControllerDelegate {
                     "guessed": guessed] as [String: Any]
         FCRequset.shared.uploadImageAPI(params: dict, pageUrl: nothingYoumanner, method: .post, data: data) { [weak self] baseModel in
             let conceive = baseModel.conceive
+            let wanting = baseModel.wanting
             if conceive == 0 || conceive == 00 {
                 let cardModel = JSONDeserializer<CardInfoModel>.deserializeFrom(dict: baseModel.easily)
                 if let cardModel = cardModel {
@@ -198,6 +199,8 @@ extension FacePhotoViewController: UIImagePickerControllerDelegate {
                         self?.popCardInfoView(cardModel,self?.imageUrl ?? "")
                     }
                 }
+            }else {
+                MBProgressHUD.show(text: wanting ?? "")
             }
         } errorBlock: { error in
             

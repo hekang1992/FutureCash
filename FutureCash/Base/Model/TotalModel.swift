@@ -83,3 +83,8 @@ class WavedModel: HandyJSON {
     required init() {}
     var weren: String?//ID地址
 }
+
+class FaceModel: HandyJSON {
+    required init() {}
+    var stands: String?
+}

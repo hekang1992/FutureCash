@@ -1,5 +1,5 @@
 //
-//  CardTypeViewController.swift
+//  FCCardTypeViewController.swift
 //  FutureCash
 //
 //  Created by apple on 2024/4/26.
@@ -10,7 +10,7 @@ import HandyJSON
 import TYAlertController
 import MBProgressHUD
 
-class CardTypeViewController: FCBaseViewController {
+class FCCardTypeViewController: FCBaseViewController {
     
     var modelArray: [PModel]?
     
@@ -48,7 +48,7 @@ class CardTypeViewController: FCBaseViewController {
     }
 }
 
-extension CardTypeViewController {
+extension FCCardTypeViewController {
     
     func addTypeView() {
         view.insertSubview(typeView, belowSubview: navView)
@@ -97,7 +97,7 @@ extension CardTypeViewController {
             self?.dismiss(animated: true, completion: {
                 col.didselectCollecTionView(col.collectionView, indexPath)
                 self?.delayTime(0.15, closure: {
-                    let faceVc = FacePhotoViewController()
+                    let faceVc = FCPhotoViewController()
                     faceVc.guessed = model.excuse
                     faceVc.imageUrl = model.yewtiful
                     faceVc.particularly = self?.particularly ?? ""
@@ -108,9 +108,10 @@ extension CardTypeViewController {
     }
     
     func getCardPic() {
-        let dict = ["relations": 2]
+        let dict = ["relations": particularly ?? ""]
         FCRequset.shared.requestAPI(params: dict, pageUrl: wnnjennn, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<CardTypeModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
@@ -118,6 +119,8 @@ extension CardTypeViewController {
                     self?.typeView.modelArray = model.pwpnnemw
                     self?.typeView.collectionView.reloadData()
                 }
+            }else {
+                MBProgressHUD.show(text: wanting)
             }
         } errorBlock: { error in
             

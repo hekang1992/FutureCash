@@ -106,28 +106,8 @@ class FCPhotoView: UIView {
         iconImageView1.addSubview(nextBtn)
         iconImageView1.addSubview(albumBtn)
         iconImageView1.addSubview(cameraBtn)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-extension FCPhotoView {
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         iconImageView1.snp.makeConstraints { make in
             make.edges.equalTo(self)
-        }
-        if let vc = self.viewController  {
-            let height = UIViewController.getTopBarHeights(for: vc)
-            iconImageView2.snp.makeConstraints { make in
-                make.centerX.equalTo(iconImageView1)
-                make.size.equalTo(CGSizeMake(375.px(), 599.px()))
-                make.top.equalTo(height.totalHeight)
-            }
         }
         titleLable.snp.makeConstraints { make in
             make.left.equalTo(self).offset(32.5.px())
@@ -170,6 +150,26 @@ extension FCPhotoView {
             make.top.equalTo(descLable.snp.bottom).offset(79.5.px())
         }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let vc = self.viewController  {
+            let height = UIViewController.getTopBarHeights(for: vc)
+            iconImageView2.snp.makeConstraints { make in
+                make.centerX.equalTo(iconImageView1)
+                make.size.equalTo(CGSizeMake(375.px(), 599.px()))
+                make.top.equalTo(height.totalHeight)
+            }
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+extension FCPhotoView {
     
     @objc func nextBtnClick() {
         self.nextBlock?()

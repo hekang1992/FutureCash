@@ -11,6 +11,8 @@ class FCFaceView: UIView {
 
     var block: (() -> Void)?
     
+    var block1: (() -> Void)?
+    
     lazy var bgView: UIView = {
         let bgView = UIView()
         bgView.backgroundColor = .clear
@@ -41,6 +43,8 @@ class FCFaceView: UIView {
     lazy var iconImageView4: UIImageView = {
         let iconImageView4 = UIImageView()
         iconImageView4.image = UIImage(named: "Slicervgtgg")
+        iconImageView4.layer.cornerRadius = 70.px()
+        iconImageView4.clipsToBounds = true
         return iconImageView4
     }()
     
@@ -59,9 +63,18 @@ class FCFaceView: UIView {
     
     lazy var changeBtn: UIButton = {
         let changeBtn = UIButton(type: .custom)
+        changeBtn.isHidden = false
         changeBtn.setImage(UIImage(named: "beaginbbb"), for: .normal)
         changeBtn.addTarget(self, action: #selector(changeBtnClick), for: .touchUpInside)
         return changeBtn
+    }()
+    
+    lazy var changeBtn1: UIButton = {
+        let changeBtn1 = UIButton(type: .custom)
+        changeBtn1.isHidden = true
+        changeBtn1.setImage(UIImage(named: "nexticon"), for: .normal)
+        changeBtn1.addTarget(self, action: #selector(changeBtnClick1), for: .touchUpInside)
+        return changeBtn1
     }()
     
     override init(frame: CGRect) {
@@ -74,24 +87,14 @@ class FCFaceView: UIView {
         iconImageView3.addSubview(iconImageView5)
         iconImageView3.addSubview(nameLabel)
         iconImageView1.addSubview(changeBtn)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        iconImageView1.addSubview(changeBtn1)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
         iconImageView1.snp.makeConstraints { make in
             make.edges.equalTo(bgView)
         }
-        if let vc = self.viewController  {
-            let height = UIViewController.getTopBarHeights(for: vc)
-            iconImageView2.snp.makeConstraints { make in
-                make.centerX.equalTo(bgView)
-                make.size.equalTo(CGSizeMake(363.px(), 105.px()))
-                make.top.equalTo(height.totalHeight + 10.px())
-            }
-        }
+        
         iconImageView3.snp.makeConstraints { make in
             make.centerX.equalTo(bgView)
             make.top.equalTo(iconImageView2.snp.bottom).offset(40.px())
@@ -117,6 +120,23 @@ class FCFaceView: UIView {
             make.size.equalTo(CGSizeMake(183.px(), 86.px()))
             make.top.equalTo(iconImageView3.snp.bottom).offset(31.5.px())
         }
+        changeBtn1.snp.makeConstraints { make in
+            make.centerX.equalTo(iconImageView1)
+            make.size.equalTo(CGSizeMake(183.px(), 86.px()))
+            make.top.equalTo(iconImageView3.snp.bottom).offset(31.5.px())
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let vc = self.viewController  {
+            let height = UIViewController.getTopBarHeights(for: vc)
+            iconImageView2.snp.makeConstraints { make in
+                make.centerX.equalTo(bgView)
+                make.size.equalTo(CGSizeMake(363.px(), 105.px()))
+                make.top.equalTo(height.totalHeight + 4.px())
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -131,4 +151,10 @@ extension FCFaceView {
         self.block?()
     }
     
+    @objc func changeBtnClick1() {
+        self.block1?()
+    }
+    
 }
+
+

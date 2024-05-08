@@ -146,7 +146,7 @@ class LoginView: UIView {
         }
         bgImageView.snp.makeConstraints { make in
             make.left.equalTo(bgView).offset(SCREEN_WIDTH)
-            make.bottom.equalTo(bgView).offset(-83.px())
+            make.bottom.equalTo(bgView).offset(-123.px())
             make.size.equalTo(CGSizeMake(338.px(), 389.px()))
         }
         btn.snp.makeConstraints { make in

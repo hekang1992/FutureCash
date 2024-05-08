@@ -15,6 +15,11 @@ class BaseModel: HandyJSON {
     var easily: [String: Any]?
 }
 
+class EasilyModel: HandyJSON {
+    required init() {}
+    var feared: FearedModel?
+}
+
 class GoogleModel: HandyJSON {
     required init() {}
     var pistol: String?
@@ -87,4 +92,9 @@ class WavedModel: HandyJSON {
 class FaceModel: HandyJSON {
     required init() {}
     var stands: String?
+}
+
+class FearedModel: HandyJSON {
+    required init() {}
+    var enjoyment: String?//下一步认证
 }

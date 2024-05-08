@@ -140,7 +140,7 @@ class FCBaseViewController: UIViewController {
 }
 
 extension FCBaseViewController: UINavigationControllerDelegate {
-
+    
     func horoughly(_ phone: String) {
         let dict = ["judge": phone, "killing": "1"]
         FCRequset.shared.requestAPI(params: dict, pageUrl: rightThoroughly, method: .post) { [weak self] baseModel in
@@ -177,6 +177,61 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    func getProductDetailInfo(_ productID: String) {
+        let dict = ["relations": productID, "proposed": "1", "happenings": "2"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: henry, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    self?.pushNextVc(model.feared?.enjoyment ?? "", productID)
+                }
+            }else {
+                MBProgressHUD.show(text: wanting)
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
+    func pushNextVc(_ type: String, _ productID: String) {
+        switch type {
+        case "ua": 
+            let cardVc = FCCardTypeViewController()
+            cardVc.particularly = productID
+            self.navigationController?.pushViewController(cardVc, animated: true)
+            break
+            
+        case "ea":
+            let peronalVc = FCPersonalInfoViewController()
+            peronalVc.particularly = productID
+            self.navigationController?.pushViewController(peronalVc, animated: true)
+            break
+            
+        case "ef": 
+            let workVc = FCWorkInfoViewController()
+            workVc.particularly = productID
+            self.navigationController?.pushViewController(workVc, animated: true)
+            break
+            
+        case "ee": 
+            let contactVc = FCContactViewController()
+            contactVc.particularly = productID
+            self.navigationController?.pushViewController(contactVc, animated: true)
+            break
+            
+        case "ww":
+            let bankVc = FCBankInfoViewController()
+            bankVc.particularly = productID
+            self.navigationController?.pushViewController(bankVc, animated: true)
+            break
+            
+        default: break
+            
+        }
     }
     
 }

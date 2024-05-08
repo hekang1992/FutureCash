@@ -38,7 +38,7 @@
 		185950702BDA4A8800BD57CD /* FCDelAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859506F2BDA4A8800BD57CD /* FCDelAccountView.swift */; };
 		185950722BDB411800BD57CD /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185950712BDB411800BD57CD /* Fredoka-Medium.ttf */; };
 		185950772BDB77AE00BD57CD /* OverlapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185950762BDB77AE00BD57CD /* OverlapFlowLayout.swift */; };
-		185950792BDB780600BD57CD /* CardTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185950782BDB780600BD57CD /* CardTypeViewController.swift */; };
+		185950792BDB780600BD57CD /* FCCardTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185950782BDB780600BD57CD /* FCCardTypeViewController.swift */; };
 		1859507B2BDB803100BD57CD /* CardTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859507A2BDB803100BD57CD /* CardTypeCell.swift */; };
 		1859507D2BDB8C5500BD57CD /* CardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859507C2BDB8C5500BD57CD /* CardTypeView.swift */; };
 		185950812BDBA10000BD57CD /* FCLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 185950802BDBA10000BD57CD /* FCLoading.json */; };
@@ -48,12 +48,19 @@
 		188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A62BDF321C005553E8 /* ChangeTypeView.swift */; };
 		188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */; };
 		188B25AD2BDF51E2005553E8 /* TypeSureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25AC2BDF51E2005553E8 /* TypeSureView.swift */; };
-		18A7F8632BE8AC1400B33F2D /* FacePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */; };
+		18A7F8632BE8AC1400B33F2D /* FCPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8622BE8AC1400B33F2D /* FCPhotoViewController.swift */; };
 		18A7F8652BE8C13500B33F2D /* FCPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8642BE8C13500B33F2D /* FCPhotoView.swift */; };
 		18A7F8672BE9E1CD00B33F2D /* FCPopCardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8662BE9E1CD00B33F2D /* FCPopCardInfoView.swift */; };
 		18A7F8692BE9FC5800B33F2D /* FCNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8682BE9FC5800B33F2D /* FCNameView.swift */; };
 		18A7F86B2BEA2C3800B33F2D /* FCFaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F86A2BEA2C3800B33F2D /* FCFaceViewController.swift */; };
 		18A7F86D2BEA312900B33F2D /* FCFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F86C2BEA312900B33F2D /* FCFaceView.swift */; };
+		18A7F86F2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F86E2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift */; };
+		18A7F8712BEB5C5300B33F2D /* FCWorkInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8702BEB5C5200B33F2D /* FCWorkInfoViewController.swift */; };
+		18A7F8732BEB5C6500B33F2D /* FCContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */; };
+		18A7F8752BEB5C7500B33F2D /* FCBankInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */; };
+		18A7F8782BEB5E0100B33F2D /* FCPersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */; };
+		18A7F87C2BEB722500B33F2D /* GenderSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F87B2BEB722500B33F2D /* GenderSelectionCell.swift */; };
+		18A7F87E2BEB76D000B33F2D /* WenBenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F87D2BEB76D000B33F2D /* WenBenCell.swift */; };
 		18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */; };
 		18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */; };
 		18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */; };
@@ -119,7 +126,7 @@
 		1859506F2BDA4A8800BD57CD /* FCDelAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCDelAccountView.swift; sourceTree = "<group>"; };
 		185950712BDB411800BD57CD /* Fredoka-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Medium.ttf"; sourceTree = "<group>"; };
 		185950762BDB77AE00BD57CD /* OverlapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlapFlowLayout.swift; sourceTree = "<group>"; };
-		185950782BDB780600BD57CD /* CardTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeViewController.swift; sourceTree = "<group>"; };
+		185950782BDB780600BD57CD /* FCCardTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCardTypeViewController.swift; sourceTree = "<group>"; };
 		1859507A2BDB803100BD57CD /* CardTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCell.swift; sourceTree = "<group>"; };
 		1859507C2BDB8C5500BD57CD /* CardTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeView.swift; sourceTree = "<group>"; };
 		185950802BDBA10000BD57CD /* FCLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FCLoading.json; sourceTree = "<group>"; };
@@ -129,12 +136,19 @@
 		188B25A62BDF321C005553E8 /* ChangeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTypeView.swift; sourceTree = "<group>"; };
 		188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewCell.swift; sourceTree = "<group>"; };
 		188B25AC2BDF51E2005553E8 /* TypeSureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSureView.swift; sourceTree = "<group>"; };
-		18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacePhotoViewController.swift; sourceTree = "<group>"; };
+		18A7F8622BE8AC1400B33F2D /* FCPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPhotoViewController.swift; sourceTree = "<group>"; };
 		18A7F8642BE8C13500B33F2D /* FCPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPhotoView.swift; sourceTree = "<group>"; };
 		18A7F8662BE9E1CD00B33F2D /* FCPopCardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPopCardInfoView.swift; sourceTree = "<group>"; };
 		18A7F8682BE9FC5800B33F2D /* FCNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCNameView.swift; sourceTree = "<group>"; };
 		18A7F86A2BEA2C3800B33F2D /* FCFaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCFaceViewController.swift; sourceTree = "<group>"; };
 		18A7F86C2BEA312900B33F2D /* FCFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCFaceView.swift; sourceTree = "<group>"; };
+		18A7F86E2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPersonalInfoViewController.swift; sourceTree = "<group>"; };
+		18A7F8702BEB5C5200B33F2D /* FCWorkInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCWorkInfoViewController.swift; sourceTree = "<group>"; };
+		18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCContactViewController.swift; sourceTree = "<group>"; };
+		18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCBankInfoViewController.swift; sourceTree = "<group>"; };
+		18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPersonalView.swift; sourceTree = "<group>"; };
+		18A7F87B2BEB722500B33F2D /* GenderSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionCell.swift; sourceTree = "<group>"; };
+		18A7F87D2BEB76D000B33F2D /* WenBenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WenBenCell.swift; sourceTree = "<group>"; };
 		18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFShadowLabel.swift; sourceTree = "<group>"; };
 		18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCHUD.swift; sourceTree = "<group>"; };
 		18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCodeSingleView.swift; sourceTree = "<group>"; };
@@ -422,9 +436,13 @@
 		185950742BDB778500BD57CD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				185950782BDB780600BD57CD /* CardTypeViewController.swift */,
-				18A7F8622BE8AC1400B33F2D /* FacePhotoViewController.swift */,
+				185950782BDB780600BD57CD /* FCCardTypeViewController.swift */,
+				18A7F8622BE8AC1400B33F2D /* FCPhotoViewController.swift */,
 				18A7F86A2BEA2C3800B33F2D /* FCFaceViewController.swift */,
+				18A7F86E2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift */,
+				18A7F8702BEB5C5200B33F2D /* FCWorkInfoViewController.swift */,
+				18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */,
+				18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -434,6 +452,7 @@
 			children = (
 				188B25AB2BDF515C005553E8 /* TypeView */,
 				188B25AA2BDF515A005553E8 /* FacePhotoView */,
+				18A7F8762BEB5DC600B33F2D /* PersonInfoVeiw */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -481,6 +500,16 @@
 				1859506B2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		18A7F8762BEB5DC600B33F2D /* PersonInfoVeiw */ = {
+			isa = PBXGroup;
+			children = (
+				18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */,
+				18A7F87B2BEB722500B33F2D /* GenderSelectionCell.swift */,
+				18A7F87D2BEB76D000B33F2D /* WenBenCell.swift */,
+			);
+			path = PersonInfoVeiw;
 			sourceTree = "<group>";
 		};
 		18D6F0562BD8BC6A0022EFAA /* View */ = {
@@ -697,6 +726,7 @@
 			files = (
 				18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */,
 				1859507D2BDB8C5500BD57CD /* CardTypeView.swift in Sources */,
+				18A7F8782BEB5E0100B33F2D /* FCPersonalView.swift in Sources */,
 				185950772BDB77AE00BD57CD /* OverlapFlowLayout.swift in Sources */,
 				186210962BCFBD8500A74058 /* RightTableView.swift in Sources */,
 				185950702BDA4A8800BD57CD /* FCDelAccountView.swift in Sources */,
@@ -709,6 +739,7 @@
 				188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */,
 				18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */,
 				1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */,
+				18A7F87C2BEB722500B33F2D /* GenderSelectionCell.swift in Sources */,
 				184D87262BB283A100773F45 /* FCRequset.swift in Sources */,
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
 				186210942BCF76A500A74058 /* RightView.swift in Sources */,
@@ -720,16 +751,20 @@
 				18562E7F2BB14DD600F1FA23 /* LoginFactory.swift in Sources */,
 				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
 				18562E752BB1481100F1FA23 /* HomeViewController.swift in Sources */,
+				18A7F87E2BEB76D000B33F2D /* WenBenCell.swift in Sources */,
+				18A7F8752BEB5C7500B33F2D /* FCBankInfoViewController.swift in Sources */,
 				184D87322BB2A15200773F45 /* BaseNavViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
 				18AD9AFA2BC94DA200D33830 /* FCLoadingView.swift in Sources */,
+				18A7F8712BEB5C5300B33F2D /* FCWorkInfoViewController.swift in Sources */,
 				18562E792BB1483000F1FA23 /* ProfileViewController.swift in Sources */,
 				18A7F86B2BEA2C3800B33F2D /* FCFaceViewController.swift in Sources */,
 				18A7F86D2BEA312900B33F2D /* FCFaceView.swift in Sources */,
 				184D87302BB2A12B00773F45 /* LoginViewController.swift in Sources */,
+				18A7F86F2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift in Sources */,
 				186210982BCFC1C000A74058 /* RightViewCell.swift in Sources */,
 				18562E772BB1482000F1FA23 /* OrderViewController.swift in Sources */,
-				18A7F8632BE8AC1400B33F2D /* FacePhotoViewController.swift in Sources */,
+				18A7F8632BE8AC1400B33F2D /* FCPhotoViewController.swift in Sources */,
 				184D87352BB2A1DF00773F45 /* LoginView.swift in Sources */,
 				188B25AD2BDF51E2005553E8 /* TypeSureView.swift in Sources */,
 				18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */,
@@ -737,7 +772,8 @@
 				18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */,
 				18A7F8692BE9FC5800B33F2D /* FCNameView.swift in Sources */,
 				18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */,
-				185950792BDB780600BD57CD /* CardTypeViewController.swift in Sources */,
+				185950792BDB780600BD57CD /* FCCardTypeViewController.swift in Sources */,
+				18A7F8732BEB5C6500B33F2D /* FCContactViewController.swift in Sources */,
 				18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

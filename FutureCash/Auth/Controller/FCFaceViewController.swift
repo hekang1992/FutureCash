@@ -9,6 +9,7 @@ import UIKit
 import HandyJSON
 import AAILiveness
 import MBProgressHUD
+import Kingfisher
 
 class FCFaceViewController: FCBaseViewController {
     
@@ -31,6 +32,17 @@ class FCFaceViewController: FCBaseViewController {
         faceView.block = { [weak self] in
             self?.getCishuFace()
         }
+        faceView.block1 = { [weak self] in
+            if let particularly = self?.particularly {
+                self?.getProductDetailInfo(particularly)
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //获取用户身份信息
+        getPersonCardInfo()
     }
 }
 
@@ -68,7 +80,7 @@ extension FCFaceViewController {
             faceVc.detectionSuccessBlk = { [weak self] rawVC, result in
                 let livenessId = result.livenessId
                 let bestImg = result.img
-                let data: Data = Data.compressImageQuality(image: bestImg, maxLength: 1000)!
+                let data: Data = Data.compressImageQuality(image: bestImg, maxLength: 1024)!
                 self?.saveFaceInfo(data, livenessId, rawVC)
             }
             let navVc = BaseNavViewController(rootViewController: faceVc)
@@ -92,12 +104,17 @@ extension FCFaceViewController {
                     "excuse": excuse,
                     "shirted": shirted,
                     "black": "3"] as [String: Any]
-        FCRequset.shared.uploadImageAPI(params: dict, pageUrl: nothingYoumanner, method: .post, data: data) { baseModel in
+        FCRequset.shared.uploadImageAPI(params: dict, pageUrl: nothingYoumanner, method: .post, data: data) { [weak self] baseModel in
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
                 UIView.animate(withDuration: 0.25) {
-                    vc.navigationController?.dismiss(animated: true)
+                    vc.navigationController?.dismiss(animated: true, completion: {
+                        //调用产品详情
+                        if let particularly = self?.particularly {
+                            self?.getProductDetailInfo(particularly)
+                        }
+                    })
                 }
             }else {
                 MBProgressHUD.show(text: wanting)
@@ -106,4 +123,37 @@ extension FCFaceViewController {
             
         }
     }
+    
+    func getPersonCardInfo() {
+        let dict = ["relations": particularly ?? "", "hitch": "1"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: persuadedThere, method: .get) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<IDCradModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let shouldBeHidden = model.weren?.isEmpty ?? true
+                    self?.faceView.changeBtn.isHidden = !shouldBeHidden
+                    self?.faceView.changeBtn1.isHidden = shouldBeHidden
+                    if !shouldBeHidden {
+                        if let urlString = model.weren, let url = URL(string: urlString) {
+                            let options: KingfisherOptionsInfo = [
+                                .transition(.fade(0.2))
+                            ]
+                            self?.faceView.iconImageView4.kf.indicatorType = .activity
+                            if let indicator = self?.faceView.iconImageView4.kf.indicator?.view as? UIActivityIndicatorView {
+                                if #available(iOS 13.0, *) {
+                                    indicator.style = .medium
+                                }
+                                indicator.color = .white
+                            }
+                            self?.faceView.iconImageView4.kf.setImage(with: url, options: options)
+                        }
+                    }
+                }
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
 }

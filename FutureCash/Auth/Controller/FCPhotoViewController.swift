@@ -1,5 +1,5 @@
 //
-//  FacePhotoViewController.swift
+//  FCPhotoViewController.swift
 //  FutureCash
 //
 //  Created by apple on 2024/5/6.
@@ -14,7 +14,7 @@ import TYAlertController
 import MBProgressHUD
 
 typealias CompletionStatusBlock = (Bool) -> Void
-class FacePhotoViewController: FCBaseViewController {
+class FCPhotoViewController: FCBaseViewController {
     
     var imageUrl: String?
     
@@ -66,7 +66,7 @@ class FacePhotoViewController: FCBaseViewController {
     }
 }
 
-extension FacePhotoViewController: UIImagePickerControllerDelegate {
+extension FCPhotoViewController: UIImagePickerControllerDelegate {
     
     func addPhotoView() {
         view.insertSubview(photoView, belowSubview: navView)
@@ -243,7 +243,7 @@ extension FacePhotoViewController: UIImagePickerControllerDelegate {
     
 }
 
-extension FacePhotoViewController {
+extension FCPhotoViewController {
     
     func popCardInfoView(_ model: CardInfoModel, _ imageUrl: String) {
         let alertVC = TYAlertController(alert: cardInfoView, preferredStyle: .actionSheet)

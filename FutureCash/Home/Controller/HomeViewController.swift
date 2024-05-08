@@ -77,8 +77,8 @@ extension HomeViewController {
     }
     
     @objc func buttonTapped2() {
-        let cardVc = CardTypeViewController()
-        cardVc.particularly = particularly
+        let cardVc = FCCardTypeViewController()
+        cardVc.particularly = particularly ?? ""
         self.navigationController?.pushViewController(cardVc, animated: true)
     }
     
@@ -121,15 +121,16 @@ extension HomeViewController {
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<HomeModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
-                    let stranger = model.stranger ?? ""
-                    if stranger == "1" {
-                        let bigCardModel = model.untidily?.reddening
-                        if let bigCardModel = bigCardModel {
-                            self?.particularly = bigCardModel.particularly ?? ""
-                        }
-                    }else {
-                        
+                    let bigCardModel = model.untidily?.reddening
+                    if let bigCardModel = bigCardModel {
+                        self?.particularly = bigCardModel.particularly ?? ""
                     }
+//                    let stranger = model.stranger ?? ""
+//                    if stranger == "1" {
+//                        
+//                    }else {
+//                        
+//                    }
                 }
             }
         } errorBlock: { error in

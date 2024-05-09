@@ -18,6 +18,25 @@ class BaseModel: HandyJSON {
 class EasilyModel: HandyJSON {
     required init() {}
     var feared: FearedModel?
+    var except: [ExceptModel]?
+}
+
+class ExceptModel: HandyJSON {
+    required init() {}
+    var blonde: String?//标题
+    var blamed: String?//placeholder
+    var conceive: String?//code保存时的key键
+    var ourselves: String?//cell样式
+    var calls: String?//是否是数字键盘1是
+    var children: [ChildrenModel]?
+    var sapped: String?//回写的值
+    var excuse: String?//传值
+}
+
+class ChildrenModel: HandyJSON {
+    required init() {}
+    var employment: String?
+    var excuse: String?
 }
 
 class GoogleModel: HandyJSON {

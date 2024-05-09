@@ -13,6 +13,8 @@ class FCPersonalView: UIView {
     
     var block1: (() -> Void)?
     
+    var modelArray: [ExceptModel]?
+    
     lazy var bgView: UIView = {
         let bgView = UIView()
         bgView.backgroundColor = .clear
@@ -57,16 +59,18 @@ class FCPersonalView: UIView {
     }()
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.register(WenBenCell.self, forCellReuseIdentifier: "type1Cell")
-        tableView.register(GenderSelectionCell.self, forCellReuseIdentifier: "type2Cell")
+        tableView.register(FCWenBenCell.self, forCellReuseIdentifier: "FCWenBenCell")
+        tableView.register(FCGenderCell.self, forCellReuseIdentifier: "FCGenderCell")
         return tableView
     }()
     
@@ -122,28 +126,80 @@ class FCPersonalView: UIView {
             }
         }
     }
-    
 }
 
 extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return modelArray?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footView = UIView()
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "fpnfitbtn"), for: .normal)
+        btn.addTarget(self, action: #selector(conFirmClick), for: .touchUpInside)
+        footView.addSubview(btn)
+        btn.snp.makeConstraints { make in
+            make.centerX.bottom.equalTo(footView)
+            make.height.equalTo(86.px())
+            make.width.equalTo(183.px())
+        }
+        return footView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 120.px()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "type1Cell", for: indexPath) as! WenBenCell
+        guard let modelArray = modelArray else { return UITableViewCell() }
+        let model = modelArray[indexPath.row]
+        switch (model.ourselves, model.conceive) {
+        case ("f1", "similar"):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "FCGenderCell", for: indexPath) as? FCGenderCell {
+                configureGenderCell(cell, with: model)
+                return cell
+            }
+        case ("f1", _),("f2", _), (_, _):
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "FCWenBenCell", for: indexPath) as? FCWenBenCell {
+                configureCell(cell, with: model)
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func configureGenderCell(_ cell: FCGenderCell, with model: ExceptModel) {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
-        return cell
+        cell.model = model
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    func configureCell(_ cell: FCWenBenCell, with model: ExceptModel) {
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.model = model
+        if model.ourselves == "f1" && model.conceive != "similar" {
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "Slicexialee")
+            imageView.contentMode = .center
+            imageView.frame = CGRect(x: 0, y: 0, width: 25.px(), height: 25.px())
+            cell.nameField.rightView = imageView
+            cell.nameField.rightViewMode = .always
+        }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+    @objc func conFirmClick() {
+        
     }
     
 }

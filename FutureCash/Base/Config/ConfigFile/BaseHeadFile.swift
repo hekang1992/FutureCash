@@ -217,3 +217,21 @@ extension UIViewController {
     }
 }
 
+extension UITextField {
+    func setupLeftView(width: CGFloat, height: CGFloat) {
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        self.leftView = leftView
+        self.leftViewMode = .always
+    }
+    
+    func setupRightView(imageName: String, width: CGFloat, height: CGFloat) {
+        let imageView = UIImageView(image: UIImage(named: imageName))
+        imageView.contentMode = .center
+        imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        rightView.addSubview(imageView)
+        self.rightView = rightView
+        self.rightViewMode = .always
+    }
+}
+

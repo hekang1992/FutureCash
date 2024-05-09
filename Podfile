@@ -49,16 +49,16 @@ target 'FutureCash' do
   
   pod 'AAINetwork', :http => 'https://prod-guardian-cv.oss-ap-southeast-5.aliyuncs.com/sdk/iOS-libraries/AAINetwork/AAINetwork-V1.0.2.tar.bz2', type: :tbz
   
-  post_install do |installer|
-    installer.pods_project.build_configurations.each do |config|
-      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-      config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-    end
-    installer.pods_project.targets.each do |target|
-      target.build_configurations.each do |config|
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-      end
-    end
-  end
+#  post_install do |installer|
+#    installer.pods_project.build_configurations.each do |config|
+#      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+#      config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+#      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+#    end
+#    installer.pods_project.targets.each do |target|
+#      target.build_configurations.each do |config|
+#        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+#      end
+#    end
+#  end
 end

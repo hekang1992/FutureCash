@@ -43,11 +43,18 @@ extension FCPersonalInfoViewController {
     
     func getPersonalInfo() {
         let dict = ["relations": particularly ?? ""]
-        FCRequset.shared.requestAPI(params: dict, pageUrl: brotherIndecisively, method: .post) { baseModel in
+        FCRequset.shared.requestAPI(params: dict, pageUrl: brotherIndecisively, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
-                
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let modelArray = model.except
+                    if let modelArray = modelArray {
+                        self?.personalView.modelArray = modelArray
+                        self?.personalView.tableView.reloadData()
+                    }
+                }
             }else {
                 MBProgressHUD.show(text: wanting)
             }

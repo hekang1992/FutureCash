@@ -59,8 +59,8 @@
 		18A7F8732BEB5C6500B33F2D /* FCContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */; };
 		18A7F8752BEB5C7500B33F2D /* FCBankInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */; };
 		18A7F8782BEB5E0100B33F2D /* FCPersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */; };
-		18A7F87C2BEB722500B33F2D /* GenderSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F87B2BEB722500B33F2D /* GenderSelectionCell.swift */; };
-		18A7F87E2BEB76D000B33F2D /* WenBenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F87D2BEB76D000B33F2D /* WenBenCell.swift */; };
+		18A7F87C2BEB722500B33F2D /* FCGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F87B2BEB722500B33F2D /* FCGenderCell.swift */; };
+		18A7F87E2BEB76D000B33F2D /* FCWenBenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7F87D2BEB76D000B33F2D /* FCWenBenCell.swift */; };
 		18A9DC312BD2237000E34D15 /* FFShadowLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */; };
 		18AD9AF32BC8E5AD00D33830 /* FCHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */; };
 		18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */; };
@@ -147,8 +147,8 @@
 		18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCContactViewController.swift; sourceTree = "<group>"; };
 		18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCBankInfoViewController.swift; sourceTree = "<group>"; };
 		18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPersonalView.swift; sourceTree = "<group>"; };
-		18A7F87B2BEB722500B33F2D /* GenderSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderSelectionCell.swift; sourceTree = "<group>"; };
-		18A7F87D2BEB76D000B33F2D /* WenBenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WenBenCell.swift; sourceTree = "<group>"; };
+		18A7F87B2BEB722500B33F2D /* FCGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCGenderCell.swift; sourceTree = "<group>"; };
+		18A7F87D2BEB76D000B33F2D /* FCWenBenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCWenBenCell.swift; sourceTree = "<group>"; };
 		18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FFShadowLabel.swift; sourceTree = "<group>"; };
 		18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCHUD.swift; sourceTree = "<group>"; };
 		18AD9AF42BC9009D00D33830 /* FCCodeSingleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCodeSingleView.swift; sourceTree = "<group>"; };
@@ -405,8 +405,8 @@
 		18562E7C2BB1488800F1FA23 /* ConfigFile */ = {
 			isa = PBXGroup;
 			children = (
-				185950802BDBA10000BD57CD /* FCLoading.json */,
 				18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */,
+				185950802BDBA10000BD57CD /* FCLoading.json */,
 				18D6F0522BD8B1100022EFAA /* FCNavView.swift */,
 				18562E722BB1470E00F1FA23 /* BaseHeadFile.swift */,
 				18AD9AF92BC94DA200D33830 /* FCLoadingView.swift */,
@@ -506,8 +506,8 @@
 			isa = PBXGroup;
 			children = (
 				18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */,
-				18A7F87B2BEB722500B33F2D /* GenderSelectionCell.swift */,
-				18A7F87D2BEB76D000B33F2D /* WenBenCell.swift */,
+				18A7F87D2BEB76D000B33F2D /* FCWenBenCell.swift */,
+				18A7F87B2BEB722500B33F2D /* FCGenderCell.swift */,
 			);
 			path = PersonInfoVeiw;
 			sourceTree = "<group>";
@@ -739,7 +739,7 @@
 				188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */,
 				18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */,
 				1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */,
-				18A7F87C2BEB722500B33F2D /* GenderSelectionCell.swift in Sources */,
+				18A7F87C2BEB722500B33F2D /* FCGenderCell.swift in Sources */,
 				184D87262BB283A100773F45 /* FCRequset.swift in Sources */,
 				18562E7B2BB1483E00F1FA23 /* WebViewController.swift in Sources */,
 				186210942BCF76A500A74058 /* RightView.swift in Sources */,
@@ -751,7 +751,7 @@
 				18562E7F2BB14DD600F1FA23 /* LoginFactory.swift in Sources */,
 				18562E5D2BB12B1000F1FA23 /* LaunchViewController.swift in Sources */,
 				18562E752BB1481100F1FA23 /* HomeViewController.swift in Sources */,
-				18A7F87E2BEB76D000B33F2D /* WenBenCell.swift in Sources */,
+				18A7F87E2BEB76D000B33F2D /* FCWenBenCell.swift in Sources */,
 				18A7F8752BEB5C7500B33F2D /* FCBankInfoViewController.swift in Sources */,
 				184D87322BB2A15200773F45 /* BaseNavViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,

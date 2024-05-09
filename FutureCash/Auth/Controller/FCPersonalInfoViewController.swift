@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import HandyJSON
+import TYAlertController
 
 class FCPersonalInfoViewController: FCBaseViewController {
     
@@ -16,6 +17,11 @@ class FCPersonalInfoViewController: FCBaseViewController {
     lazy var personalView: FCPersonalView = {
         let personalView = FCPersonalView()
         return personalView
+    }()
+    
+    lazy var popView: FCPopPersonView = {
+        let popView = FCPopPersonView(frame: self.view.bounds)
+        return popView
     }()
     
     override func viewDidLoad() {
@@ -27,6 +33,15 @@ class FCPersonalInfoViewController: FCBaseViewController {
             self?.navigationController?.popToRootViewController(animated: true)
         }
         addPersonalView()
+        personalView.block = {
+            MBProgressHUD.show(text: "next")
+        }
+        personalView.block1 = { [weak self] cell,model in
+            self?.alertEnum()
+        }
+        personalView.block2 = { [weak self] cell in
+            self?.alertCity()
+        }
         getPersonalInfo()
     }
     
@@ -61,6 +76,18 @@ extension FCPersonalInfoViewController {
         } errorBlock: { error in
             
         }
+    }
+    
+    func alertEnum() {
+        let alertVC = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+        self.present(alertVC!, animated: true)
+        popView.block = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+    }
+    
+    func alertCity() {
+        
     }
     
 }

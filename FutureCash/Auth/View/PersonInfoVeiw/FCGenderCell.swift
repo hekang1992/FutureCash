@@ -88,6 +88,7 @@ class FCGenderCell: UITableViewCell {
                 } else {
                     btn.isSelected = true
                     btn.setBackgroundImage(UIImage(named: employment == "male" ? "male_sel" : "female_sel"), for: .normal)
+                    print("❤️性别❤️>>>>>>>>\(model.excuse ?? "")")
                 }
             }
         }

@@ -6,18 +6,21 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class FCPersonalView: UIView {
     
     var block: (() -> Void)?
     
-    var block1: (() -> Void)?
+    var block1: ((FCWenBenCell, ExceptModel) -> Void)?
+    
+    var block2: ((FCWenBenCell) -> Void)?
     
     var modelArray: [ExceptModel]?
     
     lazy var bgView: UIView = {
         let bgView = UIView()
-        bgView.backgroundColor = .clear
+        bgView.backgroundColor = .red
         return bgView
     }()
     
@@ -66,7 +69,6 @@ class FCPersonalView: UIView {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         tableView.register(FCWenBenCell.self, forCellReuseIdentifier: "FCWenBenCell")
@@ -143,6 +145,7 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard modelArray != nil else { return UIView() }
         let footView = UIView()
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(named: "fpnfitbtn"), for: .normal)
@@ -195,11 +198,50 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
             imageView.frame = CGRect(x: 0, y: 0, width: 25.px(), height: 25.px())
             cell.nameField.rightView = imageView
             cell.nameField.rightViewMode = .always
+            cell.nameField.isEnabled = false
+//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
+//            cell.nameField.addGestureRecognizer(tapGesture)
+        }
+    }
+    
+    //    @objc func textFieldTapped(_ sender: UITapGestureRecognizer) {
+    //        guard let textField = sender.view as? UITextField else { return }
+    //        if let cell = textField.superview?.superview?.superview as? FCWenBenCell {
+    //            print("🔥nameLabel>>>>🔥\(cell.nameLabel.text ?? "")")
+    //        }
+    //    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let modelArray = modelArray else { return }
+        let model = modelArray[indexPath.row]
+        let ourselves = model.ourselves ?? ""
+        switch ourselves {
+        case "f1", "f3":
+            if let cell = tableView.cellForRow(at: indexPath) as? FCWenBenCell {
+                popEnumViewWithModel(cell, model)
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    func popEnumViewWithModel(_ cell: FCWenBenCell, _ model: ExceptModel) {
+        let ourselves = model.ourselves ?? ""
+        switch ourselves {
+        case "f1":
+            self.block1?(cell,model)
+            break
+        case "f3":
+            self.block2?(cell)
+            break
+        default:
+            break
         }
     }
     
     @objc func conFirmClick() {
-        
+        self.block?()
     }
     
 }

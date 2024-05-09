@@ -68,6 +68,7 @@
 		18D006DD2BC7F18E00C70B54 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */; };
 		18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6F0522BD8B1100022EFAA /* FCNavView.swift */; };
 		18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6F0542BD8BC670022EFAA /* FCSetView.swift */; };
+		18D8CFF42BECE543005CC97C /* FCPopPersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8CFF32BECE543005CC97C /* FCPopPersonView.swift */; };
 		86110B453452C643FCBED746 /* Pods_FutureCash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74FE2AE9F8DF75E75F5EEB9 /* Pods_FutureCash.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		18D6F0522BD8B1100022EFAA /* FCNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCNavView.swift; sourceTree = "<group>"; };
 		18D6F0542BD8BC670022EFAA /* FCSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCSetView.swift; sourceTree = "<group>"; };
+		18D8CFF32BECE543005CC97C /* FCPopPersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPopPersonView.swift; sourceTree = "<group>"; };
 		2578A0F82CBB8FA0DBF2EA76 /* Pods-TaraLoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaraLoanTests.debug.xcconfig"; path = "Target Support Files/Pods-TaraLoanTests/Pods-TaraLoanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6689BC8FB457123A15343C82 /* Pods-FutureCash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutureCash.release.xcconfig"; path = "Target Support Files/Pods-FutureCash/Pods-FutureCash.release.xcconfig"; sourceTree = "<group>"; };
 		6ACE9A2534B37EEA5D535A64 /* Pods-FutureCash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FutureCash.debug.xcconfig"; path = "Target Support Files/Pods-FutureCash/Pods-FutureCash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				18A7F8772BEB5E0100B33F2D /* FCPersonalView.swift */,
 				18A7F87D2BEB76D000B33F2D /* FCWenBenCell.swift */,
 				18A7F87B2BEB722500B33F2D /* FCGenderCell.swift */,
+				18D8CFF32BECE543005CC97C /* FCPopPersonView.swift */,
 			);
 			path = PersonInfoVeiw;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				18A7F8652BE8C13500B33F2D /* FCPhotoView.swift in Sources */,
 				188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */,
 				18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */,
+				18D8CFF42BECE543005CC97C /* FCPopPersonView.swift in Sources */,
 				1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */,
 				18A7F87C2BEB722500B33F2D /* FCGenderCell.swift in Sources */,
 				184D87262BB283A100773F45 /* FCRequset.swift in Sources */,

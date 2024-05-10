@@ -16,7 +16,7 @@ class FCWenBenCell: UITableViewCell {
         static let nameLabelHeight: CGFloat = 20.px()
         static let bgImageViewWidth: CGFloat = 319.px()
         static let bgImageViewHeight: CGFloat = 50.px()
-        static let nameFieldFont = UIFont(name: "Fredoka-Medium", size: 18.px())!
+        static let nameFieldFont = UIFont(name: Fredoka_Bold, size: 18.px())!
         static let nameFieldPlaceholderColor = UIColor(css: "#6C8BB7")!
         static let nameFieldRightInset: CGFloat = 17.px()
     }
@@ -36,12 +36,13 @@ class FCWenBenCell: UITableViewCell {
     }()
     
     lazy var nameField: UITextField = {
-        let field = UITextField()
-        field.font = Constants.nameFieldFont
-        field.textColor = .white
-        field.setupLeftView(width: 15.px(), height: 15.px())
-        field.setupRightView(imageName: "Slicettt11qa", width: 25.px(), height: 25.px())
-        return field
+        let nameField = UITextField()
+        nameField.font = Constants.nameFieldFont
+        nameField.textColor = .white
+        nameField.setupLeftView(width: 15.px(), height: 15.px())
+        nameField.setupRightView(imageName: "Slicettt11qa", width: 25.px(), height: 25.px())
+        nameField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        return nameField
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -81,6 +82,14 @@ class FCWenBenCell: UITableViewCell {
         }
     }
     
+    @objc func textFieldEditingChanged(_ textField: UITextField) {
+        if textField == nameField {
+            if let model = model {
+                model.sapped = nameField.text
+            }
+        }
+    }
+    
     var model: ExceptModel? {
         didSet {
             updateViews()
@@ -90,11 +99,15 @@ class FCWenBenCell: UITableViewCell {
     private func updateViews() {
         guard let model = model else { return }
         nameLabel.text = model.blonde ?? ""
+        let sapped = model.sapped ?? ""
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
             .font: Constants.nameFieldFont,
             .foregroundColor: Constants.nameFieldPlaceholderColor
         ]
         nameField.attributedPlaceholder = NSAttributedString(string: model.blamed ?? "", attributes: placeholderAttributes)
+        if !sapped.isEmpty {
+            nameField.text = sapped
+        }
     }
     
 }

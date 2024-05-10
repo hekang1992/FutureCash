@@ -10,7 +10,7 @@ import MBProgressHUD
 
 class FCPersonalView: UIView {
     
-    var block: (() -> Void)?
+    var block: ((inout [String: Any]) -> Void)?
     
     var block1: ((FCWenBenCell, ExceptModel) -> Void)?
     
@@ -172,7 +172,7 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
                 configureGenderCell(cell, with: model)
                 return cell
             }
-        case ("f1", _),("f2", _), (_, _):
+        case ("f1", _),("f2", _),("f3", _), (_, _):
             if let cell = tableView.dequeueReusableCell(withIdentifier: "FCWenBenCell", for: indexPath) as? FCWenBenCell {
                 configureCell(cell, with: model)
                 return cell
@@ -191,25 +191,35 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         cell.model = model
-        if model.ourselves == "f1" && model.conceive != "similar" {
-            let imageView = UIImageView()
+        let imageView = UIImageView()
+        imageView.contentMode = .center
+        imageView.frame = CGRect(x: 0, y: 0, width: 25.px(), height: 25.px())
+        
+        switch (model.ourselves, model.conceive) {
+        case ("f1", "similar"), ("f3", _):
             imageView.image = UIImage(named: "Slicexialee")
-            imageView.contentMode = .center
-            imageView.frame = CGRect(x: 0, y: 0, width: 25.px(), height: 25.px())
-            cell.nameField.rightView = imageView
-            cell.nameField.rightViewMode = .always
             cell.nameField.isEnabled = false
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
-//            cell.nameField.addGestureRecognizer(tapGesture)
+            // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
+            // cell.nameField.addGestureRecognizer(tapGesture)
+        case ("f1", _):
+            imageView.image = UIImage(named: "Slicexialee")
+            cell.nameField.isEnabled = false
+        default:
+            imageView.image = UIImage(named: "Slicettt11qa")
+            cell.nameField.isEnabled = true
         }
+        
+        // 设置 nameField 的 rightView 和 rightViewMode
+        cell.nameField.rightView = imageView
+        cell.nameField.rightViewMode = .always
     }
     
-    //    @objc func textFieldTapped(_ sender: UITapGestureRecognizer) {
-    //        guard let textField = sender.view as? UITextField else { return }
-    //        if let cell = textField.superview?.superview?.superview as? FCWenBenCell {
-    //            print("🔥nameLabel>>>>🔥\(cell.nameLabel.text ?? "")")
-    //        }
-    //    }
+//    @objc func textFieldTapped(_ sender: UITapGestureRecognizer) {
+//        guard let textField = sender.view as? UITextField else { return }
+//        if let cell = textField.superview?.superview?.superview as? FCWenBenCell {
+//            print("🔥nameLabel>>>>🔥\(cell.nameLabel.text ?? "")")
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let modelArray = modelArray else { return }
@@ -241,7 +251,17 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func conFirmClick() {
-        self.block?()
+        if let modelArray = modelArray {
+            var dict: [String: Any] = modelArray.reduce(into: [String: Any](), { partialResult, model in
+                let type = model.ourselves
+                if type == "f1" || type == "f3" {
+                    partialResult[model.conceive!] = model.excuse
+                }else {
+                    partialResult[model.conceive!] = model.sapped
+                }
+            })
+            self.block?(&dict)
+        }
     }
     
 }

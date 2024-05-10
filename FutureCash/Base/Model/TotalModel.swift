@@ -19,10 +19,19 @@ class EasilyModel: HandyJSON {
     required init() {}
     var feared: FearedModel?
     var except: [ExceptModel]?
+    var palace: [PlaceModel]?
+}
+
+class PlaceModel: HandyJSON {
+    required init() {}
+    var employment: String?
+    var particularly: String?
+    var palace: [PlaceModel]?
 }
 
 class ExceptModel: HandyJSON {
     required init() {}
+    var particularly: String?
     var blonde: String?//标题
     var blamed: String?//placeholder
     var conceive: String?//code保存时的key键

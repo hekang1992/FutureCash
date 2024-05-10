@@ -141,6 +141,39 @@ class FCBaseViewController: UIViewController {
 
 extension FCBaseViewController: UINavigationControllerDelegate {
     
+    func saveDataToLocalFile(_ jsonString: String, fileName: String) {
+        guard let data = jsonString.data(using: .utf8) else { return }
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileURL = urls[0].appendingPathComponent(fileName)
+        
+        do {
+            try data.write(to: fileURL, options: .atomic)
+            print("Saved data to \(fileURL.absoluteString)")
+        } catch {
+            print("Failed to write JSON data to local file: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadDataFromLocalFile(fileName: String) -> [PlaceModel]? {
+        let fileManager = FileManager.default
+        let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileURL = urls[0].appendingPathComponent(fileName)
+        do {
+            let data = try Data(contentsOf: fileURL)
+            if let jsonString = String(data: data, encoding: .utf8) {
+                return convertJsonStringToModel(jsonString: jsonString)
+            }
+        } catch {
+            print("Failed to read from local file: \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    func convertJsonStringToModel(jsonString: String) -> [PlaceModel]? {
+        return [PlaceModel].deserialize(from: jsonString) as? [PlaceModel]
+    }
+    
     func horoughly(_ phone: String) {
         let dict = ["judge": phone, "killing": "1"]
         FCRequset.shared.requestAPI(params: dict, pageUrl: rightThoroughly, method: .post) { [weak self] baseModel in
@@ -212,9 +245,12 @@ extension FCBaseViewController: UINavigationControllerDelegate {
             break
             
         case "ef": 
-            let workVc = FCWorkInfoViewController()
-            workVc.particularly = productID
-            self.navigationController?.pushViewController(workVc, animated: true)
+            let peronalVc = FCPersonalInfoViewController()
+            peronalVc.particularly = productID
+            self.navigationController?.pushViewController(peronalVc, animated: true)
+//            let workVc = FCWorkInfoViewController()
+//            workVc.particularly = productID
+//            self.navigationController?.pushViewController(workVc, animated: true)
             break
             
         case "ee": 

@@ -33,16 +33,26 @@ class FCPersonalInfoViewController: FCBaseViewController {
             self?.navigationController?.popToRootViewController(animated: true)
         }
         addPersonalView()
-        personalView.block = {
-            MBProgressHUD.show(text: "next")
+        personalView.block = { [weak self] dict in
+            dict["relations"] = self?.particularly
+            self?.savePersonalInfo(dict)
         }
         personalView.block1 = { [weak self] cell,model in
-            self?.alertEnum()
+            self?.alertEnum(cell, model)
         }
         personalView.block2 = { [weak self] cell in
             self?.alertCity()
         }
         getPersonalInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let placeModels = loadDataFromLocalFile(fileName: "palaceData.json") {
+            print("❤️placeModels>>>>>>>>>❤️\(placeModels)")
+        } else {
+            print("Failed to load place models from the file.")
+        }
     }
     
 }
@@ -78,15 +88,43 @@ extension FCPersonalInfoViewController {
         }
     }
     
-    func alertEnum() {
+    func alertEnum(_ cell: FCWenBenCell, _ emodel: ExceptModel) {
         let alertVC = TYAlertController(alert: popView, preferredStyle: .actionSheet)
+        if let children = emodel.children {
+            popView.modelArray = children
+            popView.tableView.reloadData()
+        }
         self.present(alertVC!, animated: true)
         popView.block = { [weak self] in
             self?.dismiss(animated: true)
         }
+        popView.block1 = { [weak self] model in
+            self?.delayTime(0.25, closure: {
+                self?.dismiss(animated: true, completion: {
+                    emodel.sapped = model.employment
+                    emodel.excuse = model.excuse
+                    cell.nameField.text = model.employment
+                })
+            })
+        }
     }
     
     func alertCity() {
+        
+    }
+    
+    func savePersonalInfo(_ dict: [String: Any]) {
+        FCRequset.shared.requestAPI(params: dict, pageUrl: theTime, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
+            if conceive == 0 || conceive == 00 {
+                self?.getProductDetailInfo(self?.particularly ?? "")
+            }else {
+                MBProgressHUD.show(text: wanting)
+            }
+        } errorBlock: { error in
+            
+        }
         
     }
     

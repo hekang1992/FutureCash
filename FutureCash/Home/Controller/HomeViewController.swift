@@ -44,6 +44,7 @@ class HomeViewController: FCBaseViewController {
         button2.backgroundColor = .randomColor()
         button2.addTarget(self, action: #selector(buttonTapped2), for: .touchUpInside)
         view.addSubview(button2)
+        getAddressInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,12 +126,27 @@ extension HomeViewController {
                     if let bigCardModel = bigCardModel {
                         self?.particularly = bigCardModel.particularly ?? ""
                     }
-//                    let stranger = model.stranger ?? ""
-//                    if stranger == "1" {
-//                        
-//                    }else {
-//                        
-//                    }
+                    //                    let stranger = model.stranger ?? ""
+                    //                    if stranger == "1" {
+                    //
+                    //                    }else {
+                    //
+                    //                    }
+                }
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
+    func getAddressInfo() {
+        FCRequset.shared.requestAPI(params: [:], pageUrl: troubleObviously, method: .get) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model, let modelArray = model.palace, let jsonString = modelArray.toJSONString() {
+                    self?.saveDataToLocalFile(jsonString, fileName: "palaceData.json")
+                    print("🔥modelArray>>>>>🔥\(modelArray)")
                 }
             }
         } errorBlock: { error in

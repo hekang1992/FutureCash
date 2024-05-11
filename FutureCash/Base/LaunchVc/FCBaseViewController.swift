@@ -146,7 +146,6 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         let fileManager = FileManager.default
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
         let fileURL = urls[0].appendingPathComponent(fileName)
-        
         do {
             try data.write(to: fileURL, options: .atomic)
             print("Saved data to \(fileURL.absoluteString)")
@@ -244,13 +243,10 @@ extension FCBaseViewController: UINavigationControllerDelegate {
             self.navigationController?.pushViewController(peronalVc, animated: true)
             break
             
-        case "ef": 
-            let peronalVc = FCPersonalInfoViewController()
-            peronalVc.particularly = productID
-            self.navigationController?.pushViewController(peronalVc, animated: true)
-//            let workVc = FCWorkInfoViewController()
-//            workVc.particularly = productID
-//            self.navigationController?.pushViewController(workVc, animated: true)
+        case "ef":
+            let workVc = FCWorkInfoViewController()
+            workVc.particularly = productID
+            self.navigationController?.pushViewController(workVc, animated: true)
             break
             
         case "ee": 

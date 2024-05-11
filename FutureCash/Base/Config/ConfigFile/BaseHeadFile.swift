@@ -9,6 +9,7 @@ import UIKit
 import Foundation
 import DeviceKit
 import SnapKit
+import BRPickerView
 
 // 宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -235,3 +236,39 @@ extension UITextField {
     }
 }
 
+class ProvinceModelConverter {
+    static func getProvinceModelArr(dataSourceArr: [Any]) -> [BRProvinceModel] {
+        var tempArr1 = [BRProvinceModel]()
+        for proviceDic in dataSourceArr {
+            guard let proviceDic = proviceDic as? PlaceModel else {
+                continue
+            }
+            let proviceModel = BRProvinceModel()
+            proviceModel.code = proviceDic.particularly
+            proviceModel.name = proviceDic.employment
+            proviceModel.index = dataSourceArr.firstIndex(where: { $0 as AnyObject === proviceDic as AnyObject }) ?? 0
+            let cityList = proviceDic.palace ?? proviceDic.palace ?? []
+            var tempArr2 = [BRCityModel]()
+            for cityDic in cityList {
+                let cityModel = BRCityModel()
+                cityModel.code = cityDic.particularly
+                cityModel.name = cityDic.employment
+                cityModel.index = cityList.firstIndex(where: { $0 as AnyObject === cityDic as AnyObject }) ?? 0
+                let areaList = cityDic.palace ?? cityDic.palace ?? []
+                var tempArr3 = [BRAreaModel]()
+                for areaDic in areaList {
+                    let areaModel = BRAreaModel()
+                    areaModel.code = areaDic.particularly
+                    areaModel.name = areaDic.employment
+                    areaModel.index = areaList.firstIndex(where: { $0 as AnyObject === areaDic as AnyObject }) ?? 0
+                    tempArr3.append(areaModel)
+                }
+                cityModel.arealist = tempArr3
+                tempArr2.append(cityModel)
+            }
+            proviceModel.citylist = tempArr2
+            tempArr1.append(proviceModel)
+        }
+        return tempArr1
+    }
+}

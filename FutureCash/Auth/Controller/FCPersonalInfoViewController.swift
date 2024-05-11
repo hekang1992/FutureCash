@@ -9,6 +9,7 @@ import UIKit
 import MBProgressHUD
 import HandyJSON
 import TYAlertController
+import BRPickerView
 
 class FCPersonalInfoViewController: FCBaseViewController {
     
@@ -16,6 +17,7 @@ class FCPersonalInfoViewController: FCBaseViewController {
     
     lazy var personalView: FCPersonalView = {
         let personalView = FCPersonalView()
+        personalView.iconImageView2.image = UIImage(named: "personalImage")
         return personalView
     }()
     
@@ -40,21 +42,11 @@ class FCPersonalInfoViewController: FCBaseViewController {
         personalView.block1 = { [weak self] cell,model in
             self?.alertEnum(cell, model)
         }
-        personalView.block2 = { [weak self] cell in
-            self?.alertCity()
+        personalView.block2 = { [weak self] cell,model in
+            self?.alertCity(cell, model)
         }
         getPersonalInfo()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let placeModels = loadDataFromLocalFile(fileName: "palaceData.json") {
-            print("❤️placeModels>>>>>>>>>❤️\(placeModels)")
-        } else {
-            print("Failed to load place models from the file.")
-        }
-    }
-    
 }
 
 extension FCPersonalInfoViewController {
@@ -109,8 +101,36 @@ extension FCPersonalInfoViewController {
         }
     }
     
-    func alertCity() {
-        
+    func alertCity(_ cell: FCWenBenCell, _ model: ExceptModel) {
+        if let placeModels = loadDataFromLocalFile(fileName: "palaceData.json") {
+            let modelArray = ProvinceModelConverter.getProvinceModelArr(dataSourceArr: placeModels)
+            popEnumCityView(cell, modelArray, model)
+        } else {
+            print("Failed to load place models from the file.")
+        }
+    }
+    
+    func popEnumCityView(_ cell: FCWenBenCell, _ array: [BRProvinceModel], _ model: ExceptModel) {
+        let addressPickerView = BRAddressPickerView()
+        addressPickerView.pickerMode = .area
+        addressPickerView.title = "Please Select Region"
+        addressPickerView.dataSourceArr = array
+        addressPickerView.selectIndexs = [0, 0, 0]
+        addressPickerView.resultBlock = { province, city, area in
+            let provinceName = province?.name ?? ""
+            let cityName = city?.name ?? ""
+            let areaName = area?.name ?? ""
+            let addressString = provinceName + " " + cityName + " " + areaName
+            cell.nameField.text = addressString
+            model.excuse = addressString
+        }
+        let customStyle = BRPickerStyle()
+        customStyle.pickerColor = .white
+        customStyle.pickerTextFont = UIFont(name: Fredoka_Bold, size: 18.px())
+        customStyle.selectRowTextFont = customStyle.pickerTextFont
+        customStyle.selectRowTextColor = UIColor.red
+        addressPickerView.pickerStyle = customStyle
+        addressPickerView.show()
     }
     
     func savePersonalInfo(_ dict: [String: Any]) {
@@ -125,8 +145,6 @@ extension FCPersonalInfoViewController {
         } errorBlock: { error in
             
         }
-        
     }
-    
 }
 

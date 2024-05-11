@@ -14,7 +14,7 @@ class FCPersonalView: UIView {
     
     var block1: ((FCWenBenCell, ExceptModel) -> Void)?
     
-    var block2: ((FCWenBenCell) -> Void)?
+    var block2: ((FCWenBenCell, ExceptModel) -> Void)?
     
     var modelArray: [ExceptModel]?
     
@@ -240,10 +240,10 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
         let ourselves = model.ourselves ?? ""
         switch ourselves {
         case "f1":
-            self.block1?(cell,model)
+            self.block1?(cell, model)
             break
         case "f3":
-            self.block2?(cell)
+            self.block2?(cell, model)
             break
         default:
             break

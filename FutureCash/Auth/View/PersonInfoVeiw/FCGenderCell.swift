@@ -67,6 +67,16 @@ class FCGenderCell: UITableViewCell {
                     button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
                     bgView.addSubview(button)
                 }
+                
+                let excuse = model.excuse ?? ""
+                if !excuse.isEmpty {
+                    if let excuseInt = Int(excuse) {
+                        let result = excuseInt + 9
+                        if let btn = viewWithTag(result) as? UIButton {
+                            buttonTapped(selectedButton: btn)
+                        }
+                    }
+                }
                 updateButtonStates()
             }
         }

@@ -24,7 +24,7 @@ class EasilyModel: HandyJSON {
 
 class PlaceModel: HandyJSON {
     required init() {}
-    var employment: String?
+    var employment: String?//名字
     var particularly: String?
     var palace: [PlaceModel]?
 }

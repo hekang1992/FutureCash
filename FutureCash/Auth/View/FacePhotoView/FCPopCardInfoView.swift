@@ -199,7 +199,7 @@ extension FCPopCardInfoView {
         }
         let customStyle = BRPickerStyle()
         customStyle.pickerColor = .white
-        customStyle.pickerTextFont = UIFont(name: Fredoka_Bold, size: 20.px())
+        customStyle.pickerTextFont = UIFont(name: Fredoka_Bold, size: 18.px())
         customStyle.selectRowTextFont = customStyle.pickerTextFont
         customStyle.selectRowTextColor = UIColor.red
         datePickerView.pickerStyle = customStyle

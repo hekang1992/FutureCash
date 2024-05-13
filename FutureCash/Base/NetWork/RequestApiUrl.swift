@@ -9,6 +9,7 @@ import Foundation
 
 let BASE_H5_URL = "http://8.212.164.137:9013"
 let BASE_API_URL = "\(BASE_H5_URL)/ftch"
+let SCHEME_URL = "ta://loee.opp"
 
 // LOGIN
 let rightThoroughly = "/rightThoroughly"

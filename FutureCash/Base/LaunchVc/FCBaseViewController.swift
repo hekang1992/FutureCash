@@ -8,6 +8,7 @@
 import UIKit
 import MBProgressHUD
 import HandyJSON
+import AdSupport
 
 class FCBaseViewController: UIViewController {
     
@@ -189,6 +190,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     
     //登陆
     func walkedLogin() {
+        let starttime = DeviceInfo.getCurrentTime()
         let phoneStr = self.loginView.phoneTed.text ?? ""
         let codeStr = self.loginView.verifyCode
         let dict = ["temperance": phoneStr, "females": codeStr, "suggest": "1"]
@@ -200,6 +202,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                 let model = JSONDeserializer<LoginModel>.deserializeFrom(dict: baseModel.easily)
                 guard let model = model else { return }
                 LoginFactory.saveLoginInfo(model.temperance ?? "", model.temple ?? "")
+                self?.miandian(productID: "", startTime: starttime, type: "1")
                 self?.getRootVcPush()
             }
         } errorBlock: { error in
@@ -211,7 +214,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func getProductDetailInfo(_ productID: String) {
+    func getProductDetailInfo(_ productID: String, _ startTime: String) {
         let dict = ["relations": productID, "proposed": "1", "happenings": "2"]
         FCRequset.shared.requestAPI(params: dict, pageUrl: henry, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
@@ -219,7 +222,13 @@ extension FCBaseViewController: UINavigationControllerDelegate {
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
-                    self?.pushNextVc(model.feared?.enjoyment ?? "", productID)
+                    let enjoyment = model.feared?.enjoyment as? String ?? ""
+                    let suffused = model.given?.suffused as? String ?? ""
+                    if !enjoyment.isEmpty {
+                        self?.pushNextVc(model.feared?.enjoyment ?? "", productID, startTime)
+                    }else {
+                        self?.orderIDWithNext(suffused, productID, startTime)
+                    }
                 }
             }else {
                 MBProgressHUD.show(text: wanting)
@@ -229,41 +238,109 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         }
     }
     
-    func pushNextVc(_ type: String, _ productID: String) {
+    func pushNextVc(_ type: String, _ productID: String, _ startTime: String) {
         switch type {
         case "ua": 
             let cardVc = FCCardTypeViewController()
             cardVc.particularly = productID
             self.navigationController?.pushViewController(cardVc, animated: true)
+            self.miandian(productID: productID, startTime: startTime, type: "4")
             break
             
         case "ea":
             let peronalVc = FCPersonalInfoViewController()
             peronalVc.particularly = productID
             self.navigationController?.pushViewController(peronalVc, animated: true)
+            self.miandian(productID: productID, startTime: startTime, type: "5")
             break
             
         case "ef":
             let workVc = FCWorkInfoViewController()
             workVc.particularly = productID
             self.navigationController?.pushViewController(workVc, animated: true)
+            self.miandian(productID: productID, startTime: startTime, type: "6")
             break
             
-        case "ee": 
+        case "ee":
             let contactVc = FCContactViewController()
             contactVc.particularly = productID
             self.navigationController?.pushViewController(contactVc, animated: true)
+            self.miandian(productID: productID, startTime: startTime, type: "7")
             break
             
         case "ww":
             let bankVc = FCBankInfoViewController()
             bankVc.particularly = productID
             self.navigationController?.pushViewController(bankVc, animated: true)
+            self.miandian(productID: productID, startTime: startTime, type: "8")
             break
             
         default: break
             
         }
+    }
+    
+    func orderIDWithNext(_ orderID: String, _ productID: String, _ startTime: String) {
+        let dict = ["holborn": orderID]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: alfredsConscious, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    self?.pushWebVC(model.weren ?? "", productID, startTime)
+                }
+            }else {
+                MBProgressHUD.show(text: wanting)
+            }
+        } errorBlock: { error in
+            
+        }
+    }
+    
+    func pushWebVC(_ url: String, _ productID: String, _ startTime: String) {
+        let webVc = WebViewController()
+        let urlString = url + LoginFactory.getLoginParas()
+        guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("Failed to encode URL")
+            return
+        }
+        guard URL(string: encodedURLString) != nil else {
+            print("Failed to create encoded URL")
+            return
+        }
+        webVc.url = urlString
+        navigationController?.pushViewController(webVc, animated: true)
+        self.miandian(productID: productID, startTime: startTime, type: "9")
+    }
+    
+    func miandian(productID: String, startTime: String, type: String) {
+        let model = LocationManager.shared.locatinModel        
+        let smell = productID
+        let skilled = type
+        let unsatisfactory = DeviceInfo.getIdfv()
+        let politics = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let needed = model.longitude
+        let alcoholic = model.latitude
+        let arguing = startTime
+        let liked = DeviceInfo.getCurrentTime()
+        let dict = ["smell": smell, 
+                    "skilled": skilled,
+                    "unsatisfactory": unsatisfactory,
+                    "politics": politics,
+                    "needed": needed,
+                    "alcoholic": alcoholic,
+                    "arguing": arguing,
+                    "liked": liked] as [String: Any]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: theBrother, method: .post) { baseModel in
+           let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                print("🚗埋点>>>\(type)>>>success🚗")
+            }
+        } errorBlock: { error in
+            
+        }
+
     }
     
 }

@@ -1,26 +1,24 @@
 //
-//  FCPersonalView.swift
+//  FCContactView.swift
 //  FutureCash
 //
-//  Created by apple on 2024/5/8.
+//  Created by apple on 2024/5/11.
 //
 
 import UIKit
-import MBProgressHUD
 
-class FCPersonalView: UIView {
-    
-    var block: ((inout [String: Any]) -> Void)?
-    
-    var block1: ((FCWenBenCell, ExceptModel) -> Void)?
-    
-    var block2: ((FCWenBenCell, ExceptModel) -> Void)?
+class FCContactView: UIView {
     
     var modelArray: [ExceptModel]?
+
+    var block: (([[String: Any]]) -> Void)?
+    
+    var block1: ((FCContactCell, ExceptModel) -> Void)?
+    
+    var block2: ((FCContactCell, ExceptModel) -> Void)?
     
     lazy var bgView: UIView = {
         let bgView = UIView()
-        bgView.backgroundColor = .red
         return bgView
     }()
     
@@ -35,7 +33,7 @@ class FCPersonalView: UIView {
     
     lazy var iconImageView2: UIImageView = {
         let iconImageView2 = UIImageView()
-        iconImageView2.image = UIImage(named: "personalImage")
+        iconImageView2.image = UIImage(named: "contactInfo")
         iconImageView2.isUserInteractionEnabled = true
         return iconImageView2
     }()
@@ -71,8 +69,7 @@ class FCPersonalView: UIView {
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.register(FCWenBenCell.self, forCellReuseIdentifier: "FCWenBenCell")
-        tableView.register(FCGenderCell.self, forCellReuseIdentifier: "FCGenderCell")
+        tableView.register(FCContactCell.self, forCellReuseIdentifier: "FCContactCell")
         return tableView
     }()
     
@@ -130,7 +127,7 @@ class FCPersonalView: UIView {
     }
 }
 
-extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
+extension FCContactView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return modelArray?.count ?? 0
@@ -166,102 +163,36 @@ extension FCPersonalView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let modelArray = modelArray else { return UITableViewCell() }
         let model = modelArray[indexPath.row]
-        switch (model.ourselves, model.conceive) {
-        case ("f1", "similar"):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "FCGenderCell", for: indexPath) as? FCGenderCell {
-                configureGenderCell(cell, with: model)
-                return cell
-            }
-        case ("f1", _),("f2", _),("f3", _), (_, _):
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "FCWenBenCell", for: indexPath) as? FCWenBenCell {
-                configureCell(cell, with: model)
-                return cell
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "FCContactCell", for: indexPath) as? FCContactCell {
+            configureCell(cell, with: model)
+            return cell
         }
         return UITableViewCell()
     }
     
-    func configureGenderCell(_ cell: FCGenderCell, with model: ExceptModel) {
+    func configureCell(_ cell: FCContactCell, with model: ExceptModel) {
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         cell.model = model
-    }
-    
-    func configureCell(_ cell: FCWenBenCell, with model: ExceptModel) {
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.model = model
-        let imageView = UIImageView()
-        imageView.contentMode = .center
-        imageView.frame = CGRect(x: 0, y: 0, width: 25.px(), height: 25.px())
-        
-        switch (model.ourselves, model.conceive) {
-        case ("f1", "similar"), ("f3", _):
-            imageView.image = UIImage(named: "Slicexialee")
-            cell.nameField.isEnabled = false
-            // let tapGesture = UITapGestureRecognizer(target: self, action: #selector(textFieldTapped))
-            // cell.nameField.addGestureRecognizer(tapGesture)
-        case ("f1", _):
-            imageView.image = UIImage(named: "Slicexialee")
-            cell.nameField.isEnabled = false
-        default:
-            imageView.image = UIImage(named: "Slicettt11qa")
-            cell.nameField.isEnabled = true
+        cell.block1 = { [weak self] in
+            self?.block1?(cell, model)
         }
-        
-        // 设置 nameField 的 rightView 和 rightViewMode
-        cell.nameField.rightView = imageView
-        cell.nameField.rightViewMode = .always
-    }
-    
-//    @objc func textFieldTapped(_ sender: UITapGestureRecognizer) {
-//        guard let textField = sender.view as? UITextField else { return }
-//        if let cell = textField.superview?.superview?.superview as? FCWenBenCell {
-//            print("🔥nameLabel>>>>🔥\(cell.nameLabel.text ?? "")")
-//        }
-//    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let modelArray = modelArray else { return }
-        let model = modelArray[indexPath.row]
-        let ourselves = model.ourselves ?? ""
-        switch ourselves {
-        case "f1", "f3":
-            if let cell = tableView.cellForRow(at: indexPath) as? FCWenBenCell {
-                popEnumViewWithModel(cell, model)
-            }
-            break
-        default:
-            break
-        }
-    }
-    
-    func popEnumViewWithModel(_ cell: FCWenBenCell, _ model: ExceptModel) {
-        let ourselves = model.ourselves ?? ""
-        switch ourselves {
-        case "f1":
-            self.block1?(cell, model)
-            break
-        case "f3":
-            self.block2?(cell, model)
-            break
-        default:
-            break
+        cell.block2 = { [weak self] in
+            self?.block2?(cell, model)
         }
     }
     
     @objc func conFirmClick() {
-        if let modelArray = modelArray {
-            var dict: [String: Any] = modelArray.reduce(into: [String: Any](), { partialResult, model in
-                let type = model.ourselves
-                if type == "f1" || type == "f3" {
-                    partialResult[model.conceive!] = model.excuse
-                }else {
-                    partialResult[model.conceive!] = model.sapped
-                }
-            })
-            self.block?(&dict)
+        let array = self.modelArray?.map({ model in
+            var partialResult: [String: Any] = [:]
+            partialResult["solid"] = model.solid ?? ""
+            partialResult["square"] = model.excuse ?? ""
+            partialResult["lowndes"] = model.lowndes ?? ""
+            partialResult["employment"] = model.employment ?? ""
+            return partialResult
+        })
+        if let array = array {
+            self.block?(array)
         }
     }
-    
 }

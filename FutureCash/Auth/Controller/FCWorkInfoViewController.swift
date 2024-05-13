@@ -45,6 +45,9 @@ class FCWorkInfoViewController: FCBaseViewController {
         personalView.block2 = { [weak self] cell,model in
             self?.alertCity(cell, model)
         }
+        personalView.block3 = { [weak self] cell,model in
+            self?.alertPaydayView(cell, model)
+        }
         getWorkInfo()
     }
     
@@ -134,8 +137,40 @@ extension FCWorkInfoViewController {
         addressPickerView.show()
     }
     
+    func alertPaydayView(_ cell: FCWenBenCell, _ model: ExceptModel) {
+        if let modelArray = model.children {
+            let paydayArray = GetPayday.getPaydayModelArr(dataSourceArr: modelArray)
+            popEnumPaydayView(cell, paydayArray, model)
+        }
+    }
+    
+    func popEnumPaydayView(_ cell: FCWenBenCell, _ array: [BRProvinceModel], _ model: ExceptModel) {
+        let addressPickerView = BRAddressPickerView()
+        addressPickerView.pickerMode = .city
+        addressPickerView.title = "Please Select Region"
+        addressPickerView.dataSourceArr = array
+        addressPickerView.selectIndexs = [0, 0, 0]
+        addressPickerView.resultBlock = { province, city, area in
+            let provinceName = province?.name ?? ""
+            let cityName = city?.name ?? ""
+            let provinceCode = province?.code ?? ""
+            let cityCode = city?.code ?? ""
+            let addressString = provinceName + " | " + cityName
+            cell.nameField.text = addressString
+            model.excuse = provinceCode + "|" + cityCode
+            print("🔥model.excuse>>>>>>🔥\(model.excuse ?? "")")
+        }
+        let customStyle = BRPickerStyle()
+        customStyle.pickerColor = .white
+        customStyle.pickerTextFont = UIFont(name: Fredoka_Bold, size: 18.px())
+        customStyle.selectRowTextFont = customStyle.pickerTextFont
+        customStyle.selectRowTextColor = UIColor.red
+        addressPickerView.pickerStyle = customStyle
+        addressPickerView.show()
+    }
+    
     func saveWorkInfo(_ dict: [String: Any]) {
-        FCRequset.shared.requestAPI(params: dict, pageUrl: theTime, method: .post) { [weak self] baseModel in
+        FCRequset.shared.requestAPI(params: dict, pageUrl: elderlySister, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
@@ -146,7 +181,5 @@ extension FCWorkInfoViewController {
         } errorBlock: { error in
             
         }
-        
     }
-    
 }

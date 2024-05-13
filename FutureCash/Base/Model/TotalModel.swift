@@ -19,7 +19,20 @@ class EasilyModel: HandyJSON {
     required init() {}
     var feared: FearedModel?
     var except: [ExceptModel]?
+    var eleven: ElevenModel?
     var palace: [PlaceModel]?
+    var given: GivenModel?
+    var weren: String?
+}
+
+class GivenModel: HandyJSON {
+    required init() {}
+    var suffused: String?
+}
+
+class ElevenModel: HandyJSON {
+    required init() {}
+    var palace: [ExceptModel]?
 }
 
 class PlaceModel: HandyJSON {
@@ -27,10 +40,15 @@ class PlaceModel: HandyJSON {
     var employment: String?//名字
     var particularly: String?
     var palace: [PlaceModel]?
+    var solid: String?
+    var saying: String?
+    var elderly: [PlaceModel]?
+    var excuse: String?
 }
 
 class ExceptModel: HandyJSON {
     required init() {}
+    var except: [ExceptModel]?
     var particularly: String?
     var blonde: String?//标题
     var blamed: String?//placeholder
@@ -40,12 +58,21 @@ class ExceptModel: HandyJSON {
     var children: [ChildrenModel]?
     var sapped: String?//回写的值
     var excuse: String?//传值
+    var solid: String?
+    var saying: String?
+    var elderly: [ChildrenModel]?
+    var employment: String?
+    var lowndes: String?
+    var Jorjjty: String?
+    var square: String?
 }
 
 class ChildrenModel: HandyJSON {
     required init() {}
-    var employment: String?
-    var excuse: String?
+    var excuse: String?//代码
+    var employment: String?//名字
+    var soothing: String?//picurl
+    var children: [ChildrenModel]?
 }
 
 class GoogleModel: HandyJSON {

@@ -19,7 +19,7 @@ class LoadView: UIView {
     }()
     
     private lazy var hudView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "FCLoading.json", 
+        let animationView = LottieAnimationView(name: "FCLoading.json",
                                                 bundle: Bundle.main)
         animationView.loopMode = .loop
         animationView.play()
@@ -55,11 +55,14 @@ class LoadView: UIView {
 }
 
 class ViewHud {
+    static let loadView = LoadView()
     static func createLoadView() -> LoadView {
-        let loadView = LoadView()
         if let keyWindow = UIApplication.shared.windows.first {
             loadView.frame = keyWindow.bounds
         }
         return loadView
+    }
+    static func hideLoadView() {
+        loadView.removeFromSuperview()
     }
 }

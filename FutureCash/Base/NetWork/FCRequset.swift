@@ -28,16 +28,13 @@ class FCRequset: NSObject {
                     timeout: TimeInterval = 30,
                     complete: @escaping CompleteBlock,
                     errorBlock: @escaping NSErrorBlock){
-        let loadView = ViewHud.createLoadView()
-        if let keyWindow = UIApplication.shared.windows.first {
-            keyWindow.addSubview(loadView)
-        }
+        addHudView()
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.request(wholeApiUrl, method: method, parameters: params, headers: headers).responseData { [weak self] response in
             switch response.result {
             case .success(let success):
-                loadView.removeFromSuperview()
+                ViewHud.hideLoadView()
                 print("success>>>>>>>\(success)")
                 if response.data == nil {
                     print("no data")
@@ -55,7 +52,7 @@ class FCRequset: NSObject {
                 }
                 break
             case .failure(let failure):
-                loadView.removeFromSuperview()
+                ViewHud.hideLoadView()
                 errorBlock(failure)
                 break
             }
@@ -69,10 +66,7 @@ class FCRequset: NSObject {
                         data: Data,
                         complete: @escaping CompleteBlock,
                         errorBlock: @escaping NSErrorBlock){
-        let loadView = ViewHud.createLoadView()
-        if let keyWindow = UIApplication.shared.windows.first {
-            keyWindow.addSubview(loadView)
-        }
+        addHudView()
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.upload(
@@ -90,7 +84,7 @@ class FCRequset: NSObject {
         .responseData(completionHandler: { response in
             switch response.result {
             case .success(let success):
-                loadView.removeFromSuperview()
+                ViewHud.hideLoadView()
                 if response.data == nil {
                     print("no data")
                     return
@@ -103,7 +97,7 @@ class FCRequset: NSObject {
                 }
                 break
             case .failure(let error):
-                loadView.removeFromSuperview()
+                ViewHud.hideLoadView()
                 errorBlock(error)
                 break
             }
@@ -116,10 +110,7 @@ class FCRequset: NSObject {
                        timeout: TimeInterval = 30,
                        complete: @escaping CompleteBlock,
                        errorBlock: @escaping NSErrorBlock){
-        let loadView = ViewHud.createLoadView()
-        if let keyWindow = UIApplication.shared.windows.first {
-            keyWindow.addSubview(loadView)
-        }
+        addHudView()
         var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         print("wholeApiUrl>>>data>>>\(wholeApiUrl)")
@@ -137,7 +128,7 @@ class FCRequset: NSObject {
         .responseData(completionHandler: { response in
             switch response.result {
             case .success(let success):
-                loadView.removeFromSuperview()
+                ViewHud.hideLoadView()
                 if response.data == nil {
                     print("no data")
                     return
@@ -150,7 +141,7 @@ class FCRequset: NSObject {
                 }
                 break
             case .failure(let error):
-                loadView.removeFromSuperview()
+                ViewHud.hideLoadView()
                 errorBlock(error)
                 break
             }
@@ -161,6 +152,13 @@ class FCRequset: NSObject {
         let vc = UIViewController.getCurrentUIVC() as! FCBaseViewController
         vc.addLoginView()
         LoginFactory.removeLoginInfo()
+    }
+    
+    func addHudView() {
+        let loadView = ViewHud.createLoadView()
+        if let keyWindow = UIApplication.shared.windows.first {
+            keyWindow.addSubview(loadView)
+        }
     }
     
 }

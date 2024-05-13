@@ -20,6 +20,11 @@ class FCPopPCell: UITableViewCell {
         return nameLabel
     }()
     
+    lazy var iconImageView: UIImageView = {
+        let iconImageView = UIImageView()
+        return iconImageView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -33,6 +38,7 @@ class FCPopPCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(bgImageView)
         bgImageView.addSubview(nameLabel)
+        bgImageView.addSubview(iconImageView)
     }
     
     private func setupConstraints() {
@@ -45,6 +51,11 @@ class FCPopPCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.edges.equalTo(bgImageView)
         }
+        iconImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.size.equalTo(CGSizeMake(34.px(), 34.px()))
+            make.left.equalTo(bgImageView).offset(15.px())
+        }
     }
     
     var model: ChildrenModel? {
@@ -56,6 +67,10 @@ class FCPopPCell: UITableViewCell {
     private func updateViews() {
         guard let model = model else { return }
         nameLabel.text = model.employment
+        let picUrl = model.soothing ?? ""
+        if !picUrl.isEmpty {
+            iconImageView.kf.setImage(with: URL(string: picUrl))
+        }
     }
     
 }

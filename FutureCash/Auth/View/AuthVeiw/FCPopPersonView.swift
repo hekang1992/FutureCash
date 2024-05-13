@@ -9,9 +9,9 @@ import UIKit
 
 class FCPopPersonView: UIView {
     
-    var modelArray: [ChildrenModel]?
-    
     var block: (() -> Void)?
+    
+    var modelArray: [ChildrenModel]?
     
     var block1: ((ChildrenModel) -> Void)?
     

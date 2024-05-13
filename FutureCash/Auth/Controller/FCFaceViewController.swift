@@ -13,6 +13,8 @@ import Kingfisher
 
 class FCFaceViewController: FCBaseViewController {
     
+    var starttime: String?
+    
     var particularly: String?
     
     lazy var faceView: FCFaceView = {
@@ -34,7 +36,7 @@ class FCFaceViewController: FCBaseViewController {
         }
         faceView.block1 = { [weak self] in
             if let particularly = self?.particularly {
-                self?.getProductDetailInfo(particularly)
+                self?.getProductDetailInfo(particularly, self?.starttime ?? "")
             }
         }
     }
@@ -112,7 +114,7 @@ extension FCFaceViewController {
                     vc.navigationController?.dismiss(animated: true, completion: {
                         //调用产品详情
                         if let particularly = self?.particularly {
-                            self?.getProductDetailInfo(particularly)
+                            self?.getProductDetailInfo(particularly, self?.starttime ?? "")
                         }
                     })
                 }

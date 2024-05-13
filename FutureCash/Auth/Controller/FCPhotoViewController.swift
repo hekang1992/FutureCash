@@ -16,6 +16,8 @@ import MBProgressHUD
 typealias CompletionStatusBlock = (Bool) -> Void
 class FCPhotoViewController: FCBaseViewController {
     
+    var starttime: String = ""
+    
     var imageUrl: String?
     
     var guessed: String?
@@ -43,6 +45,7 @@ class FCPhotoViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        starttime = DeviceInfo.getCurrentTime()
         self.navView.isHidden = false
         self.navView.block = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
@@ -294,6 +297,7 @@ extension FCPhotoViewController {
         let faceVc = FCFaceViewController()
         faceVc.particularly = self.particularly ?? ""
         self.navigationController?.pushViewController(faceVc, animated: true)
+        self.miandian(productID: self.particularly ?? "", startTime: starttime, type: "3")
     }
     
 }

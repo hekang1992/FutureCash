@@ -40,10 +40,13 @@ class FCPersonalInfoViewController: FCBaseViewController {
             self?.savePersonalInfo(dict)
         }
         personalView.block1 = { [weak self] cell,model in
-            self?.alertEnum(cell, model)
+            self?.alertNormalEnum(cell, model)
         }
         personalView.block2 = { [weak self] cell,model in
             self?.alertCity(cell, model)
+        }
+        personalView.block3 = { [weak self] cell,model in
+            self?.alertPaydayView(cell, model)
         }
         getPersonalInfo()
     }
@@ -80,7 +83,7 @@ extension FCPersonalInfoViewController {
         }
     }
     
-    func alertEnum(_ cell: FCWenBenCell, _ emodel: ExceptModel) {
+    func alertNormalEnum(_ cell: FCWenBenCell, _ emodel: ExceptModel) {
         let alertVC = TYAlertController(alert: popView, preferredStyle: .actionSheet)
         if let children = emodel.children {
             popView.modelArray = children
@@ -123,6 +126,38 @@ extension FCPersonalInfoViewController {
             let addressString = provinceName + " " + cityName + " " + areaName
             cell.nameField.text = addressString
             model.excuse = addressString
+        }
+        let customStyle = BRPickerStyle()
+        customStyle.pickerColor = .white
+        customStyle.pickerTextFont = UIFont(name: Fredoka_Bold, size: 18.px())
+        customStyle.selectRowTextFont = customStyle.pickerTextFont
+        customStyle.selectRowTextColor = UIColor.red
+        addressPickerView.pickerStyle = customStyle
+        addressPickerView.show()
+    }
+    
+    func alertPaydayView(_ cell: FCWenBenCell, _ model: ExceptModel) {
+        if let modelArray = model.children {
+            let paydayArray = GetPayday.getPaydayModelArr(dataSourceArr: modelArray)
+            popEnumPaydayView(cell, paydayArray, model)
+        }
+    }
+    
+    func popEnumPaydayView(_ cell: FCWenBenCell, _ array: [BRProvinceModel], _ model: ExceptModel) {
+        let addressPickerView = BRAddressPickerView()
+        addressPickerView.pickerMode = .city
+        addressPickerView.title = "Please Select Payday"
+        addressPickerView.dataSourceArr = array
+        addressPickerView.selectIndexs = [0, 0, 0]
+        addressPickerView.resultBlock = { province, city, area in
+            let provinceName = province?.name ?? ""
+            let cityName = city?.name ?? ""
+            let provinceCode = province?.code ?? ""
+            let cityCode = city?.code ?? ""
+            let addressString = provinceName + " | " + cityName
+            cell.nameField.text = addressString
+            model.excuse = provinceCode + "|" + cityCode
+            print("🔥model.excuse>>>>>>🔥\(model.excuse ?? "")")
         }
         let customStyle = BRPickerStyle()
         customStyle.pickerColor = .white

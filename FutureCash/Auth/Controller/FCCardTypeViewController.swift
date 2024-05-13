@@ -12,6 +12,8 @@ import MBProgressHUD
 
 class FCCardTypeViewController: FCBaseViewController {
     
+    var starttime: String?
+    
     var modelArray: [PModel]?
     
     var particularly: String?
@@ -33,6 +35,7 @@ class FCCardTypeViewController: FCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        starttime = DeviceInfo.getCurrentTime()
         self.navView.isHidden = false
         self.navView.block = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
@@ -97,11 +100,12 @@ extension FCCardTypeViewController {
             self?.dismiss(animated: true, completion: {
                 col.didselectCollecTionView(col.collectionView, indexPath)
                 self?.delayTime(0.15, closure: {
-                    let faceVc = FCPhotoViewController()
-                    faceVc.guessed = model.excuse
-                    faceVc.imageUrl = model.yewtiful
-                    faceVc.particularly = self?.particularly ?? ""
-                    self?.navigationController?.pushViewController(faceVc, animated: true)
+                    let photoVc = FCPhotoViewController()
+                    photoVc.guessed = model.excuse
+                    photoVc.imageUrl = model.yewtiful
+                    photoVc.particularly = self?.particularly ?? ""
+                    self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "2")
+                    self?.navigationController?.pushViewController(photoVc, animated: true)
                 })
             })
         }

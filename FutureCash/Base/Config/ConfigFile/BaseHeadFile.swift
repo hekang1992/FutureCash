@@ -272,3 +272,40 @@ class ProvinceModelConverter {
         return tempArr1
     }
 }
+
+class GetPayday {
+    static func getPaydayModelArr(dataSourceArr: [Any]) -> [BRProvinceModel] {
+        var tempArr1 = [BRProvinceModel]()
+        for proviceDic in dataSourceArr {
+            guard let proviceDic = proviceDic as? ChildrenModel else {
+                continue
+            }
+            let proviceModel = BRProvinceModel()
+            proviceModel.code = proviceDic.excuse
+            proviceModel.name = proviceDic.employment
+            proviceModel.index = dataSourceArr.firstIndex(where: { $0 as AnyObject === proviceDic as AnyObject }) ?? 0
+            let cityList = proviceDic.children ?? proviceDic.children ?? []
+            var tempArr2 = [BRCityModel]()
+            for cityDic in cityList {
+                let cityModel = BRCityModel()
+                cityModel.code = cityDic.excuse
+                cityModel.name = cityDic.employment
+                cityModel.index = cityList.firstIndex(where: { $0 as AnyObject === cityDic as AnyObject }) ?? 0
+                let areaList = cityDic.children ?? cityDic.children ?? []
+                var tempArr3 = [BRAreaModel]()
+                for areaDic in areaList {
+                    let areaModel = BRAreaModel()
+                    areaModel.code = areaDic.excuse
+                    areaModel.name = areaDic.employment
+                    areaModel.index = areaList.firstIndex(where: { $0 as AnyObject === areaDic as AnyObject }) ?? 0
+                    tempArr3.append(areaModel)
+                }
+                cityModel.arealist = tempArr3
+                tempArr2.append(cityModel)
+            }
+            proviceModel.citylist = tempArr2
+            tempArr1.append(proviceModel)
+        }
+        return tempArr1
+    }
+}

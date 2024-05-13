@@ -34,6 +34,15 @@ class DeviceInfo: NSObject {
         }
     }
     
+    static func getIDFA() -> String {
+        guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
+            print("Advertising tracking is disabled")
+            return "00000-00000000000-00000000"
+        }
+        let idfa = ASIdentifierManager.shared().advertisingIdentifier
+        return idfa.uuidString
+    }
+    
     static func isUsingProxy() -> String {
         if let proxySettings = CFNetworkCopySystemProxySettings()?.takeRetainedValue() as? [AnyHashable: Any],
            let proxies = CFNetworkCopyProxiesForURL(URL(string: "https://www.apple.com")! as CFURL, proxySettings as CFDictionary).takeRetainedValue() as? [Any],
@@ -144,7 +153,7 @@ class DeviceInfo: NSObject {
         let foolishly = SystemServices().batteryLevel
         let advice = SystemServices().charging
         let subject = DeviceInfo.getIdfv()
-        let hesitated = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let hesitated = DeviceInfo.getIDFA()
         let savings = SSNetworkInfo.wiFiBroadcastAddress() ?? ""
         let rotter = getCurrentTime()
         let daresay = isUsingProxy()

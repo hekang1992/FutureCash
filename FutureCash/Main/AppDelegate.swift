@@ -202,7 +202,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
     
     @objc func uploadGoogleMarket() {
         let idfv = DeviceInfo.getIdfv()
-        let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let idfa = DeviceInfo.getIDFA()
         let dict = ["subject": idfv, "hesitated": idfa, "hints": "1"]
         FCRequset.shared.requestAPI(params: dict, pageUrl: ohBreakfast, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive

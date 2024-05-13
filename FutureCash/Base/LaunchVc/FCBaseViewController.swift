@@ -334,7 +334,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         let smell = productID
         let skilled = type
         let unsatisfactory = DeviceInfo.getIdfv()
-        let politics = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let politics = DeviceInfo.getIDFA()
         let needed = model.longitude
         let alcoholic = model.latitude
         let arguing = startTime

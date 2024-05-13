@@ -35,7 +35,7 @@ class FCRequset: NSObject {
             switch response.result {
             case .success(let success):
                 ViewHud.hideLoadView()
-                print("success>>>>>>>\(success)")
+//                print("success>>>>>>>\(success)")
                 if response.data == nil {
                     print("no data")
                     return

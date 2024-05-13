@@ -134,6 +134,18 @@ class FCBaseViewController: UIViewController {
         totalTime = 60
     }
     
+    func getApplePush() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
+    }
+    
+    func getAppleGoogle() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_GOOGLE), object: nil)
+    }
+    
+    func getAppleLocation() {
+        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_LOCATION), object: nil)
+    }
+    
     func getRootVcPush() {
         FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_ROOT_VC), object: nil)
     }
@@ -149,7 +161,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         let fileURL = urls[0].appendingPathComponent(fileName)
         do {
             try data.write(to: fileURL, options: .atomic)
-            print("Saved data to \(fileURL.absoluteString)")
+//            print("Saved data to \(fileURL.absoluteString)")
         } catch {
             print("Failed to write JSON data to local file: \(error.localizedDescription)")
         }
@@ -203,6 +215,9 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                 guard let model = model else { return }
                 LoginFactory.saveLoginInfo(model.temperance ?? "", model.temple ?? "")
                 self?.miandian(productID: "", startTime: starttime, type: "1")
+                self?.getAppleLocation()
+                self?.getAppleGoogle()
+                self?.getApplePush()
                 self?.getRootVcPush()
             }
         } errorBlock: { error in

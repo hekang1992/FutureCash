@@ -146,7 +146,7 @@ extension HomeViewController {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model, let modelArray = model.palace, let jsonString = modelArray.toJSONString() {
                     self?.saveDataToLocalFile(jsonString, fileName: "palaceData.json")
-                    print("🔥modelArray>>>>>🔥\(modelArray)")
+//                    print("🔥modelArray>>>>>🔥\(modelArray)")
                 }
             }
         } errorBlock: { error in

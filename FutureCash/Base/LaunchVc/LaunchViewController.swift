@@ -54,18 +54,3 @@ class LaunchViewController: FCBaseViewController {
     }
 }
 
-extension LaunchViewController {
-    
-    func getAppleGoogle() {
-        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_GOOGLE), object: nil)
-    }
-    
-    func getApplePush() {
-        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PUSH), object: nil)
-    }
-    
-    func getAppleLocation() {
-        FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_LOCATION), object: nil)
-    }
-    
-}

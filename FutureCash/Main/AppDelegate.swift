@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         for byte in deviceToken {
             strToken += String(format: "%02x", byte)
         }
-        print("strToken===\(strToken)")
         getTapToken(deviceToken: strToken)
     }
     
@@ -85,11 +84,10 @@ extension AppDelegate: AppsFlyerLibDelegate {
     }
     
     func getfangdou() {
-        obs.debounce(.milliseconds(3000),scheduler: MainScheduler.asyncInstance)
+        obs.debounce(.seconds(2),scheduler: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] model in
                 if let model = model {
                     self?.upLocationInfo(model)
-                    print("locationModel>>>>>>>>\(model)")
                 }
             }).disposed(by: bag)
     }
@@ -101,7 +99,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
         FCRequset.shared.requestAPI(params: dict, pageUrl: addedPlease, method: .post) { baseModel in
             let conceive = baseModel.conceive
             if conceive == 0 || conceive == 00 {
-                print("push>>>>>success")
+                print("🔥push>>>>>success🔥")
             }
         } errorBlock: { error in
             
@@ -130,7 +128,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
             let conceive = baseModel.conceive
             if conceive == 0 || conceive == 00 {
                 self?.uploadDeviceInfo()
-                print("uploadLocationInfo>>>>>>>success")
+                print("🔥uploadLocationInfo>>>>>>>success🔥")
             }
         } errorBlock: { [weak self] error in
             self?.uploadDeviceInfo()
@@ -144,7 +142,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
             FCRequset.shared.requestAPI(params: dict, pageUrl: thank, method: .post) { baseModel in
                 let conceive = baseModel.conceive
                 if conceive == 0 || conceive == 00 {
-                    print("uploadDeviceInfo>>>>>>>success")
+                    print("🔥uploadDeviceInfo>>>>>>>success🔥")
                 }
             } errorBlock: { error in
                 
@@ -209,7 +207,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
         FCRequset.shared.requestAPI(params: dict, pageUrl: ohBreakfast, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
             if conceive == 0 || conceive == 00 {
-                print("uploadGoogleMarket>>>>>>>success")
+                print("🔥uploadGoogleMarket>>>>>>>success🔥")
                 let model = JSONDeserializer<GoogleModel>.deserializeFrom(dict: baseModel.easily)
                 if let pistol = model?.pistol, let profession = model?.profession {
                     self?.uploadGoogle(profession, pistol)

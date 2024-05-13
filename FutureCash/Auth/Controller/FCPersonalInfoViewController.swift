@@ -13,6 +13,8 @@ import BRPickerView
 
 class FCPersonalInfoViewController: FCBaseViewController {
     
+    var starttime: String?
+    
     var particularly: String?
     
     lazy var personalView: FCPersonalView = {
@@ -30,6 +32,7 @@ class FCPersonalInfoViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        starttime = DeviceInfo.getCurrentTime()
         self.navView.isHidden = false
         self.navView.block = { [weak self] in
             self?.navigationController?.popToRootViewController(animated: true)
@@ -173,7 +176,7 @@ extension FCPersonalInfoViewController {
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
-                self?.getProductDetailInfo(self?.particularly ?? "")
+                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "")
             }else {
                 MBProgressHUD.show(text: wanting)
             }

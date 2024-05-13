@@ -11,6 +11,8 @@ import MBProgressHUD
 
 class FCBankViewController: FCBaseViewController {
     
+    var starttime: String?
+    
     var particularly: String?
     
     lazy var popView: FCPopPersonView = {
@@ -27,6 +29,7 @@ class FCBankViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        starttime = DeviceInfo.getCurrentTime()
         view.addSubview(walletView)
         walletView.snp.makeConstraints { make in
             make.edges.equalTo(view)
@@ -71,7 +74,7 @@ extension FCBankViewController {
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
-                self?.getProductDetailInfo(self?.particularly ?? "")
+                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "")
             }else {
                 MBProgressHUD.show(text: wanting)
             }

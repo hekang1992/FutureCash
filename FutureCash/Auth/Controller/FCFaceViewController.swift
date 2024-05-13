@@ -26,6 +26,7 @@ class FCFaceViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        starttime = DeviceInfo.getCurrentTime()
         self.navView.isHidden = false
         self.navView.block = { [weak self] in
             self?.navigationController?.popToRootViewController(animated: true)

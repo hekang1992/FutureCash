@@ -15,6 +15,16 @@ class HomeViewController: FCBaseViewController {
     
     var particularly: String?
     
+    lazy var oneView: FCHomeOneView = {
+        let oneView = FCHomeOneView()
+        return oneView
+    }()
+    
+    lazy var twoView: FCHomeTwoView = {
+        let twoView = FCHomeTwoView()
+        return twoView
+    }()
+    
     lazy var rightView: RightView = {
         let rightView = RightView()
         return rightView
@@ -24,27 +34,18 @@ class HomeViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 200, y: 100, width: 100, height: 100)
-        button.setTitle("login", for: .normal)
-        button.backgroundColor = .randomColor()
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        view.addSubview(button)
-        
-        let button1 = UIButton(type: .custom)
-        button1.frame = CGRect(x: 200, y: 300, width: 100, height: 100)
-        button1.setTitle("right", for: .normal)
-        button1.backgroundColor = .randomColor()
-        button1.addTarget(self, action: #selector(buttonTapped1), for: .touchUpInside)
-        view.addSubview(button1)
-        
-        let button2 = UIButton(type: .custom)
-        button2.frame = CGRect(x: 200, y: 500, width: 100, height: 100)
-        button2.setTitle("Type", for: .normal)
-        button2.backgroundColor = .randomColor()
-        button2.addTarget(self, action: #selector(buttonTapped2), for: .touchUpInside)
-        view.addSubview(button2)
         getAddressInfo()
+        
+        oneView.block1 = { [weak self] in
+            self?.applyClick(self?.particularly ?? "")
+        }
+        
+        oneView.block2 = { [weak self] in
+        }
+        
+        oneView.block3 = { [weak self] in
+            self?.addRightView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,14 +55,23 @@ class HomeViewController: FCBaseViewController {
     
 }
 
-
 extension HomeViewController {
     
-    @objc func buttonTapped() {
-        addLoginView()
+    func addOneView() {
+        view.addSubview(oneView)
+        oneView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
-    @objc func buttonTapped1() {
+    func addTwoView() {
+        view.addSubview(twoView)
+        twoView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func addRightView() {
         view.addSubview(rightView)
         rightView.block1 = { [weak self] in
             self?.hideRightView()
@@ -72,7 +82,7 @@ extension HomeViewController {
         rightView.snp.makeConstraints { make in
             make.edges.equalTo(self.view)
         }
-        delayTime(0.1) { [weak self] in
+        delayTime(0.15) { [weak self] in
             self?.animateRightView()
         }
     }
@@ -85,8 +95,8 @@ extension HomeViewController {
     
     func animateRightView() {
         UIView.animate(withDuration: 0.5,
-                       delay: 0.1,
-                       usingSpringWithDamping: 0.6,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.2,
                        options: .curveLinear) {
             self.rightView.alpha = 1
@@ -114,6 +124,9 @@ extension HomeViewController {
     func goSetVc() {
         let setVc = ProfileViewController()
         self.navigationController?.pushViewController(setVc, animated: true)
+        delayTime(0.25) { [weak self] in
+            self?.hideRightView()
+        }
     }
     
     func getHomeData() {
@@ -125,6 +138,12 @@ extension HomeViewController {
                     let bigCardModel = model.untidily?.reddening
                     if let bigCardModel = bigCardModel {
                         self?.particularly = bigCardModel.particularly ?? ""
+                        self?.twoView.removeFromSuperview()
+                        self?.addOneView()
+                        self?.oneView.model = bigCardModel
+                    }else {
+                        self?.oneView.removeFromSuperview()
+                        self?.addTwoView()
                     }
                     //                    let stranger = model.stranger ?? ""
                     //                    if stranger == "1" {
@@ -146,12 +165,37 @@ extension HomeViewController {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model, let modelArray = model.palace, let jsonString = modelArray.toJSONString() {
                     self?.saveDataToLocalFile(jsonString, fileName: "palaceData.json")
-//                    print("🔥modelArray>>>>>🔥\(modelArray)")
+                    //                    print("🔥modelArray>>>>>🔥\(modelArray)")
                 }
             }
         } errorBlock: { error in
             
         }
+    }
+    
+    func applyClick(_ productID: String) {
+        let dict = ["relations": productID]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: haveHeard, method: .post) { baseModel in
+            let conceive = baseModel.conceive
+            let wanting = baseModel.wanting ?? ""
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let weren = model.weren ?? ""
+                    if weren.contains(SCHEME_URL) {
+                        let array: [String] = weren.components(separatedBy: "relations=")
+                        self.getProductDetailInfo(array.last ?? "", "")
+                    }else{
+                        self.pushWebVC(weren, "", "")
+                    }
+                }
+            }else {
+                MBProgressHUD.show(text: wanting)
+            }
+        } errorBlock: { error in
+            
+        }
+        
     }
     
 }

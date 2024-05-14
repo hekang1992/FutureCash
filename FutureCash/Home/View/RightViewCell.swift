@@ -23,6 +23,7 @@ class RightViewCell: UITableViewCell {
 
     lazy var icon: UIImageView = {
         let icon = UIImageView()
+        icon.backgroundColor = .randomColor()
         return icon
     }()
     
@@ -31,7 +32,6 @@ class RightViewCell: UITableViewCell {
         contentView.addSubview(bgImage)
         bgImage.addSubview(nameLable)
         bgImage.addSubview(icon)
-        
         bgImage.snp.makeConstraints { make in
             make.top.equalTo(contentView)
             make.height.equalTo(54.px())

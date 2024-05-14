@@ -11,7 +11,9 @@ import MBProgressHUD
 class FCSetView: UIView {
     
     var block1: (() -> Void)?
+    
     var block2: (() -> Void)?
+    
     var block3: (() -> Void)?
     
     lazy var bgImageView: UIImageView = {

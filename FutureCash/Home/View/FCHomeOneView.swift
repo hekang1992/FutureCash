@@ -200,7 +200,7 @@ class FCHomeOneView: UIView {
             iconImageView2.snp.makeConstraints { make in
                 make.centerX.equalTo(bgView)
                 make.size.equalTo(CGSizeMake(350.px(), 185.px()))
-                make.top.equalTo(height.navigationBarHeight + 4.px())
+                make.top.equalToSuperview().offset(height.statusBarHeight + 4.px())
             }
         }
     }

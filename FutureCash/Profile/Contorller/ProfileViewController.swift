@@ -8,6 +8,7 @@
 import UIKit
 import TYAlertController
 import MBProgressHUD
+import StoreKit
 
 class ProfileViewController: FCBaseViewController {
     
@@ -31,7 +32,9 @@ class ProfileViewController: FCBaseViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         addSetView()
-        setView.block1 = {}
+        setView.block1 = { [weak self] in
+            self?.toGrade()
+        }
         setView.block2 = { [weak self] in
             if IS_LOGIN {
                 self?.logOut()
@@ -58,6 +61,16 @@ class ProfileViewController: FCBaseViewController {
 }
 
 extension ProfileViewController {
+    
+    func toGrade() {
+        if #available(iOS 14.0, *) {
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene  {
+                SKStoreReviewController.requestReview(in: scene)
+            }
+        } else {
+            SKStoreReviewController.requestReview()
+        }
+    }
     
     func addSetView() {
         view.insertSubview(setView, belowSubview: navView)

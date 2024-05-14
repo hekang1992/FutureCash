@@ -171,6 +171,12 @@ class RightView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.buttonClicked(self.buttons[0])
+        if let vc = self.viewController  {
+            let height = UIViewController.getTopBarHeights(for: vc)
+            bgImageView.snp.makeConstraints { make in
+                make.top.equalTo(self).offset(height.statusBarHeight + 4.px())
+            }
+        }
     }
     
 }

@@ -183,7 +183,7 @@ class FCHomeOneView: UIView {
         }
         dayLabel.snp.makeConstraints { make in
             make.left.equalTo(rateView).offset(10.px())
-            make.top.equalTo(descLabel.snp.bottom).offset(12.px())
+            make.top.equalTo(descLabel.snp.bottom).offset(14.px())
             make.size.equalTo(CGSizeMake(150.px(), 45.px()))
         }
         dayDescLabel.snp.makeConstraints { make in

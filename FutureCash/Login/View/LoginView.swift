@@ -64,6 +64,18 @@ class LoginView: UIView {
         return bgImageView
     }()
     
+    lazy var rightImageView: UIImageView = {
+        let rightImageView = UIImageView()
+        rightImageView.image = UIImage(named: "icon_del")
+        rightImageView.contentMode = .center
+        rightImageView.isHidden = true
+        rightImageView.isUserInteractionEnabled = true
+        rightImageView.frame = CGRect(x: 0, y: 0, width: 30.px(), height: 30.px())
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        rightImageView.addGestureRecognizer(tapGesture)
+        return rightImageView
+    }()
+    
     lazy var phoneTed: UITextField = {
         let phoneTed = UITextField()
         phoneTed.delegate = self
@@ -76,6 +88,8 @@ class LoginView: UIView {
         ])
         phoneTed.attributedPlaceholder = attrString
         phoneTed.keyboardType = .numberPad
+        phoneTed.rightViewMode = .always
+        phoneTed.rightView = rightImageView
         return phoneTed
     }()
     
@@ -178,7 +192,7 @@ class LoginView: UIView {
             make.left.equalTo(bgImageView3).offset(15.px())
             make.top.equalTo(bgImageView1.snp.bottom).offset(-4.px())
             make.bottom.equalTo(bgImageView3)
-            make.right.equalTo(bgImageView3).offset(-50.px())
+            make.right.equalTo(bgImageView3).offset(-15.px())
         }
         codeLable.snp.makeConstraints { make in
             make.left.equalTo(bgImageView3.snp.left)
@@ -232,9 +246,20 @@ extension LoginView: UITextFieldDelegate  {
         self.block4?()
     }
     
+    @objc func imageTapped() {
+        phoneTed.text = ""
+        rightImageView.isHidden = true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        print("newText>>>>>\(newText.count)")
         if textField == phoneTed {
+            if newText.count == 0 {
+                rightImageView.isHidden = true
+            }else {
+                rightImageView.isHidden = false
+            }
             return newText.count <= 16
         }else{
             return newText.count <= 6

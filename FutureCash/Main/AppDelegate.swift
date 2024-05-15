@@ -40,7 +40,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationDidBecomeActive(_ application: UIApplication) {
         if #available(iOS 14.0, *) {
             ATTrackingManager.requestTrackingAuthorization { status in
-                
+                switch status {
+                case .authorized:
+                    print("Tracking authorized")
+                    break
+                case .denied:
+                    print("Tracking denied")
+                    break
+                case .notDetermined:
+                    print("Tracking not determined")
+                    break
+                case .restricted:
+                    print("Tracking restricted")
+                    break
+                @unknown default:
+                    print("Unknown status")
+                    break
+                }
             }
         }
     }

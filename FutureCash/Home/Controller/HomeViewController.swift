@@ -41,6 +41,7 @@ class HomeViewController: FCBaseViewController {
         }
         
         oneView.block2 = { [weak self] in
+            
         }
         
         oneView.block3 = { [weak self] in
@@ -51,6 +52,11 @@ class HomeViewController: FCBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHomeData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        hideRightView()
     }
     
 }
@@ -79,18 +85,18 @@ extension HomeViewController {
         rightView.block2 = { [weak self] in
             self?.goSetVc()
         }
-        rightView.snp.makeConstraints { make in
-            make.edges.equalTo(self.view)
+        rightView.block3 = { [weak self] in
+            self?.pushWebVC( BASE_H5_URL  + "/alfredWhatsername", "", "")
         }
-        delayTime(0.15) { [weak self] in
+        rightView.block4 = { [weak self] in
+            self?.pushWebVC( BASE_H5_URL + "/continuedDetected", "", "")
+        }
+        rightView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        delayTime(0.25) { [weak self] in
             self?.animateRightView()
         }
-    }
-    
-    @objc func buttonTapped2() {
-        let cardVc = FCCardTypeViewController()
-        cardVc.particularly = particularly ?? ""
-        self.navigationController?.pushViewController(cardVc, animated: true)
     }
     
     func animateRightView() {
@@ -100,10 +106,8 @@ extension HomeViewController {
                        initialSpringVelocity: 0.2,
                        options: .curveLinear) {
             self.rightView.alpha = 1
-            self.rightView.bgView.alpha = 1
-            self.rightView.bgImageView1.alpha = 1
             self.rightView.bgImageView.snp.updateConstraints { make in
-                make.left.equalTo(self.rightView).offset(75.px())
+                make.left.equalToSuperview().offset(75.px())
             }
             self.rightView.layoutSubviews()
         }
@@ -112,10 +116,8 @@ extension HomeViewController {
     func hideRightView() {
         UIView.animate(withDuration: 0.25) {
             self.rightView.alpha = 0
-            self.rightView.bgView.alpha = 0
-            self.rightView.bgImageView1.alpha = 0
             self.rightView.bgImageView.snp.updateConstraints { make in
-                make.left.equalTo(self.rightView).offset(SCREEN_WIDTH)
+                make.left.equalToSuperview().offset(SCREEN_WIDTH)
             }
             self.rightView.layoutSubviews()
         }
@@ -124,9 +126,6 @@ extension HomeViewController {
     func goSetVc() {
         let setVc = ProfileViewController()
         self.navigationController?.pushViewController(setVc, animated: true)
-        delayTime(0.25) { [weak self] in
-            self?.hideRightView()
-        }
     }
     
     func getHomeData() {
@@ -165,7 +164,6 @@ extension HomeViewController {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model, let modelArray = model.palace, let jsonString = modelArray.toJSONString() {
                     self?.saveDataToLocalFile(jsonString, fileName: "palaceData.json")
-                    //                    print("🔥modelArray>>>>>🔥\(modelArray)")
                 }
             }
         } errorBlock: { error in
@@ -195,7 +193,6 @@ extension HomeViewController {
         } errorBlock: { error in
             
         }
-        
     }
     
 }

@@ -13,9 +13,13 @@ typealias LoginCanBlock = () -> Void
 class LoginView: UIView {
     
     var verifyCode: String = ""
+    
     var block1: LoginCanBlock?
+    
     var block2: LoginCanBlock?
+    
     var block3: LoginCanBlock?
+    
     var block4: LoginCanBlock?
     
     lazy var bgView: UIView = {

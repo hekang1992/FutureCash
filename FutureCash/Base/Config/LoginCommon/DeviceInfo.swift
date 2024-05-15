@@ -35,10 +35,6 @@ class DeviceInfo: NSObject {
     }
     
     static func getIDFA() -> String {
-        guard ASIdentifierManager.shared().isAdvertisingTrackingEnabled else {
-            print("Advertising tracking is disabled")
-            return "00000-00000000000-00000000"
-        }
         let idfa = ASIdentifierManager.shared().advertisingIdentifier
         return idfa.uuidString
     }

@@ -13,19 +13,11 @@ class RightOneView: UIView {
     var block1: (() -> Void)?
     
     var block2: (() -> Void)?
-    
-    var buttonHeightConstraints: [Constraint] = []
-    
+        
     let titleArray = ["Unpaid loan balance","Loan delinquency","Loan under review","Failed loan disbursement","Loan fully repaid"]
     
-    lazy var bgImageView3: UIImageView = {
-        let bgImageView = UIImageView()
-        bgImageView.image = UIImage(named: "hongqi")
-        return bgImageView
-    }()
-    
     lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -36,18 +28,24 @@ class RightOneView: UIView {
         return tableView
     }()
     
+    lazy var btn1: UIButton = {
+        let btn1 = UIButton(type: .custom)
+        btn1.addTarget(self, action: #selector(btn1Click), for: .touchUpInside)
+        return btn1
+    }()
+    
+    lazy var btn2: UIButton = {
+        let btn2 = UIButton(type: .custom)
+        btn2.addTarget(self, action: #selector(btn2Click), for: .touchUpInside)
+        return btn2
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(bgImageView3)
         addSubview(tableView)
-        bgImageView3.snp.makeConstraints { make in
-            make.top.equalTo(self)
-            make.left.equalTo(self).offset(8.5.px())
-            make.size.equalTo(CGSizeMake(180.px(), 217.5.px()))
-        }
         tableView.snp.makeConstraints { make in
             make.left.right.equalTo(self)
-            make.top.equalTo(bgImageView3.snp.bottom).offset(13.5.px())
+            make.top.equalToSuperview()
             make.bottom.equalTo(self).offset(-10.px())
         }
     }
@@ -60,8 +58,44 @@ class RightOneView: UIView {
 
 extension RightOneView: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 226.px()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView = UIView()
+        let hongqiImageView = UIImageView()
+        hongqiImageView.image = UIImage(named: "honeqibg")
+        headView.addSubview(hongqiImageView)
+        let heiqiImageView = UIImageView()
+        heiqiImageView.isUserInteractionEnabled = true
+        heiqiImageView.image = UIImage(named: "heiqiimage")
+        headView.addSubview(heiqiImageView)
+        heiqiImageView.addSubview(btn1)
+        heiqiImageView.addSubview(btn2)
+        hongqiImageView.snp.makeConstraints { make in
+            make.top.equalTo(headView)
+            make.left.equalTo(headView)
+            make.size.equalTo(CGSizeMake(140.px(), 224.px()))
+        }
+        heiqiImageView.snp.makeConstraints { make in
+            make.top.equalTo(headView)
+            make.left.equalTo(hongqiImageView.snp.right)
+            make.size.equalTo(CGSizeMake(140.px(), 224.px()))
+        }
+        btn1.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(113.px())
+        }
+        btn2.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(113.px())
+        }
+        return headView
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,6 +114,14 @@ extension RightOneView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("IndexPath>>>>>>>>\(indexPath.row)")
+    }
+    
+    @objc func btn1Click() {
+        self.block1?()
+    }
+    
+    @objc func btn2Click() {
+        self.block2?()
     }
     
 }

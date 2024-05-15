@@ -14,6 +14,10 @@ class RightView: UIView {
     
     var block2: (() -> Void)?
     
+    var block3: (() -> Void)?
+    
+    var block4: (() -> Void)?
+    
     var buttonHeightConstraints: [Constraint] = []
     
     lazy var bgView: UIView = {
@@ -75,11 +79,23 @@ class RightView: UIView {
     
     lazy var oneView: RightOneView = {
         let oneView = RightOneView()
+        oneView.block1 = { [weak self] in
+            self?.block3?()
+        }
+        oneView.block2 = { [weak self] in
+            self?.block4?()
+        }
         return oneView
     }()
     
     lazy var twoView: RightTwoView = {
         let twoView = RightTwoView()
+        twoView.block1 = { [weak self] in
+            self?.block3?()
+        }
+        twoView.block2 = { [weak self] in
+            self?.block4?()
+        }
         return twoView
     }()
     

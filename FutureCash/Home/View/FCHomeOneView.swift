@@ -229,11 +229,19 @@ extension FCHomeOneView {
     }
     
     @objc func leftClick() {
+        self.feedBack()
         self.block2?()
     }
     
     @objc func rightClick() {
+        self.feedBack()
         self.block3?()
     }
 
+    func feedBack() {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+        feedbackGenerator.prepare()
+        feedbackGenerator.impactOccurred()
+    }
+    
 }

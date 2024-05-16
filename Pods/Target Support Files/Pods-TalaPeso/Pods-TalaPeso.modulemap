@@ -1,0 +1,6 @@
+framework module Pods_TalaPeso {
+  umbrella header "Pods-TalaPeso-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,6 +1,0 @@
-framework module Pods_FutureCash {
-  umbrella header "Pods-FutureCash-umbrella.h"
-
-  export *
-  module * { export * }
-}

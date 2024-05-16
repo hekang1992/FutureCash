@@ -145,6 +145,9 @@ class ReddeningModel: HandyJSON {
     var reads: String?
     var weren: String?//链接
     var yewtiful: String?//image链接
+    var hoping: String?//逾期文案
+    var light: String?
+    var oceans: String?
 }
 
 class CardInfoModel: HandyJSON {

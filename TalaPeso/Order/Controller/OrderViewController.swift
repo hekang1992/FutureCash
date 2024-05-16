@@ -20,6 +20,11 @@ class OrderViewController: FCBaseViewController {
         return orderView
     }()
     
+    lazy var nodataView: FCNodataView = {
+        let nodataView = FCNodataView()
+        return nodataView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,8 +73,15 @@ extension OrderViewController {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
                     let modelArray = model.palace
-                    self?.orderView.modelArray = modelArray
-                    self?.orderView.tableView.reloadData()
+                    if modelArray != nil {
+                        self?.removeNodataVeiw()
+                        self?.orderView.modelArray = modelArray
+                        self?.orderView.tableView.reloadData()
+                    }else {
+                        self?.addNodataView()
+                    }
+                }else {
+                    self?.addNodataView()
                 }
             }else {
                 MBProgressHUD.show(text: wanting)
@@ -78,6 +90,17 @@ extension OrderViewController {
         } errorBlock: { [weak self] error in
             self?.orderView.tableView.mj_header?.endRefreshing()
         }
+    }
+    
+    func addNodataView() {
+        self.orderView.addSubview(self.nodataView)
+        self.nodataView.snp.makeConstraints({ make in
+            make.edges.equalToSuperview()
+        })
+    }
+    
+    func removeNodataVeiw() {
+        self.nodataView.removeFromSuperview()
     }
     
 }

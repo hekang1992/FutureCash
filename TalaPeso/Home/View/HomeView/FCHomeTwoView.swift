@@ -60,7 +60,8 @@ class FCHomeTwoView: UIView {
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        tableView.register(FCProductCommonCell.self, forCellReuseIdentifier: "FCProductCommonCell")
+        tableView.register(FCProductSpecialCell.self, forCellReuseIdentifier: "FCProductSpecialCell")
         return tableView
     }()
     
@@ -178,9 +179,32 @@ extension FCHomeTwoView: UITableViewDelegate, UITableViewDataSource, TYCyclePage
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        cell.textLabel?.text = "indexPath>>>>>>\(indexPath.row)"
-        return cell
+        let model = productArray?[indexPath.row]
+        guard let model = model else { return UITableViewCell() }
+        let hoping = model.hoping ?? ""
+        if hoping.isEmpty {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "FCProductCommonCell", for: indexPath) as? FCProductCommonCell {
+                conCommonCell(cell, with: model)
+                return cell
+            }
+        }else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "FCProductSpecialCell", for: indexPath) as? FCProductSpecialCell {
+                configureCell(cell, with: model)
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func conCommonCell(_ cell: FCProductCommonCell, with model: ReddeningModel) {
+        cell.model = model
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+    }
+    
+    func configureCell(_ cell: FCProductSpecialCell, with model: ReddeningModel) {
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
     }
     
     func pagerView(_ pagerView: TYCyclePagerView, cellForItemAt index: Int) -> UICollectionViewCell {
@@ -220,9 +244,7 @@ extension FCHomeTwoView: UITableViewDelegate, UITableViewDataSource, TYCyclePage
     func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
         guard let model = modelBannerArray?[index] else { return }
         let clickUrl = model.weren ?? ""
-        if clickUrl.isEmpty {
-            return
-        }else {
+        if !clickUrl.isEmpty {
             self.block1?(clickUrl)
         }
     }

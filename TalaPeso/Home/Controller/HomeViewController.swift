@@ -162,10 +162,15 @@ extension HomeViewController {
                     }else {
                         if let bannerModelArray = bannerModelArray {
                             self?.oneView.removeFromSuperview()
-                            self?.twoView.modelBannerArray = bannerModelArray
-                            self?.twoView.fudaiBannerArray = fudaiModelArray
-                            self?.twoView.productArray = productArray
                             self?.addTwoView()
+                            self?.twoView.modelBannerArray = bannerModelArray
+                            self?.twoView.productArray = productArray
+                            self?.twoView.tableView.reloadData()
+                            self?.twoView.pagerView1.reloadData()
+                        }
+                        if let fudaiModelArray = fudaiModelArray {
+                            self?.twoView.fudaiBannerArray = fudaiModelArray
+                            self?.twoView.pagerView2.reloadData()
                         }
                     }
                     let stranger = model.stranger ?? ""//fake product

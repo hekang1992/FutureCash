@@ -50,6 +50,9 @@
 		18868C0A2BF4C1990087FDCA /* FCOrderCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868C092BF4C1990087FDCA /* FCOrderCommonCell.swift */; };
 		18868C0C2BF4C1AE0087FDCA /* FCOrderSpecialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868C0B2BF4C1AE0087FDCA /* FCOrderSpecialCell.swift */; };
 		18868C0E2BF5F4550087FDCA /* FCTwoBannerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868C0D2BF5F4550087FDCA /* FCTwoBannerCell.swift */; };
+		18868C122BF6145E0087FDCA /* FCProductCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868C112BF6145E0087FDCA /* FCProductCommonCell.swift */; };
+		18868C142BF6146C0087FDCA /* FCProductSpecialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868C132BF6146C0087FDCA /* FCProductSpecialCell.swift */; };
+		18868C182BF615F70087FDCA /* FCNodataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18868C172BF615F70087FDCA /* FCNodataView.swift */; };
 		188B25A72BDF321C005553E8 /* ChangeTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A62BDF321C005553E8 /* ChangeTypeView.swift */; };
 		188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */; };
 		188B25AD2BDF51E2005553E8 /* TypeSureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B25AC2BDF51E2005553E8 /* TypeSureView.swift */; };
@@ -155,6 +158,9 @@
 		18868C092BF4C1990087FDCA /* FCOrderCommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOrderCommonCell.swift; sourceTree = "<group>"; };
 		18868C0B2BF4C1AE0087FDCA /* FCOrderSpecialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCOrderSpecialCell.swift; sourceTree = "<group>"; };
 		18868C0D2BF5F4550087FDCA /* FCTwoBannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCTwoBannerCell.swift; sourceTree = "<group>"; };
+		18868C112BF6145E0087FDCA /* FCProductCommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCProductCommonCell.swift; sourceTree = "<group>"; };
+		18868C132BF6146C0087FDCA /* FCProductSpecialCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCProductSpecialCell.swift; sourceTree = "<group>"; };
+		18868C172BF615F70087FDCA /* FCNodataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCNodataView.swift; sourceTree = "<group>"; };
 		188B25A62BDF321C005553E8 /* ChangeTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTypeView.swift; sourceTree = "<group>"; };
 		188B25A82BDF3DE2005553E8 /* ChangeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewCell.swift; sourceTree = "<group>"; };
 		188B25AC2BDF51E2005553E8 /* TypeSureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSureView.swift; sourceTree = "<group>"; };
@@ -414,7 +420,7 @@
 			children = (
 				18A0FF8D2BC69ECF00DADE21 /* Fonts */,
 				18562E662BB12D3D00F1FA23 /* Location */,
-				18562E7C2BB1488800F1FA23 /* ConfigFile */,
+				18562E7C2BB1488800F1FA23 /* Config */,
 				18562E7D2BB14D8A00F1FA23 /* LoginCommon */,
 			);
 			path = Config;
@@ -437,7 +443,7 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		18562E7C2BB1488800F1FA23 /* ConfigFile */ = {
+		18562E7C2BB1488800F1FA23 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */,
@@ -446,8 +452,9 @@
 				18562E722BB1470E00F1FA23 /* BaseHeadFile.swift */,
 				18AD9AF92BC94DA200D33830 /* FCLoadingView.swift */,
 				18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */,
+				18868C172BF615F70087FDCA /* FCNodataView.swift */,
 			);
-			path = ConfigFile;
+			path = Config;
 			sourceTree = "<group>";
 		};
 		18562E7D2BB14D8A00F1FA23 /* LoginCommon */ = {
@@ -471,15 +478,8 @@
 		185950742BDB778500BD57CD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				185950782BDB780600BD57CD /* FCCardTypeViewController.swift */,
-				18A7F8622BE8AC1400B33F2D /* FCPhotoViewController.swift */,
-				18A7F86A2BEA2C3800B33F2D /* FCFaceViewController.swift */,
-				18A7F86E2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift */,
-				18A7F8702BEB5C5200B33F2D /* FCWorkInfoViewController.swift */,
-				18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */,
-				18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */,
-				18B096D72BEF84C200DD68EA /* FCWalletViewController.swift */,
-				18B096D52BEF84B500DD68EA /* FCBankViewController.swift */,
+				18868C162BF614930087FDCA /* PhotoFaceVc */,
+				18868C152BF614910087FDCA /* PersonInfoVc */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -497,14 +497,8 @@
 		186210922BCF769300A74058 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				186210932BCF76A500A74058 /* RightView.swift */,
-				18E15D142BF35FAE0028B293 /* RightOneView.swift */,
-				18E15D162BF3625A0028B293 /* RightTwoView.swift */,
-				18E15D182BF362650028B293 /* RightThreeView.swift */,
-				186210972BCFC1C000A74058 /* RightViewCell.swift */,
-				18F7EE1F2BF30CC30026E1FB /* FCHomeOneView.swift */,
-				18F7EE212BF30CD40026E1FB /* FCHomeTwoView.swift */,
-				18868C0D2BF5F4550087FDCA /* FCTwoBannerCell.swift */,
+				18868C0F2BF6141D0087FDCA /* RightView */,
+				18868C102BF6141F0087FDCA /* HomeView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -517,6 +511,53 @@
 				18868C092BF4C1990087FDCA /* FCOrderCommonCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		18868C0F2BF6141D0087FDCA /* RightView */ = {
+			isa = PBXGroup;
+			children = (
+				186210932BCF76A500A74058 /* RightView.swift */,
+				18E15D142BF35FAE0028B293 /* RightOneView.swift */,
+				18E15D162BF3625A0028B293 /* RightTwoView.swift */,
+				18E15D182BF362650028B293 /* RightThreeView.swift */,
+				186210972BCFC1C000A74058 /* RightViewCell.swift */,
+			);
+			path = RightView;
+			sourceTree = "<group>";
+		};
+		18868C102BF6141F0087FDCA /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				18F7EE1F2BF30CC30026E1FB /* FCHomeOneView.swift */,
+				18F7EE212BF30CD40026E1FB /* FCHomeTwoView.swift */,
+				18868C0D2BF5F4550087FDCA /* FCTwoBannerCell.swift */,
+				18868C132BF6146C0087FDCA /* FCProductSpecialCell.swift */,
+				18868C112BF6145E0087FDCA /* FCProductCommonCell.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		18868C152BF614910087FDCA /* PersonInfoVc */ = {
+			isa = PBXGroup;
+			children = (
+				18A7F86E2BEB2C9000B33F2D /* FCPersonalInfoViewController.swift */,
+				18A7F8702BEB5C5200B33F2D /* FCWorkInfoViewController.swift */,
+				18A7F8722BEB5C6500B33F2D /* FCContactViewController.swift */,
+				18A7F8742BEB5C7500B33F2D /* FCBankInfoViewController.swift */,
+				18B096D72BEF84C200DD68EA /* FCWalletViewController.swift */,
+				18B096D52BEF84B500DD68EA /* FCBankViewController.swift */,
+			);
+			path = PersonInfoVc;
+			sourceTree = "<group>";
+		};
+		18868C162BF614930087FDCA /* PhotoFaceVc */ = {
+			isa = PBXGroup;
+			children = (
+				185950782BDB780600BD57CD /* FCCardTypeViewController.swift */,
+				18A7F8622BE8AC1400B33F2D /* FCPhotoViewController.swift */,
+				18A7F86A2BEA2C3800B33F2D /* FCFaceViewController.swift */,
+			);
+			path = PhotoFaceVc;
 			sourceTree = "<group>";
 		};
 		188B25AA2BDF515A005553E8 /* FaceView */ = {
@@ -826,6 +867,7 @@
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
 				18AD9AFA2BC94DA200D33830 /* FCLoadingView.swift in Sources */,
 				18A7F8712BEB5C5300B33F2D /* FCWorkInfoViewController.swift in Sources */,
+				18868C122BF6145E0087FDCA /* FCProductCommonCell.swift in Sources */,
 				18562E792BB1483000F1FA23 /* ProfileViewController.swift in Sources */,
 				18A7F86B2BEA2C3800B33F2D /* FCFaceViewController.swift in Sources */,
 				18A7F86D2BEA312900B33F2D /* FCFaceView.swift in Sources */,
@@ -844,9 +886,11 @@
 				188B25A92BDF3DE2005553E8 /* ChangeViewCell.swift in Sources */,
 				18AD9AF52BC9009D00D33830 /* FCCodeSingleView.swift in Sources */,
 				18F7EE222BF30CD40026E1FB /* FCHomeTwoView.swift in Sources */,
+				18868C142BF6146C0087FDCA /* FCProductSpecialCell.swift in Sources */,
 				18A7F8692BE9FC5800B33F2D /* FCNameView.swift in Sources */,
 				18E15D172BF3625A0028B293 /* RightTwoView.swift in Sources */,
 				18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */,
+				18868C182BF615F70087FDCA /* FCNodataView.swift in Sources */,
 				18B096D82BEF84C200DD68EA /* FCWalletViewController.swift in Sources */,
 				185950792BDB780600BD57CD /* FCCardTypeViewController.swift in Sources */,
 				18A7F8732BEB5C6500B33F2D /* FCContactViewController.swift in Sources */,

@@ -162,9 +162,13 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
     func setNavExpansion(_ arguments: [String]) {
         let type = arguments.first!
         if type == "1" {//hide
-            
+            webView.snp.updateConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }else {
-            
+            webView.snp.updateConstraints { make in
+                make.edges.equalToSuperview().inset(UIEdgeInsets(top: CGFloat(NAV_HIGH), left: 0, bottom: 0, right: 0))
+            }
         }
     }
     

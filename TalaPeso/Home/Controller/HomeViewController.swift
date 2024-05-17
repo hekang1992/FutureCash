@@ -33,6 +33,12 @@ class HomeViewController: FCBaseViewController {
         return rightView
     }()
     
+    lazy var bgImageView: UIImageView = {
+        let bgImageView = UIImageView()
+        bgImageView.image = UIImage(named: "launch")
+        return bgImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,6 +75,10 @@ class HomeViewController: FCBaseViewController {
         }
         self.twoView.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadHomeData))
         self.twoView.tableView.mj_header?.isAutomaticallyChangeAlpha = true
+        view.addSubview(bgImageView)
+        bgImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,7 +101,10 @@ extension HomeViewController {
     
     @objc func loadHomeData() {
         getHomeData()
-        loadOrderData()
+        if IS_LOGIN {
+            loadOrderData()
+            loadOrderDaoqiData()
+        }
     }
     
     func addOneView() {
@@ -174,6 +187,7 @@ extension HomeViewController {
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
+                    self?.bgImageView.isHidden = true
                     let bigCardModel = model.untidily?.reddening
                     let bannerModelArray = model.filthy?.reddening
                     let fudaiModelArray = model.retired?.reddening
@@ -204,9 +218,12 @@ extension HomeViewController {
                         
                     }
                 }
+            }else {
+                self?.bgImageView.isHidden = false
             }
             self?.twoView.tableView.mj_header?.endRefreshing()
         } errorBlock: { [weak self] error in
+            self?.bgImageView.isHidden = false
             self?.twoView.tableView.mj_header?.endRefreshing()
         }
     }

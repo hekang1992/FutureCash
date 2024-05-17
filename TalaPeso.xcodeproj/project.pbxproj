@@ -419,8 +419,8 @@
 			isa = PBXGroup;
 			children = (
 				18A0FF8D2BC69ECF00DADE21 /* Fonts */,
-				18562E662BB12D3D00F1FA23 /* Location */,
 				18562E7C2BB1488800F1FA23 /* Config */,
+				18562E662BB12D3D00F1FA23 /* Location */,
 				18562E7D2BB14D8A00F1FA23 /* LoginCommon */,
 			);
 			path = Config;

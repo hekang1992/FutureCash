@@ -261,10 +261,12 @@ extension FCHomeOneView {
             UIView.animate(withDuration: 0.25, delay: 0) {
                 self.block2?()
             } completion: { _ in
-                self.leftBtn.snp.updateConstraints { make in
-                    make.left.equalToSuperview().offset(-49.px())
+                UIView.animate(withDuration: 0.25) {
+                    self.leftBtn.snp.updateConstraints { make in
+                        make.left.equalToSuperview().offset(-49.px())
+                    }
+                    self.layoutIfNeeded()
                 }
-                self.layoutIfNeeded()
             }
         }
     }
@@ -281,15 +283,17 @@ extension FCHomeOneView {
                 self.block3?()
             } completion: { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.rightBtn.snp.updateConstraints { make in
-                        make.right.equalToSuperview().offset(49.px())
+                    UIView.animate(withDuration: 0.25) {
+                        self.rightBtn.snp.updateConstraints { make in
+                            make.right.equalToSuperview().offset(49.px())
+                        }
+                        self.layoutIfNeeded()
                     }
-                    self.layoutIfNeeded()
                 }
             }
         }
     }
-
+    
     func feedBack() {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
         feedbackGenerator.prepare()

@@ -42,7 +42,7 @@ extension FCNavView {
     
     func setUpFrame() {
         backBtn.snp.makeConstraints { make in
-            make.bottom.equalTo(self)
+            make.bottom.equalTo(self).offset(-5.px())
             make.left.equalTo(self).offset(30.px())
             make.size.equalTo(CGSizeMake(22.px(), 28.px()))
         }

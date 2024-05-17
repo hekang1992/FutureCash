@@ -31,7 +31,13 @@ class FCBaseViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         addNavView()
+        view.backgroundColor = .white
         navigationController?.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideLoginView()
     }
     
     func addNavView() {
@@ -62,6 +68,9 @@ class FCBaseViewController: UIViewController {
         }
         loginView.block3 = { [weak self] in
             self?.getCode()
+        }
+        loginView.block4 = { [weak self] in
+            self?.pushWebVC( BASE_H5_URL  + "/alfredWhatsername", "", "")
         }
         delayTime(0.25) { [weak self] in
             self?.animateLoginView()
@@ -315,7 +324,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     
     func pushWebVC(_ url: String, _ productID: String, _ startTime: String) {
         let webVc = WebViewController()
-        let urlString = url + LoginFactory.getLoginParas()
+        let urlString = url + "?" + LoginFactory.getLoginParas()
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             print("Failed to encode URL")
             return

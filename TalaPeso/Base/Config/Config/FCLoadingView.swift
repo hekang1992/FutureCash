@@ -63,6 +63,8 @@ class ViewHud {
         return loadView
     }
     static func hideLoadView() {
-        loadView.removeFromSuperview()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            loadView.removeFromSuperview()
+        }
     }
 }

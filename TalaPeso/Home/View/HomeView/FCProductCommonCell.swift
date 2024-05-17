@@ -32,17 +32,23 @@ class FCProductCommonCell: UITableViewCell {
         return borrowLabel
     }()
     
+    lazy var typeImageView: UIImageView = {
+        let typeImageView = UIImageView()
+        return typeImageView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(bgImageView)
         bgImageView.addSubview(iconImageView)
         bgImageView.addSubview(nameLabel)
         bgImageView.addSubview(borrowLabel)
+        bgImageView.addSubview(typeImageView)
         bgImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(26.px())
             make.top.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-20.px())
+            make.bottom.equalToSuperview().offset(-15.px())
         }
         iconImageView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -60,6 +66,10 @@ class FCProductCommonCell: UITableViewCell {
             make.top.equalTo(nameLabel.snp.bottom).offset(4.px())
             make.height.equalTo(18.px())
         }
+        typeImageView.snp.makeConstraints { make in
+            make.right.bottom.equalToSuperview()
+            make.size.equalTo(CGSizeMake(115.px(), 56.px()))
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -69,6 +79,17 @@ class FCProductCommonCell: UITableViewCell {
     var model: ReddeningModel? {
         didSet {
             guard let model = model else { return }
+            let troubles = model.troubles
+            switch troubles {
+            case "1":
+                typeImageView.image = UIImage(named: "applybrntimm")
+            case "2":
+                typeImageView.image = UIImage(named: "repaybrntimm")
+            case "3":
+                typeImageView.image = UIImage(named: "jujuebrntimm")
+            default:
+                break
+            }
             iconImageView.kf.setImage(with: URL(string: model.light ?? ""))
             nameLabel.text = " " + (model.plume ?? "")
             borrowLabel.text = model.oceans ?? ""

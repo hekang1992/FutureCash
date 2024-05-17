@@ -16,6 +16,8 @@ class HomeViewController: FCBaseViewController {
     
     var particularly: String?
     
+    var modelOrderArray: [PlaceModel]?
+    
     lazy var oneView: FCHomeOneView = {
         let oneView = FCHomeOneView()
         return oneView
@@ -40,10 +42,18 @@ class HomeViewController: FCBaseViewController {
             self?.applyClick(self?.particularly ?? "")
         }
         oneView.block2 = { [weak self] in
-            self?.pushOrderVcWithTypeStr("9")
+            if IS_LOGIN {
+                self?.pushOrderVcWithTypeStr("9")
+            }else {
+                self?.addLoginView()
+            }
         }
         oneView.block3 = { [weak self] in
-            self?.addRightView()
+            if IS_LOGIN {
+                self?.addRightView()
+            }else {
+                self?.addLoginView()
+            }
         }
         twoView.block1 = { [weak self] str in
             self?.judguUrlContainSche(str)
@@ -54,6 +64,9 @@ class HomeViewController: FCBaseViewController {
         twoView.block3 = { [weak self] in
             self?.addRightView()
         }
+        twoView.block4 = { [weak self] model in
+            self?.applyClick(model.particularly ?? "")
+        }
         self.twoView.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadHomeData))
         self.twoView.tableView.mj_header?.isAutomaticallyChangeAlpha = true
     }
@@ -61,6 +74,9 @@ class HomeViewController: FCBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHomeData()
+        if IS_LOGIN {
+            loadOrderData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -74,6 +90,7 @@ extension HomeViewController {
     
     @objc func loadHomeData() {
         getHomeData()
+        loadOrderData()
     }
     
     func addOneView() {
@@ -92,6 +109,12 @@ extension HomeViewController {
     
     func addRightView() {
         view.addSubview(rightView)
+        if let modelOrderArray = modelOrderArray {
+            rightView.numLabel.text = "\(String(describing: modelOrderArray.count))"
+        }
+        rightView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0))
+        }
         rightView.block1 = { [weak self] in
             self?.hideRightView()
         }
@@ -217,6 +240,23 @@ extension HomeViewController {
             }
         } errorBlock: { error in
             
+        }
+    }
+    
+    func loadOrderData() {
+        let dict = ["eight": "6"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: theyThem, method: .post) { [weak self] baseModel in
+            let conceive =  baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let modelOrderArray = model.palace
+                    self?.modelOrderArray = modelOrderArray
+                    self?.oneView.numLabel.text = "\(String(modelOrderArray?.count ?? 0))"
+                    self?.twoView.numLabel.text = "\(String(modelOrderArray?.count ?? 0))"
+                }
+            }
+        } errorBlock: { error in
         }
     }
     

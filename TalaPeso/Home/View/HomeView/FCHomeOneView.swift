@@ -115,6 +115,18 @@ class FCHomeOneView: UIView {
         return descLabel
     }()
     
+    lazy var numView: UIImageView = {
+        let numView = UIImageView()
+        numView.image = UIImage(named: "Slicuoirn")
+        return numView
+    }()
+    
+    lazy var numLabel: UILabel = {
+        let numLabel = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 15.px())!, textColor: .white, textAlignment: .center)
+        numLabel.text = "0"
+        return numLabel
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
@@ -131,6 +143,8 @@ class FCHomeOneView: UIView {
         iconImageView1.addSubview(applyBtn)
         iconImageView1.addSubview(leftBtn)
         iconImageView1.addSubview(rightBtn)
+        leftBtn.addSubview(numView)
+        numView.addSubview(numLabel)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
@@ -162,13 +176,13 @@ class FCHomeOneView: UIView {
             make.top.equalTo(iconImageView3.snp.bottom).offset(-54.px())
         }
         leftBtn.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.size.equalTo(CGSizeMake(54.px(), 78.px()))
+            make.left.equalToSuperview().offset(-49.px())
+            make.size.equalTo(CGSizeMake(98.px(), 78.px()))
             make.bottom.equalToSuperview().offset(-50.px())
         }
         rightBtn.snp.makeConstraints { make in
-            make.right.equalToSuperview()
-            make.size.equalTo(CGSizeMake(54.px(), 78.px()))
+            make.right.equalToSuperview().offset(49.px())
+            make.size.equalTo(CGSizeMake(98.px(), 78.px()))
             make.bottom.equalToSuperview().offset(-50.px())
         }
         rateLabel.snp.makeConstraints { make in
@@ -190,6 +204,14 @@ class FCHomeOneView: UIView {
             make.left.equalTo(rateView).offset(19.px())
             make.top.equalTo(dayLabel.snp.bottom).offset(1.px())
             make.right.equalTo(rateView).offset(-60.px())
+        }
+        numView.snp.makeConstraints { make in
+            make.top.equalTo(leftBtn)
+            make.right.equalTo(leftBtn)
+            make.size.equalTo(CGSizeMake(27.px(), 27.px()))
+        }
+        numLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
@@ -230,12 +252,42 @@ extension FCHomeOneView {
     
     @objc func leftClick() {
         self.feedBack()
-        self.block2?()
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.2, options: [], animations: {
+            self.leftBtn.snp.updateConstraints { make in
+                make.left.equalToSuperview()
+            }
+            self.layoutIfNeeded()
+        }) { _ in
+            UIView.animate(withDuration: 0.25, delay: 0) {
+                self.block2?()
+            } completion: { _ in
+                self.leftBtn.snp.updateConstraints { make in
+                    make.left.equalToSuperview().offset(-49.px())
+                }
+                self.layoutIfNeeded()
+            }
+        }
     }
     
     @objc func rightClick() {
         self.feedBack()
-        self.block3?()
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.2, options: [], animations: {
+            self.rightBtn.snp.updateConstraints { make in
+                make.right.equalToSuperview()
+            }
+            self.layoutIfNeeded()
+        }) { _ in
+            UIView.animate(withDuration: 0.25, delay: 0) {
+                self.block3?()
+            } completion: { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.rightBtn.snp.updateConstraints { make in
+                        make.right.equalToSuperview().offset(49.px())
+                    }
+                    self.layoutIfNeeded()
+                }
+            }
+        }
     }
 
     func feedBack() {

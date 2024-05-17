@@ -148,6 +148,8 @@ class ReddeningModel: HandyJSON {
     var hoping: String?//逾期文案
     var light: String?
     var oceans: String?
+    var troubles: String?
+    var jiorlistd: String?
 }
 
 class CardInfoModel: HandyJSON {

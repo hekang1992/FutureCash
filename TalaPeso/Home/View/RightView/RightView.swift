@@ -68,7 +68,7 @@ class RightView: UIView {
         let titleLabel = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 18.px())!, textColor: .white, textAlignment: .center)
         let phoneNum = UserDefaults.standard.object(forKey: PHONE_LOGIN) as? String ?? ""
         if !phoneNum.isEmpty {
-            titleLabel.text = "Phone:\(phoneNum)"
+            titleLabel.text = "Account: \(phoneNum)"
         }
         return titleLabel
     }()
@@ -112,6 +112,17 @@ class RightView: UIView {
         return threeView
     }()
     
+    lazy var numView: UIImageView = {
+        let numView = UIImageView()
+        numView.image = UIImage(named: "Slicuoirn")
+        return numView
+    }()
+    
+    lazy var numLabel: UILabel = {
+        let numLabel = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 15.px())!, textColor: .white, textAlignment: .center)
+        return numLabel
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
@@ -125,6 +136,8 @@ class RightView: UIView {
         bgImageView2.addSubview(twoView)
         bgImageView2.addSubview(threeView)
         buttons.forEach { bgImageView.addSubview($0) }
+        bgImageView.addSubview(numView)
+        numView.addSubview(numLabel)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
@@ -185,6 +198,14 @@ class RightView: UIView {
             make.left.equalTo(buttons[1].snp.right).offset(3.5.px())
             make.width.equalTo(88.px())
             buttonHeightConstraints.append(make.height.equalTo(33.px()).constraint)
+        }
+        numView.snp.makeConstraints { make in
+            make.left.equalTo(buttons[0].snp.left).offset(-6.px())
+            make.bottom.equalTo(buttons[0].snp.bottom).offset(8.px())
+            make.size.equalTo(CGSizeMake(27.px(), 27.px()))
+        }
+        numLabel.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     

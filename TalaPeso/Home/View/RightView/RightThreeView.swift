@@ -25,6 +25,48 @@ class RightThreeView: UIView {
         return bgImageView
     }()
     
+    lazy var label1: FFShadowLabel = {
+        let label1 = FFShadowLabel()
+        label1.font = UIFont(name: Fredoka_Bold, size: 16.px())
+        label1.textAlignment = .center
+        label1.text = "Phone Number"
+        return label1
+    }()
+    
+    lazy var label2: UILabel = {
+        let label2 = UILabel.createLabel(font: UIFont(name: Fredoka_Medium, size: 15.px())!, textColor: UIColor.init(css: "#384067"), textAlignment: .center)
+        label2.text = "+63 9277792991"
+        return label2
+    }()
+    
+    lazy var label3: FFShadowLabel = {
+        let label3 = FFShadowLabel()
+        label3.font = UIFont(name: Fredoka_Bold, size: 16.px())
+        label3.textAlignment = .center
+        label3.text = "Email"
+        return label3
+    }()
+    
+    lazy var label4: UILabel = {
+        let label4 = UILabel.createLabel(font: UIFont(name: Fredoka_Medium, size: 15.px())!, textColor: UIColor.init(css: "#384067"), textAlignment: .center)
+        label4.text = "official@unitedsrj.com"
+        return label4
+    }()
+    
+    lazy var label5: FFShadowLabel = {
+        let label5 = FFShadowLabel()
+        label5.font = UIFont(name: Fredoka_Bold, size: 16.px())
+        label5.textAlignment = .center
+        label5.text = "Whats App"
+        return label5
+    }()
+    
+    lazy var label6: UILabel = {
+        let label6 = UILabel.createLabel(font: UIFont(name: Fredoka_Medium, size: 15.px())!, textColor: UIColor.init(css: "#384067"), textAlignment: .center)
+        label6.text = "+63 9277792991"
+        return label6
+    }()
+    
     lazy var bgIcon1: UIImageView = {
         let bgIcon1 = UIImageView()
         bgIcon1.image = UIImage(named: "f4trvfda")
@@ -56,8 +98,14 @@ class RightThreeView: UIView {
         scrollView.addSubview(hongqi)
         scrollView.addSubview(bgIcon1)
         scrollView.addSubview(bgIcon2)
+        bgIcon2.addSubview(label1)
+        bgIcon2.addSubview(label2)
         scrollView.addSubview(bgIcon3)
+        bgIcon3.addSubview(label3)
+        bgIcon3.addSubview(label4)
         scrollView.addSubview(bgIcon4)
+        bgIcon4.addSubview(label5)
+        bgIcon4.addSubview(label6)
         bgView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -81,17 +129,53 @@ class RightThreeView: UIView {
             make.left.equalToSuperview().offset(15.px())
             make.height.equalTo(74.px())
         }
+        label1.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(12.px())
+            make.left.equalToSuperview()
+            make.height.equalTo(19.5.px())
+        }
+        label2.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(label1.snp.bottom).offset(7.px())
+            make.left.equalToSuperview()
+            make.height.equalTo(19.5.px())
+        }
         bgIcon3.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(bgIcon2.snp.bottom).offset(20.px())
             make.left.equalToSuperview().offset(15.px())
             make.height.equalTo(74.px())
         }
+        label3.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(12.px())
+            make.left.equalToSuperview()
+            make.height.equalTo(19.5.px())
+        }
+        label4.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(label3.snp.bottom).offset(7.px())
+            make.left.equalToSuperview()
+            make.height.equalTo(19.5.px())
+        }
         bgIcon4.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(bgIcon3.snp.bottom).offset(20.px())
             make.left.equalToSuperview().offset(15.px())
             make.height.equalTo(74.px())
+        }
+        label5.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(12.px())
+            make.left.equalToSuperview()
+            make.height.equalTo(19.5.px())
+        }
+        label6.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(label5.snp.bottom).offset(7.px())
+            make.left.equalToSuperview()
+            make.height.equalTo(19.5.px())
         }
     }
     

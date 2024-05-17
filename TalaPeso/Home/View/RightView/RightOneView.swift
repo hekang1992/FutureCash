@@ -76,8 +76,7 @@ extension RightOneView: UITableViewDelegate, UITableViewDataSource {
         heiqiImageView.addSubview(btn1)
         heiqiImageView.addSubview(btn2)
         hongqiImageView.snp.makeConstraints { make in
-            make.top.equalTo(headView)
-            make.left.equalTo(headView)
+            make.top.left.equalToSuperview()
             make.size.equalTo(CGSizeMake(140.px(), 224.px()))
         }
         heiqiImageView.snp.makeConstraints { make in

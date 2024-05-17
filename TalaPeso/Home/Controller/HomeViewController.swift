@@ -76,6 +76,7 @@ class HomeViewController: FCBaseViewController {
         getHomeData()
         if IS_LOGIN {
             loadOrderData()
+            loadOrderDaoqiData()
         }
     }
     
@@ -252,6 +253,20 @@ extension HomeViewController {
                 if let model = model {
                     let modelOrderArray = model.palace
                     self?.modelOrderArray = modelOrderArray
+                }
+            }
+        } errorBlock: { error in
+        }
+    }
+    
+    func loadOrderDaoqiData() {
+        let dict = ["eight": "9"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: theyThem, method: .post) { [weak self] baseModel in
+            let conceive =  baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let modelOrderArray = model.palace
                     self?.oneView.numLabel.text = "\(String(modelOrderArray?.count ?? 0))"
                     self?.twoView.numLabel.text = "\(String(modelOrderArray?.count ?? 0))"
                 }

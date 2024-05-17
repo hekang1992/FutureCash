@@ -120,6 +120,7 @@ class RightView: UIView {
     
     lazy var numLabel: UILabel = {
         let numLabel = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 15.px())!, textColor: .white, textAlignment: .center)
+        numLabel.text = "0"
         return numLabel
     }()
     

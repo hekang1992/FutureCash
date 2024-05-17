@@ -51,6 +51,7 @@ class HomeViewController: FCBaseViewController {
             if IS_LOGIN {
                 self?.pushOrderVcWithTypeStr("9")
             }else {
+                MBProgressHUD.show(text: "Please Log In")
                 self?.addLoginView()
             }
         }
@@ -58,6 +59,7 @@ class HomeViewController: FCBaseViewController {
             if IS_LOGIN {
                 self?.addRightView()
             }else {
+                MBProgressHUD.show(text: "Please Log In")
                 self?.addLoginView()
             }
         }

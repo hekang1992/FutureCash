@@ -37,7 +37,7 @@ class FCFaceViewController: FCBaseViewController {
         }
         faceView.block1 = { [weak self] in
             if let particularly = self?.particularly {
-                self?.getProductDetailInfo(particularly, self?.starttime ?? "")
+                self?.getProductDetailInfo(particularly, self?.starttime ?? "", "")
             }
         }
     }
@@ -115,7 +115,8 @@ extension FCFaceViewController {
                     vc.navigationController?.dismiss(animated: true, completion: {
                         //调用产品详情
                         if let particularly = self?.particularly {
-                            self?.getProductDetailInfo(particularly, self?.starttime ?? "")
+                            self?.getProductDetailInfo(particularly, self?.starttime ?? "", "")
+                            self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "4")
                         }
                     })
                 }

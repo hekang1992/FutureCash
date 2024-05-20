@@ -133,16 +133,16 @@ extension HomeViewController {
             self?.goSetVc()
         }
         rightView.block3 = { [weak self] in
-            self?.pushWebVC(BASE_H5_URL  + "/alfredWhatsername", "", "")
+            self?.pushWebVC(BASE_H5_URL  + "/alfredWhatsername", "", "", "")
         }
         rightView.block4 = { [weak self] in
-            self?.pushWebVC(BASE_H5_URL + "/continuedDetected", "", "")
+            self?.pushWebVC(BASE_H5_URL + "/continuedDetected", "", "", "")
         }
         rightView.block5 = { [weak self] typeStr in
             self?.pushOrderVcWithTypeStr(typeStr)
         }
         rightView.block6 = {
-            self.pushWebVC(BASE_H5_URL, "", "")
+            self.pushWebVC(BASE_H5_URL, "", "", "")
         }
         rightView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -193,6 +193,8 @@ extension HomeViewController {
                     let productArray = model.palaced?.reddening
                     if let typeModel = model.feared {
                         self?.typeModel = typeModel
+                        self?.rightView.oneView.typeModel = typeModel
+                        self?.rightView.oneView.tableView.reloadData()
                     }
                     if let bigCardModel = bigCardModel {
                         self?.particularly = bigCardModel.particularly

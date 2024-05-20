@@ -177,7 +177,8 @@ extension FCWorkInfoViewController {
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
-                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "")
+                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "", "")
+                self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "6")
             }else {
                 MBProgressHUD.show(text: wanting)
             }

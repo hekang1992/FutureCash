@@ -28,6 +28,9 @@ class RightTypeEnumView: UIView {
             case "ww":
                 currentState = .ww
                 break
+            case "done":
+                currentState = .done
+                break
             default:
                 break
             }
@@ -45,6 +48,7 @@ class RightTypeEnumView: UIView {
         case ef
         case ee
         case ww
+        case done
     }
     
     var currentState: typeEnumProcessStatus = .ua {
@@ -75,18 +79,6 @@ extension RightTypeEnumView {
         typeView.bgImageView1.snp.updateConstraints { make in
             make.width.equalTo(91 * numRate)
         }
-        switch currentState {
-        case .ua:
-            typeView.iconImageView.image = UIImage(named: "")
-            break
-        case .ea:
-            break
-        case .ef:
-            break
-        case .ee:
-            break
-        case .ww:
-            break
-        }
+        typeView.iconImageView.image = UIImage(named: "")
     }
 }

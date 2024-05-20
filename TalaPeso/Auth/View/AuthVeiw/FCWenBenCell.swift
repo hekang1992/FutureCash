@@ -113,6 +113,8 @@ class FCWenBenCell: UITableViewCell {
         }
         if !sapped.isEmpty {
             nameField.text = sapped
+        }else {
+            nameField.text = ""
         }
     }
     

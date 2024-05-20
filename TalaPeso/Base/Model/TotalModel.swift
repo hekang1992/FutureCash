@@ -99,6 +99,7 @@ class ExceptModel: HandyJSON {
     var lowndes: String?
     var Jorjjty: String?
     var square: String?
+    var jielle: String?
 }
 
 class ChildrenModel: HandyJSON {

@@ -20,8 +20,8 @@ class FCBankViewController: FCBaseViewController {
         return popView
     }()
     
-    lazy var walletView: FCWalletView = {
-        let walletView = FCWalletView()
+    lazy var walletView: FCBankView = {
+        let walletView = FCBankView()
         return walletView
     }()
     
@@ -29,6 +29,7 @@ class FCBankViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        view.backgroundColor = .clear
         starttime = DeviceInfo.getCurrentTime()
         view.addSubview(walletView)
         walletView.snp.makeConstraints { make in
@@ -39,7 +40,7 @@ class FCBankViewController: FCBaseViewController {
             dict["guessed"] = "2"
             self?.saveBankInfo(dict)
         }
-        walletView.block1 = { [weak self] cell, model in
+        walletView.block3 = { [weak self] cell, model in
             self?.alertNormalEnum(cell, model)
         }
     }
@@ -48,7 +49,7 @@ class FCBankViewController: FCBaseViewController {
 
 extension FCBankViewController {
     
-    func alertNormalEnum(_ cell: FCWalletImageCell, _ emodel: ExceptModel) {
+    func alertNormalEnum(_ cell: FCWenBenCell, _ emodel: ExceptModel) {
         let alertVC = TYAlertController(alert: popView, preferredStyle: .actionSheet)
         if let children = emodel.children {
             popView.modelArray = children
@@ -74,7 +75,8 @@ extension FCBankViewController {
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
-                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "")
+                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "", "bankwallet")
+                self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "8")
             }else {
                 MBProgressHUD.show(text: wanting)
             }

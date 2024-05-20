@@ -17,6 +17,7 @@ class RightTypeSView: UIView {
 
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 15.px())!, textColor: .white, textAlignment: .center)
+        nameLabel.numberOfLines = 0
         return nameLabel
     }()
     
@@ -46,7 +47,7 @@ class RightTypeSView: UIView {
         }
         nameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview()
+            make.left.equalToSuperview().offset(10.px())
             make.top.equalTo(iconImageView.snp.bottom).offset(13.px())
         }
         bgImageView.snp.makeConstraints { make in

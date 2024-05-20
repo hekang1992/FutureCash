@@ -29,6 +29,7 @@ class FCWalletViewController: FCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        view.backgroundColor = .clear
         starttime = DeviceInfo.getCurrentTime()
         view.addSubview(walletView)
         walletView.snp.makeConstraints { make in
@@ -74,7 +75,8 @@ extension FCWalletViewController {
             let conceive = baseModel.conceive
             let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
-                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "")
+                self?.getProductDetailInfo(self?.particularly ?? "", self?.starttime ?? "", "bankwallet")
+                self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "8")
             }else {
                 MBProgressHUD.show(text: wanting)
             }

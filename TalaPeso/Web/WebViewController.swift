@@ -13,6 +13,8 @@ class WebViewController: FCBaseViewController {
     
     var url: String?
     
+    var type: String?
+    
     lazy var webView: WKWebView = {
         let configuration = WKWebViewConfiguration()
         let userContentController = WKUserContentController()
@@ -50,7 +52,11 @@ class WebViewController: FCBaseViewController {
             if let canGoBack = self?.webView.canGoBack, canGoBack {
                 self?.webView.goBack()
             }else {
-                self?.navigationController?.popViewController(animated: true)
+                if self?.type == "bankwallet" {
+                    self?.navigationController?.popToRootViewController(animated: true)
+                }else {
+                    self?.navigationController?.popViewController(animated: true)
+                }
             }
         }
         addWebVcView()

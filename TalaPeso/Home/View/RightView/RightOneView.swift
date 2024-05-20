@@ -48,7 +48,6 @@ class RightOneView: UIView {
     
     lazy var typeView: RightTypeEnumView = {
         let typeView = RightTypeEnumView()
-        typeView.typeModel = typeModel
         return typeView
     }()
     
@@ -80,6 +79,7 @@ extension RightOneView: UITableViewDelegate, UITableViewDataSource {
         hongqiImageView.image = UIImage(named: "honeqibg")
         headView.addSubview(hongqiImageView)
         hongqiImageView.addSubview(typeView)
+        typeView.typeModel = typeModel
         let heiqiImageView = UIImageView()
         heiqiImageView.isUserInteractionEnabled = true
         heiqiImageView.image = UIImage(named: "heiqiimage")

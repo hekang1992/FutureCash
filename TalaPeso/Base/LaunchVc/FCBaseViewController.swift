@@ -70,7 +70,7 @@ class FCBaseViewController: UIViewController {
             self?.getCode()
         }
         loginView.block4 = { [weak self] in
-            self?.pushWebVC( BASE_H5_URL  + "/alfredWhatsername", "", "")
+            self?.pushWebVC( BASE_H5_URL  + "/alfredWhatsername", "", "", "")
         }
         delayTime(0.25) { [weak self] in
             self?.animateLoginView()
@@ -238,7 +238,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func getProductDetailInfo(_ productID: String, _ startTime: String) {
+    func getProductDetailInfo(_ productID: String, _ startTime: String, _ type: String) {
         let dict = ["relations": productID, "proposed": "1", "happenings": "2"]
         FCRequset.shared.requestAPI(params: dict, pageUrl: henry, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
@@ -251,7 +251,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                     if !enjoyment.isEmpty {
                         self?.pushNextVc(model.feared?.enjoyment ?? "", productID, startTime)
                     }else {
-                        self?.orderIDWithNext(suffused, productID, startTime)
+                        self?.orderIDWithNext(suffused, productID, startTime, type)
                     }
                 }
             }else {
@@ -268,35 +268,30 @@ extension FCBaseViewController: UINavigationControllerDelegate {
             let cardVc = FCCardTypeViewController()
             cardVc.particularly = productID
             self.navigationController?.pushViewController(cardVc, animated: true)
-            self.miandian(productID: productID, startTime: startTime, type: "4")
             break
             
         case "ea":
             let peronalVc = FCPersonalInfoViewController()
             peronalVc.particularly = productID
             self.navigationController?.pushViewController(peronalVc, animated: true)
-            self.miandian(productID: productID, startTime: startTime, type: "5")
             break
             
         case "ef":
             let workVc = FCWorkInfoViewController()
             workVc.particularly = productID
             self.navigationController?.pushViewController(workVc, animated: true)
-            self.miandian(productID: productID, startTime: startTime, type: "6")
             break
             
         case "ee":
             let contactVc = FCContactViewController()
             contactVc.particularly = productID
             self.navigationController?.pushViewController(contactVc, animated: true)
-            self.miandian(productID: productID, startTime: startTime, type: "7")
             break
             
         case "ww":
             let bankVc = FCBankInfoViewController()
             bankVc.particularly = productID
             self.navigationController?.pushViewController(bankVc, animated: true)
-            self.miandian(productID: productID, startTime: startTime, type: "8")
             break
             
         default: break
@@ -304,7 +299,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         }
     }
     
-    func orderIDWithNext(_ orderID: String, _ productID: String, _ startTime: String) {
+    func orderIDWithNext(_ orderID: String, _ productID: String, _ startTime: String, _ type: String) {
         let dict = ["holborn": orderID]
         FCRequset.shared.requestAPI(params: dict, pageUrl: alfredsConscious, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
@@ -312,7 +307,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
-                    self?.pushWebVC(model.weren ?? "", productID, startTime)
+                    self?.pushWebVC(model.weren ?? "", productID, startTime, type)
                 }
             }else {
                 MBProgressHUD.show(text: wanting)
@@ -322,7 +317,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         }
     }
     
-    func pushWebVC(_ url: String, _ productID: String, _ startTime: String) {
+    func pushWebVC(_ url: String, _ productID: String, _ startTime: String, _ type: String) {
         let webVc = WebViewController()
         let urlString = url + "?" + LoginFactory.getLoginParas()
         guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
@@ -334,6 +329,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
             return
         }
         webVc.url = urlString
+        webVc.type = type
         navigationController?.pushViewController(webVc, animated: true)
         self.miandian(productID: productID, startTime: startTime, type: "9")
     }
@@ -369,10 +365,10 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     func judguUrlContainSche(_ url: String) {
         if url.contains(SCHEME_URL) {
             let array = url.components(separatedBy: "relations=")
-            self.getProductDetailInfo(array.last ?? "", "")
+            self.getProductDetailInfo(array.last ?? "", "", "")
         }else{
             if !url.isEmpty {
-                self.pushWebVC(url, "", "")
+                self.pushWebVC(url, "", "", "")
             }
         }
     }

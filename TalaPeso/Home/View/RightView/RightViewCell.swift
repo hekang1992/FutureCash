@@ -15,10 +15,12 @@ class RightViewCell: UITableViewCell {
         return bgImage
     }()
 
-    lazy var nameLable: UILabel = {
-        let nameLable = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 16.px())!, textColor: .white, textAlignment: .center)
-        nameLable.numberOfLines = 0
-        return nameLable
+    lazy var nameLable: FFShadowLabel = {
+        let nameLabel = FFShadowLabel(strockColor: UIColor.init(css: "#384067"))
+        nameLabel.font = UIFont(name: Fredoka_Bold, size: 16.px())
+        nameLabel.textAlignment = .center
+        nameLabel.numberOfLines = 0
+        return nameLabel
     }()
 
     lazy var icon: UIImageView = {

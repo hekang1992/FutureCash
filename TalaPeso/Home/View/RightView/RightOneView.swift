@@ -16,7 +16,11 @@ class RightOneView: UIView {
     
     var block3: ((String) -> Void)?
     
+    var typeModel: FearedModel?
+    
     let titleArray = ["Unpaid loan balance","Loan under review","Failed loan disbursement","Loan fully repaid"]
+    
+    let imageArray = ["balaceimage","reviewimageda","fialfdaimage","fullfadicon"]
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -40,6 +44,12 @@ class RightOneView: UIView {
         let btn2 = UIButton(type: .custom)
         btn2.addTarget(self, action: #selector(btn2Click), for: .touchUpInside)
         return btn2
+    }()
+    
+    lazy var typeView: RightTypeEnumView = {
+        let typeView = RightTypeEnumView()
+        typeView.typeModel = typeModel
+        return typeView
     }()
     
     override init(frame: CGRect) {
@@ -69,6 +79,7 @@ extension RightOneView: UITableViewDelegate, UITableViewDataSource {
         let hongqiImageView = UIImageView()
         hongqiImageView.image = UIImage(named: "honeqibg")
         headView.addSubview(hongqiImageView)
+        hongqiImageView.addSubview(typeView)
         let heiqiImageView = UIImageView()
         heiqiImageView.isUserInteractionEnabled = true
         heiqiImageView.image = UIImage(named: "heiqiimage")
@@ -83,6 +94,9 @@ extension RightOneView: UITableViewDelegate, UITableViewDataSource {
             make.top.equalTo(headView)
             make.left.equalTo(hongqiImageView.snp.right)
             make.size.equalTo(CGSizeMake(140.px(), 224.px()))
+        }
+        typeView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         btn1.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
@@ -103,6 +117,7 @@ extension RightOneView: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "RightViewCell", for: indexPath) as? RightViewCell {
             cell.selectionStyle = .none
             cell.backgroundColor = .clear
+            cell.icon.image = UIImage(named: imageArray[indexPath.row])
             cell.nameLable.text = titleArray[indexPath.row]
             return cell
         }

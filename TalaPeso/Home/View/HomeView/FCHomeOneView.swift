@@ -143,8 +143,8 @@ class FCHomeOneView: UIView {
         iconImageView1.addSubview(applyBtn)
         iconImageView1.addSubview(leftBtn)
         iconImageView1.addSubview(rightBtn)
-        leftBtn.addSubview(numView)
-        numView.addSubview(numLabel)
+//        leftBtn.addSubview(numView)
+//        numView.addSubview(numLabel)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
@@ -205,14 +205,14 @@ class FCHomeOneView: UIView {
             make.top.equalTo(dayLabel.snp.bottom).offset(1.px())
             make.right.equalTo(rateView).offset(-60.px())
         }
-        numView.snp.makeConstraints { make in
-            make.top.equalTo(leftBtn)
-            make.right.equalTo(leftBtn)
-            make.size.equalTo(CGSizeMake(27.px(), 27.px()))
-        }
-        numLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+//        numView.snp.makeConstraints { make in
+//            make.top.equalTo(leftBtn)
+//            make.right.equalTo(leftBtn)
+//            make.size.equalTo(CGSizeMake(27.px(), 27.px()))
+//        }
+//        numLabel.snp.makeConstraints { make in
+//            make.edges.equalToSuperview()
+//        }
     }
     
     override func layoutSubviews() {

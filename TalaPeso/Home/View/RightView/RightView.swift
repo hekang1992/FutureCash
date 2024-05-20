@@ -22,6 +22,14 @@ class RightView: UIView {
     
     var block6: (() -> Void)?
     
+    var typeModel: FearedModel? {
+        didSet {
+            guard let typeModel = typeModel else { return }
+            oneView.typeModel = typeModel
+            twoView.typeModel = typeModel
+        }
+    }
+    
     var buttonHeightConstraints: [Constraint] = []
     
     lazy var bgView: UIView = {

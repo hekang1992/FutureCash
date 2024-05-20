@@ -146,6 +146,11 @@ class RightTwoView: UIView {
         return bgIcon4
     }()
     
+    lazy var typeView: RightTypeEnumView = {
+        let typeView = RightTypeEnumView()
+        return typeView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
@@ -169,6 +174,7 @@ class RightTwoView: UIView {
         bgIcon4.addSubview(label9)
         bgIcon4.addSubview(iconWeb)
         bgIcon4.addSubview(label10)
+        hongqi.addSubview(typeView)
         bgView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -178,12 +184,12 @@ class RightTwoView: UIView {
         hongqi.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
-            make.size.equalTo(CGSizeMake(140.px(), 226.px()))
+            make.size.equalTo(CGSizeMake(140.px(), 224.px()))
         }
         heiqi.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.left.equalTo(hongqi.snp.right)
-            make.size.equalTo(CGSizeMake(140.px(), 226.px()))
+            make.size.equalTo(CGSizeMake(140.px(), 224.px()))
         }
         bgIcon1.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -273,6 +279,9 @@ class RightTwoView: UIView {
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(113.px())
         }
+        typeView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     override func layoutSubviews() {
@@ -285,6 +294,13 @@ class RightTwoView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    var typeModel: FearedModel? {
+        didSet {
+            guard let typeModel = typeModel else { return }
+            typeView.typeModel = typeModel
+        }
     }
     
 }

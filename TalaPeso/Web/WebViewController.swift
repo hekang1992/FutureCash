@@ -36,7 +36,7 @@ class WebViewController: FCBaseViewController {
     
     lazy var progressView: UIProgressView = {
         let progressView = UIProgressView(frame: .zero)
-        progressView.tintColor = UIColor(css: "#302C2C")
+        progressView.tintColor = UIColor(css: "#384067")
         progressView.trackTintColor = UIColor.groupTableViewBackground
         return progressView
     }()
@@ -69,13 +69,26 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
     
     func addWebVcView() {
         view.insertSubview(webView, belowSubview: navView)
+        webView.addSubview(progressView)
         webView.snp.makeConstraints { make in
-            make.edges.equalTo(view)
+            make.edges.equalToSuperview()
+        }
+        progressView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(2.px())
         }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(WKWebView.estimatedProgress) {
+            if let progress = change?[.newKey] as? CGFloat {
+                self.progressView.progress = Float(progress)
+                if progress >= 1.0 {
+                    UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseOut, animations: {
+                        self.progressView.alpha = 0
+                    }, completion: nil)
+                }
+            }
         } else if keyPath == #keyPath(WKWebView.title) {
             if let newTitle = change?[.newKey] as? String {
                 DispatchQueue.main.async { [weak self] in

@@ -182,4 +182,8 @@ class FaceModel: HandyJSON {
 class FearedModel: HandyJSON {
     required init() {}
     var enjoyment: String?//下一步认证
+    var hekdllw: String?//总步数
+    var killewh: String?//目前在那一步
+    var verifyRate: String?//25%
+    var verifyTitle: String?
 }

@@ -23,7 +23,6 @@ class RightViewCell: UITableViewCell {
 
     lazy var icon: UIImageView = {
         let icon = UIImageView()
-        icon.backgroundColor = .randomColor()
         return icon
     }()
     
@@ -40,7 +39,7 @@ class RightViewCell: UITableViewCell {
         }
         icon.snp.makeConstraints { make in
             make.centerY.equalTo(bgImage)
-            make.size.equalTo(CGSizeMake(35.px(), 35.px()))
+            make.size.equalTo(CGSizeMake(46.px(), 54.px()))
             make.right.equalTo(bgImage).offset(-31.5.px())
         }
         nameLable.snp.makeConstraints { make in

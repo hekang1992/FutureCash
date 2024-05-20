@@ -16,6 +16,8 @@ class HomeViewController: FCBaseViewController {
     
     var particularly: String?
     
+    var typeModel: FearedModel?
+    
     var modelOrderArray: [PlaceModel]?
     
     lazy var oneView: FCHomeOneView = {
@@ -115,6 +117,9 @@ extension HomeViewController {
     
     func addRightView() {
         view.addSubview(rightView)
+        if let typeModel = typeModel {
+            rightView.typeModel = typeModel
+        }
         if let modelOrderArray = modelOrderArray {
             rightView.numLabel.text = "\(String(describing: modelOrderArray.count))"
         }
@@ -186,6 +191,9 @@ extension HomeViewController {
                     let bannerModelArray = model.filthy?.reddening
                     let fudaiModelArray = model.retired?.reddening
                     let productArray = model.palaced?.reddening
+                    if let typeModel = model.feared {
+                        self?.typeModel = typeModel
+                    }
                     if let bigCardModel = bigCardModel {
                         self?.particularly = bigCardModel.particularly
                         self?.twoView.removeFromSuperview()

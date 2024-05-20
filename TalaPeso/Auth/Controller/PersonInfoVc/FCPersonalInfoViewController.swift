@@ -126,9 +126,10 @@ extension FCPersonalInfoViewController {
             let provinceName = province?.name ?? ""
             let cityName = city?.name ?? ""
             let areaName = area?.name ?? ""
-            let addressString = provinceName + " " + cityName + " " + areaName
-            cell.nameField.text = addressString
+            let addressString = provinceName + " - " + cityName + " - " + areaName
+            model.sapped = addressString
             model.excuse = addressString
+            cell.nameField.text = model.sapped
         }
         let customStyle = BRPickerStyle()
         customStyle.pickerColor = .white
@@ -158,6 +159,7 @@ extension FCPersonalInfoViewController {
             let provinceCode = province?.code ?? ""
             let cityCode = city?.code ?? ""
             let addressString = provinceName + " | " + cityName
+            model.sapped = addressString
             cell.nameField.text = addressString
             model.excuse = provinceCode + "|" + cityCode
             print("🔥model.excuse>>>>>>🔥\(model.excuse ?? "")")

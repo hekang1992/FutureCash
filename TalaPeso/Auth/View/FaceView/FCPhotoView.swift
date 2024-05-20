@@ -14,6 +14,11 @@ class FCPhotoView: UIView {
     var albumBlock: ((() -> Void))?
     
     var cameraBlock: ((() -> Void))?
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
 
     lazy var iconImageView1: UIImageView = {
         let iconImageView1 = UIImageView()
@@ -97,22 +102,26 @@ class FCPhotoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(iconImageView1)
-        iconImageView1.addSubview(iconImageView2)
+        iconImageView1.addSubview(scrollView)
+        scrollView.addSubview(iconImageView2)
         iconImageView2.addSubview(titleLable)
         iconImageView2.addSubview(iconImageView3)
         iconImageView2.addSubview(iconImageView4)
         iconImageView2.addSubview(iconImageView5)
         iconImageView2.addSubview(descLable)
-        iconImageView1.addSubview(nextBtn)
-        iconImageView1.addSubview(albumBtn)
-        iconImageView1.addSubview(cameraBtn)
+        scrollView.addSubview(nextBtn)
+        scrollView.addSubview(albumBtn)
+        scrollView.addSubview(cameraBtn)
         iconImageView1.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+            make.edges.equalToSuperview()
+        }
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         titleLable.snp.makeConstraints { make in
-            make.left.equalTo(self).offset(32.5.px())
+            make.left.equalToSuperview().offset(32.5.px())
             make.top.equalTo(iconImageView2).offset(85.px())
-            make.right.equalTo(self).offset(-50.px())
+            make.right.equalToSuperview().offset(-50.px())
         }
         iconImageView3.snp.makeConstraints { make in
             make.centerX.equalTo(iconImageView2)
@@ -158,9 +167,13 @@ class FCPhotoView: UIView {
             iconImageView2.snp.makeConstraints { make in
                 make.centerX.equalTo(iconImageView1)
                 make.size.equalTo(CGSizeMake(375.px(), 599.px()))
-                make.top.equalTo(height.totalHeight)
+                make.top.equalTo(height.navigationBarHeight)
             }
         }
+        nextBtn.setNeedsLayout()
+        self.layoutIfNeeded()
+        let maxY = CGRectGetMaxY(nextBtn.frame)
+        scrollView.contentSize = CGSizeMake(0, maxY + 20.px())
     }
     
     required init?(coder: NSCoder) {

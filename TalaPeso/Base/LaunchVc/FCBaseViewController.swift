@@ -225,8 +225,8 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                 LoginFactory.saveLoginInfo(model.temperance ?? "", model.temple ?? "")
                 self?.miandian(productID: "", startTime: starttime, type: "1")
                 self?.getAppleLocation()
-                self?.getAppleGoogle()
-                self?.getApplePush()
+//                self?.getAppleGoogle()
+//                self?.getApplePush()
                 self?.getRootVcPush()
             }
         } errorBlock: { error in

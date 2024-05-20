@@ -22,6 +22,11 @@ class CardTypeView: UIView {
         return bgView
     }()
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+    
     lazy var iconImageView1: UIImageView = {
         let iconImageView1 = UIImageView()
         iconImageView1.contentMode = .scaleAspectFill
@@ -82,28 +87,20 @@ class CardTypeView: UIView {
         super.init(frame: frame)
         addSubview(bgView)
         bgView.addSubview(iconImageView1)
-        iconImageView1.addSubview(iconImageView2)
-        iconImageView1.addSubview(iconImageView3)
-        iconImageView1.addSubview(collectionView)
-        iconImageView1.addSubview(iconImageView4)
-        iconImageView1.addSubview(changeBtn)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        iconImageView1.addSubview(scrollView)
+        scrollView.addSubview(iconImageView2)
+        scrollView.addSubview(iconImageView3)
+        scrollView.addSubview(collectionView)
+        scrollView.addSubview(iconImageView4)
+        scrollView.addSubview(changeBtn)
         bgView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+            make.edges.equalToSuperview()
         }
         iconImageView1.snp.makeConstraints { make in
-            make.edges.equalTo(bgView)
+            make.edges.equalToSuperview()
         }
-        if let vc = self.viewController  {
-            let height = UIViewController.getTopBarHeights(for: vc)
-            iconImageView2.snp.makeConstraints { make in
-                make.centerX.equalTo(bgView)
-                make.size.equalTo(CGSizeMake(375.px(), 159.px()))
-                make.top.equalTo(height.totalHeight)
-            }
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
         iconImageView3.snp.makeConstraints { make in
             make.centerX.equalTo(bgView)
@@ -128,6 +125,22 @@ class CardTypeView: UIView {
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let vc = self.viewController  {
+            let height = UIViewController.getTopBarHeights(for: vc)
+            iconImageView2.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.size.equalTo(CGSizeMake(375.px(), 159.px()))
+                make.top.equalTo(height.navigationBarHeight)
+            }
+        }
+        iconImageView4.setNeedsLayout()
+        self.layoutIfNeeded()
+        let maxY = CGRectGetMaxY(iconImageView4.frame)
+        scrollView.contentSize = CGSizeMake(0, maxY + 20.px())
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -137,7 +150,9 @@ class CardTypeView: UIView {
 extension CardTypeView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func didselectCollecTionView(_ col: UICollectionView, _ indexPath: IndexPath) {
-        collectionView(col, didSelectItemAt: indexPath)
+        if !indexPath.isEmpty {
+            collectionView(col, didSelectItemAt: indexPath)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

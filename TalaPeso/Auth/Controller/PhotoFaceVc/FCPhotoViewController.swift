@@ -272,9 +272,14 @@ extension FCPhotoViewController {
         let employment = cardInfoView.nameView1.nameField.text ?? ""
         let thorough = cardInfoView.nameView2.nameField.text ?? ""
         let intended = cardInfoView.nameView3.nameField.text ?? ""
+        let timeArray = intended.components(separatedBy: "-")
+        let year = timeArray[2]
+        let mon = timeArray[1]
+        let day = timeArray[0]
+        let dateStr = String(format: "%@-%@-%@", year,mon,day)
         let dict = ["employment": employment,
                     "thorough": thorough,
-                    "intended": intended,
+                    "intended": dateStr,
                     "guessed": guessed ?? "",
                     "teaser": "1",
                     "excuse": "11"] as [String : Any]

@@ -13,6 +13,11 @@ class FCFaceView: UIView {
     
     var block1: (() -> Void)?
     
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+    
     lazy var bgView: UIView = {
         let bgView = UIView()
         bgView.backgroundColor = .clear
@@ -81,47 +86,50 @@ class FCFaceView: UIView {
         super.init(frame: frame)
         addSubview(bgView)
         bgView.addSubview(iconImageView1)
-        iconImageView1.addSubview(iconImageView2)
-        iconImageView1.addSubview(iconImageView3)
+        iconImageView1.addSubview(scrollView)
+        scrollView.addSubview(iconImageView2)
+        scrollView.addSubview(iconImageView3)
         iconImageView3.addSubview(iconImageView4)
         iconImageView3.addSubview(iconImageView5)
         iconImageView3.addSubview(nameLabel)
-        iconImageView1.addSubview(changeBtn)
-        iconImageView1.addSubview(changeBtn1)
+        scrollView.addSubview(changeBtn)
+        scrollView.addSubview(changeBtn1)
         bgView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
+            make.edges.equalToSuperview()
         }
         iconImageView1.snp.makeConstraints { make in
-            make.edges.equalTo(bgView)
+            make.edges.equalToSuperview()
         }
-        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         iconImageView3.snp.makeConstraints { make in
-            make.centerX.equalTo(bgView)
+            make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView2.snp.bottom).offset(40.px())
             make.size.equalTo(CGSizeMake(333.px(), 360.px()))
         }
         iconImageView4.snp.makeConstraints { make in
-            make.centerX.equalTo(iconImageView1)
+            make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView3).offset(40.px())
             make.size.equalTo(CGSizeMake(140.px(), 140.px()))
         }
         iconImageView5.snp.makeConstraints { make in
-            make.centerX.equalTo(iconImageView1)
+            make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView4.snp.bottom).offset(13.px())
             make.size.equalTo(CGSizeMake(255.px(), 72.px()))
         }
         nameLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(iconImageView1)
+            make.centerX.equalToSuperview()
             make.top.equalTo(iconImageView5.snp.bottom).offset(13.px())
             make.left.equalTo(iconImageView3.snp.left).offset(37.5.px())
         }
         changeBtn.snp.makeConstraints { make in
-            make.centerX.equalTo(iconImageView1)
+            make.centerX.equalToSuperview()
             make.size.equalTo(CGSizeMake(183.px(), 86.px()))
             make.top.equalTo(iconImageView3.snp.bottom).offset(31.5.px())
         }
         changeBtn1.snp.makeConstraints { make in
-            make.centerX.equalTo(iconImageView1)
+            make.centerX.equalToSuperview()
             make.size.equalTo(CGSizeMake(183.px(), 86.px()))
             make.top.equalTo(iconImageView3.snp.bottom).offset(31.5.px())
         }
@@ -134,9 +142,13 @@ class FCFaceView: UIView {
             iconImageView2.snp.makeConstraints { make in
                 make.centerX.equalTo(bgView)
                 make.size.equalTo(CGSizeMake(363.px(), 105.px()))
-                make.top.equalTo(height.totalHeight + 4.px())
+                make.top.equalTo(height.navigationBarHeight + 4.px())
             }
         }
+        changeBtn.setNeedsLayout()
+        self.layoutIfNeeded()
+        let maxY = CGRectGetMaxY(changeBtn.frame)
+        scrollView.contentSize = CGSizeMake(0, maxY + 20.px())
     }
     
     required init?(coder: NSCoder) {

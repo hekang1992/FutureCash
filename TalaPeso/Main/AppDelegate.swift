@@ -178,7 +178,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
     }
     
     func keyboardManager(){
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 10.px()
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 15.px()
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enable = true
     }

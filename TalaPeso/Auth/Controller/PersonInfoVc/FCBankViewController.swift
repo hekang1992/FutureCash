@@ -16,7 +16,7 @@ class FCBankViewController: FCBaseViewController {
     var particularly: String?
     
     lazy var popView: FCPopPersonView = {
-        let popView = FCPopPersonView(frame: self.view.bounds)
+        let popView = FCPopPersonView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         return popView
     }()
     

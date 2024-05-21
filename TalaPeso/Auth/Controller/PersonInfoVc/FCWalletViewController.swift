@@ -16,7 +16,7 @@ class FCWalletViewController: FCBaseViewController {
     var particularly: String?
     
     lazy var popView: FCPopPersonView = {
-        let popView = FCPopPersonView(frame: self.view.bounds)
+        let popView = FCPopPersonView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         return popView
     }()
     
@@ -62,8 +62,8 @@ extension FCWalletViewController {
         popView.block1 = { [weak self] model in
             self?.delayTime(0.25, closure: {
                 self?.dismiss(animated: true, completion: {
-                    emodel.sapped = model.employment
-                    emodel.excuse = model.excuse
+                    cell.model?.sapped = model.employment
+                    cell.model?.excuse = model.excuse
                     cell.cmodel = model
                 })
             })

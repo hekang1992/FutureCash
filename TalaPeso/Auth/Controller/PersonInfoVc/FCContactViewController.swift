@@ -28,7 +28,7 @@ class FCContactViewController: FCBaseViewController {
     }()
     
     lazy var popView: FCPopPersonView = {
-        let popView = FCPopPersonView(frame: self.view.bounds)
+        let popView = FCPopPersonView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         return popView
     }()
     
@@ -106,10 +106,10 @@ extension FCContactViewController: CNContactPickerDelegate{
         popView.block1 = { [weak self] model in
             self?.delayTime(0.25, closure: {
                 self?.dismiss(animated: true, completion: {
-                    emodel.sapped = model.employment
-                    emodel.excuse = model.excuse
-                    emodel.Jorjjty = model.employment
-                    cell.btn1.setTitle(emodel.Jorjjty, for: .normal)
+                    cell.model?.sapped = model.employment
+                    cell.model?.square = model.excuse
+                    cell.model?.Jorjjty = model.employment
+                    cell.btn1.setTitle(cell.model?.Jorjjty, for: .normal)
                 })
             })
         }

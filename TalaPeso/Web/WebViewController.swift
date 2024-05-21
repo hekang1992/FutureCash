@@ -8,10 +8,11 @@
 import UIKit
 import WebKit
 import StoreKit
+import MBProgressHUD
 
 class WebViewController: FCBaseViewController {
     
-    var url: String?
+    var productUrl: String?
     
     var type: String?
     
@@ -59,9 +60,20 @@ class WebViewController: FCBaseViewController {
                 }
             }
         }
-        addWebVcView()
-        if let url = URL(string: url ?? "") {
-            webView.load(URLRequest(url: url))
+        view.insertSubview(webView, belowSubview: navView)
+        webView.addSubview(progressView)
+        webView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        progressView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(2.px())
+        }
+        
+        if let productUrl = productUrl {
+            if let url = URL(string: productUrl) {
+                webView.load(URLRequest(url: url))
+            }
         }
     }
     
@@ -72,18 +84,6 @@ class WebViewController: FCBaseViewController {
 }
 
 extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
-    
-    func addWebVcView() {
-        view.insertSubview(webView, belowSubview: navView)
-        webView.addSubview(progressView)
-        webView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        progressView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(2.px())
-        }
-    }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == #keyPath(WKWebView.estimatedProgress) {
@@ -103,6 +103,30 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
             }
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.allow)
+            return
+        }
+        let urlStr = url.absoluteString
+        if urlStr.hasPrefix("mailto:") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else if urlStr.hasPrefix("whatsapp:") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                MBProgressHUD.show(text: "WhatsApp is not installed. Please install it.")
+            }
+        }
+        if urlStr.hasPrefix("mailto:") || urlStr.hasPrefix("whatsapp:") {
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
         }
     }
     

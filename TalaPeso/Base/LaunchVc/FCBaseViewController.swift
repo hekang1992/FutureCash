@@ -321,15 +321,8 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     func pushWebVC(_ url: String, _ productID: String, _ startTime: String, _ type: String) {
         let webVc = WebViewController()
         let urlString = url + "?" + LoginFactory.getLoginParas()
-        guard let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
-            print("Failed to encode URL")
-            return
-        }
-        guard URL(string: encodedURLString) != nil else {
-            print("Failed to create encoded URL")
-            return
-        }
-        webVc.url = urlString
+        let stringWithoutSpaces = urlString.replacingOccurrences(of: " ", with: "%20")
+        webVc.productUrl = stringWithoutSpaces
         webVc.type = type
         navigationController?.pushViewController(webVc, animated: true)
     }

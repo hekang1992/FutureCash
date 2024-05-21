@@ -186,7 +186,7 @@ extension FCContactView: UITableViewDelegate, UITableViewDataSource {
         let array = self.modelArray?.map({ model in
             var partialResult: [String: Any] = [:]
             partialResult["solid"] = model.solid ?? ""
-            partialResult["square"] = model.excuse ?? ""
+            partialResult["square"] = model.square ?? ""
             partialResult["lowndes"] = model.lowndes ?? ""
             partialResult["employment"] = model.employment ?? ""
             return partialResult

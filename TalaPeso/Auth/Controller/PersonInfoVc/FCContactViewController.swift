@@ -108,7 +108,8 @@ extension FCContactViewController: CNContactPickerDelegate{
                 self?.dismiss(animated: true, completion: {
                     emodel.sapped = model.employment
                     emodel.excuse = model.excuse
-                    cell.btn1.setTitle(model.employment, for: .normal)
+                    emodel.Jorjjty = model.employment
+                    cell.btn1.setTitle(emodel.Jorjjty, for: .normal)
                 })
             })
         }

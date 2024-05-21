@@ -47,7 +47,6 @@ class HomeViewController: FCBaseViewController {
             if IS_LOGIN {
                 self?.pushOrderVcWithTypeStr("9")
             }else {
-                MBProgressHUD.show(text: "Please Log In")
                 self?.addLoginView()
             }
         }
@@ -55,7 +54,6 @@ class HomeViewController: FCBaseViewController {
             if IS_LOGIN {
                 self?.addRightView()
             }else {
-                MBProgressHUD.show(text: "Please Log In")
                 self?.addLoginView()
             }
         }
@@ -248,15 +246,12 @@ extension HomeViewController {
         let dict = ["relations": productID]
         FCRequset.shared.requestAPI(params: dict, pageUrl: haveHeard, method: .post) { [weak self] baseModel in
             let conceive = baseModel.conceive
-            let wanting = baseModel.wanting ?? ""
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
                     let weren = model.weren ?? ""
                     self?.judguUrlContainSche(weren)
                 }
-            }else {
-                MBProgressHUD.show(text: wanting)
             }
         } errorBlock: { error in
             

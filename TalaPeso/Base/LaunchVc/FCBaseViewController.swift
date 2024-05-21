@@ -252,6 +252,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                         self?.pushNextVc(model.feared?.enjoyment ?? "", productID, startTime)
                     }else {
                         self?.orderIDWithNext(suffused, productID, startTime, type)
+                        self?.miandian(productID: productID, startTime: startTime, type: "9")
                     }
                 }
             }else {
@@ -331,7 +332,6 @@ extension FCBaseViewController: UINavigationControllerDelegate {
         webVc.url = urlString
         webVc.type = type
         navigationController?.pushViewController(webVc, animated: true)
-        self.miandian(productID: productID, startTime: startTime, type: "9")
     }
     
     func miandian(productID: String, startTime: String, type: String) {

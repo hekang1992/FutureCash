@@ -13,6 +13,7 @@ import CoreTelephony
 import SystemServices
 import SystemConfiguration
 import SystemConfiguration.CaptiveNetwork
+import NetworkExtension
 
 class DeviceInfo: NSObject {
     
@@ -79,10 +80,15 @@ class DeviceInfo: NSObject {
         return frank
     }
     
+    static func getTimeZone() -> String {
+        let timeZone = NSTimeZone.system
+        return timeZone.abbreviation() ?? "";
+    }
+    
     static func getProTime() -> String {
         let time: TimeInterval = ProcessInfo.processInfo.systemUptime
         let timeDate = Date(timeIntervalSinceNow: 0 - time)
-        let timeSp = String(format: "%ld", Int(timeDate.timeIntervalSince1970))
+        let timeSp = String(format: "%ld", Int(timeDate.timeIntervalSince1970 * 1000))
         return timeSp
     }
     
@@ -121,7 +127,7 @@ class DeviceInfo: NSObject {
     }
     
     static func alternative() -> String {
-        let freemem: Double = SystemServices.shared().freeMemoryinRaw
+        let freemem: Double = SystemServices.shared().activeMemoryinRaw
         let minute = String(format: "%.0f", freemem * 1024 * 1024)
         return minute
     }
@@ -142,15 +148,58 @@ class DeviceInfo: NSObject {
         return "0"
     }
     
+    static func getCurrentWifiMac() -> String {
+        guard let interfaces = CNCopySupportedInterfaces() as? [String] else {
+            return ""
+        }
+        for interface in interfaces {
+            guard let info = CNCopyCurrentNetworkInfo(interface as CFString) as NSDictionary? else {
+                continue
+            }
+            if let bssid = info[kCNNetworkInfoKeyBSSID as String] as? String {
+                return bssid
+            }
+        }
+        return ""
+    }
+    
+    static  func getAppWifiSSIDInfo() -> String {
+        var currentSSID = ""
+        if let myArray = CNCopySupportedInterfaces() as? [String],
+           let interface = myArray.first as CFString?,
+           let myDict = CNCopyCurrentNetworkInfo(interface) as NSDictionary? {
+            
+            currentSSID = myDict["SSID"] as? String ?? ""
+            
+        } else {
+            currentSSID = ""
+        }
+        return currentSSID
+    }
+    
+    static  func getAppWifiBSSIDInfo() -> String {
+        var currentSSID = ""
+        if let myArray = CNCopySupportedInterfaces() as? [String],
+           let interface = myArray.first as CFString?,
+           let myDict = CNCopyCurrentNetworkInfo(interface) as NSDictionary? {
+            
+            currentSSID = myDict["BSSID"] as? String ?? ""
+            
+        } else {
+            currentSSID = ""
+        }
+        return currentSSID
+    }
+    
     static func deviceInfo() -> [String: Any] {
         let irishman = SystemServices().systemsVersion ?? ""
         let acidly = getProTime()
         let replied = Bundle.main.bundleIdentifier ?? ""
         let foolishly = SystemServices().batteryLevel
-        let advice = SystemServices().charging
+        let advice = SystemServices().charging ? 1 : 0
         let subject = DeviceInfo.getIdfv()
         let hesitated = DeviceInfo.getIDFA()
-        let savings = SSNetworkInfo.wiFiBroadcastAddress() ?? ""
+        let savings = getCurrentWifiMac()
         let rotter = getCurrentTime()
         let daresay = isUsingProxy()
         let weeks = isVPNConnected() ? "1" : "0"
@@ -159,17 +208,17 @@ class DeviceInfo: NSObject {
         let clerk = SystemServices().language ?? ""
         let insurance = SystemServices().carrierName ?? ""
         let frank = getNetType()
-        let misunderstand = SystemServices().timeZoneSS ?? ""
+        let misunderstand = getTimeZone()
         let truant = getCurrentTime()
         let hurriedly = Device.current.name ?? ""
-        let early = Device.current.description
-        let reliable = Device.current.model ?? ""
-        let years = Device.current.diagonal
+        let early = UIDevice.current.name
+        let reliable = Device.current.description
+        let years = String(Device.current.diagonal)
         let working = Device.current.systemVersion ?? ""
         let instruments = SSNetworkInfo.currentIPAddress() ?? ""
-        let employment = SSNetworkInfo.wiFiNetmaskAddress() ?? ""
-        let charts = SSNetworkInfo.wiFiBroadcastAddress() ?? ""
-        let filed = SSNetworkInfo.wiFiNetmaskAddress() ?? ""
+        let employment = getAppWifiSSIDInfo()
+        let charts = getAppWifiBSSIDInfo()
+        let filed = getAppWifiSSIDInfo()
         let impossible = impossible()
         let nearly = nearly()
         let mademoiselle = mademoiselle()

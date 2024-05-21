@@ -91,8 +91,7 @@ class FCPersonalView: UIView {
         }
         iconImageView1.snp.makeConstraints { make in
             make.edges.equalTo(bgView)
-        }
-        
+        }        
         upImageView.snp.makeConstraints { make in
             make.top.equalTo(iconImageView2.snp.bottom).offset(6.px())
             make.left.right.equalTo(iconImageView1)

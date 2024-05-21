@@ -7,13 +7,14 @@
 
 import UIKit
 import SystemServices
+import DeviceKit
 
 class LoginFactory: NSObject {
     
     static func getLoginParas() -> String{
         let shoot: String = "iOS"
         let pursed: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        let fingerprints: String = SystemServices().deviceModel ?? ""
+        let fingerprints: String = Device.current.description
         let routine: String = DeviceInfo.getIdfv()
         let pitched: String = SystemServices().systemsVersion ?? ""
         let pistol: String = "liliy"

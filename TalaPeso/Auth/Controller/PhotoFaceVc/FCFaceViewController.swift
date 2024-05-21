@@ -10,6 +10,7 @@ import HandyJSON
 import AAILiveness
 import MBProgressHUD
 import Kingfisher
+import AVFoundation
 
 class FCFaceViewController: FCBaseViewController {
     
@@ -66,13 +67,47 @@ extension FCFaceViewController {
             if conceive == 0 || conceive == 00 {
                 let model = JSONDeserializer<FaceModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model {
-                    self?.checkLicense(model.stands ?? "")
+                    self?.takeTapFace(model.stands ?? "")
                 }
             }else {
                 MBProgressHUD.show(text: wanting)
             }
         } errorBlock: { error in
             
+        }
+    }
+    
+    func takeTapFace(_ stands: String) {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        if status == .notDetermined {
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    DispatchQueue.main.sync {
+                        self.checkLicense(stands)
+                    }
+                }
+            }
+        } else if status == .denied || status == .restricted {
+            goCamera()
+        } else {
+            checkLicense(stands)
+        }
+    }
+
+    func goCamera() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Permission Denied", message: "To continue using this feature, please enable camera access in your settings.", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                print("Cancel")
+            }
+            let confirmAction = UIAlertAction(title: "Go to Settings", style: .destructive) { action in
+                if let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL) {
+                    UIApplication.shared.open(settingsURL)
+                }
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            self.present(alertController, animated: true)
         }
     }
     

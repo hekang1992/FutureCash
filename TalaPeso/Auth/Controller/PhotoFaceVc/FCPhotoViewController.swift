@@ -88,10 +88,13 @@ extension FCPhotoViewController: UIImagePickerControllerDelegate {
                             self?.present(imagePicker, animated: true, completion: nil)
                         }
                     }
+                }else {
+                    self?.showAlert()
                 }
             }
             
         } else {
+            self.showAlert()
             print("Device doesn't support photo library.")
         }
     }
@@ -109,7 +112,6 @@ extension FCPhotoViewController: UIImagePickerControllerDelegate {
                 if newStatus == PHAuthorizationStatus.authorized {
                     completion(true)
                 } else {
-                    self.showAlert()
                     completion(false)
                 }
             }
@@ -157,18 +159,20 @@ extension FCPhotoViewController: UIImagePickerControllerDelegate {
     }
     
     func showAlert() {
-        let alertController = UIAlertController(title: "Permission Denied", message: "To continue using this feature, please enable camera access in your settings.", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            print("Cancel")
-        }
-        let confirmAction = UIAlertAction(title: "Go to Settings", style: .destructive) { action in
-            if let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL) {
-                UIApplication.shared.open(settingsURL)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Permission Denied", message: "To continue using this feature, please enable camera access in your settings.", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                print("Cancel")
             }
+            let confirmAction = UIAlertAction(title: "Go to Settings", style: .destructive) { action in
+                if let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL) {
+                    UIApplication.shared.open(settingsURL)
+                }
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            self.present(alertController, animated: true)
         }
-        alertController.addAction(cancelAction)
-        alertController.addAction(confirmAction)
-        present(alertController, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

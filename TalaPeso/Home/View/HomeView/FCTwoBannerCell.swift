@@ -11,7 +11,7 @@ class FCTwoBannerCell: UICollectionViewCell {
     
     lazy var bgImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Slice 36")
+        imageView.image = UIImage(named: "placeholddafda")
         return imageView
     }()
     
@@ -19,7 +19,16 @@ class FCTwoBannerCell: UICollectionViewCell {
         didSet {
             guard let model = model else { return }
             if let url = URL(string: model.yewtiful ?? "") {
-                bgImageView.kf.setImage(with: url)
+                bgImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholddafda"))
+            }
+        }
+    }
+    
+    var fModel: ReddeningModel? {
+        didSet {
+            guard let model = model else { return }
+            if let url = URL(string: model.yewtiful ?? "") {
+                bgImageView.kf.setImage(with: url, placeholder: UIImage(named: "fudaiplacefadf"))
             }
         }
     }

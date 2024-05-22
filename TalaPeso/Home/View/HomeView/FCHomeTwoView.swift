@@ -287,7 +287,7 @@ extension FCHomeTwoView: UITableViewDelegate, UITableViewDataSource, TYCyclePage
             }
         }else {
             if let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cellId", for: index) as? FCTwoBannerCell {
-                cell.model = fudaiBannerArray?[index]
+                cell.fModel = fudaiBannerArray?[index]
                 return cell
             }
         }

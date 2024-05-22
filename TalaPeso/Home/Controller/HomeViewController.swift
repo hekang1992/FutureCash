@@ -100,16 +100,20 @@ extension HomeViewController {
     }
     
     func addOneView() {
-        view.addSubview(oneView)
-        oneView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        DispatchQueue.main.async { [self] in
+            view.addSubview(oneView)
+            oneView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }
     }
     
     func addTwoView() {
-        view.addSubview(twoView)
-        twoView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        DispatchQueue.main.async { [self] in
+            view.addSubview(twoView)
+            twoView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }
     }
     

@@ -109,7 +109,7 @@ extension FCContactViewController: CNContactPickerDelegate{
                     cell.model?.sapped = model.employment
                     cell.model?.square = model.excuse
                     cell.model?.Jorjjty = model.employment
-                    cell.btn1.setTitle(cell.model?.Jorjjty, for: .normal)
+                    cell.textField1.text = cell.model?.Jorjjty
                 })
             })
         }
@@ -125,8 +125,8 @@ extension FCContactViewController: CNContactPickerDelegate{
         if let phoneNumber = contact.phoneNumbers.first?.value {
             let numberStr = phoneNumber.stringValue
             if let cell = lastSelectedCell {
-                cell.btn2.setTitle(nameStr, for: .normal)
-                cell.btn3.setTitle(numberStr, for: .normal)
+                cell.textField2.text = nameStr
+                cell.textField3.text = numberStr
                 cell.model?.employment = nameStr
                 cell.model?.lowndes = numberStr
             }

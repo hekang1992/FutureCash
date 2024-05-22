@@ -43,28 +43,31 @@ class FCContactCell: UITableViewCell {
         return iconImageView1
     }()
     
-    lazy var btn1: UIButton = {
-        let btn1 = UIButton(type: .custom)
-        btn1.contentHorizontalAlignment = .left
-        btn1.titleLabel?.font = UIFont(name: Fredoka_Bold, size: 18.px())
-        btn1.addTarget(self, action: #selector(guanxiClick), for: .touchUpInside)
-        return btn1
+    lazy var textField1: UITextField = {
+        let textField1 = UITextField()
+        textField1.font = UIFont(name: Fredoka_Bold, size: 18.px())
+        textField1.textColor = .white
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(guanxiClick(_:)))
+        textField1.addGestureRecognizer(tapGesture)
+        return textField1
     }()
     
-    lazy var btn2: UIButton = {
-        let btn2 = UIButton(type: .custom)
-        btn2.contentHorizontalAlignment = .left
-        btn2.titleLabel?.font = UIFont(name: Fredoka_Bold, size: 18.px())
-        btn2.addTarget(self, action: #selector(haomaClick), for: .touchUpInside)
-        return btn2
+    lazy var textField2: UITextField = {
+        let textField1 = UITextField()
+        textField1.font = UIFont(name: Fredoka_Bold, size: 18.px())
+        textField1.textColor = .white
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(haomaClick(_:)))
+        textField1.addGestureRecognizer(tapGesture)
+        return textField1
     }()
     
-    lazy var btn3: UIButton = {
-        let btn3 = UIButton(type: .custom)
-        btn3.contentHorizontalAlignment = .left
-        btn3.titleLabel?.font = UIFont(name: Fredoka_Bold, size: 18.px())
-        btn3.addTarget(self, action: #selector(haomaClick), for: .touchUpInside)
-        return btn3
+    lazy var textField3: UITextField = {
+        let textField1 = UITextField()
+        textField1.font = UIFont(name: Fredoka_Bold, size: 18.px())
+        textField1.textColor = .white
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(haomaClick(_:)))
+        textField1.addGestureRecognizer(tapGesture)
+        return textField1
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -74,9 +77,9 @@ class FCContactCell: UITableViewCell {
         bgImageView.addSubview(lineView)
         bgImageView.addSubview(iconImageView)
         bgImageView.addSubview(iconImageView1)
-        bgImageView.addSubview(btn1)
-        bgImageView.addSubview(btn2)
-        bgImageView.addSubview(btn3)
+        bgImageView.addSubview(textField1)
+        bgImageView.addSubview(textField2)
+        bgImageView.addSubview(textField3)
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(28.px())
@@ -105,23 +108,23 @@ class FCContactCell: UITableViewCell {
             make.size.equalTo(CGSizeMake(19.px(), 19.px()))
             make.right.equalTo(bgImageView).offset(-22.px())
         }
-        btn1.snp.makeConstraints { make in
+        textField1.snp.makeConstraints { make in
             make.top.equalTo(bgImageView)
             make.right.equalTo(iconImageView.snp.left).offset(-10.px())
             make.left.equalTo(lineView.snp.left)
             make.bottom.equalTo(lineView.snp.top)
         }
-        btn2.snp.makeConstraints { make in
+        textField2.snp.makeConstraints { make in
             make.height.equalTo(35.px())
             make.right.equalTo(iconImageView.snp.left).offset(-10.px())
             make.left.equalTo(lineView.snp.left)
             make.top.equalTo(lineView.snp.bottom)
         }
-        btn3.snp.makeConstraints { make in
+        textField3.snp.makeConstraints { make in
             make.height.equalTo(35.px())
             make.right.equalTo(iconImageView.snp.left).offset(-10.px())
             make.left.equalTo(lineView.snp.left)
-            make.top.equalTo(btn2.snp.bottom)
+            make.top.equalTo(textField2.snp.bottom)
         }
     }
     
@@ -139,19 +142,26 @@ class FCContactCell: UITableViewCell {
         guard let model = model else { return }
         nameLabel.text = model.saying ?? ""
         model.excuse = model.square
-        btn1.setTitle(model.Jorjjty ?? "", for: .normal)
-        btn2.setTitle(model.employment ?? "", for: .normal)
-        btn3.setTitle(model.lowndes ?? "", for: .normal)
+        textField1.text = model.Jorjjty
+        textField2.text = model.employment
+        textField3.text = model.lowndes
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.init(css: "#6C8BB7")!,
+            .font: UIFont(name: Fredoka_Bold, size: 16.px())!
+        ]
+        textField1.attributedPlaceholder = NSAttributedString(string: model.reljjihe ?? "", attributes: attributes)
+        textField2.attributedPlaceholder = NSAttributedString(string: model.jiirrls ?? "", attributes: attributes)
+        textField3.attributedPlaceholder = NSAttributedString(string: model.rekkiiel ?? "", attributes: attributes)
     }
 }
 
 extension FCContactCell {
     
-    @objc func guanxiClick() {
+    @objc func guanxiClick(_ sender: UITapGestureRecognizer) {
         self.block1?()
     }
     
-    @objc func haomaClick() {
+    @objc func haomaClick(_ sender: UITapGestureRecognizer) {
         self.block2?()
     }
     

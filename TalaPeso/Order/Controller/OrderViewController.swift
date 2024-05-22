@@ -37,7 +37,7 @@ class OrderViewController: FCBaseViewController {
         orderView.block = { [weak self] model, type in
             self?.pushDetailVcWithModel(model, type)
         }
-        self.orderView.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadOrderData))
+        self.orderView.tableView.mj_header = FCPullHeader(refreshingTarget: self, refreshingAction: #selector(loadOrderData))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,11 +75,11 @@ extension OrderViewController {
                     let modelArray = model.palace
                     if modelArray != nil {
                         self?.removeNodataVeiw()
-                        self?.orderView.modelArray = modelArray
-                        self?.orderView.tableView.reloadData()
                     }else {
                         self?.addNodataView()
                     }
+                    self?.orderView.modelArray = modelArray
+                    self?.orderView.tableView.reloadData()
                 }else {
                     self?.addNodataView()
                 }

@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class RightTypeSView: UIView {
-
-    lazy var iconImageView: UIImageView = {
-        let iconImageView = UIImageView()
-        iconImageView.image = UIImage(named: "cionfdafdfd")
+    
+    lazy var iconImageView: LottieAnimationView = {
+        let iconImageView = LottieAnimationView(name: "", bundle: Bundle.main)
         return iconImageView
     }()
 
@@ -41,14 +41,14 @@ class RightTypeSView: UIView {
         bgImageView.addSubview(bgImageView1)
         iconImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(26.px())
+            make.top.equalToSuperview().offset(12.px())
             make.left.equalToSuperview()
-            make.height.equalTo(75.px())
+            make.height.equalTo(100.px())
         }
         nameLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(10.px())
-            make.top.equalTo(iconImageView.snp.bottom).offset(13.px())
+            make.top.equalTo(iconImageView.snp.bottom).offset(10.px())
         }
         bgImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -62,6 +62,7 @@ class RightTypeSView: UIView {
             make.bottom.equalToSuperview().offset(-5.px())
             make.width.equalTo(91.px())
         }
+        
     }
     
     required init?(coder: NSCoder) {

@@ -11,16 +11,15 @@ import Lottie
 
 class LoadView: UIView {
     
-    private lazy var grayView: UIView = {
+    lazy var grayView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 25.px()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         return view
     }()
     
-    private lazy var hudView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "FCLoading.json",
-                                                bundle: Bundle.main)
+    lazy var hudView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "FCLoading.json", bundle: Bundle.main)
         animationView.loopMode = .loop
         animationView.play()
         return animationView
@@ -44,12 +43,13 @@ class LoadView: UIView {
     
     private func setConstraints() {
         grayView.snp.makeConstraints { make in
-            make.center.equalTo(self)
-            make.size.equalTo(CGSizeMake(100.px(), 100.px()))
+//            make.center.equalTo(self)
+//            make.size.equalTo(CGSizeMake(140.px(), 100.px()))
+            make.edges.equalToSuperview()
         }
         hudView.snp.makeConstraints { make in
             make.center.equalTo(self)
-            make.size.equalTo(CGSize(width: 100.px(), height: 100.px()))
+            make.size.equalTo(CGSize(width: 140.px(), height: 100.px()))
         }
     }
 }

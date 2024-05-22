@@ -78,6 +78,8 @@ class PlaceModel: HandyJSON {
     var contents: String?//按钮链接
     var anemic: String?
     var reddening: [ReddeningModel]?
+    var oceans: String?
+    var troubles: String?
 }
 
 class ExceptModel: HandyJSON {

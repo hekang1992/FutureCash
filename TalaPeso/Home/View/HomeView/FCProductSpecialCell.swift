@@ -129,5 +129,4 @@ class FCProductSpecialCell: UITableViewCell {
             titleLabel.text = model.hoping ?? ""
         }
     }
-
 }

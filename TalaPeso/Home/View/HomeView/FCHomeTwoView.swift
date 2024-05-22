@@ -18,7 +18,16 @@ class FCHomeTwoView: UIView {
     
     var block4: ((ReddeningModel) -> Void)?
     
-    var modelBannerArray: [ReddeningModel]?
+    var modelBannerArray: [ReddeningModel]? {
+        didSet {
+            guard let modelBannerArray = modelBannerArray else { return }
+            if modelBannerArray.count > 1 {
+                pagerView1.isInfiniteLoop = true
+            }else {
+                pagerView1.isInfiniteLoop = false
+            }
+        }
+    }
     
     var fudaiBannerArray: [ReddeningModel]?
     
@@ -120,7 +129,7 @@ class FCHomeTwoView: UIView {
             make.edges.equalTo(bgView)
         }
         tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 50.px(), right: 0))
         }
         leftBtn.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(-49.px())
@@ -305,11 +314,20 @@ extension FCHomeTwoView: UITableViewDelegate, UITableViewDataSource, TYCyclePage
     }
     
     func pagerView(_ pageView: TYCyclePagerView, didSelectedItemCell cell: UICollectionViewCell, at index: Int) {
-        guard let model = modelBannerArray?[index] else { return }
-        let clickUrl = model.weren ?? ""
-        if !clickUrl.isEmpty {
-            self.block1?(clickUrl)
+        if pageView == pagerView1 {
+            guard let model = modelBannerArray?[index] else { return }
+            let clickUrl = model.weren ?? ""
+            if !clickUrl.isEmpty {
+                self.block1?(clickUrl)
+            }
+        }else {
+            guard let model = fudaiBannerArray?[index] else { return }
+            let clickUrl = model.weren ?? ""
+            if !clickUrl.isEmpty {
+                self.block1?(clickUrl)
+            }
         }
+        
     }
     
 }

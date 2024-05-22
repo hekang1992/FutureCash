@@ -44,7 +44,7 @@ class FCBaseViewController: UIViewController {
         let heights = FCBaseViewController.getTopBarHeights(for: self)
         view.addSubview(navView)
         navView.snp.makeConstraints { make in
-            make.left.right.top.equalTo(self.view)
+            make.left.right.top.equalToSuperview()
             make.height.equalTo(heights.totalHeight.px())
         }
     }
@@ -193,6 +193,22 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     
     func convertJsonStringToModel(jsonString: String) -> [PlaceModel]? {
         return [PlaceModel].deserialize(from: jsonString) as? [PlaceModel]
+    }
+    
+    func applyClick(_ productID: String) {
+        let dict = ["relations": productID]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: haveHeard, method: .post) { [weak self] baseModel in
+            let conceive = baseModel.conceive
+            if conceive == 0 || conceive == 00 {
+                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
+                if let model = model {
+                    let weren = model.weren ?? ""
+                    self?.judguUrlContainSche(weren)
+                }
+            }
+        } errorBlock: { error in
+            
+        }
     }
     
     func horoughly(_ phone: String) {
@@ -357,8 +373,15 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     
     func judguUrlContainSche(_ url: String) {
         if url.contains(SCHEME_URL) {
-            let array = url.components(separatedBy: "relations=")
-            self.getProductDetailInfo(array.last ?? "", "", "")
+            if url.contains("gleamingStaying") {
+                let againVc = FCAgainBuyViewController()
+                self.navigationController?.pushViewController(againVc, animated: true)
+            }else if url.contains("quiteMorley"){
+                let array = url.components(separatedBy: "relations=")
+                self.getProductDetailInfo(array.last ?? "", "", "")
+            }else {
+                
+            }
         }else{
             if !url.isEmpty {
                 self.pushWebVC(url, "", "", "")

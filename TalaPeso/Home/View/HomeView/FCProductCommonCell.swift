@@ -96,4 +96,24 @@ class FCProductCommonCell: UITableViewCell {
         }
     }
     
+    var pModel: PlaceModel? {
+        didSet {
+            guard let model = pModel else { return }
+            let troubles = model.troubles
+            switch troubles {
+            case "1":
+                typeImageView.image = UIImage(named: "applybrntimm")
+            case "2":
+                typeImageView.image = UIImage(named: "repaybrntimm")
+            case "3":
+                typeImageView.image = UIImage(named: "jujuebrntimm")
+            default:
+                break
+            }
+            iconImageView.kf.setImage(with: URL(string: model.light ?? ""))
+            nameLabel.text = " " + (model.plume ?? "")
+            borrowLabel.text = model.oceans ?? ""
+        }
+    }
+    
 }

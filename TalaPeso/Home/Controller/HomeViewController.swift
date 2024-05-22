@@ -69,8 +69,7 @@ class HomeViewController: FCBaseViewController {
         twoView.block4 = { [weak self] model in
             self?.applyClick(model.particularly ?? "")
         }
-        self.twoView.tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(loadHomeData))
-        self.twoView.tableView.mj_header?.isAutomaticallyChangeAlpha = true
+        self.twoView.tableView.mj_header = FCPullHeader(refreshingTarget: self, refreshingAction: #selector(loadHomeData))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -209,12 +208,10 @@ extension HomeViewController {
                             self?.addTwoView()
                             self?.twoView.modelBannerArray = bannerModelArray
                             self?.twoView.productArray = productArray
-                            self?.twoView.tableView.reloadData()
-                            self?.twoView.pagerView1.reloadData()
-                        }
-                        if let fudaiModelArray = fudaiModelArray {
                             self?.twoView.fudaiBannerArray = fudaiModelArray
+                            self?.twoView.pagerView1.reloadData()
                             self?.twoView.pagerView2.reloadData()
+                            self?.twoView.tableView.reloadData()
                         }
                     }
                     let stranger = model.stranger ?? ""//fake product
@@ -239,22 +236,6 @@ extension HomeViewController {
                 let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
                 if let model = model, let modelArray = model.palace, let jsonString = modelArray.toJSONString() {
                     self?.saveDataToLocalFile(jsonString, fileName: "palaceData.json")
-                }
-            }
-        } errorBlock: { error in
-            
-        }
-    }
-    
-    func applyClick(_ productID: String) {
-        let dict = ["relations": productID]
-        FCRequset.shared.requestAPI(params: dict, pageUrl: haveHeard, method: .post) { [weak self] baseModel in
-            let conceive = baseModel.conceive
-            if conceive == 0 || conceive == 00 {
-                let model = JSONDeserializer<EasilyModel>.deserializeFrom(dict: baseModel.easily)
-                if let model = model {
-                    let weren = model.weren ?? ""
-                    self?.judguUrlContainSche(weren)
                 }
             }
         } errorBlock: { error in

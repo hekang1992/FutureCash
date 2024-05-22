@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+import SwiftUI
 
 class RightTypeEnumView: UIView {
     
@@ -79,6 +81,12 @@ extension RightTypeEnumView {
         typeView.bgImageView1.snp.updateConstraints { make in
             make.width.equalTo(91 * numRate)
         }
-        typeView.iconImageView.image = UIImage(named: "")
+        if currentState == .done {
+            typeView.iconImageView.animation = LottieAnimation.named("FCLoading.json")!
+        }else {
+            typeView.iconImageView.animation = LottieAnimation.named("ing.json")!
+        }
+        typeView.iconImageView.loopMode = .loop
+        typeView.iconImageView.play()
     }
 }

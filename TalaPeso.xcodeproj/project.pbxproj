@@ -31,6 +31,12 @@
 		18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E842BB17D3100F1FA23 /* LocationManager.swift */; };
 		18562E872BB17D5000F1FA23 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E862BB17D5000F1FA23 /* LocationModel.swift */; };
 		18562E892BB17E0900F1FA23 /* TotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18562E882BB17E0900F1FA23 /* TotalModel.swift */; };
+		18591A202BFDA29A00B8211C /* FCLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 18591A1F2BFDA29A00B8211C /* FCLoading.json */; };
+		18591A232BFDA3BA00B8211C /* progaa.json in Resources */ = {isa = PBXBuildFile; fileRef = 18591A212BFDA3BA00B8211C /* progaa.json */; };
+		18591A292BFDAB2500B8211C /* ing.json in Resources */ = {isa = PBXBuildFile; fileRef = 18591A282BFDAB2500B8211C /* ing.json */; };
+		18591A2B2BFDC02A00B8211C /* FCAgainBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591A2A2BFDC02A00B8211C /* FCAgainBuyViewController.swift */; };
+		18591A2D2BFDC0E600B8211C /* FCAgainBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591A2C2BFDC0E600B8211C /* FCAgainBuyView.swift */; };
+		18591A302BFDD4C200B8211C /* FCPullHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18591A2F2BFDD4C200B8211C /* FCPullHeader.swift */; };
 		185950682BDA12D500BD57CD /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */; };
 		1859506A2BDA335000BD57CD /* FCLogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185950692BDA335000BD57CD /* FCLogOutView.swift */; };
 		1859506C2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1859506B2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf */; };
@@ -41,7 +47,6 @@
 		185950792BDB780600BD57CD /* FCCardTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185950782BDB780600BD57CD /* FCCardTypeViewController.swift */; };
 		1859507B2BDB803100BD57CD /* CardTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859507A2BDB803100BD57CD /* CardTypeCell.swift */; };
 		1859507D2BDB8C5500BD57CD /* CardTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1859507C2BDB8C5500BD57CD /* CardTypeView.swift */; };
-		185950812BDBA10000BD57CD /* FCLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 185950802BDBA10000BD57CD /* FCLoading.json */; };
 		1860B2142BF1E10100BB8DCC /* FCWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860B2132BF1E10100BB8DCC /* FCWalletView.swift */; };
 		1860B2162BF1F6B700BB8DCC /* FCWalletImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860B2152BF1F6B700BB8DCC /* FCWalletImageCell.swift */; };
 		186210942BCF76A500A74058 /* RightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186210932BCF76A500A74058 /* RightView.swift */; };
@@ -142,6 +147,12 @@
 		18562E842BB17D3100F1FA23 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		18562E862BB17D5000F1FA23 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		18562E882BB17E0900F1FA23 /* TotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModel.swift; sourceTree = "<group>"; };
+		18591A1F2BFDA29A00B8211C /* FCLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FCLoading.json; sourceTree = "<group>"; };
+		18591A212BFDA3BA00B8211C /* progaa.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progaa.json; sourceTree = "<group>"; };
+		18591A282BFDAB2500B8211C /* ing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ing.json; sourceTree = "<group>"; };
+		18591A2A2BFDC02A00B8211C /* FCAgainBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCAgainBuyViewController.swift; sourceTree = "<group>"; };
+		18591A2C2BFDC0E600B8211C /* FCAgainBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCAgainBuyView.swift; sourceTree = "<group>"; };
+		18591A2F2BFDD4C200B8211C /* FCPullHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCPullHeader.swift; sourceTree = "<group>"; };
 		185950672BDA12D500BD57CD /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
 		185950692BDA335000BD57CD /* FCLogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCLogOutView.swift; sourceTree = "<group>"; };
 		1859506B2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -152,7 +163,6 @@
 		185950782BDB780600BD57CD /* FCCardTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCCardTypeViewController.swift; sourceTree = "<group>"; };
 		1859507A2BDB803100BD57CD /* CardTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCell.swift; sourceTree = "<group>"; };
 		1859507C2BDB8C5500BD57CD /* CardTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeView.swift; sourceTree = "<group>"; };
-		185950802BDBA10000BD57CD /* FCLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FCLoading.json; sourceTree = "<group>"; };
 		1860B2132BF1E10100BB8DCC /* FCWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCWalletView.swift; sourceTree = "<group>"; };
 		1860B2152BF1F6B700BB8DCC /* FCWalletImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCWalletImageCell.swift; sourceTree = "<group>"; };
 		186210932BCF76A500A74058 /* RightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightView.swift; sourceTree = "<group>"; };
@@ -285,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				18562E742BB1481000F1FA23 /* HomeViewController.swift */,
+				18591A2A2BFDC02A00B8211C /* FCAgainBuyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -452,13 +463,8 @@
 		18562E7C2BB1488800F1FA23 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */,
-				185950802BDBA10000BD57CD /* FCLoading.json */,
-				18D6F0522BD8B1100022EFAA /* FCNavView.swift */,
-				18562E722BB1470E00F1FA23 /* BaseHeadFile.swift */,
-				18AD9AF92BC94DA200D33830 /* FCLoadingView.swift */,
-				18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */,
-				18868C172BF615F70087FDCA /* FCNodataView.swift */,
+				18591A252BFDA86E00B8211C /* FCJson */,
+				18591A2E2BFDD47A00B8211C /* FCConfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -470,6 +476,30 @@
 				18562E7E2BB14DD600F1FA23 /* LoginFactory.swift */,
 			);
 			path = LoginCommon;
+			sourceTree = "<group>";
+		};
+		18591A252BFDA86E00B8211C /* FCJson */ = {
+			isa = PBXGroup;
+			children = (
+				18591A282BFDAB2500B8211C /* ing.json */,
+				18591A212BFDA3BA00B8211C /* progaa.json */,
+				18591A1F2BFDA29A00B8211C /* FCLoading.json */,
+			);
+			path = FCJson;
+			sourceTree = "<group>";
+		};
+		18591A2E2BFDD47A00B8211C /* FCConfig */ = {
+			isa = PBXGroup;
+			children = (
+				18AD9AF22BC8E5AD00D33830 /* FCHUD.swift */,
+				18D6F0522BD8B1100022EFAA /* FCNavView.swift */,
+				18562E722BB1470E00F1FA23 /* BaseHeadFile.swift */,
+				18AD9AF92BC94DA200D33830 /* FCLoadingView.swift */,
+				18A9DC302BD2237000E34D15 /* FFShadowLabel.swift */,
+				18868C172BF615F70087FDCA /* FCNodataView.swift */,
+				18591A2F2BFDD4C200B8211C /* FCPullHeader.swift */,
+			);
+			path = FCConfig;
 			sourceTree = "<group>";
 		};
 		185950732BDB76C400BD57CD /* Auth */ = {
@@ -538,6 +568,7 @@
 			children = (
 				18F7EE1F2BF30CC30026E1FB /* FCHomeOneView.swift */,
 				18F7EE212BF30CD40026E1FB /* FCHomeTwoView.swift */,
+				18591A2C2BFDC0E600B8211C /* FCAgainBuyView.swift */,
 				18868C0D2BF5F4550087FDCA /* FCTwoBannerCell.swift */,
 				18868C132BF6146C0087FDCA /* FCProductSpecialCell.swift */,
 				18868C112BF6145E0087FDCA /* FCProductCommonCell.swift */,
@@ -760,12 +791,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18591A202BFDA29A00B8211C /* FCLoading.json in Resources */,
+				18591A232BFDA3BA00B8211C /* progaa.json in Resources */,
 				185950722BDB411800BD57CD /* Fredoka-Medium.ttf in Resources */,
-				185950812BDBA10000BD57CD /* FCLoading.json in Resources */,
 				1859506C2BDA41AA00BD57CD /* Fredoka-SemiBold.ttf in Resources */,
 				18D006DD2BC7F18E00C70B54 /* Fredoka-Bold.ttf in Resources */,
 				18562E2F2BB128D300F1FA23 /* Assets.xcassets in Resources */,
 				185950682BDA12D500BD57CD /* Fredoka-Regular.ttf in Resources */,
+				18591A292BFDAB2500B8211C /* ing.json in Resources */,
 				18562E322BB128D300F1FA23 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -873,6 +906,7 @@
 				188E9F8D2BFB24460048AF28 /* RightTypeSView.swift in Sources */,
 				18A7F8752BEB5C7500B33F2D /* FCBankInfoViewController.swift in Sources */,
 				18F7EE202BF30CC30026E1FB /* FCHomeOneView.swift in Sources */,
+				18591A302BFDD4C200B8211C /* FCPullHeader.swift in Sources */,
 				184D87322BB2A15200773F45 /* BaseNavViewController.swift in Sources */,
 				18562E262BB128D200F1FA23 /* AppDelegate.swift in Sources */,
 				18AD9AFA2BC94DA200D33830 /* FCLoadingView.swift in Sources */,
@@ -880,6 +914,7 @@
 				18A7F8712BEB5C5300B33F2D /* FCWorkInfoViewController.swift in Sources */,
 				18868C122BF6145E0087FDCA /* FCProductCommonCell.swift in Sources */,
 				18562E792BB1483000F1FA23 /* ProfileViewController.swift in Sources */,
+				18591A2D2BFDC0E600B8211C /* FCAgainBuyView.swift in Sources */,
 				18A7F86B2BEA2C3800B33F2D /* FCFaceViewController.swift in Sources */,
 				18A7F86D2BEA312900B33F2D /* FCFaceView.swift in Sources */,
 				184D87302BB2A12B00773F45 /* LoginViewController.swift in Sources */,
@@ -905,6 +940,7 @@
 				188E9F8F2BFB49160048AF28 /* FCBankView.swift in Sources */,
 				18B096D82BEF84C200DD68EA /* FCWalletViewController.swift in Sources */,
 				185950792BDB780600BD57CD /* FCCardTypeViewController.swift in Sources */,
+				18591A2B2BFDC02A00B8211C /* FCAgainBuyViewController.swift in Sources */,
 				18A7F8732BEB5C6500B33F2D /* FCContactViewController.swift in Sources */,
 				18562E852BB17D3100F1FA23 /* LocationManager.swift in Sources */,
 			);

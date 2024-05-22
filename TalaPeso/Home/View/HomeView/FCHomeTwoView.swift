@@ -132,13 +132,13 @@ class FCHomeTwoView: UIView {
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 50.px(), right: 0))
         }
         leftBtn.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(-49.px())
-            make.size.equalTo(CGSizeMake(98.px(), 78.px()))
+            make.left.equalToSuperview().offset(-10.px())
+            make.size.equalTo(CGSizeMake(98.px(), 109.px()))
             make.bottom.equalToSuperview().offset(-50.px())
         }
         rightBtn.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(49.px())
-            make.size.equalTo(CGSizeMake(98.px(), 78.px()))
+            make.right.equalToSuperview().offset(10.px())
+            make.size.equalTo(CGSizeMake(98.px(), 109.px()))
             make.bottom.equalToSuperview().offset(-50.px())
         }
         numView.snp.makeConstraints { make in
@@ -172,7 +172,7 @@ extension FCHomeTwoView: UITableViewDelegate, UITableViewDataSource, TYCyclePage
             } completion: { _ in
                 UIView.animate(withDuration: 0.25) {
                     self.leftBtn.snp.updateConstraints { make in
-                        make.left.equalToSuperview().offset(-49.px())
+                        make.left.equalToSuperview().offset(-10.px())
                     }
                     self.layoutIfNeeded()
                 }
@@ -194,7 +194,7 @@ extension FCHomeTwoView: UITableViewDelegate, UITableViewDataSource, TYCyclePage
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     UIView.animate(withDuration: 0.25) {
                         self.rightBtn.snp.updateConstraints { make in
-                            make.right.equalToSuperview().offset(49.px())
+                            make.right.equalToSuperview().offset(10.px())
                         }
                         self.layoutIfNeeded()
                     }

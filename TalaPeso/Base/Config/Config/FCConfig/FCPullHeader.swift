@@ -13,6 +13,7 @@ class FCPullHeader: MJRefreshHeader {
 
     lazy var headTapView: LottieAnimationView = {
         let animationView = LottieAnimationView(name: "FCLoading.json", bundle: Bundle.main)
+        animationView.animationSpeed = 2
         animationView.loopMode = .loop
         animationView.play()
         return animationView

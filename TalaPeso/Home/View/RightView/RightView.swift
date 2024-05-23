@@ -22,6 +22,12 @@ class RightView: UIView {
     
     var block6: (() -> Void)?
     
+    var kefuURl: String? {
+        didSet {
+            threeView.kefuURl = kefuURl
+        }
+    }
+    
     var typeModel: FearedModel? {
         didSet {
             guard let typeModel = typeModel else { return }
@@ -285,7 +291,6 @@ extension RightView {
                 oneView.isHidden = false
                 twoView.isHidden = true
                 threeView.isHidden = true
-                
             }else if selectedIndex == 1 {
                 oneView.isHidden = true
                 twoView.isHidden = false
@@ -294,8 +299,8 @@ extension RightView {
                 oneView.isHidden = true
                 twoView.isHidden = true
                 threeView.isHidden = false
+                threeView.loadKeFu()
             }
         }
-    }
-    
+    }    
 }

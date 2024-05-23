@@ -118,12 +118,6 @@ extension HomeViewController {
     
     func addRightView() {
         view.addSubview(rightView)
-        if let typeModel = typeModel {
-            rightView.typeModel = typeModel
-        }
-        if let modelOrderArray = modelOrderArray {
-            rightView.numLabel.text = "\(String(describing: modelOrderArray.count))"
-        }
         rightView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0))
         }
@@ -147,6 +141,12 @@ extension HomeViewController {
         }
         rightView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        if let typeModel = typeModel {
+            rightView.typeModel = typeModel
+        }
+        if let modelOrderArray = modelOrderArray {
+            rightView.numLabel.text = "\(String(describing: modelOrderArray.count))"
         }
         delayTime(0.25) { [weak self] in
             self?.animateRightView()

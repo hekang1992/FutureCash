@@ -107,6 +107,7 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        ViewHud.hideLoadView()
         guard let url = navigationAction.request.url else {
             decisionHandler(.allow)
             return

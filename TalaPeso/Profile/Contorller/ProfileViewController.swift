@@ -63,6 +63,10 @@ class ProfileViewController: FCBaseViewController {
 extension ProfileViewController {
     
     func toGrade() {
+        let loadView = ViewHud.createLoadView()
+        if let keyWindow = UIApplication.shared.windows.first {
+            keyWindow.addSubview(loadView)
+        }
         if #available(iOS 14.0, *) {
             if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene  {
                 SKStoreReviewController.requestReview(in: scene)
@@ -70,6 +74,7 @@ extension ProfileViewController {
         } else {
             SKStoreReviewController.requestReview()
         }
+        ViewHud.hideLoadView()
     }
     
     func addSetView() {
@@ -80,7 +85,6 @@ extension ProfileViewController {
     }
     
     func logOut() {
-        
         let alertVC = TYAlertController(alert: outView, preferredStyle: .alert)
         self.present(alertVC!, animated: true)
         outView.block1 = { [weak self] in

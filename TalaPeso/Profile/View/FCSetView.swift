@@ -102,7 +102,7 @@ class FCSetView: UIView {
         return titleLable4
     }()
     
-    lazy var iconImageView5: UIImageView = {//删除账号
+    lazy var iconImageView5: UIImageView = {
         let iconImageView5 = UIImageView()
         iconImageView5.image = UIImage(named: "deleiamge")
         iconImageView5.isUserInteractionEnabled = true
@@ -111,7 +111,7 @@ class FCSetView: UIView {
         return iconImageView5
     }()
     
-    lazy var iconImageView6: UIImageView = {//删除账号
+    lazy var iconImageView6: UIImageView = {
         let iconImageView6 = UIImageView()
         iconImageView6.image = UIImage(named: "jinggao")
         return iconImageView6

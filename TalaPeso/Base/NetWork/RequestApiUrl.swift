@@ -17,7 +17,7 @@ class GetBaseApi {
     }
     
     static func getBaseApiUrl() -> String {
-        let baseUrl = "\(baseApi.setBaseApiUrl())/ftch"
+        let baseUrl = "\(GetBaseApi.setBaseApiUrl())/ftch"
         return baseUrl
     }
 }

@@ -7,9 +7,25 @@
 
 import Foundation
 
+class GetBaseApi {
+    static func setBaseApiUrl() -> String {
+        var baseApiUrl = UserDefaults.standard.object(forKey: APIBAERURL) as? String ?? ""
+            baseApiUrl = baseApiUrl.isEmpty ? BASE_H5_URL : baseApiUrl
+            UserDefaults.standard.set(baseApiUrl, forKey: APIBAERURL)
+            UserDefaults.standard.synchronize()
+        return baseApiUrl
+    }
+    
+    static func getBaseApiUrl() -> String {
+        let baseUrl = "\(baseApi.setBaseApiUrl())/ftch"
+        return baseUrl
+    }
+}
+
 let BASE_H5_URL = "https://www.unitedsrj.com"
-let BASE_API_URL = "\(BASE_H5_URL)/ftch"
 let SCHEME_URL = "ta://loee.opp"
+let BASE_GIT_URL = "https://raw.githubusercontent.com/dtsdark/ewit/main/feet"
+let APIBAERURL = "APIBAERURL"
 
 // LOGIN
 let rightThoroughly = "/rightThoroughly"
@@ -50,3 +66,4 @@ let ohBreakfast = "/ohBreakfast"
 let theBrother = "/theBrother"
 let thank = "/thank"
 let addedPlease = "/addedPlease"
+let gileFilee = "/gileFilee"

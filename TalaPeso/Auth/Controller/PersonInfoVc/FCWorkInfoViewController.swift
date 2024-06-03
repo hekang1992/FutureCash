@@ -27,10 +27,10 @@ class FCWorkInfoViewController: FCBaseViewController {
         let popView = FCPopPersonView(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         return popView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         starttime = DeviceInfo.getCurrentTime()
         self.navView.isHidden = false

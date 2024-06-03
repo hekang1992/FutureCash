@@ -29,7 +29,7 @@ class FCRequset: NSObject {
                     complete: @escaping CompleteBlock,
                     errorBlock: @escaping NSErrorBlock){
         addHudView()
-        var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
+        var wholeApiUrl = GetBaseApi.getBaseApiUrl() + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.request(wholeApiUrl, method: method, parameters: params, headers: headers).responseData { [weak self] response in
             switch response.result {
@@ -49,6 +49,8 @@ class FCRequset: NSObject {
                     }else{
                         complete(model)
                     }
+                }else {
+                    errorBlock("failure")
                 }
                 break
             case .failure(let failure):
@@ -67,7 +69,7 @@ class FCRequset: NSObject {
                         complete: @escaping CompleteBlock,
                         errorBlock: @escaping NSErrorBlock){
         addHudView()
-        var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
+        var wholeApiUrl = GetBaseApi.getBaseApiUrl() + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         AF.upload(
             multipartFormData: { multipartFormData in
@@ -94,11 +96,13 @@ class FCRequset: NSObject {
                 let model = JSONDeserializer<BaseModel>.deserializeFrom(json: jsonStr as String?)
                 if let model = model {
                     complete(model)
+                }else {
+                    errorBlock("failure")
                 }
                 break
-            case .failure(let error):
+            case .failure(let failure):
                 ViewHud.hideLoadView()
-                errorBlock(error)
+                errorBlock(failure)
                 break
             }
         })
@@ -111,7 +115,7 @@ class FCRequset: NSObject {
                        complete: @escaping CompleteBlock,
                        errorBlock: @escaping NSErrorBlock){
         addHudView()
-        var wholeApiUrl = BASE_API_URL + pageUrl + "?" + LoginFactory.getLoginParas()
+        var wholeApiUrl = GetBaseApi.getBaseApiUrl() + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         print("wholeApiUrl>>>data>>>\(wholeApiUrl)")
         AF.upload(
@@ -138,11 +142,13 @@ class FCRequset: NSObject {
                 let model = JSONDeserializer<BaseModel>.deserializeFrom(json: jsonStr as String?)
                 if let model = model {
                     complete(model)
+                }else {
+                    errorBlock("failure")
                 }
                 break
-            case .failure(let error):
+            case .failure(let failure):
                 ViewHud.hideLoadView()
-                errorBlock(error)
+                errorBlock(failure)
                 break
             }
         })

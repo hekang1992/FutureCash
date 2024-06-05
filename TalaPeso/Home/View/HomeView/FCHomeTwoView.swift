@@ -18,6 +18,10 @@ class FCHomeTwoView: UIView {
     
     var block4: ((ReddeningModel) -> Void)?
     
+    var productArray: [ReddeningModel]?
+    
+    var fudaiBannerArray: [ReddeningModel]?
+    
     var modelBannerArray: [ReddeningModel]? {
         didSet {
             guard let modelBannerArray = modelBannerArray else { return }
@@ -28,10 +32,6 @@ class FCHomeTwoView: UIView {
             }
         }
     }
-    
-    var fudaiBannerArray: [ReddeningModel]?
-    
-    var productArray: [ReddeningModel]?
     
     lazy var bgView: UIView = {
         let bgView = UIView()

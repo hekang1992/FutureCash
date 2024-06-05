@@ -102,7 +102,7 @@ class FCOrderCommonCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.centerY.equalTo(productImageView.snp.centerY)
             make.left.equalTo(productImageView.snp.right).offset(10.px())
-            make.height.equalTo(20.px())
+            make.height.equalTo(24.px())
             make.width.equalTo(200.px())
         }
         btn.snp.makeConstraints { make in

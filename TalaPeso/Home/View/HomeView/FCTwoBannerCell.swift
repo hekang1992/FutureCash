@@ -26,7 +26,7 @@ class FCTwoBannerCell: UICollectionViewCell {
     
     var fModel: ReddeningModel? {
         didSet {
-            guard let model = model else { return }
+            guard let model = fModel else { return }
             if let url = URL(string: model.yewtiful ?? "") {
                 bgImageView.kf.setImage(with: url, placeholder: UIImage(named: "fudaiplacefadf"))
             }

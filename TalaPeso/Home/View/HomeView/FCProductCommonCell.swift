@@ -58,7 +58,7 @@ class FCProductCommonCell: UITableViewCell {
         nameLabel.snp.makeConstraints { make in
             make.left.equalTo(iconImageView.snp.right).offset(10.px())
             make.top.equalToSuperview().offset(15.5.px())
-            make.height.equalTo(20.px())
+            make.height.equalTo(24.px())
             make.width.equalTo(250.px())
         }
         borrowLabel.snp.makeConstraints { make in

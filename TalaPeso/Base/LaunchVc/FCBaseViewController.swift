@@ -358,8 +358,13 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     
     func pushWebVC(_ url: String, _ productID: String, _ startTime: String, _ type: String) {
         let webVc = WebViewController()
-        let urlString = url + "?" + LoginFactory.getLoginParas()
-        let stringWithoutSpaces = urlString.replacingOccurrences(of: " ", with: "%20")
+        var urlString: String?
+        if url.contains("?") {
+            urlString = url + "&" + LoginFactory.getLoginParas()
+        }else {
+            urlString = url + "?" + LoginFactory.getLoginParas()
+        }
+        let stringWithoutSpaces = urlString?.replacingOccurrences(of: " ", with: "%20")
         webVc.productUrl = stringWithoutSpaces
         webVc.type = type
         navigationController?.pushViewController(webVc, animated: true)

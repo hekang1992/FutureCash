@@ -248,6 +248,14 @@ class RightView: UIView {
 
 extension RightView {
     
+    @objc private func canClick() {
+        self.block1?()
+    }
+    
+    @objc private func setClick() {
+        self.block2?()
+    }
+    
     private func createButton(title: String, image: String) -> UIButton {
         let button = UIButton()
         button.setTitle(title, for: .normal)
@@ -257,14 +265,6 @@ extension RightView {
         button.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-    }
-    
-    @objc private func canClick() {
-        self.block1?()
-    }
-    
-    @objc private func setClick() {
-        self.block2?()
     }
     
     @objc private func buttonClicked(_ sender: UIButton) {

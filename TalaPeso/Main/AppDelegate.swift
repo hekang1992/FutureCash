@@ -19,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     var window: UIWindow?
     
-    let bag = DisposeBag()
-    
     var obs: PublishSubject<LocationModel?> = PublishSubject()
+    
+    let bag = DisposeBag()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow.init(frame: UIScreen.main.bounds)
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         AAILivenessSDK.initWith(.philippines)
         getRootVc()
         getGoogle()
-        getfangdou()
+        getFangdou()
         getLocation()
         getPushApple()
         keyboardManager()
@@ -99,8 +99,13 @@ extension AppDelegate: AppsFlyerLibDelegate {
         FCNotificationCenter.addObserver(self, selector: #selector(setUpLocation), name: NSNotification.Name(FCAPPLE_LOCATION), object: nil)
     }
     
-    func getfangdou() {
+    func getFangdou() {
         obs.debounce(.seconds(2),scheduler: MainScheduler.asyncInstance)
+            .distinctUntilChanged { (loc1, loc2) -> Bool in
+                let abc: Bool = loc1?.latitude == loc2?.latitude &&
+                loc1?.longitude == loc2?.longitude
+                return abc
+            }
             .subscribe(onNext: { [weak self] model in
                 if let model = model {
                     self?.upLocationInfo(model)
@@ -133,8 +138,8 @@ extension AppDelegate: AppsFlyerLibDelegate {
     }
     
     func uploadLocationInfo(_ model: LocationModel) {
-        let dict = ["financial": model.country ,
-                    "bowed": model.countryCode,
+        let dict = ["financial": model.countryCode ,
+                    "bowed": model.country,
                     "income": model.province,
                     "steady": model.city,
                     "inspire": "\(model.district) \(model.street)",

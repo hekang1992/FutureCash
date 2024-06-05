@@ -70,7 +70,7 @@ class FCBaseViewController: UIViewController {
             self?.getCode()
         }
         loginView.block4 = { [weak self] in
-            self?.pushWebVC( BASE_H5_URL  + "/alfredWhatsername", "", "", "")
+            self?.pushWebVC( GetBaseApi.setBaseApiUrl()  + "/alfredWhatsername", "", "", "")
         }
         delayTime(0.25) { [weak self] in
             self?.animateLoginView()

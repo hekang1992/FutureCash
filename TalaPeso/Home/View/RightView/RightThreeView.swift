@@ -53,9 +53,8 @@ class RightThreeView: UIView {
 extension RightThreeView: WKNavigationDelegate, WKScriptMessageHandler {
     
     func loadKeFu() {
-//        let kefuUrl = BASE_H5_URL + "/afterParticular" + "?" + LoginFactory.getLoginParas()
-//        let stringWithoutSpaces = kefuUrl.replacingOccurrences(of: " ", with: "%20")
-        let stringWithoutSpaces = "https://www.baidu.com"
+        let kefuUrl = GetBaseApi.setBaseApiUrl() + "/overcomeFirst" + "?" + LoginFactory.getLoginParas()
+        let stringWithoutSpaces = kefuUrl.replacingOccurrences(of: " ", with: "%20")
         if let url = URL(string: stringWithoutSpaces) {
             let request = URLRequest(url: url)
             webView.load(request)

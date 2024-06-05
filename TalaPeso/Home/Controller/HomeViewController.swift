@@ -128,16 +128,16 @@ extension HomeViewController {
             self?.goSetVc()
         }
         rightView.block3 = { [weak self] in
-            self?.pushWebVC(BASE_H5_URL  + "/alfredWhatsername", "", "", "")
+            self?.pushWebVC(GetBaseApi.setBaseApiUrl()  + "/alfredWhatsername", "", "", "")
         }
         rightView.block4 = { [weak self] in
-            self?.pushWebVC(BASE_H5_URL + "/continuedDetected", "", "", "")
+            self?.pushWebVC(GetBaseApi.setBaseApiUrl() + "/continuedDetected", "", "", "")
         }
         rightView.block5 = { [weak self] typeStr in
             self?.pushOrderVcWithTypeStr(typeStr)
         }
         rightView.block6 = {
-            self.pushWebVC(BASE_H5_URL, "", "", "")
+            self.pushWebVC(GetBaseApi.setBaseApiUrl(), "", "", "")
         }
         rightView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

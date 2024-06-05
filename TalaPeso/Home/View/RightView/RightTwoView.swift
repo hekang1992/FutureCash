@@ -176,7 +176,7 @@ class RightTwoView: UIView {
         bgIcon4.addSubview(label10)
         hongqi.addSubview(typeView)
         bgView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 4.px(), right: 0))
         }
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

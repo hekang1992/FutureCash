@@ -122,10 +122,10 @@ extension RightThreeView: WKNavigationDelegate, WKScriptMessageHandler {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         } else if urlStr.hasPrefix("whatsapp:") {
-            if UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                MBProgressHUD.show(text: "WhatsApp is not installed. Please install it.")
+            UIApplication.shared.open(url, options: [:]) { success in
+                if !success {
+                    MBProgressHUD.show(text: "WhatsApp is not installed. Please install it.")
+                }
             }
         }
         if urlStr.hasPrefix("mailto:") || urlStr.hasPrefix("whatsapp:") {

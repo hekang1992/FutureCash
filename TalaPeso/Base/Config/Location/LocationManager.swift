@@ -30,7 +30,11 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     
     func startUpdatingLocation(completion: @escaping LocationModelBlock) {
         locationUpdateHandler = completion
-        locationManager.startUpdatingLocation()
+        if (CLLocationManager.authorizationStatus() == .denied) {
+            locationUpdateHandler?(locatinModel)
+        }else {
+            locationManager.startUpdatingLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -40,7 +44,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         case .denied:
             print("用户拒绝授权位置信息")
-            self.locationUpdateHandler?(locatinModel)
+            locationUpdateHandler?(locatinModel)
             locationManager.stopUpdatingLocation()
         default:
             break

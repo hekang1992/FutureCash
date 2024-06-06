@@ -257,35 +257,11 @@ extension AppDelegate: AppsFlyerLibDelegate, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         if let dic = userInfo["params"] as? [String: Any], let url: String = dic["talaP"] as? String {
-            pushToVc(url)
+            let dictSt = ["params": url] as [String: Any]
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                FCNotificationCenter.post(name: NSNotification.Name(FCAPPLE_PARAMS), object: nil, userInfo: dictSt)
+            }
         }
         completionHandler()
-    }
-    
-    func pushToVc(_ url: String) {
-        let currentVc = UIViewController.getCurrentUIVC() as! FCBaseViewController
-        if url.contains(SCHEME_URL) {
-            if url.contains("quiteMorley") {//产品详情
-                let array = url.components(separatedBy: "relations=")
-                currentVc.applyClick(array.last ?? "")
-            }else if url.contains("spreadFloor") {
-                let array = url.components(separatedBy: "blackened=")
-                let orderVc = OrderViewController()
-                orderVc.eight = array.last
-                currentVc.navigationController?.pushViewController(orderVc, animated: true)
-            }else if url.contains("flungMurmuring") {
-                if !currentVc.isKind(of: HomeViewController.self) {
-                    currentVc.navigationController?.popToRootViewController(animated: true)
-                }
-            }else if url.contains("werentFigured") {
-                if !IS_LOGIN {
-                    currentVc.addLoginView()
-                }
-            }
-        }else {
-            if url.hasPrefix("http://") || url.hasPrefix("https://") {
-                currentVc.pushWebVC(url, "", "", "")
-            }
-        }
     }
 }

@@ -375,7 +375,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     }
     
     func miandian(productID: String, startTime: String, type: String) {
-        let model = LocationManager().locatinModel
+        let model = LocationManager.shared.locatinModel
         let smell = productID
         let skilled = type
         let unsatisfactory = DeviceInfo.getIdfv()

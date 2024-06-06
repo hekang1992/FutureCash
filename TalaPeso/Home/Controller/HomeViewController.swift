@@ -40,6 +40,8 @@ class HomeViewController: FCBaseViewController {
         
         // Do any additional setup after loading the view.
         getAddressInfo()
+        FCNotificationCenter.addObserver(self, selector: #selector(pushPesoUrl(_:)), name: NSNotification.Name(FCAPPLE_PARAMS), object: nil)
+
         oneView.block1 = { [weak self] in
             self?.applyClick(self?.particularly ?? "")
         }
@@ -279,4 +281,38 @@ extension HomeViewController {
         orderVc.eight = str
         self.navigationController?.pushViewController(orderVc, animated: true)
     }
+    
+    @objc func pushPesoUrl(_ notification: Notification) {
+        if let dict = notification.userInfo, let url = dict["params"] {
+            pushToVc(url as! String)
+        }
+    }
+    
+    func pushToVc(_ url: String) {
+        let currentVc = UIViewController.getCurrentUIVC() as! FCBaseViewController
+        if url.contains(SCHEME_URL) {
+            if url.contains("quiteMorley") {//产品详情
+                let array = url.components(separatedBy: "relations=")
+                currentVc.applyClick(array.last ?? "")
+            }else if url.contains("spreadFloor") {
+                let array = url.components(separatedBy: "blackened=")
+                let orderVc = OrderViewController()
+                orderVc.eight = array.last
+                currentVc.navigationController?.pushViewController(orderVc, animated: true)
+            }else if url.contains("flungMurmuring") {
+                if !currentVc.isKind(of: HomeViewController.self) {
+                    currentVc.navigationController?.popToRootViewController(animated: true)
+                }
+            }else if url.contains("werentFigured") {
+                if !IS_LOGIN {
+                    currentVc.addLoginView()
+                }
+            }
+        }else {
+            if url.hasPrefix("http://") || url.hasPrefix("https://") {
+                currentVc.pushWebVC(url, "", "", "")
+            }
+        }
+    }
+    
 }

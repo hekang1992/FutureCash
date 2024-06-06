@@ -119,8 +119,8 @@ extension LaunchViewController {
     
     func upApiInfo() {
         getApplePush()
-        getAppleLocation()
         getAppleGoogle()
+        getAppleLocation()
         getRootVcPush()
     }
 }

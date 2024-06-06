@@ -239,10 +239,14 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                 let model = JSONDeserializer<LoginModel>.deserializeFrom(dict: baseModel.easily)
                 guard let model = model else { return }
                 LoginFactory.saveLoginInfo(model.temperance ?? "", model.temple ?? "")
-                self?.miandian(productID: "", startTime: starttime, type: "1")
-                self?.getAppleLocation()
-//                self?.getAppleGoogle()
+                DispatchQueue.global(qos: .background).async {
+                    DispatchQueue.main.async {
+                        self?.miandian(productID: "", startTime: starttime, type: "1")
+                    }                    
+                }
 //                self?.getApplePush()
+//                self?.getAppleGoogle()
+                self?.getAppleLocation()
                 self?.getRootVcPush()
             }
         } errorBlock: { error in
@@ -371,7 +375,7 @@ extension FCBaseViewController: UINavigationControllerDelegate {
     }
     
     func miandian(productID: String, startTime: String, type: String) {
-        let model = LocationManager.shared.locatinModel        
+        let model = LocationManager().locatinModel
         let smell = productID
         let skilled = type
         let unsatisfactory = DeviceInfo.getIdfv()

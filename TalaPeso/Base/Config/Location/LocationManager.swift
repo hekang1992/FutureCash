@@ -41,6 +41,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         case .denied:
             print("用户拒绝授权位置信息")
             self.locationUpdateHandler?(locatinModel)
+            locationManager.stopUpdatingLocation()
         default:
             break
         }
@@ -79,7 +80,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
+        print("🔥Error>>>>>>>🔥\(error)")
     }
     
 }

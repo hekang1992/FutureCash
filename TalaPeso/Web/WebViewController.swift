@@ -150,25 +150,45 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard let body = message.body as? [String] else {
-            print("Invalid message body")
-            return
-        }
         let methodName = message.name
-        let methodArgs = body
-        let methodMapping: [String: () -> Void] = [
-            "matterGovernment": { self.uploadRiskLoan(methodArgs) },
-            "momentaryHenry": { self.openUrl(methodArgs) },
-            "loweredRestored": { self.closeSyn() },
-            "mightNearer": { self.jumpToHome() },
-            "somethingSolid": { self.callPhoneMethod(methodArgs) },
-            "thereRelative": { self.setNavExpansion(methodArgs) },
-            "theSomething": { self.setNavColor(methodArgs) },
-            "sisters": { self.jumpToEmail(methodArgs) },
-            "upsetAgain": { self.toGrade() }
+        let methodArgs = message.body
+        let methodMapping: [String: ([String]?) -> Void] = [
+            "matterGovernment": { args in
+                if let args = args {
+                    self.uploadRiskLoan(args)
+                }
+            },
+            "momentaryHenry": { args in
+                if let args = args {
+                    self.openUrl(args)
+                }
+            },
+            "loweredRestored": { _ in self.closeSyn() },
+            "mightNearer": { _ in self.jumpToHome() },
+            "somethingSolid": { args in
+                if let args = args {
+                    self.callPhoneMethod(args)
+                }
+            },
+            "thereRelative": { args in
+                if let args = args {
+                    self.setNavExpansion(args)
+                }
+            },
+            "theSomething": { args in
+                if let args = args {
+                    self.setNavColor(args)
+                }
+            },
+            "sisters": { args in
+                if let args = args {
+                    self.jumpToEmail(args)
+                }
+            },
+            "upsetAgain": { _ in self.toGrade() }
         ]
         if let method = methodMapping[methodName] {
-            method()
+            method(methodArgs as? [String])
         } else {
             print("Unknown method: \(methodName)")
         }

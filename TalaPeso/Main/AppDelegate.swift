@@ -27,11 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = LaunchViewController()
         AAILivenessSDK.initWith(.philippines)
-        getRootVc()
         getGoogle()
         getFangdou()
         getLocation()
         getPushApple()
+        getRootVc()
         keyboardManager()
         window?.makeKeyAndVisible()
         return true
@@ -101,11 +101,6 @@ extension AppDelegate: AppsFlyerLibDelegate {
     
     func getFangdou() {
         obs.debounce(.seconds(2),scheduler: MainScheduler.asyncInstance)
-            .distinctUntilChanged { (loc1, loc2) -> Bool in
-                let abc: Bool = loc1?.latitude == loc2?.latitude &&
-                loc1?.longitude == loc2?.longitude
-                return abc
-            }
             .subscribe(onNext: { [weak self] model in
                 if let model = model {
                     self?.upLocationInfo(model)
@@ -216,7 +211,8 @@ extension AppDelegate: AppsFlyerLibDelegate {
     }
     
     @objc func setUpLocation() {
-        LocationManager.shared.startUpdatingLocation { [weak self] locationModel in
+        let localtion = LocationManager.shared
+        localtion.startUpdatingLocation { [weak self] locationModel in
             self?.obs.onNext(locationModel)
         }
     }

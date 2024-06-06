@@ -106,7 +106,7 @@ class LoginView: UIView {
     lazy var codeView: MHVerifyCodeView = {
         let codeView = MHVerifyCodeView.init { [weak self] verifyCode in
             self?.verifyCode = verifyCode
-            print("verifyCode>>>>>>>\(verifyCode)")
+//            print("verifyCode>>>>>>>\(verifyCode)")
         }
         codeView.verifyCount = 6
         codeView.spacing = 4.px()
@@ -257,7 +257,7 @@ extension LoginView: UITextFieldDelegate  {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
-        print("newText>>>>>\(newText.count)")
+//        print("newText>>>>>\(newText.count)")
         if textField == phoneTed {
             if newText.count == 0 {
                 rightImageView.isHidden = true

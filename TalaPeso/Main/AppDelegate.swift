@@ -36,31 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         return true
     }
-    
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        if #available(iOS 14.0, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
-                switch status {
-                case .authorized:
-                    print("Tracking authorized")
-                    break
-                case .denied:
-                    print("Tracking denied")
-                    break
-                case .notDetermined:
-                    print("Tracking not determined")
-                    break
-                case .restricted:
-                    print("Tracking restricted")
-                    break
-                @unknown default:
-                    print("Unknown status")
-                    break
-                }
-            }
-        }
-    }
-    
+  
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         var strToken = ""
         for byte in deviceToken {
@@ -92,7 +68,7 @@ extension AppDelegate: AppsFlyerLibDelegate, UNUserNotificationCenterDelegate {
     }
     
     func getGoogle() {
-        FCNotificationCenter.addObserver(self, selector: #selector(uploadGoogleMarket), name: NSNotification.Name(FCAPPLE_GOOGLE), object: nil)
+        FCNotificationCenter.addObserver(self, selector: #selector(uploadGoogleMarketNoti), name: NSNotification.Name(FCAPPLE_GOOGLE), object: nil)
     }
     
     func getLocation() {
@@ -217,7 +193,7 @@ extension AppDelegate: AppsFlyerLibDelegate, UNUserNotificationCenterDelegate {
         }
     }
     
-    @objc func uploadGoogleMarket() {
+    func uploadGoogleMarket() {
         let idfv = DeviceInfo.getIdfv()
         let idfa = DeviceInfo.getIDFA()
         let dict = ["subject": idfv, "hesitated": idfa, "hints": "1"]
@@ -232,6 +208,32 @@ extension AppDelegate: AppsFlyerLibDelegate, UNUserNotificationCenterDelegate {
             }
         } errorBlock: { error in
             
+        }
+    }
+    
+    @objc func uploadGoogleMarketNoti() {
+        if #available(iOS 14.0, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("Tracking authorized")
+                    self.uploadGoogleMarket()
+                    break
+                case .denied:
+                    self.uploadGoogleMarket()
+                    print("Tracking denied")
+                    break
+                case .notDetermined:
+                    print("Tracking not determined")
+                    break
+                case .restricted:
+                    print("Tracking restricted")
+                    break
+                @unknown default:
+                    print("Unknown status")
+                    break
+                }
+            }
         }
     }
     

@@ -162,8 +162,10 @@ class FCRequset: NSObject {
     
     func addHudView() {
         let loadView = ViewHud.createLoadView()
-        if let keyWindow = UIApplication.shared.windows.first {
-            keyWindow.addSubview(loadView)
+        DispatchQueue.main.async {
+            if let keyWindow = UIApplication.shared.windows.first {
+                keyWindow.addSubview(loadView)
+            }
         }
     }
     

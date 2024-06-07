@@ -57,8 +57,12 @@ class LoadView: UIView {
 class ViewHud {
     static let loadView = LoadView()
     static func createLoadView() -> LoadView {
-        if let keyWindow = UIApplication.shared.windows.first {
-            loadView.frame = keyWindow.bounds
+        DispatchQueue.main.async {
+            if let keyWindow = UIApplication.shared.windows.first {
+                DispatchQueue.main.async {
+                    loadView.frame = keyWindow.bounds
+                }
+            }
         }
         return loadView
     }

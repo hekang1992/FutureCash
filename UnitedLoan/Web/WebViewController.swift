@@ -131,6 +131,20 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
         }
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        let url: String = navigationResponse.response.url?.absoluteString ?? ""
+        if url.contains(BASE_H5_URL) {
+            webView.snp.updateConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }else {
+            webView.snp.updateConstraints { make in
+                make.edges.equalToSuperview().inset(UIEdgeInsets(top: CGFloat(NAV_HIGH), left: 0, bottom: 0, right: 0))
+            }
+        }
+        decisionHandler(.allow)
+    }
+    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         let loadView = ViewHud.createLoadView()
         if let keyWindow = UIApplication.shared.windows.first {

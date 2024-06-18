@@ -244,8 +244,6 @@ extension FCBaseViewController: UINavigationControllerDelegate {
                         self?.miandian(productID: "", startTime: starttime, type: "1")
                     }                    
                 }
-//                self?.getApplePush()
-//                self?.getAppleGoogle()
                 self?.getAppleLocation()
                 self?.getRootVcPush()
             }

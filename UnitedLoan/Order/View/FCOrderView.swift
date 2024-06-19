@@ -116,7 +116,9 @@ class FCOrderView: UIView {
             let height = UIViewController.getTopBarHeights(for: vc)
             iconImageView2.snp.makeConstraints { make in
                 make.centerX.equalTo(bgView)
-                make.size.equalTo(CGSizeMake(363.px(), 105.px()))
+                make.left.equalToSuperview()
+                make.height.equalTo(105.px())
+//                make.size.equalTo(CGSizeMake(363.px(), 105.px()))
                 make.top.equalTo(height.totalHeight + 4.px())
             }
         }

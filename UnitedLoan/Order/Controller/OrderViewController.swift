@@ -25,7 +25,7 @@ class OrderViewController: FCBaseViewController {
         }else if eight == "8" {
             orderView.iconImageView2.image = UIImage(named: "Slicefailuer")
         }else if eight == "9" {
-            orderView.iconImageView2.image = UIImage(named: "orderiiid")
+            orderView.iconImageView2.image = UIImage(named: "twodadoin")
         }
         return orderView
     }()

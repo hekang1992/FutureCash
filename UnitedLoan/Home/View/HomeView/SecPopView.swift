@@ -11,6 +11,8 @@ class SecPopView: UIView {
     
     var block: (() -> Void)?
     
+    var block1: (() -> Void)?
+    
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -35,7 +37,7 @@ class SecPopView: UIView {
     
     lazy var nameLabel: UILabel = {
         let nameLabel = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 18.px())!, textColor: UIColor.init(css: "#943800"), textAlignment: .center)
-        nameLabel.text = "Regulatfory Partners"
+        nameLabel.text = "Compliaces"
         return nameLabel
     }()
     
@@ -45,6 +47,12 @@ class SecPopView: UIView {
         return secImageView
     }()
     
+    lazy var secbtn: UIButton = {
+        let secbtn = UIButton(type: .custom)
+        secbtn.addTarget(self, action: #selector(secbtnClick), for: .touchUpInside)
+        return secbtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(iconImageView)
@@ -52,6 +60,7 @@ class SecPopView: UIView {
         iconImageView.addSubview(nameLabel)
         iconImageView.addSubview(scrollView)
         scrollView.addSubview(secImageView)
+        scrollView.addSubview(secbtn)
         iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(141.px())
             make.centerX.equalToSuperview()
@@ -79,7 +88,12 @@ class SecPopView: UIView {
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalTo(267.px())
-            make.height.equalTo(674.px())
+            make.height.equalTo(434.px())
+        }
+        secbtn.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(110.px())
+            make.size.equalTo(CGSize(width: 200.px(), height: 30.px()))
         }
     }
     
@@ -101,6 +115,10 @@ extension SecPopView {
     
     @objc func nextClick() {
         self.block?()
+    }
+    
+    @objc func secbtnClick() {
+        self.block1?()
     }
     
 }

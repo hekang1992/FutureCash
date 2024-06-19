@@ -30,6 +30,8 @@ class LaunchViewController: FCBaseViewController {
         iconImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        UserDefaults.standard.setValue("", forKey: "isshow")
+        UserDefaults.standard.synchronize()
     }
     
     func JudgNetWork() {

@@ -87,6 +87,7 @@
 		18B096D62BEF84B500DD68EA /* FCBankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B096D52BEF84B500DD68EA /* FCBankViewController.swift */; };
 		18B096D82BEF84C200DD68EA /* FCWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B096D72BEF84C200DD68EA /* FCWalletViewController.swift */; };
 		18C0371B2C2290B200AB4B71 /* SecPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0371A2C2290B200AB4B71 /* SecPopView.swift */; };
+		18C0371D2C22F07B00AB4B71 /* SecPopViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C0371C2C22F07B00AB4B71 /* SecPopViewViewController.swift */; };
 		18D006DD2BC7F18E00C70B54 /* Fredoka-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */; };
 		18D6F0532BD8B1100022EFAA /* FCNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6F0522BD8B1100022EFAA /* FCNavView.swift */; };
 		18D6F0552BD8BC670022EFAA /* FCSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6F0542BD8BC670022EFAA /* FCSetView.swift */; };
@@ -204,6 +205,7 @@
 		18B096D52BEF84B500DD68EA /* FCBankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCBankViewController.swift; sourceTree = "<group>"; };
 		18B096D72BEF84C200DD68EA /* FCWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCWalletViewController.swift; sourceTree = "<group>"; };
 		18C0371A2C2290B200AB4B71 /* SecPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecPopView.swift; sourceTree = "<group>"; };
+		18C0371C2C22F07B00AB4B71 /* SecPopViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecPopViewViewController.swift; sourceTree = "<group>"; };
 		18D006DC2BC7F18E00C70B54 /* Fredoka-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Bold.ttf"; sourceTree = "<group>"; };
 		18D6F0522BD8B1100022EFAA /* FCNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCNavView.swift; sourceTree = "<group>"; };
 		18D6F0542BD8BC670022EFAA /* FCSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCSetView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				18562E742BB1481000F1FA23 /* HomeViewController.swift */,
 				18591A2A2BFDC02A00B8211C /* FCAgainBuyViewController.swift */,
+				18C0371C2C22F07B00AB4B71 /* SecPopViewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				18562E5B2BB12AC800F1FA23 /* FCBaseViewController.swift in Sources */,
 				18E15D152BF35FAE0028B293 /* RightOneView.swift in Sources */,
 				18C0371B2C2290B200AB4B71 /* SecPopView.swift in Sources */,
+				18C0371D2C22F07B00AB4B71 /* SecPopViewViewController.swift in Sources */,
 				18A7F8672BE9E1CD00B33F2D /* FCPopCardInfoView.swift in Sources */,
 				18562E812BB1501500F1FA23 /* DeviceInfo.swift in Sources */,
 				18B096D42BEF7F5A00DD68EA /* FCBankWalletView.swift in Sources */,

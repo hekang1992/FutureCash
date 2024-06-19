@@ -104,7 +104,18 @@ extension HomeViewController {
         let alertVC = TYAlertController(alert: secView, preferredStyle: .actionSheet)
         self.present(alertVC!, animated: true)
         secView.block = { [weak self] in
-            self?.dismiss(animated: true)
+            self?.dismiss(animated: true, completion: {
+                UserDefaults.standard.setValue("1", forKey: "isshow")
+                UserDefaults.standard.synchronize()
+            })            
+        }
+        secView.block1 = { [weak self] in
+            self?.dismiss(animated: true, completion: {
+                UserDefaults.standard.setValue("1", forKey: "isshow")
+                UserDefaults.standard.synchronize()
+                let secVc = SecPopViewViewController()
+                self?.navigationController?.pushViewController(secVc, animated: true)
+            })            
         }
     }
     
@@ -234,9 +245,10 @@ extension HomeViewController {
                     }
                     let stranger = model.stranger ?? ""//fake product
                     if stranger == "1" {
-                        self?.popSecView()
-                    }else {
-                        
+                        let isShow: String = UserDefaults.standard.object(forKey: "isshow") as? String ?? ""
+                        if isShow != "1" {
+                            self?.popSecView()
+                        }
                     }
                 }
             }else {

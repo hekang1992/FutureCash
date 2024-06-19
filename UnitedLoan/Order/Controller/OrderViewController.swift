@@ -16,7 +16,17 @@ class OrderViewController: FCBaseViewController {
     
     lazy var orderView: FCOrderView = {
         let orderView = FCOrderView()
-        orderView.iconImageView2.image = UIImage(named: "orderiiid")
+        if eight == "5" {
+            orderView.iconImageView2.image = UIImage(named: "Slicefull")
+        }else if eight == "6" {
+            orderView.iconImageView2.image = UIImage(named: "orderiiid")
+        }else if eight == "7" {
+            orderView.iconImageView2.image = UIImage(named: "Sliceprocess")
+        }else if eight == "8" {
+            orderView.iconImageView2.image = UIImage(named: "Slicefailuer")
+        }else if eight == "9" {
+            orderView.iconImageView2.image = UIImage(named: "orderiiid")
+        }
         return orderView
     }()
     

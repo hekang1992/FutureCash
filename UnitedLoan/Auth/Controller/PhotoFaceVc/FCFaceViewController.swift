@@ -38,7 +38,10 @@ class FCFaceViewController: FCBaseViewController {
         }
         faceView.block1 = { [weak self] in
             if let particularly = self?.particularly {
-                self?.getProductDetailInfo(particularly, self?.starttime ?? "", "")
+                self?.checkType(particularly, self?.starttime ?? "", "")
+                self?.delayTime(1.0, closure: {
+                    self?.getProductDetailInfo(particularly, self?.starttime ?? "", "")
+                })
             }
         }
     }
@@ -150,8 +153,11 @@ extension FCFaceViewController {
                     vc.navigationController?.dismiss(animated: true, completion: {
                         //调用产品详情
                         if let particularly = self?.particularly {
-                            self?.getProductDetailInfo(particularly, self?.starttime ?? "", "")
-                            self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "4")
+                            self?.checkType(particularly, self?.starttime ?? "", "")
+                            self?.delayTime(1.0, closure: {
+                                self?.getProductDetailInfo(particularly, self?.starttime ?? "", "")
+                                self?.miandian(productID: self?.particularly ?? "", startTime: self?.starttime ?? "", type: "4")
+                            })
                         }
                     })
                 }
@@ -195,4 +201,14 @@ extension FCFaceViewController {
         }
     }
     
+    func checkType(_ productID: String, _ startTime: String, _ type: String) {
+        let dict = ["relations": productID, "proposed": "1", "happenings": "2"]
+        FCRequset.shared.requestAPI(params: dict, pageUrl: "/henryDidnt", method: .post) { baseModel in
+            
+        } errorBlock: { error in
+            
+        }
+    }
+    
 }
+

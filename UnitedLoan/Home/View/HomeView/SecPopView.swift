@@ -13,12 +13,15 @@ class SecPopView: UIView {
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .randomColor()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .never
         return scrollView
     }()
 
     lazy var iconImageView: UIImageView = {
         let iconImageView = UIImageView()
+        iconImageView.isUserInteractionEnabled = true
         iconImageView.image = UIImage(named: "home_bg_sec")
         return iconImageView
     }()
@@ -36,12 +39,19 @@ class SecPopView: UIView {
         return nameLabel
     }()
     
+    lazy var secImageView: UIImageView = {
+        let secImageView = UIImageView()
+        secImageView.image = UIImage(named: "sec")
+        return secImageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(iconImageView)
         addSubview(btn)
-        iconImageView.addSubview(scrollView)
         iconImageView.addSubview(nameLabel)
+        iconImageView.addSubview(scrollView)
+        scrollView.addSubview(secImageView)
         iconImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(141.px())
             make.centerX.equalToSuperview()
@@ -65,10 +75,24 @@ class SecPopView: UIView {
             make.left.equalToSuperview().offset(44.px())
             make.bottom.equalToSuperview().offset(-20.px())
         }
+        secImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.equalTo(267.px())
+            make.height.equalTo(674.px())
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.secImageView.setNeedsLayout()
+        self.layoutIfNeeded()
+        let maxY = CGRectGetMaxY(secImageView.frame)
+        scrollView.contentSize = CGSizeMake(0, maxY + 20.px())
     }
     
 }

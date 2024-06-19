@@ -138,8 +138,9 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
                 make.edges.equalToSuperview()
             }
         }else {
+            let height = WebViewController.getTopBarHeights(for: self)
             webView.snp.updateConstraints { make in
-                make.edges.equalToSuperview().inset(UIEdgeInsets(top: CGFloat(NAV_HIGH), left: 0, bottom: 0, right: 0))
+                make.edges.equalToSuperview().inset(UIEdgeInsets(top: CGFloat(height.totalHeight.px()), left: 0, bottom: 0, right: 0))
             }
         }
         decisionHandler(.allow)
@@ -244,8 +245,9 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
                 make.edges.equalToSuperview()
             }
         }else {
+            let height = WebViewController.getTopBarHeights(for: self)
             webView.snp.updateConstraints { make in
-                make.edges.equalToSuperview().inset(UIEdgeInsets(top: CGFloat(NAV_HIGH), left: 0, bottom: 0, right: 0))
+                make.edges.equalToSuperview().inset(UIEdgeInsets(top: CGFloat(height.totalHeight.px()), left: 0, bottom: 0, right: 0))
             }
         }
     }

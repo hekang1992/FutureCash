@@ -81,7 +81,6 @@ class HomeViewController: FCBaseViewController {
             self?.applyClick(model.particularly ?? "")
         }
         self.twoView.tableView.mj_header = FCPullHeader(refreshingTarget: self, refreshingAction: #selector(loadHomeData))
-        self.popSecView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -235,7 +234,7 @@ extension HomeViewController {
                     }
                     let stranger = model.stranger ?? ""//fake product
                     if stranger == "1" {
-                        
+                        self?.popSecView()
                     }else {
                         
                     }

@@ -88,7 +88,7 @@ class SecPopView: UIView {
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalTo(267.px())
-            make.height.equalTo(434.px())
+            make.height.equalTo(444.px())
         }
         secbtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

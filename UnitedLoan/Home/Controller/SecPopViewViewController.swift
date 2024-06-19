@@ -24,7 +24,7 @@ class SecPopViewViewController: FCBaseViewController {
         self.navView.block = { [weak self] in
             self?.navigationController?.popToRootViewController(animated: true)
         }
-        self.navView.titleLable.text = "loan license"
+        self.navView.titleLable.text = "Loan license"
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()

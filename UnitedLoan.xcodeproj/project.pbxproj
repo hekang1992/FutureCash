@@ -1133,7 +1133,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitedLoan/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "United Loan";
 				INFOPLIST_KEY_NSCameraUsageDescription = "In order to verify your identity and bolster our fraud prevention efforts, we kindly request permission to access your device's camera. Please grant us authorization to securely capture an electronic copy of your information. Rest assured, your data will be safeguarded and utilized exclusively for necessary identity verification purposes. Should you have any questions or concerns, please feel free to reach out to us.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "For accurate loan services and advanced fraud protection, we kindly request your consent to access your location data. Please be assured that we treat your information with the utmost care, utilizing it solely to improve services and prevent fraud. If you have any questions, please don't hesitate to contact us.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To ensure precise loan services and reduce the risk of fraud, we kindly ask for your permission to utilize your location data. Rest assured, your information will be handled with the highest level of care and will only be used to enhance our services and prevent fraud. Feel free to reach out to us with any questions or concerns you may have.";
@@ -1181,7 +1181,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnitedLoan/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "United Loan";
 				INFOPLIST_KEY_NSCameraUsageDescription = "In order to verify your identity and bolster our fraud prevention efforts, we kindly request permission to access your device's camera. Please grant us authorization to securely capture an electronic copy of your information. Rest assured, your data will be safeguarded and utilized exclusively for necessary identity verification purposes. Should you have any questions or concerns, please feel free to reach out to us.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "For accurate loan services and advanced fraud protection, we kindly request your consent to access your location data. Please be assured that we treat your information with the utmost care, utilizing it solely to improve services and prevent fraud. If you have any questions, please don't hesitate to contact us.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To ensure precise loan services and reduce the risk of fraud, we kindly ask for your permission to utilize your location data. Rest assured, your information will be handled with the highest level of care and will only be used to enhance our services and prevent fraud. Feel free to reach out to us with any questions or concerns you may have.";

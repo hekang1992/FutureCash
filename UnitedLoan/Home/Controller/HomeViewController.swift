@@ -9,6 +9,7 @@ import UIKit
 import MBProgressHUD
 import HandyJSON
 import MJRefresh
+import TYAlertController
 
 class HomeViewController: FCBaseViewController {
     
@@ -35,6 +36,11 @@ class HomeViewController: FCBaseViewController {
         return rightView
     }()
     
+    lazy var secView: SecPopView = {
+        let secView = SecPopView(frame: self.view.bounds)
+        return secView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +65,9 @@ class HomeViewController: FCBaseViewController {
                 self?.addLoginView()
             }
         }
+        oneView.block4 = { [weak self] in
+            self?.popSecView()
+        }
         twoView.block1 = { [weak self] str in
             self?.judguUrlContainSche(str)
         }
@@ -72,6 +81,7 @@ class HomeViewController: FCBaseViewController {
             self?.applyClick(model.particularly ?? "")
         }
         self.twoView.tableView.mj_header = FCPullHeader(refreshingTarget: self, refreshingAction: #selector(loadHomeData))
+        self.popSecView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,10 +97,17 @@ class HomeViewController: FCBaseViewController {
         super.viewDidDisappear(animated)
         hideRightView()
     }
-    
 }
 
 extension HomeViewController {
+    
+    func popSecView() {
+        let alertVC = TYAlertController(alert: secView, preferredStyle: .actionSheet)
+        self.present(alertVC!, animated: true)
+        secView.block = { [weak self] in
+            self?.dismiss(animated: true)
+        }
+    }
     
     @objc func loadHomeData() {
         getHomeData()

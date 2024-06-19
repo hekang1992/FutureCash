@@ -221,7 +221,7 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
     }
     
     func closeSyn() {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func jumpToHome() {
@@ -259,7 +259,7 @@ extension WebViewController: WKNavigationDelegate, WKScriptMessageHandler {
         let subject = arguments[1]
         let orderID = arguments.last ?? ""
         let mobileStr = UserDefaults.standard.object(forKey: PHONE_LOGIN)
-        var strBody = "TawidLoan Account: \(mobileStr ?? "")"
+        var strBody = "Tawid Loan Account: \(mobileStr ?? "")"
         if !orderID.isEmpty {
             strBody += ", orderId: \(orderID)"
         }

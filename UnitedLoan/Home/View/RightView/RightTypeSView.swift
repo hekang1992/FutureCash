@@ -1,6 +1,6 @@
 //
 //  RightTypeSView.swift
-//  TawidLoan
+//  Tawid Loan
 //
 //  Created by apple on 2024/5/20.
 //

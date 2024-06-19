@@ -75,7 +75,7 @@ class FCSetView: UIView {
     
     lazy var titleLable2: UILabel = {
         let titleLable2 = UILabel.createLabel(font: UIFont(name: Fredoka_Bold, size: 16.px())!, textColor: .white, textAlignment: .center)
-        titleLable2.text = "TawidLoan"
+        titleLable2.text = "Tawid Loan"
         return titleLable2
     }()
     
@@ -192,11 +192,11 @@ class FCSetView: UIView {
         iconImageView3.snp.makeConstraints { make in
             make.centerX.equalTo(bgImageView)
             make.top.equalTo(iconImageView1.snp.bottom).offset(25.px())
-            make.size.equalTo(CGSizeMake(315.px(), 112.px()))
+            make.size.equalTo(CGSizeMake(315.px(), 86.px()))
         }
         titleLable2.snp.makeConstraints { make in
             make.centerX.equalTo(iconImageView3)
-            make.top.equalTo(iconImageView3).offset(52.px())
+            make.top.equalTo(iconImageView3).offset(26.px())
             make.size.equalTo(CGSizeMake(120.px(), 20.px()))
         }
         titleLable3.snp.makeConstraints { make in

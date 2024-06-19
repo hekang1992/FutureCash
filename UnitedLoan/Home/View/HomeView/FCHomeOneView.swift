@@ -15,6 +15,8 @@ class FCHomeOneView: UIView {
     
     var block3: (() -> Void)?
     
+    var block4: (() -> Void)?
+    
     lazy var bgView: UIView = {
         let bgView = UIView()
         return bgView
@@ -127,6 +129,13 @@ class FCHomeOneView: UIView {
         return numLabel
     }()
     
+    lazy var secBtn: UIButton = {
+        let secBtn = UIButton(type: .custom)
+        secBtn.setImage(UIImage(named: "SsecBtnIAMGE"), for: .normal)
+        secBtn.addTarget(self, action: #selector(secBtnClick), for: .touchUpInside)
+        return secBtn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(bgView)
@@ -145,6 +154,7 @@ class FCHomeOneView: UIView {
         iconImageView1.addSubview(rightBtn)
 //        leftBtn.addSubview(numView)
 //        numView.addSubview(numLabel)
+        bgView.addSubview(secBtn)
         bgView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
@@ -204,6 +214,11 @@ class FCHomeOneView: UIView {
             make.left.equalTo(rateView).offset(19.px())
             make.top.equalTo(dayLabel.snp.bottom).offset(1.px())
             make.right.equalTo(rateView).offset(-60.px())
+        }
+        secBtn.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-15.px())
+            make.size.equalTo(CGSize(width: 66.px(), height: 66.px()))
+            make.top.equalToSuperview().offset(51.px())
         }
 //        numView.snp.makeConstraints { make in
 //            make.top.equalTo(leftBtn)
@@ -298,6 +313,10 @@ extension FCHomeOneView {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
         feedbackGenerator.prepare()
         feedbackGenerator.impactOccurred()
+    }
+    
+    @objc func secBtnClick() {
+        self.block4?()
     }
     
 }

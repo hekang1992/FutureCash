@@ -71,7 +71,9 @@ class WebViewController: FCBaseViewController {
         }
         
         if let productUrl = productUrl {
-            if let url = URL(string: productUrl) {
+            var urlString = ""
+            urlString = productUrl.replacingOccurrences(of: " ", with: "%20")
+            if let url = URL(string: urlString) {
                 webView.load(URLRequest(url: url))
             }
         }

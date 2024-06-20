@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DeviceKit
 
 class SecPopView: UIView {
     
@@ -62,7 +63,11 @@ class SecPopView: UIView {
         scrollView.addSubview(secImageView)
         scrollView.addSubview(secbtn)
         iconImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(141.px())
+            if Device.current.isPad {
+                make.top.equalToSuperview().offset(61.px())
+            }else {
+                make.top.equalToSuperview().offset(141.px())
+            }
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(12.px())
             make.size.equalTo(CGSize(width: 351, height: 518))

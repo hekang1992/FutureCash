@@ -31,6 +31,7 @@ class FCRequset: NSObject {
         addHudView()
         var wholeApiUrl = GetBaseApi.getBaseApiUrl() + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        print("🔥wholeApiUrl>>>>>>>🔥\(wholeApiUrl)")
         AF.request(wholeApiUrl, method: method, parameters: params, headers: headers).responseData { [weak self] response in
             switch response.result {
             case .success(let success):
@@ -71,6 +72,7 @@ class FCRequset: NSObject {
         addHudView()
         var wholeApiUrl = GetBaseApi.getBaseApiUrl() + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        print("🔥wholeApiUrl>>>>>>>🔥\(wholeApiUrl)")
         AF.upload(
             multipartFormData: { multipartFormData in
                 multipartFormData.append(data, withName: "group", fileName: "group.png", mimeType: "image/png")
@@ -117,7 +119,7 @@ class FCRequset: NSObject {
         addHudView()
         var wholeApiUrl = GetBaseApi.getBaseApiUrl() + pageUrl + "?" + LoginFactory.getLoginParas()
         wholeApiUrl = wholeApiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        print("wholeApiUrl>>>data>>>\(wholeApiUrl)")
+        print("🔥wholeApiUrl>>>data>>>🔥\(wholeApiUrl)")
         AF.upload(
             multipartFormData: { multipartFormData in
                 if let params = params {

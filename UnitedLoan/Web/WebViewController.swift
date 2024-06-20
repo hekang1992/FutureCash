@@ -76,6 +76,7 @@ class WebViewController: FCBaseViewController {
             if let url = URL(string: urlString) {
                 webView.load(URLRequest(url: url))
             }
+            print("🔥productUrl>>>>>🌹\(productUrl)")
         }
     }
     
